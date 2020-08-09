@@ -19,12 +19,11 @@ def manage_image(mp):
         path_image = mp.get_image_path(name)
         file = os.listdir(path_image);
         list=modp.open_cv2(path_image,file)
-        if alternatore:
-            j= modp.blur(list, j, mp.path_train_modified)
-            alternatore=False
-        else:
-            j = modp.not_modified(list, j, mp.path_train_original)
-            alternatore=True
+        j_modified= modp.blur(list, j, mp.path_train_modified)
+        j_original= modp.not_modified(list, j, mp.path_train_original)
+        if j_original != j_modified:
+            print("error image processing")
+        j = j_original;
         print(path_image)
         print(file);
         i = i + 1;
@@ -40,12 +39,11 @@ def manage_image(mp):
         if j_original != j_modified:
             print("error image processing")
         j = j_original;
+        print(path_image)
         print(file);
         i = i + 1;
 
 
 path = "/home/bernabei/carla0.8.4/PythonClient/_out"
-path_validation = "/validation"
-path_train = "/train"
-mp=manager_of_path.ManagerOfPath(path, path_validation, path_train)
+mp=manager_of_path.ManagerOfPath(path)
 manage_image(mp)

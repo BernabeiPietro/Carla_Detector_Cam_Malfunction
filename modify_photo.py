@@ -8,6 +8,7 @@ def open_cv2(pathImage,name):
     for n in name:
         array_image.append(cv2.imread(pathImage+"/"+n))
     return array_image
+
 def open_image(pathImage,name):
     array_image = []
     for n in name:
