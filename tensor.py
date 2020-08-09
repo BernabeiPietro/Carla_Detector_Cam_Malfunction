@@ -1,0 +1,111 @@
+from __future__ import absolute_import
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import PIL.Image
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
+    path = path_of_dataset
+    batch_size = 4 # batch =divisione del dataset
+    epochs = 15  # epochs= numero di volte che un dataset viene ripetuto nella rete
+    IMG_HEIGHT = 800
+    IMG_WIDTH = 600
+    total_train = 240000
+    total_val = 60000
+    train_dir = path + path_train
+    validation_dir = path + path_validation
+    checkpoint_dir =path+path_checkpoint
+    train_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our training data
+    validation_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our validation data
+    #manage gpu memory usage
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
+    config.log_device_placement = True  # to log device placement (on which device the operation ran)
+    sess = tf.Session(config=config)
+    #set_session(sess)  # set this TensorFlow session as the default session for Keras
+    #gpus = tf.config.experimental.list_physical_devices('GPU')
+    #if gpus:
+    #    # Restrict TensorFlow to only allocate 1GB of memory on the first GPU
+     #   try:
+      #      tf.config.experimental.set_memory_growth(gpus[0], True)
+      #      #tf.config.experimental.set_virtual_device_configuration(gpus[0],
+            #   [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
+      #      logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+      #      print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+       # except RuntimeError as e:
+            # Virtual devices must be set before GPUs have been initialized
+        #    print(e)
+    cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_dir,
+                                                     save_weights_only=True,
+                                                     verbose=1,
+                                                     period=5)
+
+
+    model = Sequential([
+        Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+        MaxPooling2D(),
+        Conv2D(32, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Conv2D(64, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Flatten(),
+        Dense(512, activation='relu'),
+        Dense(1)
+    ])
+    train_data_gen = train_image_generator.flow_from_directory(batch_size=batch_size,
+                                                               directory=train_dir,
+                                                               shuffle=True,
+                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
+                                                               class_mode='binary')
+    val_data_gen = validation_image_generator.flow_from_directory(batch_size=batch_size,
+                                                                  directory=validation_dir,
+                                                                  target_size=(IMG_HEIGHT, IMG_WIDTH),
+                                                                  class_mode='binary')
+    model.compile(optimizer='adam',
+                  loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
+    model.summary()
+    model.save_weights(checkpoint_dir.format(epoch=0))
+    history = model.fit(
+        train_data_gen,
+        steps_per_epoch=total_train // batch_size,
+        epochs=epochs,
+        validation_data=val_data_gen,
+        validation_steps=total_val // batch_size,
+        callbacks=[cp_callback]
+    )
+    model.save()
+    acc = history.history['accuracy']
+    val_acc = history.history['val_accuracy']
+    loss = history.history['loss']
+    val_loss = history.history['val_loss']
+
+    epochs_range = range(epochs)
+
+    plt.figure(figsize=(8, 8))
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs_range, acc, label='Training Accuracy')
+    plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+    plt.legend(loc='lower right')
+    plt.title('Training and Validation Accuracy')
+
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs_range, loss, label='Training Loss')
+    plt.plot(epochs_range, val_loss, label='Validation Loss')
+    plt.legend(loc='upper right')
+    plt.title('Training and Validation Loss')
+    plt.show()
+
+
+path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
+path_validation = "/validation"
+path_train = "/train"
+path_checkpoint="training_1/cp-{epoch:04d}.ckpt"
+checkpoint_dir = os.path.dirname(path+path_checkpoint)
+classificator(path, path_validation, path_train, path_checkpoint)
