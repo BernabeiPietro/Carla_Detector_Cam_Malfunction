@@ -13,7 +13,6 @@ def manage_image(mp):
     os.makedirs(mp.path_validation_modified, exist_ok=True)
     os.makedirs(mp.path_train_modified, exist_ok=True)
     os.makedirs(mp.path_validation_original, exist_ok=True)
-    alternatore=False
     while i < train_classes:
         name = str(i).zfill(4);
         path_image = mp.get_image_path(name)

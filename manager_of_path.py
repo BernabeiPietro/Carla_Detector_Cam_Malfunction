@@ -10,7 +10,6 @@ class ManagerOfPath:
     def __init__(self,path_upper_folder_image):
         path_of_classes = path_upper_folder_image
         self.path_episode_long = path_of_classes + self.path_episode
-
         self.path_train_modified = path_of_classes + self.path_train + self.path_modified
         self.path_train_original = path_of_classes + self.path_train + self.path_original
         self.path_validation_modified = path_of_classes + self.path_validation + self.path_modified
