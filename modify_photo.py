@@ -14,10 +14,13 @@ def cv2toPIL(img):
     img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
     return Image.fromarray(img)
 def PIltocv2(img):
+
     numpy_image = np.array(img)
+    numpy_image=np.uint8(img)
+
     return cv2.cvtColor(numpy_image, cv2.COLOR_RGB2BGR)
 
-def blur(images,progressiveName,pathModified):
+def blur(images,progressiveName,pathModified): #sistemato
 
     for img in images:
         blur = cv2.blur(img,(5,5))
@@ -25,7 +28,7 @@ def blur(images,progressiveName,pathModified):
         progressiveName=progressiveName+1
     return progressiveName
 
-def black(images,progressiveName,pathModified):
+def black(images,progressiveName,pathModified): #sistemato
     #metodo che necessita immagini in formato PIL
     for img in images:
         img=cv2toPIL(img)
@@ -34,7 +37,7 @@ def black(images,progressiveName,pathModified):
         for i in range(0, width):
             for j in range(0, height):
                 pixels[i, j] = (0, 0, 0)
-        pixels=PIltocv2(pixels)
+        pixels=PIltocv2(img)
         cv2.imwrite(pathModified + str(progressiveName) + ".png", pixels)
         progressiveName=progressiveName+1
     return progressiveName
@@ -53,7 +56,6 @@ def dead_pixel_50(images,progressiveName,pathModified):
 
         # naturalmente bisogna sempre controllare con un paio di prove (o calcolandolo)
         # se si esce confini dell'immagine in elaborazione
-
         for y in range(0, 5):
             h2 = h2 + (h1 * y)
             for x in range(0, 10):
