@@ -10,6 +10,7 @@ class ManagerOfPath:
     path_validation = "/validation"
     path_train = "/train"
     path_classes_modify={}
+    path_checkpoint="/checkpoint/"
 
     def __init__(self,path_upper_folder_image,classes_of_modified,type_of_folder=True):
         #se True, definisce n_percorsi differenti quante le classi di modfiche, se False, definisce un unico percorso per tutte le classi di modifiche
@@ -35,6 +36,10 @@ class ManagerOfPath:
                                                classes] +  self.path_validation + self.path_original
         dict_path["validation_modified"] = self.path_classes_modify[
                                                classes] +  self.path_validation + self.path_modified
+        dict_path["checkpoint"]=self.path_classes_modify[classes]+self.path_checkpoint
+        dict_path["train"]=self.path_classes_modify[classes] + self.path_train
+        dict_path["validation"]=self.path_classes_modify[
+                                               classes] +  self.path_validation
         for path in dict_path:
             os.makedirs(dict_path[path], exist_ok=True)
 

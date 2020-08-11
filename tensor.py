@@ -7,20 +7,18 @@ import PIL.Image
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import manager_of_path
 
 
+def classificator(mp,classes,path_checkpoint):
 
-def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
-    path = path_of_dataset
     batch_size = 4 # batch =divisione del dataset
     epochs = 5  # epochs= numero di volte che un dataset viene ripetuto nella rete
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_train = 240000
     total_val = 60000
-    train_dir = path + path_train
-    validation_dir = path + path_validation
-    checkpoint_dir =path+path_checkpoint
+
     train_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our training data
     validation_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our validation data
     #manage gpu memory usage
@@ -29,7 +27,7 @@ def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
     config.log_device_placement = True  # to log device placement (on which device the operation ran)
     sess = tf.Session(config=config)
     #set_session(sess)  # set this TensorFlow session as the default session for Keras
-    cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_dir,
+    cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=mp.get_path_classes(classes)["checkpoint"],
                                                      save_weights_only=True,
                                                      verbose=1,
                                                      period=5)
@@ -46,12 +44,12 @@ def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
         Dense(1)
     ])
     train_data_gen = train_image_generator.flow_from_directory(batch_size=batch_size,
-                                                               directory=train_dir,
+                                                               directory=mp.get_path_classes(classes)["train"]+path_checkpoint,
                                                                shuffle=True,
                                                                target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                                class_mode='binary')
     val_data_gen = validation_image_generator.flow_from_directory(batch_size=batch_size,
-                                                                  directory=validation_dir,
+                                                                  directory=mp.get_path_classes(classes)["validation"],
                                                                   target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                                   class_mode='binary')
     model.compile(optimizer='adam',
@@ -67,7 +65,7 @@ def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
         validation_steps=total_val // batch_size,
         callbacks=[cp_callback]
     )
-    model.save(path+'saved_model/my_model')
+    model.save(mp.get_path_classes(classes)["checkpoint"])
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
     loss = history.history['loss']
@@ -91,8 +89,8 @@ def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
 
 
 path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
-path_validation = "/validation"
-path_train = "/train"
+classes_of_modified=["blur","black","brightness","50_death_pixels"]
+mp=manager_of_path(path,classes_of_modified)
 path_checkpoint="training_1/cp-{epoch:04d}.ckpt"
-checkpoint_dir = os.path.dirname(path+path_checkpoint)
-classificator(path, path_validation, path_train, path_checkpoint)
+
+classificator(mp,"black",path_checkpoint)
