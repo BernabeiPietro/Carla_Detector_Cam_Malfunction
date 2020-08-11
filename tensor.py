@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
     path = path_of_dataset
     batch_size = 4 # batch =divisione del dataset
-    epochs = 15  # epochs= numero di volte che un dataset viene ripetuto nella rete
+    epochs = 5  # epochs= numero di volte che un dataset viene ripetuto nella rete
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_train = 240000
@@ -29,23 +29,10 @@ def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
     config.log_device_placement = True  # to log device placement (on which device the operation ran)
     sess = tf.Session(config=config)
     #set_session(sess)  # set this TensorFlow session as the default session for Keras
-    #gpus = tf.config.experimental.list_physical_devices('GPU')
-    #if gpus:
-    #    # Restrict TensorFlow to only allocate 1GB of memory on the first GPU
-     #   try:
-      #      tf.config.experimental.set_memory_growth(gpus[0], True)
-      #      #tf.config.experimental.set_virtual_device_configuration(gpus[0],
-            #   [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024)])
-      #      logical_gpus = tf.config.experimental.list_logical_devices('GPU')
-      #      print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
-       # except RuntimeError as e:
-            # Virtual devices must be set before GPUs have been initialized
-        #    print(e)
     cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_dir,
                                                      save_weights_only=True,
                                                      verbose=1,
                                                      period=5)
-
 
     model = Sequential([
         Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
@@ -80,7 +67,7 @@ def classificator(path_of_dataset, path_validation, path_train,path_checkpoint):
         validation_steps=total_val // batch_size,
         callbacks=[cp_callback]
     )
-    model.save()
+    model.save(path+'saved_model/my_model')
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
     loss = history.history['loss']
