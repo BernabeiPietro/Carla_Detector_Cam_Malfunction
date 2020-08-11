@@ -69,7 +69,7 @@ def dead_pixel_50(images,progressiveName,pathModified):
         progressiveName=progressiveName+1
     return progressiveName
 
-def birghtness(images,progressiveName,pathModified):
+def brightness(images, progressiveName, pathModified):
 
     for img in images:
         img= cv2toPIL(img)
@@ -86,3 +86,4 @@ def not_modified(images,progressiveName,pathModified):
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
         progressiveName = progressiveName + 1
     return progressiveName
+

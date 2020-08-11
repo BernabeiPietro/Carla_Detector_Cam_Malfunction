@@ -3,26 +3,19 @@ import modify_photo as modp
 import manager_of_path
 
 
-def manage_image(mp):
+def manage_image(mp,classes_of_modified):
     total_classes = 500
-    train_classes = 19  # 400
-    validation_classes = 0
+    train_classes = 1  # 400
+    validation_classes = 1
     i = 0
     j = 0
-    os.makedirs(mp.path_train_original, exist_ok=True)
-    os.makedirs(mp.path_validation_modified, exist_ok=True)
-    os.makedirs(mp.path_train_modified, exist_ok=True)
-    os.makedirs(mp.path_validation_original, exist_ok=True)
+
     while i < train_classes:
         name = str(i).zfill(4)
         path_image = mp.get_image_path(name)
         file = os.listdir(path_image)
         list = modp.open_cv2(path_image, file)
-        j_modified = modp.dead_pixel_50(list, j, mp.path_train_modified)
-        j_original = modp.not_modified(list, j, mp.path_train_original)
-        if j_original != j_modified:
-            print("error image processing")
-        j = j_original
+        j=modify_photo(classes_of_modified,mp,list,j,True)
         print(path_image)
         print(file)
         i = i + 1
@@ -33,16 +26,50 @@ def manage_image(mp):
         path_image = mp.get_image_path(name)
         file = os.listdir(path_image)
         list = modp.open_cv2(path_image, file)
-        j_modified = modp.black(list, j, mp.path_validation_modified)
-        j_original = modp.not_modified(list, j, mp.path_validation_original)
-        if j_original != j_modified:
-            print("error image processing")
-        j = j_original
+        j = modify_photo(classes_of_modified, mp, list, j, False)
         print(path_image)
         print(file)
         i = i + 1
 
+def modify_photo(classes,mp,list,j,tv):
+    #tv:
+    # -true=train
+    # -false=validation
+    if tv:
+        string_tv="train"
+    else:
+        string_tv="validation"
+    tv_modified=string_tv+"_modified"
+    tv_original=string_tv+"_original"
+    j_modified_tot=j
+    if not mp.setting_type_folder:
+        j_modified_tot=j*len(classes)-1
 
-path = "/home/pietro/Documenti/Unifi/tirocinio/img"
-mp = manager_of_path.ManagerOfPath(path)
-manage_image(mp)
+    if "50_death_pixels" in classes:
+            j_modified_tot = modp.dead_pixel_50(list, j_modified_tot, mp.get_path_classes("50_death_pixels")[tv_modified])
+            j_original = modp.not_modified(list, j, mp.get_path_classes("50_death_pixels")[tv_original])
+            if mp.setting_type_folder:
+                j_modified_tot=j
+
+    if "blur" in classes:
+            j_modified_tot = modp.blur(list, j_modified_tot, mp.get_path_classes("blur")[tv_modified])
+            j_original = modp.not_modified(list, j, mp.get_path_classes("blur")[tv_original])
+            if mp.setting_type_folder:
+                j_modified_tot = j
+
+    if "black" in classes:
+            j_modified_tot = modp.black(list, j_modified_tot, mp.get_path_classes("black")[tv_modified])
+            j_original = modp.not_modified(list, j, mp.get_path_classes("black")[tv_original])
+            if mp.setting_type_folder:
+                j_modified_tot=j
+
+    if "brightness" in classes:
+            j_modified_tot = modp.brightness(list, j_modified_tot, mp.get_path_classes("brightness")[tv_modified])
+            j_original = modp.not_modified(list, j, mp.get_path_classes("brightness")[tv_original])
+            if mp.setting_type_folder:
+                j_modified_tot=j
+    return j_original
+path = "/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img"
+classes_of_modified=["blur","black","brightness","50_death_pixels"]
+mp = manager_of_path.ManagerOfPath(path,classes_of_modified,True)
+manage_image(mp,classes_of_modified)
