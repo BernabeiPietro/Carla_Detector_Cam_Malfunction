@@ -93,5 +93,5 @@ path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
 classes_of_modified=["blur","black","brightness","50_death_pixels"]
 mp=manager_of_path(path,classes_of_modified)
 path_checkpoint="training_1/cp-{epoch:04d}.ckpt"
-
-classificator(mp,"black",path_checkpoint)
+for classes in classes_of_modified:
+    classificator(mp,classes,path_checkpoint)
