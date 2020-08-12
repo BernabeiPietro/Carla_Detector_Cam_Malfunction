@@ -18,7 +18,7 @@ def classificator(mp,classes,path_checkpoint):
     IMG_WIDTH = 600
     total_train = 240000
     total_val = 60000
-
+    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"]+path_checkpoint)
     train_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our training data
     validation_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our validation data
     #manage gpu memory usage
@@ -44,7 +44,7 @@ def classificator(mp,classes,path_checkpoint):
         Dense(1)
     ])
     train_data_gen = train_image_generator.flow_from_directory(batch_size=batch_size,
-                                                               directory=mp.get_path_classes(classes)["train"]+path_checkpoint,
+                                                               directory=mp.get_path_classes(classes)["train"],
                                                                shuffle=True,
                                                                target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                                class_mode='binary')
