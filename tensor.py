@@ -13,7 +13,7 @@ import manager_of_path
 def classificator(mp,classes,path_checkpoint):
 
     batch_size = 4 # batch =divisione del dataset
-    epochs = 5  # epochs= numero di volte che un dataset viene ripetuto nella rete
+    epochs = 1  # epochs= numero di volte che un dataset viene ripetuto nella rete
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_train = 240000
@@ -26,7 +26,7 @@ def classificator(mp,classes,path_checkpoint):
     config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
     config.log_device_placement = True  # to log device placement (on which device the operation ran)
     sess = tf.Session(config=config)
-    tf.set_session(sess)  # set this TensorFlow session as the default session for Keras
+    #tf.set_session(sess)  # set this TensorFlow session as the default session for Keras
     cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=mp.get_path_classes(classes)["checkpoint"],
                                                      save_weights_only=True,
                                                      verbose=1,
@@ -65,7 +65,7 @@ def classificator(mp,classes,path_checkpoint):
         validation_steps=total_val // batch_size,
         callbacks=[cp_callback]
     )
-    model.save(mp.get_path_classes(classes)["checkpoint"])
+    model.save(mp.get_path_classes(classes)["checkpoint"]+"model")
     sess.close()
     #print_result(epochs, history)
 
@@ -91,7 +91,7 @@ def print_result(epochs, history):
 
 
 path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
-classes_of_modified=["blur","black","brightness","50_death_pixels"]
+classes_of_modified=["black","brightness","50_death_pixels","blur"]
 mp=manager_of_path.ManagerOfPath(path,classes_of_modified)
 path_checkpoint="training_1/cp-{epoch:04d}.ckpt"
 for classes in classes_of_modified:
