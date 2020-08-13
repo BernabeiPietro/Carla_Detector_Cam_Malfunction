@@ -13,7 +13,7 @@ import manager_of_path
 def classificator(mp,classes,path_checkpoint):
 
     batch_size = 4 # batch =divisione del dataset
-    epochs = 1  # epochs= numero di volte che un dataset viene ripetuto nella rete
+    epochs = 5  # epochs= numero di volte che un dataset viene ripetuto nella rete
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_train = 240000
@@ -66,7 +66,6 @@ def classificator(mp,classes,path_checkpoint):
         callbacks=[cp_callback]
     )
     model.save(mp.get_path_classes(classes)["checkpoint"]+"model")
-    sess.close()
     #print_result(epochs, history)
 
 
@@ -92,7 +91,7 @@ def print_result(epochs, history):
 
 path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
 classes_of_modified=["black","brightness","50_death_pixels","blur"]
+classes="black"
 mp=manager_of_path.ManagerOfPath(path,classes_of_modified)
 path_checkpoint="training_1/cp-{epoch:04d}.ckpt"
-for classes in classes_of_modified:
-    classificator(mp,classes,path_checkpoint)
+classificator(mp,classes,path_checkpoint)
