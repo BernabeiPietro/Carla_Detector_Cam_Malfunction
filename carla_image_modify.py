@@ -71,5 +71,5 @@ def modify_photo(classes,mp,list,j,tv):
     return j_original
 path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
 classes_of_modified=["blur","black","brightness","50_death_pixels"]
-mp = manager_of_path.ManagerOfPath(path,classes_of_modified,True)
+mp = manager_of_path.ManagerOfPath(path,classes_of_modified,False)
 manage_image(mp,classes_of_modified)
