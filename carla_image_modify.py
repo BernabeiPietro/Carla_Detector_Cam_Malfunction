@@ -5,31 +5,30 @@ import manager_of_path
 
 def manage_image(mp,classes_of_modified):
     total_classes = 500
-    train_classes = 400  # 400
-    validation_classes = 100
+    train_classes = 1  # 400
+    validation_classes = 2
     i = 0
     j = 0
-
-    while i < train_classes:
+    if mp.setting_type_folder:
+        indix_of_classes=slice(len(classes_of_modified))
+    else:
+        indix_of_classes=0
+    vt=True
+    while i < train_classes + validation_classes:
+        if i ==train_classes:
+            vt=False
+            j=0
         name = str(i).zfill(4)
         path_image = mp.get_image_path(name)
         file = os.listdir(path_image)
         list = modp.open_cv2(path_image, file)
-        j=modify_photo(classes_of_modified,mp,list,j,True)
+        j=modify_photo(classes_of_modified[indix_of_classes],mp,list,j,vt)
         print(path_image)
         print(file)
         i = i + 1
-    j = 0
+        if not mp.setting_type_folder:
+            indix_of_classes=(indix_of_classes+1)%len(classes_of_modified)
 
-    while i < validation_classes + train_classes:
-        name = str(i).zfill(4)
-        path_image = mp.get_image_path(name)
-        file = os.listdir(path_image)
-        list = modp.open_cv2(path_image, file)
-        j = modify_photo(classes_of_modified, mp, list, j, False)
-        print(path_image)
-        print(file)
-        i = i + 1
 
 def modify_photo(classes,mp,list,j,tv):
     #tv:
@@ -42,8 +41,8 @@ def modify_photo(classes,mp,list,j,tv):
     tv_modified=string_tv+"_modified"
     tv_original=string_tv+"_original"
     j_modified_tot=j
-    if not mp.setting_type_folder:
-        j_modified_tot=j*len(classes)-1
+   #if not mp.setting_type_folder:
+    #    j_modified_tot=j*len(classes)-1
 
     if "50_death_pixels" in classes:
             j_modified_tot = modp.dead_pixel_50(list, j_modified_tot, mp.get_path_classes("50_death_pixels")[tv_modified])
@@ -69,7 +68,7 @@ def modify_photo(classes,mp,list,j,tv):
             if mp.setting_type_folder:
                 j_modified_tot=j
     return j_original
-path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
+path = "/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/" #"/home/bernabei/carla0.8.4/PythonClient/_out/"
 classes_of_modified=["blur","black","brightness","50_death_pixels"]
 mp = manager_of_path.ManagerOfPath(path,classes_of_modified,False)
 manage_image(mp,classes_of_modified)
