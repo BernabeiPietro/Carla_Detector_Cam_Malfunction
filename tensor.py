@@ -90,8 +90,14 @@ def print_result(epochs, history):
 
 
 path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
+<<<<<<< HEAD
 classes_of_modified=["black","brightness","50_death_pixels","blur"]
 classes="50_death_pixels"
 mp=manager_of_path.ManagerOfPath(path,classes_of_modified)
+=======
+classes_of_modified=["black","brightness","50_death_pixels","blur","all"]
+classes="all"
+mp=manager_of_path.ManagerOfPath(path,classes_of_modified,False)
+>>>>>>> 633ee152b00401db913aac17e874e06e95690f06
 path_checkpoint="training_1/cp-{epoch:04d}.ckpt"
 classificator(mp,classes,path_checkpoint)

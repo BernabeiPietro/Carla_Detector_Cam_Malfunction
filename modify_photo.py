@@ -47,7 +47,6 @@ def dead_pixel_50(images,progressiveName,pathModified):
     for img in images:
         h, w, _ = img.shape
 
-        count = 0
         w1 = w2 = int((w - 70) / 10)  # in base a questo 10 e al 5 sotto decido quanti pixel neri inserire
         h1 = h2 = int((h - 70) / 5)
         w2 = w3 = w2 - 5
@@ -68,6 +67,35 @@ def dead_pixel_50(images,progressiveName,pathModified):
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
         progressiveName=progressiveName+1
     return progressiveName
+
+def dead_pixel_200(images,progressiveName,pathModified):
+    for img in images:
+        h, w, _ = img.shape
+
+        w1 = w2 = int(w/20) # in base a questo 20 e al 10 sotto decido quanti pixel neri inserire
+        h1 = h2 = int(h/10)
+        w2 = w3 = w2 - 5
+        h2 = h3 = h2 - 5
+        countpixel = 0
+
+        # naturalmente bisogna sempre controllare con un paio di prove (o calcolandolo)
+        # se si esce confini dell'immagine in elaborazione
+
+        for y in range(0, 10):
+            h2 = h2 + (h1*y)
+            for x in range(0, 20):
+                img1[h2,w2] = (255, 0, 0) #rossi per visibilità
+                countpixel = countpixel + 1
+                w2 = w2 + w1
+                if x==19:
+                    h2 = h3
+                    w2 = w3
+
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName=progressiveName+1
+    return progressiveName
+
+
 
 def brightness(images, progressiveName, pathModified):
 
