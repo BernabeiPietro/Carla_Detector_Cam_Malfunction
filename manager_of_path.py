@@ -14,14 +14,14 @@ class ManagerOfPath:
 
     def __init__(self,path_upper_folder_image,classes_of_modified,type_of_folder=True):
         #se True, definisce n_percorsi differenti quante le classi di modfiche, se False, definisce un unico percorso per tutte le classi di modifiche
-        path_of_classes = path_upper_folder_image
+        self.path_of_classes = path_upper_folder_image
         self.setting_type_folder=type_of_folder
         if type_of_folder:
             for c in classes_of_modified:
-                self.path_classes_modify[c]=path_of_classes+"/"+c
+                self.path_classes_modify[c]=self.path_of_classes+"/"+c
         else:
-            self.path_classes_modify["all"]=path_of_classes+"/all"
-        self.path_episode_long = path_of_classes + self.path_episode
+            self.path_classes_modify["all"]=self.path_of_classes+"/all"
+        self.path_episode_long = self.path_of_classes + self.path_episode
 
     def get_image_path(self,name):
         return self.path_episode_long + name + self.path_camera_RGB

@@ -1,8 +1,6 @@
 import cv2
-import os
-from PIL import Image, ImageEnhance
-from matplotlib import pyplot as plt
 import numpy as np
+from PIL import Image, ImageEnhance
 
 
 def open_cv2(pathImage,name):
@@ -109,6 +107,66 @@ def brightness(images, progressiveName, pathModified):
         progressiveName=progressiveName+1
     return progressiveName
 
+def greyscale(images, progressiveName, pathModified):
+    for img in images:
+        img= cv2toPIL(img)
+        img=img.convert('L')
+        img=PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName=progressiveName+1
+    return progressiveName
+
+def nodemos(images, progressiveName, pathModified):
+
+    for img in images:
+        w, h, _ = img.shape
+        # Create target array, twice the size of the original image
+        res_array = np.zeros((2 * w, 2 * h, 3), dtype=np.uint8)
+        # Map the RGB values in the original picture according to the BGGR pattern#
+        # Blue
+        res_array[::2, ::2, 2] = img[:, :, 2]
+        # Green (top row of the Bayer matrix)
+        res_array[1::2, ::2, 1] = img[:, :, 1]
+        # Green (bottom row of the Bayer matrix)
+        res_array[::2, 1::2, 1] = img[:, :, 1]
+        # Red
+        res_array[1::2, 1::2, 0] = img[:, :, 0]
+        img = cv2.cvtColor(res_array, cv2.COLOR_BGR2RGB)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
+
+def noise(images,progressiveName,pathModified):
+    for img in images:
+        gauss = np.random.normal(0, 1, img.size)
+        gauss = gauss.reshape(img.shape[0], img.shape[1], img.shape[2]).astype('uint8')
+        img  = img + img * gauss
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
+
+def sharpness(images,progressiveName,pathModified):
+    for img in images:
+        img = cv2toPIL(img)
+        enhancer = ImageEnhance.Sharpness(img)
+        factor = -3.5
+        img = enhancer.enhance(factor)
+        img = PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
+def overlap(images,progressiveName,pathModified,overlap_img_path,overlap_value):
+    image_overlap=Image.open(overlap_img_path)
+
+    for img in images:
+        img = cv2toPIL(img)
+        img_over=image_overlap.convert(img.mode)
+        img_over=img_over.resize(img.size)
+        img=Image.blend(img,img_over,overlap_value)
+        img = PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
 def not_modified(images,progressiveName,pathModified):
     for img in images:
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
