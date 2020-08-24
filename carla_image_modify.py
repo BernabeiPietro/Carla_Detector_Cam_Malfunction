@@ -49,7 +49,11 @@ def modify_photo(classes,mp,list,j,tv):
             j_original = modp.not_modified(list, j, mp.get_path_classes("50_death_pixels")[tv_original])
             if mp.setting_type_folder:
                 j_modified_tot=j
-
+    if "200_death_pixels" in classes:
+        j_modified_tot = modp.dead_pixel_200(list, j_modified_tot, mp.get_path_classes("200_death_pixels")[tv_modified])
+        j_original = modp.not_modified(list, j, mp.get_path_classes("200_death_pixels")[tv_original])
+        if mp.setting_type_folder:
+            j_modified_tot = j
     if "blur" in classes:
             j_modified_tot = modp.blur(list, j_modified_tot, mp.get_path_classes("blur")[tv_modified])
             j_original = modp.not_modified(list, j, mp.get_path_classes("blur")[tv_original])
@@ -69,6 +73,6 @@ def modify_photo(classes,mp,list,j,tv):
                 j_modified_tot=j
     return j_original
 path = "/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/" #"/home/bernabei/carla0.8.4/PythonClient/_out/"
-classes_of_modified=["blur","black","brightness","50_death_pixels"]
+classes_of_modified=["blur","black","brightness","50_death_pixels","200_death_pixels"]
 mp = manager_of_path.ManagerOfPath(path,classes_of_modified,True)
-manage_image(mp,classes_of_modified)
+manage_image(mp,classes_of_modified[4])

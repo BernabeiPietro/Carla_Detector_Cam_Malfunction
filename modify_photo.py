@@ -84,7 +84,7 @@ def dead_pixel_200(images,progressiveName,pathModified):
         for y in range(0, 10):
             h2 = h2 + (h1*y)
             for x in range(0, 20):
-                img1[h2,w2] = (255, 0, 0) #rossi per visibilità
+                img[h2,w2] = (255, 0, 0) #rossi per visibilità
                 countpixel = countpixel + 1
                 w2 = w2 + w1
                 if x==19:
