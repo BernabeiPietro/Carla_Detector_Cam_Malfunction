@@ -49,11 +49,50 @@ Detto ciò, l'obbiettivo della seguente tesi è di andare a definire un sistema 
 \subsection{Organizzazione del lavoro} 
 Il detector sviluppato nella seguente tesi, si basa sull'implementazione di una intelligenza artificiale, CNN (convulutional Neureal Network), addestrata con un dataset di immagini acquisite in  precedenza, per poi essere inserito all'interno del simulatore
 \section{Fondamenti}
+I sistemi informatici prevedono una serie di proprietà fondamentali, e sono:
+La dependability è una delle proprietà fondamentali dei sistemi informatici insieme a funzionalità, usabilità, performance e costo. Per fornirne una prima definizione, è necessario illustrare i concetti di servizio, utente e funzione del sistema.
 
+Definizione 1 (Servizio, Utente, Funzione). Il servizio fornito da un sistema
+è il comportamento del sistema stesso, così come viene percepito dai suoi utenti.
+Un utente di un sistema è un altro sistema che interagisce attraverso l’interfaccia del
+servizio. La funzione di un sistema rappresenta che cosa ci attendiamo dal sistema; la
+descrizione della funzione di un sistema è fornita attraverso la sua specifica funzionale.
+Il servizio `e detto corretto se realizza la funzione del sistema. 
+Possiamo ora fornire una definizione di dependability.
+
+Definizione 2 (Dependability). Nella sua definizione originale, la dependability è
+la capacità di un sistema di fornire un servizio su cui `e possibile fare affidamento in
+modo giustificato. 
+Una definizione alternativa, che stabilisce un criterio per decidere se un
+determinato servizio è dependable, definisce la dependability di un sistema
+come la ca[1]pacità di evitare fallimenti che siano più frequenti e più severi del
+limite accettabile [1].
 
 \section{Costruzione del dataset}
+Per addestrare una intelligenza artificiale supervisionata è necessario predisporre un dataset, da usare sia per il training sia per la fase di validation.
+Tensorflow, richiede per l'addestramento di una cnn, un dataset composto da un training set e da un validation set. Entrambi a loro volta sono composti da dati di una categoria e l'altra divisi fra di loro. Nel caso del progetto, le due categorie di dati sono, immagini pulite e immagini modificate.
+Per la costruzione del dataset necessario al training del detector, sono state predisposte due fasi.
+\subsection{Acquisizione}
+La prima fase del processo di costruzione, prevede l'acquisizione di immagini pulite dal simulatore CARLA. Questo avviene grazie a un progetto di "inserisci nome del progetto github", il quale avvia n simulazioni diverse di guida autonoma. Di ciascuna di queste salva un numero fisso di immagini, acquisite dal sensore della fotocamera RGB della macchina.
+Nel caso di questo progetto il numero di simulazioni avviate è stato di 500, da cui per ciascuno sono state prodotte 300 immagini (800*600)
+\subsection{Sporcatura}
+La seconda fase del processo di costruzione, prevede la "sporcatura" delle immagini salvate nella prima fase, immagazzinandole in maniera tale da essere poi usate dall'IA.
+Per "sporcatura" di una immagine, è inteso l'applicazione di un effetto all'immagine che ne simuli un guasto al sensore RGB della vettura.
+Per fare questo è stato usato il progetto github "progetto secci", adattando le funzioni al progetto.
+I diversi effetti utilizzati nel progetto sono le seguenti:
+-
+-
+-
+-
+-
+differenza tra death pixel 50 e death pixel 200 
 
 \section{Costruzione del detector}
+La costruzione del detector, è costituita da due fasi:
+\subsection{Addestramento del rete convuluzionale}
+
+
+
 
 \section{Esecuzione e risultati}
 
