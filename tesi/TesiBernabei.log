@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.7.14)  7 AUG 2020 19:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.9)  23 SEP 2020 11:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -368,7 +368,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 \c@lstlisting=\count119
-<download.jpeg, id=4, 216.81pt x 233.87375pt>
+<download.jpeg, id=32, 216.81pt x 233.87375pt>
 File: download.jpeg Graphic file (type jpg)
 <use download.jpeg>
 Package pdftex.def Info: download.jpeg  used on input line 39.
@@ -376,12 +376,19 @@ Package pdftex.def Info: download.jpeg  used on input line 39.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./download.jpeg>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 48.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 48.
- (./TesiBernabei.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 48.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 48.
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+) [2]
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+) [3] [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
+
+(./TesiBernabei.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 
 
 Package rerunfilecheck Warning: File `TesiBernabei.out' has changed.
@@ -389,26 +396,26 @@ Package rerunfilecheck Warning: File `TesiBernabei.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `TesiBernabei.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  2AEAAA201D2E9B9000E95D9944E773A0;379.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 48.
+(rerunfilecheck)             Before: 2AEAAA201D2E9B9000E95D9944E773A0;379
+(rerunfilecheck)             After:  51B3AB2BBCF83B42E90939D8FBC42934;782.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 8339 strings out of 494880
- 124700 string characters out of 6179601
- 246774 words of memory out of 5000000
- 11563 multiletter control sequences out of 15000+600000
- 7594 words of font info for 28 fonts, out of 8000000 for 9000
+ 9105 strings out of 494880
+ 132896 string characters out of 6179602
+ 249774 words of memory out of 5000000
+ 12314 multiletter control sequences out of 15000+600000
+ 7901 words of font info for 29 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 37i,6n,40p,333b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,6n,40p,659b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on TesiBernabei.pdf (2 pages, 47230 bytes).
+Output written on TesiBernabei.pdf (5 pages, 66399 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 85 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
+ 62 words of extra memory for PDF output out of 10000 (max. 10000000)
 
