@@ -107,3 +107,6 @@ if __name__ == "__main__":
         mp = manager_of_path.ManagerOfPath(path, classes_of_modified[5:7], True)
         path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
         classificator(mp,classes_of_modified[5],path_checkpoint)
+
+
+
