@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 import manager_of_path
 
 
-def classificator(mp,classes,path_checkpoint):
-
+def classificator(lock,mp,classes,path_checkpoint):
+    lock.acquire()
     batch_size = 4 # batch =divisione del dataset
     epochs = 5  # epochs= numero di volte che un dataset viene ripetuto nella rete
     IMG_HEIGHT = 800
@@ -69,6 +69,7 @@ def classificator(mp,classes,path_checkpoint):
         callbacks=[cp_callback]
     )
     model.save(mp.get_path_classes(classes)["checkpoint"]+"model")
+    lock.release();
     #print_result(epochs, history)
 
 
@@ -96,11 +97,12 @@ if __name__ == "__main__":
     path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
     classes_of_modified= ["blur", "black", "brightness", "50_death_pixels", "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale"]
     multiproc=False
+    lock= multiprocessing.Lock()
     if multiproc==True:
         for classes in classes_of_modified[5:7]:
             mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
             path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
-            p = multiprocessing.Process(target=classificator, args=(mp, classes, path_checkpoint))
+            p = multiprocessing.Process(target=classificator, args=(lock,mp, classes, path_checkpoint))
             p.start()
             p.join()
     else:
