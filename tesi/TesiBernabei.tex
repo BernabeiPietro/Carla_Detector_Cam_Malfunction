@@ -219,34 +219,38 @@ sponibili, affidabili, safe o secure. Per questo gli attributi di dependability
 possono essere definiti in senso probabilistico cosi da poterli trattare in modo
 quantitativo.
 Ad esempio:
-• L’affidabilità può essere rappresentata dalla probabilità che il sistema
+\begin{itemize}
+\item L’affidabilità può essere rappresentata dalla probabilità che il sistema
 non fallisca durante il periodo di missione del sistema. Se si assumono
 distribuzioni esponenziali, possiamo rappresentare l’affidabilità tramite
 il tasso di fallimenti (ad esempio, in numero medio di fallimenti all’ora).
-• La disponibilità è la probabilità che il sistema sia operativo al tempo t,
+\item La disponibilità è la probabilità che il sistema sia operativo al tempo t,
 considerando l’alternanza fra gli stati di servizio corretto e servizio non
 corretto.
-• La manutenibilità può essere rappresentata dalla velocità con cui viene
+\item La manutenibilità può essere rappresentata dalla velocità con cui viene
 ripristinato un servizio corretto dopo un fallimento.
+
+\end{itemize}
 **guarda se aggiungere ultima parte con le formule
 
 \subsubsection{I mezzi per ottenere la dependability}
 Lo sviluppo di sistemi dependable richiede l’utilizzo combinato di quattro
 tipologie di tecniche:
-• prevenzione dei guasti, per prevenire l’occorrenza o introduzione di
+\begin{itemize}
+
+\item \textbf{prevenzione dei guasti}, per prevenire l’occorrenza o introduzione di
 guasti nel sistema;
-• tolleranza ai guasti, per erogare un servizio corretto anche in presenza
+\item \textbf{tolleranza ai guasti}, per erogare un servizio corretto anche in presenza
 di guasti;
-• rimozione dei guasti, per ridurre il numero o la gravita’ dei guasti;
-• previsione dei guasti, per stimare il numero di guasti presenti nel
-sistema, la loro incidenza futura, o le loro probabili conseguenze.10
-CAPITOLO 1
-Prevenzione dei guasti
-La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di con-
-trollo di qualita’ sia durante la progettazione del software che durante la pro-
-duzione dei componenti hardware. Queste tecniche comprendono ad esempio
-la programmazione strutturata e modulare, l’uso di linguaggi fortemente tipa-
-ti, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
+\item \textbf{rimozione dei guasti}, per ridurre il numero o la gravita’ dei guasti;
+\item \textbf{previsione dei guasti}, per stimare il numero di guasti presenti nel
+sistema, la loro incidenza futura, o le loro probabili conseguenze.
+
+\end{itemize}
+\subparagraph{Prevenzione dei guasti}
+
+La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware. Queste tecniche comprendono ad esempio
+la programmazione strutturata e modulare, l’uso di linguaggi fortemente tipati, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
 il software, mentre per quanto riguarda l’hardware l’uso di rigorosi processi
 produttivi e di strumenti per la progettazione come linguaggi di alto livello
 (VHDL). Guasti di origine fisica vengono prevenuti tramite specifiche prote-
@@ -255,10 +259,9 @@ che originano da interazioni umane possono invece essere prevenuti tramite
 un’appropriata formazione del personale, o la creazione di procedure di manu-
 tenzione rigorose. Guasti originati da attacchi esterni possono essere prevenuti
 tramite firewall e dispositivi di sicurezza simili.
-Tolleranza ai guasti
+\subparagraph{Tolleranza ai guasti}
 La “Fault Tolerance” mira a preservare l’erogazione di un servizio corretto in
-presenza di guasti attivi. Essa viene solitamente implementata tramite rileva-
-zione di errori (erro detection) e conseguente recupero dello stato del sistema
+presenza di guasti attivi. Essa viene solitamente implementata tramite rilevazione di errori (error detection) e conseguente recupero dello stato del sistema
 (system recovery). In particolare, la rilevazione degli errori origina un segnale
 di errore all’interno del sistema; esistono due classi di tecniche di rilevazione
 di errori: concurrent error detection viene effettuata durante l’erogazione del
@@ -274,39 +277,39 @@ rilevazione dell’errore; rollforward, dove si porta il sistema in uno stato de
 tutto nuovo, e compensation, dove lo stato contiene abbastanza ridondanza
 per eliminare la parte erronea. Fault handling impedisce che i guasti che sono
 stati localizzati vengano nuovamente attivati, attraverso quattro fasi:
-a) fault diagnosis identifica l’origine della cause degli errori, in termini di
+\begin{itemize}
+\item \textbf{fault diagnosis} identifica l’origine della cause degli errori, in termini di
 locazione e tipo;
-b) fault isolation isola logicamente o fisicamente il componente, impeden-
-dogli di partecipare all’erogazione del servizio, trasformando il guasto in
-un guasto dormiente;Introduzione
-11
-c) system reconfiguration che riconfigura il sistema, ad esempio atti-
+\item \textbf{fault isolation} isola logicamente o fisicamente il componente, impedendogli di partecipare all’erogazione del servizio, trasformando il guasto in
+un guasto dormiente;
+\item \textbf{system reconfiguration} che riconfigura il sistema, ad esempio atti-
 vando componenti di riserva o ridistribuendo il carico tra i componenti
 funzionanti;
-d) system reinitialization, che esegue i controlli e gli aggiornamenti ne-
+\item \textbf{system reinitialization}, che esegue i controlli e gli aggiornamenti ne-
 cessari in seguito alla nuova configurazione.
+
+\end{itemize}
 Solitamente l’attività di fault handling è seguita da azioni di manutenzio-
 ne correttiva, che rimuovono i guasti isolati dal fault handling, ad esempio
 sostituendo un componente segnalato come guasto. Il fattore che distingue la
 fault tolerance dalla manutenzione (maintenance) e’ che quest’ultima richiede
 l’intervento di un agente esterno.
-Rimozione dei guasti
+\subparagraph{Rimozione dei guasti}
 La “Fault Removal” viene effettuata sia durante la fase di sviluppo, che durante la vita operazionale del sistema.
-La rimozione dei guasti è uno degli obiettivi del processo di verifica e validazione (V V).
+La rimozione dei guasti è uno degli obiettivi del processo di verifica e validazione (V\&V).
 La verifica è un processo attraverso cui si determina se il sistema soddisfa alcune proprietà determinate dalle
 specifiche o imposte all’inizio della fase di sviluppo; se cosi non è si cerca di
 individuare il guasto che impedisce di soddisfare tali proprietà e lo si corregge.
 La validazione consiste invece nel controllare se il sistema soddisfa le proprie
 specifiche e se le specifiche descrivono adeguatamente la funzione intesa per il
-sistema. Le tecniche di verifica possono essere classificate in base alla neces-
-sita’ di esercitare il sistema. La verifica di un sistema senza la sua esecuzione
+sistema. Le tecniche di verifica possono essere classificate in base alla necessita’ di esercitare il sistema. La verifica di un sistema senza la sua esecuzione
 è una verifica statica, altrimenti è una verifica dinamica. La rimozione dei
 guasti durante la sua vita operazionale è manutenzione correttiva o preven-
 tiva. La manutenzione correttiva ha l’obiettivo di rimuovere guasti che sono
 stati segnalati come la causa di uno o più errori, la manutenzione preventiva
 cerca di scovare e rimuovere i guasti prima che causino degli errori durante la
 normale operazione del sistema.
-Previsione dei guasti
+\subparagraph{Previsione dei guasti}
 La “Fault Forecasting” è condotta effettuando una valutazione del comporta-
 mento del sistema rispetto all’occorrenza e attivazione dei guasti. La valuta-
 zione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
@@ -314,11 +317,7 @@ e valutare i modi di fallimento o le combinazioni di eventi che porterebbero ad
 un fallimento del sistema; quantitativa (o probabilistica), che mira a valutare
 in termini probabilistici il grado con cui alcuni attributi vengono soddisfatti
 dal sistema; questi attributi sono in questo caso visti come misure. Alcuni
-metodi di analisi sono specifici per una valutazione qualitativa o quantitati-
-va, mentre altri possono essere utilizzati per entrambi i tipi di analisi. I due12
-CAPITOLO 1
-approcci principali per il fault forecasting di tipo probabilistico sono la model-
-lizzazione e il testing. Questi approcci sono complementari: la costruzione di
+metodi di analisi sono specifici per una valutazione qualitativa o quantitativa, mentre altri possono essere utilizzati per entrambi i tipi di analisi. I due approcci principali per il fault forecasting di tipo probabilistico sono la modellizzazione e il testing. Questi approcci sono complementari: la costruzione di
 un modello del sistema richiede delle informazioni su alcuni processi di base
 del sistema, che possono essere acquisite tramite testing. Generalmente, un
 sistema eroga diversi servizi, e spesso esistono due o più modi di erogazione
@@ -333,11 +332,24 @@ un modello stato-transizione), e la osservazione e la valutazione (anche tramite
 test specifici) sperimentale. Le attività di fault injection sono un esempio di
 valutazione sperimentale del sistema ai fini della fault forecasting, in quanto
 permette di esaminare l’evoluzione e le conseguenze dei guasti in un sistema.
-La descrizione di varie tecniche a formalismi appartenenti a questi due approcci
-costituisce il corpo di questo libro.
+
 
 \subsection{Artificial Intelligence}
-\subsubsection{Convulutional network}
+Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'informatica che si dedica alla definizione di algoritmi per trovare efficaciemente le migliori soluzioni a problemi di diversa tipologia. Quindi il campo dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
+L'IA si occupa di sistematizzare e rendere automatiche alcune attività intellettive, e di conseguenza si può potenzialmente applicare a ogni sfera del pensiero umano. 
+Detto ciò l'Intelligenza Artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un ambiente, riescano a massimizzare la propria misura di prestazione.
+\subparagraph{Agente}, è qualsiasi cosa possa essere vista come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori.
+\subparagraph{Misura di prestazione}, rappresenta il criterio in base al quale valutare il successo del comportamento di un agente
+
+\subparagraph{Ambiente}, 
+
+\subsubsection{Neural Network}
+
+\subsubsection{Convulutional Neural Network}
+
+
+
+
 
 \section{Costruzione del dataset}
 Per addestrare una intelligenza artificiale supervisionata è necessario predisporre un dataset, da usare sia per il training sia per la fase di validation.
