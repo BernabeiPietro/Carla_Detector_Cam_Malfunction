@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.9)  25 SEP 2020 19:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.7.14)  26 SEP 2020 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -437,7 +437,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 \c@lstlisting=\count129
-<download.jpeg, id=84, 216.81pt x 233.87375pt>
+<download.jpeg, id=88, 216.81pt x 233.87375pt>
 File: download.jpeg Graphic file (type jpg)
 <use download.jpeg>
 Package pdftex.def Info: download.jpeg  used on input line 38.
@@ -506,22 +506,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
  (./TesiBernabei.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 389.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 389.
-
-
-Package rerunfilecheck Warning: File `TesiBernabei.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `TesiBernabei.out':
-(rerunfilecheck)             Before: 0C4C95D4E7763B9FBCF05E33749E0079;1362
-(rerunfilecheck)             After:  509DCDECDA8BF256FE9E17AAEE20D186;1443.
+Package rerunfilecheck Info: File `TesiBernabei.out' has not changed.
+(rerunfilecheck)             Checksum: 509DCDECDA8BF256FE9E17AAEE20D186;1443.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 389.
  ) 
 Here is how much of TeX's memory you used:
- 9672 strings out of 494880
- 141393 string characters out of 6179602
+ 9673 strings out of 494880
+ 141414 string characters out of 6179601
  264486 words of memory out of 5000000
- 12822 multiletter control sequences out of 15000+600000
+ 12823 multiletter control sequences out of 15000+600000
  9274 words of font info for 34 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  37i,6n,72p,650b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -530,10 +523,10 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on TesiBernabei.pdf (17 pages, 101982 bytes).
+Output written on TesiBernabei.pdf (17 pages, 102097 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
+ 226 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
  47 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
