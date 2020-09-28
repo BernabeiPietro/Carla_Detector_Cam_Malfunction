@@ -14,16 +14,15 @@
 \contentsline {subparagraph}{Rimozione dei guasti}{13}{section*.4}
 \contentsline {subparagraph}{Previsione dei guasti}{14}{section*.5}
 \contentsline {subsection}{\numberline {2.2}Artificial Intelligence}{15}{subsection.2.2}
-\contentsline {subparagraph}{Agente}{15}{section*.6}
-\contentsline {subparagraph}{Misura di prestazione}{15}{section*.7}
-\contentsline {subparagraph}{Ambiente}{15}{section*.8}
-\contentsline {subsubsection}{\numberline {2.2.1}Neural Network}{16}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Convulutional Neural Network}{16}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Agente razionale,Misura di prestazione,Ambiente}{15}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Perceptron}{16}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{16}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{16}{subsubsection.2.2.4}
 \contentsline {section}{\numberline {3}Costruzione del dataset}{16}{section.3}
-\contentsline {subsection}{\numberline {3.1}Acquisizione}{16}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Sporcatura}{16}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.1}Acquisizione}{17}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Sporcatura}{17}{subsection.3.2}
 \contentsline {section}{\numberline {4}Costruzione del detector}{17}{section.4}
-\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{17}{subsection.4.1}
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{17}{section.5}
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{17}{section.6}
-\contentsline {section}{\numberline {7}A Manuale utente}{17}{section.7}
+\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{18}{subsection.4.1}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{18}{section.5}
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{18}{section.6}
+\contentsline {section}{\numberline {7}A Manuale utente}{18}{section.7}

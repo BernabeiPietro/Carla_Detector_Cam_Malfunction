@@ -43,19 +43,20 @@
 \subsection{Motivazioni}
 L'avanzamento tecnologico vissuto nell'ultimo periodo,  ha portato ha un cambiamento nelle nostre vite, con l'introduzione di nuovi sistemi, applicazioni e infrastrutture, hardware e software, sulle quali si fa sempre più affidamento.
 Data questa particolare dipendenza dalla loro presenza, si richiede che questi siano continuativi, liberi da possibili errori o malfunzionamenti. Questi sono definiti Sistemi critici.
-Un particolare sistemi critico, che verrà trattato da questa tesi, è il sistema di guida autonoma di una macchina.
-Tecnologia in sviluppo negli ultimi anni prevede l'uso di sensori, per interagire e sentire il mondo esterno. Uno dei più importanti e comuni sensori usati all'interno dei sistemi a guida autonoma, sono le telecamere."Dispositivo elettronico in grado di acquisire immagini bidimensionali in sequenza a velocità di cattura prefissate, solitamente nella gamma visibile dello spettro elettromagnetico"["wikipedia-telecamere"]". Queste possono subire diversi malfunzionamenti, come la sfuocatura, il congelamente del vetro, la rottura dei pixels, e altri ancora, i quali causano errori nel momento decisionale.
-\subsection{Obiettivo}
-Detto ciò, l'obbiettivo della seguente tesi è di andare a definire un sistema software, detto Detector, in grado di andare a rilevare, nel flusso di immagini generate dalla telecamara di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione. 
-\subsection{Organizzazione del lavoro} 
-Per lo sviluppo del seguente progetto si sono definite due fasi:
-Acquisizione immagini
-Sviluppo CNN
-Addestramento CNN
-**Essendo troppo costoso disporre di un mezzo fisico, per lo sviluppo e il testing di sistemi software per la tipologia di progetto, sono stati sviluppati simulatori software di sistemi a guida autonoma. Nello sviluppo del seguente progetto, è stata impiegata la  piattaforma simulativa CARLA nella sua versione 0.8.4.
+Un particolare sistema critico, che verrà trattato da questa tesi, è il sistema di guida autonoma di una macchina.
+Tecnologia in sviluppo negli ultimi anni prevede l'uso di sensori, per interagire e sentire il mondo esterno. Uno dei più importanti e comuni sensori usati all'interno dei sistemi a guida autonoma, sono le telecamere.Quest'ultime sono definito come:"dispositivo elettronico in grado di acquisire immagini bidimensionali in sequenza a velocità di cattura prefissate, solitamente nella gamma visibile dello spettro elettromagnetico"["wikipedia-telecamere"]". Queste possono subire diversi malfunzionamenti, come la sfuocatura, il congelamente del vetro, la rottura dei pixels, e altri ancora, causando fallimenti nel processo decisionale.
 
-Dato questo dataset,  
-**Il Detector sviluppato nella seguente tesi, è un software che si basa su di una intelligenza artificiale, CNN (convulutional Neureal Network), addestrata con dataset di immagini, da poi essere inserità poi all'interno 
+\subsection{Obiettivo}
+Detto ciò, l'obbiettivo della seguente tesi è di andare a progettare un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, per poi notificarlo al sistema  di guida.
+\subsection{Organizzazione del lavoro} 
+Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. Per questo la soluzione descritta propone di usare una delle ultime tecnologie messe a disposizione, l'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (NNC).
+Come verrà esposto meglio in seguito, una NNC è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche NNC richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi andrà a fare le proprie decisioni.
+Detto ciò il suo sviluppo si divide in:
+\begin{itemize}
+\item Definizione e generazione Dataset
+\item Creazione CNN
+\item Training CNN
+\end{itemize}
 \section{Fondamenti}
 \subsection{Sistemi Critici}
 Il rapido avanzamento tecnologico a cui assistiamo ogni giorno ha introdotto nella nostra vita una serie di infrastrutture, sistemi e applicazioni su cui facciamo affidamento per svolgere le nostre attività quotidiane. L’informatizzazione si è introdotta in modo cosi pervasivo nelle attività umane e
@@ -335,14 +336,24 @@ permette di esaminare l’evoluzione e le conseguenze dei guasti in un sistema.
 
 
 \subsection{Artificial Intelligence}
-Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'informatica che si dedica alla definizione di algoritmi per trovare efficaciemente le migliori soluzioni a problemi di diversa tipologia. Quindi il campo dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
-L'IA si occupa di sistematizzare e rendere automatiche alcune attività intellettive, e di conseguenza si può potenzialmente applicare a ogni sfera del pensiero umano. 
-Detto ciò l'Intelligenza Artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un ambiente, riescano a massimizzare la propria misura di prestazione.
-\subparagraph{Agente}, è qualsiasi cosa possa essere vista come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori.
-\subparagraph{Misura di prestazione}, rappresenta il criterio in base al quale valutare il successo del comportamento di un agente
+Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
+\subsubsection{Agente razionale,Misura di prestazione,Ambiente}
 
-\subparagraph{Ambiente}, 
+Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.
+Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi, come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.(attuatori)
+Un agente fisico, come una macchina a guida autonoma, ha sensori come telecamere, telecamere a infrarossi,radar e tanti altri, mentre come attuatori, motori,freni, e tanti altri. 
+Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante. 
+La totalità delle percezioni generate dall'agente in tutta la sua storia, è defnità invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante puo dipendere dall'intera sequenza percettiva psservata fino a quel momento.
+In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
+Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.   
 
+
+
+
+
+ mentre la \textbf{misura di prestazione}, rappresenta il criterio in base al quale valutare il successo del comportamento di un agente.
+Mentre per \textbf{ambiente}, si definisce
+\subsubsection{Perceptron}
 \subsubsection{Neural Network}
 
 \subsubsection{Convulutional Neural Network}
