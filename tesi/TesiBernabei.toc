@@ -1,28 +1,56 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1}Introduzione}{3}{section.1}
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.1}Motivazioni}{3}{subsection.1.1}
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2}Obiettivo}{3}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Organizzazione del lavoro}{4}{subsection.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3}Organizzazione del lavoro}{3}{subsection.1.3}
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Fondamenti}{4}{section.2}
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Sistemi Critici}{4}{subsection.2.1}
+\defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.1.1}Dependability}{5}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Le Minacce: guasti, errori e fallimenti}{7}{subsubsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.3}Gli attributi della dependability}{9}{subsubsection.2.1.3}
-\contentsline {subsubsection}{\numberline {2.1.4}I mezzi per ottenere la dependability}{11}{subsubsection.2.1.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.2}Le Minacce: guasti, errori e fallimenti}{6}{subsubsection.2.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.3}Gli attributi della dependability}{8}{subsubsection.2.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.4}I mezzi per ottenere la dependability}{10}{subsubsection.2.1.4}
+\defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Prevenzione dei guasti}{11}{section*.2}
-\contentsline {subparagraph}{Tolleranza ai guasti}{12}{section*.3}
-\contentsline {subparagraph}{Rimozione dei guasti}{13}{section*.4}
-\contentsline {subparagraph}{Previsione dei guasti}{14}{section*.5}
-\contentsline {subsection}{\numberline {2.2}Artificial Intelligence}{15}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Agente razionale,Misura di prestazione,Ambiente}{15}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Perceptron}{16}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{16}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{16}{subsubsection.2.2.4}
-\contentsline {section}{\numberline {3}Costruzione del dataset}{16}{section.3}
-\contentsline {subsection}{\numberline {3.1}Acquisizione}{17}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Sporcatura}{17}{subsection.3.2}
-\contentsline {section}{\numberline {4}Costruzione del detector}{17}{section.4}
-\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{18}{subsection.4.1}
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{18}{section.5}
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{18}{section.6}
-\contentsline {section}{\numberline {7}A Manuale utente}{18}{section.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Tolleranza ai guasti}{11}{section*.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Rimozione dei guasti}{12}{section*.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Previsione dei guasti}{13}{section*.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Artificial Intelligence}{14}{subsection.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1}Agente razionale,Misura di prestazione,Ambiente}{14}{subsubsection.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2}Perceptron}{15}{subsubsection.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{15}{subsubsection.2.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{15}{subsubsection.2.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Costruzione del dataset}{15}{section.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Acquisizione}{16}{subsection.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Sporcatura}{16}{subsection.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Costruzione del detector}{16}{section.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{17}{subsection.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{17}{section.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{17}{section.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}A Manuale utente}{17}{section.7}

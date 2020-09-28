@@ -5,7 +5,7 @@
 \usepackage[final]{pdfpages}
 \usepackage{imakeidx}
 
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{color}
@@ -27,6 +27,9 @@
     rulecolor=\color{black}
 } 
 \makeindex[columns=3, title=Alphabetical Index, intoc]
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{bibliografia.bib}
+
 
 \begin{document}
 
@@ -41,17 +44,17 @@
 \newpage
 \section{Introduzione}
 \subsection{Motivazioni}
-L'avanzamento tecnologico vissuto nell'ultimo periodo,  ha portato ha un cambiamento nelle nostre vite, con l'introduzione di nuovi sistemi, applicazioni e infrastrutture, hardware e software, sulle quali si fa sempre più affidamento.
-Data questa particolare dipendenza dalla loro presenza, si richiede che questi siano continuativi, liberi da possibili errori o malfunzionamenti. Questi sono definiti Sistemi critici.
-Un particolare sistema critico, che verrà trattato da questa tesi, è il sistema di guida autonoma di una macchina.
-Tecnologia in sviluppo negli ultimi anni prevede l'uso di sensori, per interagire e sentire il mondo esterno. Uno dei più importanti e comuni sensori usati all'interno dei sistemi a guida autonoma, sono le telecamere.Quest'ultime sono definito come:"dispositivo elettronico in grado di acquisire immagini bidimensionali in sequenza a velocità di cattura prefissate, solitamente nella gamma visibile dello spettro elettromagnetico"["wikipedia-telecamere"]". Queste possono subire diversi malfunzionamenti, come la sfuocatura, il congelamente del vetro, la rottura dei pixels, e altri ancora, causando fallimenti nel processo decisionale.
+Nel giro di un paio di secoli il mondo, è passato dal viaggiare in groppa a un cavallo, alla groppa di una macchina, dal essere il conducente, al condotto. Le macchine a guida autonoma parziali e totali stanno diventando ogni giorno che avanza, realtà. Questa rivoluzione sta permeando il nostro stile di vita, diventandone dipendenti a tal punto da richiedere che questi siano continuativi, privi da possibili errori o malfunzionamenti.
 
+Come per un essere umano, che soffre di miopia, guidare senza occhiali è pericoloso, anche per il sistema di guida autonoma, guidare con le telecamere con guasti porta a incidenti.
+Come verrà espresso in seguito, le telecamere negli attuali sistemi, ricoprono un ruolo decisivo nel momento decisionale della guida autonoma, e un loro malfunzionamento nel processo di acquisizione riperquote nel sistema decisionale, errori non molto graditi al guidatore.
 \subsection{Obiettivo}
-Detto ciò, l'obbiettivo della seguente tesi è di andare a progettare un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, per poi notificarlo al sistema  di guida.
+Nella seguente tesi si propone un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo.
 \subsection{Organizzazione del lavoro} 
-Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. Per questo la soluzione descritta propone di usare una delle ultime tecnologie messe a disposizione, l'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (NNC).
-Come verrà esposto meglio in seguito, una NNC è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche NNC richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi andrà a fare le proprie decisioni.
-Detto ciò il suo sviluppo si divide in:
+Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. 
+Per questo la soluzione descritta propone di impiegare la tecnologia dell'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (NNC), per il suo sviluppo.
+Come verrà esposto meglio in seguito, una NNC è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche NNC richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi prenderà le proprie decisioni.
+Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
 \item Definizione e generazione Dataset
 \item Creazione CNN
@@ -59,59 +62,30 @@ Detto ciò il suo sviluppo si divide in:
 \end{itemize}
 \section{Fondamenti}
 \subsection{Sistemi Critici}
-Il rapido avanzamento tecnologico a cui assistiamo ogni giorno ha introdotto nella nostra vita una serie di infrastrutture, sistemi e applicazioni su cui facciamo affidamento per svolgere le nostre attività quotidiane. L’informatizzazione si è introdotta in modo cosi pervasivo nelle attività umane e
-molti servizi sono percepiti come parte integrante dell’ambiente in cui siamo
-immersi. Una loro eventuale indisponibilità, interruzione o malfunzionamento
-ci lascia quantomeno sorpresi. Alcuni di questi sistemi e infrastrutture possono inoltre essere considerati critici perché la loro distruzione o un’interruzione
-del loro funzionamento potrebbe avere effetti catastrofici sulla sicurezza, sull’economia sull’ambiente o sulla salute, siano esse del singolo individuo o della
-società intera. In questo senso, sono ad esempio infrastrutture critiche le telecomunicazioni, i trasporti, il sistema elettrico, gli acquedotti, la finanza, la
-distribuzione del gas; sono esempi di sistemi critici il sistema di pilotaggio di
-un treno o di un aereo, il controllo elettronico di stabilità di un’automobile,
-il sistema di telecomunicazioni di un satellite. A causa della loro criticità, è
-quindi necessario poter garantire un certo livello di affidabilità, sicurezza o
-disponibilità per questo tipo di servizi.
-Fondamentale per un funzionamento corretto ed efficace di tali sistemi è
-la nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali quali velocità di elaborazione o altre misure di efficienza
+Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali quali velocità di elaborazione o altre misure di efficienza
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
 convincano della adeguatezza dei nostri manufatti per i compiti sempre più
-critici e delicati per i quali li utilizziamo. Di seguito si tratterà la dependability, di cui i concetti fondamentali nella descrizione di sistemi critici quali: guasto, errore,
-fallimento, attributi quali affidabilità, sicurezza ed altre metriche e mezzi e
-tecniche per l’ottenimento della dependability.
-
+critici e delicati per i quali li utilizziamo.
 
 \subsubsection{Dependability}
-La dependability è una delle proprietà fondamentali dei sistemi informatici insieme a funzionalità, usabilità, performance e costo. Per fornirne una prima definizione, è necessario illustrare i concetti di servizio, utente e funzione del sistema.
+La \textbf{dependability} è una delle proprietà fondamentali dei sistemi informatici insieme a funzionalità, usabilità, performance e costo. Per fornirne una prima definizione, è necessario illustrare i concetti di: \cite{avizienis2004basic}.
+\begin{itemize}
+\item \textbf{Servizio:} Il servizio fornito da un sistema è il comportamento del sistema stesso, così come viene percepito dai suoi utenti.
+\item \textbf{Utente:}Un utente di un sistema è un altro sistema che interagisce attraverso l’interfaccia del servizio.
+\item \textbf{Funzione di sistema:}La funzione di un sistema rappresenta che cosa ci attendiamo dal sistema; la descrizione della funzione di un sistema è fornita attraverso la sua specifica funzionale. Il servizio è detto corretto se realizza la funzione del sistema.
+\end{itemize}
 
-\textbf{Definizione 1 (Servizio, Utente, Funzione).}
-
-Il servizio fornito da un sistema
-è il comportamento del sistema stesso, così come viene percepito dai suoi utenti.
-
-Un utente di un sistema è un altro sistema che interagisce attraverso l’interfaccia del
-servizio.
-
-La funzione di un sistema rappresenta che cosa ci attendiamo dal sistema; la
-descrizione della funzione di un sistema è fornita attraverso la sua specifica funzionale.
-Il servizio è detto corretto se realizza la funzione del sistema.♣
-
-Possiamo ora fornire una definizione di dependability.\\\\
-\textbf{Definizione 2 (Dependability).} Nella sua definizione originale, la dependability è
+Detto ciò nella sua definizione originale \textbf{dependability} è
 la capacità di un sistema di fornire un servizio su cui è possibile fare affidamento in
-modo giustificato.
-♣
+modo giustificato.\cite{bondavalli2011analisi}
 
-Una definizione alternativa, che stabilisce un criterio per decidere se un determinato servizio è dependable, definisce la dependability di un sistema
+Una definizione alternativa, che stabilisce un criterio per decidere se un determinato servizio è dependable, definisce la \textbf{dependability} di un sistema
 come la capacità di evitare fallimenti che siano più frequenti e più severi del
 limite accettabile [1].
 
-Questa definizione sottintende un’importante problematica: prevede infatti che una definizione del comportamento del sistema sia disponibile. Non
-sempre è semplice fornire una specifica precisa, completa e non ambigua di
-un sistema: infatti il comportamento corretto del sistema deve essere spesso
-ricavato a partire dai requisiti degli utenti, che sono solitamente impliciti e
-ambigui. Inoltre, per fornire una specifica completa del sistema, è necessario determinare anche quali sono le condizioni ambientali (esterne) richieste
-affinché il sistema fornisca il servizio specificato.
-In altre parole, la dependability puo essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema
-stesso. Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti: i suoi attributi (attributes), le minacce (threats) e i mezzi (means) per ottenerla (Figura 1.1).
+Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella totalità, non ambiguo e precisa. 
+Per questo si può la dependability puo essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
+Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
 
 \begin{itemize}
 \item \textbf{Le minacce o impedimenti alla dependability.} Gli impedimenti sono le
@@ -130,7 +104,7 @@ occorre quando un errore raggiunge l’interfaccia di servizio, alterando il ser
 fallimento; il fallimento è quindi una transizione da un servizio corretto a un servizio
 non corretto. La transizione inversa, da un servizio non corretto ad uno corretto, è
 detta ripristino (vedi Figura 1.2).
-♣
+
 
 Il guasto può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
 stato del sistema che può causare un successivo fallimento. I guasti di un
@@ -395,6 +369,8 @@ La costruzione del detector, è costituita da due fasi:
 \section{Conclusioni e lavori futuri}
 
 \section{A Manuale utente}
-\printindex
+
+\newpage
+\printbibliography
 
 \end{document}
