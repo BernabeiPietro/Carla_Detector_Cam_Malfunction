@@ -81,7 +81,7 @@ modo giustificato.\cite{bondavalli2011analisi}
 
 Una definizione alternativa, che stabilisce un criterio per decidere se un determinato servizio è dependable, definisce la \textbf{dependability} di un sistema
 come la capacità di evitare fallimenti che siano più frequenti e più severi del
-limite accettabile [1].
+limite accettabile \cite{avizienis2004basic}.
 
 Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella totalità, non ambiguo e precisa. 
 Per questo si può la dependability puo essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
@@ -98,23 +98,22 @@ degli impedimenti.
 \end{itemize}
 
 \subsubsection{Le Minacce: guasti, errori e fallimenti}
-\textbf{Definizione 3 (Guasto, Errore, Fallimento).} Si definisce \textbf{guasto} la causa accertata o ipotizzata di un errore, derivante da malfunzionamenti di componenti, interferenze ambientali di natura fisica, sbagli dell’operatore o da una progettazione fallace.
-Un \textbf{errore} è la parte dello stato del sistema che può causare un susseguente fallimento; in alternativa si definisce errore la manifestazione di un guasto all’interno di un programma o di una struttura dati. Un \textbf{fallimento} di sistema è un evento che
-occorre quando un errore raggiunge l’interfaccia di servizio, alterando il servizio stesso. Quando un sistema viola la sua specifica di servizio si dice che è avvenuto un
-fallimento; il fallimento è quindi una transizione da un servizio corretto a un servizio
-non corretto. La transizione inversa, da un servizio non corretto ad uno corretto, è
-detta ripristino (vedi Figura 1.2).
+Si definisce:\cite{bondavalli2011analisi}
+\begin{itemize}
+\item \textbf{guasto:} la causa accertata o ipotizzata di un errore, derivante da malfunzionamenti di componenti, interferenze ambientali di natura fisica, sbagli dell’operatore o da una progettazione fallace.
+\item \textbf{errore:} è la parte dello stato del sistema che può causare un susseguente fallimento; in alternativa si definisce errore la manifestazione di un guasto all’interno di un programma o di una struttura dati.
+\item \textbf{fallimento:} di sistema è un evento che occorre quando un errore raggiunge l’interfaccia di servizio, alterando il servizio stesso. Quando un sistema viola la sua specifica di servizio si dice che è avvenuto un fallimento; il fallimento è quindi una transizione da un servizio corretto a un servizio non corretto. La transizione inversa, da un servizio non corretto ad uno corretto, è detta ripristino.
+\end{itemize}
 
-
-Il guasto può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
+\subparagraph{Il guasto} può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
 stato del sistema che può causare un successivo fallimento. I guasti di un
 sistema possono essere classificati secondo diversi punti di vista, ad esempio
 fisico, logico e di interazione. Un’altra suddivisione può essere fatta in base
 alla natura del guasto: un guasto può essere intenzionale o accidentale, malizioso oppure non malizioso; ed ancora in base alla persistenza dove abbiamo
 guasti permanenti, transienti ed intermittenti. Per una tassonomia completa
-si rimanda a [1]. \textbf{(riguarda)}
+si rimanda a \cite{avizienis2004basic}. \textbf{(riguarda)}
 
-Il fallimento di un componente si verifica quando il servizio fornito devia
+\subparagraph{Il fallimento} di un componente si verifica quando il servizio fornito devia
 dalla sua specifica: si verifica nel momento in cui un errore del componente
 si manifesta alla sua interfaccia, e diventa quindi un guasto per il sistema. Il
 fallimento è quindi l’effetto, osservabile esternamente, di un errore nel siste-
@@ -124,16 +123,16 @@ La deviazione dal servizio corretto può assumere diverse forme, che vengono chi
 gravità (severity). I modi di fallimento caratterizzano un servizio non corretto
 da quattro punti di vista:
 \begin{itemize}
-
 \item Il dominio dei fallimenti,
 \item La possibilità di rilevare i fallimenti,
 \item La consistenza dei fallimenti,
 \item Le conseguenze dei fallimenti.
 \end{itemize}
-Una completa analisi dei rischi (risk analysis, [2]) e delle modalità di fallimento ad essi associate è necessaria per lo sviluppo di sistemi critici; tali
+
+Una completa analisi dei rischi (risk analysis, \cite{cenelec199950126}) e delle modalità di fallimento ad essi associate è necessaria per lo sviluppo di sistemi critici; tali
 attività sono generalmente classificate come obbligatorie negli stessi standard
 per la certificazione del rispetto di requisiti di dependability (ad esempio in
-[2]).
+\cite{cenelec199950126}).
 Un sistema è formato da un insieme di componenti che interagiscono tra
 loro, perciò lo stato del sistema è l’insieme degli stati dei suoi componenti. Un
 guasto causa inizialmente un errore nello stato di uno (o più) componenti, ma
@@ -149,33 +148,27 @@ di B.
 Il concetto di dependability è la sintesi di più attributi che forniscono misure
 quantitative o qualitative del sistema:
 \begin{itemize}
-\item \textbf{Affidabilità (reliability):} è la capacità del sistema di erogare un servizio
-corretto in modo continuo; misura la fornitura continua di un servizio
+\item \textbf{Affidabilità (reliability):} è la capacità del sistema di erogare un servizio corretto in modo continuo; misura la fornitura continua di un servizio
 corretto.
 \item \textbf{Manutenibilità (maintainability):} la capacità del sistema di subire modifiche e riparazioni; misura il tempo necessario per ristabilire un servizio
 corretto.
 \item \textbf{Disponibilità (availability):} è la prontezza del sistema nell’erogare un
 servizio corretto; misura la fornitura di servizio corretto, rispetto all’al-
 ternanza fra servizio corretto e non corretto.
-\item \textbf{Confidenzialità (confidentiality):} è l’assenza di diffusione non autoriz-
-zata di informazioni; misura l’assenza di esposizione non autorizzata di
+\item \textbf{Confidenzialità (confidentiality):} è l’assenza di diffusione non autorizzata di informazioni; misura l’assenza di esposizione non autorizzata di
 informazione.
 \item \textbf{Integrità (integrity):} descrive l’assenza di alterazioni improprie del sistema; misura l’assenza di alterazioni improprie dello stato del sistema.
-
 \end{itemize}
-La sicurezza (safety) 1 è poi l’assenza di conseguenze catastrofiche sugli
+\subparagraph{La sicurezza (safety)} è poi l’assenza di conseguenze catastrofiche sugli
 utenti e sull’ambiente circostante. La safety può essere vista come l’affidabilità
 del sistema, considerando come corretti anche gli stati in cui il sistema subisce
 un fallimento benigno (possiamo quindi fondere in un unico stato sia gli stati
 corretti che i fallimenti benigni del sistema, e valutare in questo nuovo schema
 l’affidabilità).
-La sicurezza (security) 1 può quindi essere vista come la contempora-
-nea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
-integrity, dove per “improprie” si intende “non autorizzate” [3].
-Ciascuno di questi attributi può essere più o meno importante in base al-
-l’applicazione: la disponibilità del servizio è sempre richiesta, anche se può
-variare sia l’importanza relativa che il livello quantitativo richiesto, la affida-
-bilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
+\subparagraph{La sicurezza (security)} può quindi essere vista come la contemporanea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
+integrity, dove per “improprie” si intende “non autorizzate” \cite{nicol2004model}.
+Ciascuno di questi attributi può essere più o meno importante in base all’applicazione: la disponibilità del servizio è sempre richiesta, anche se può
+variare sia l’importanza relativa che il livello quantitativo richiesto, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
 o meno. Nella loro definizione, la disponibilità e la affidabilità evidenziano la
 capacità di evitare i fallimenti, mentre la safety e la security evidenziano la
 capacità di evitare specifiche classi di fallimenti come ad esempio fallimenti
@@ -313,13 +306,13 @@ permette di esaminare l’evoluzione e le conseguenze dei guasti in un sistema.
 Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
 
-Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.
+Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.\cite{russell2005intelligenza}
 Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi, come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.(attuatori)
-Un agente fisico, come una macchina a guida autonoma, ha sensori come telecamere, telecamere a infrarossi,radar e tanti altri, mentre come attuatori, motori,freni, e tanti altri. 
-Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante. 
-La totalità delle percezioni generate dall'agente in tutta la sua storia, è defnità invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante puo dipendere dall'intera sequenza percettiva psservata fino a quel momento.
+Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,radar e tanti altri, mentre come attuatori: motori,freni, e tanti altri. 
+Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza} 
+La totalità delle percezioni generate dall'agente in tutta la sua storia, è definità invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante puo dipendere dall'intera sequenza percettiva osservata fino a quel momento.
 In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
-Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.   
+Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.  \cite{russell2005intelligenza}
 
 
 
@@ -337,13 +330,32 @@ Mentre per \textbf{ambiente}, si definisce
 
 
 \section{Costruzione del dataset}
-Per addestrare una intelligenza artificiale supervisionata è necessario predisporre un dataset, da usare sia per il training sia per la fase di validation.
-Tensorflow, richiede per l'addestramento di una cnn, un dataset composto da un training set e da un validation set. Entrambi a loro volta sono composti da dati di una categoria e l'altra divisi fra di loro. Nel caso del progetto, le due categorie di dati sono, immagini pulite e immagini modificate.
-Per la costruzione del dataset necessario al training del detector, sono state predisposte due fasi.
-
+Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo, nel quale si va a fornirgli una  conoscenza di base su cui si baserà.
+Detto ciò, la prima cosa che è necessario predisporre, è il dataset di dati, nel nostro caso, immagini, da fornirgli.
+Nel caso di questa tesi, i detector sono implementati attraverso singoli classicatori binari, dove ciascuno è stato allenato ad apprendere singoli casi di malfunzionamento.
+Come spiegato precedentemente, le reti neurali prevedono due diversi dataset: il training set  e il validation set. 
+Entrambi suddivisi in golden run e sporcate.
+Quindi il database avrà la seguente forma generale a tutte:
+\begin{itemize}
+\item Training set
+\begin{itemize}
+\item{Originale}
+\item{Sporcata}
+\end{itemize}
+\item Validation set
+\begin{itemize}
+\item{Originale}
+\item{Sporcata}
+\end{itemize}
+\end{itemize}
+Dovendo ottenere un simil risultato, si è proceduto con le due seguenti fasi:
+\begin{itemize}
+\item Acquisizione;
+\item Sporcatura;
+\end{itemize}
 
 \subsection{Acquisizione}
-La prima fase del processo di costruzione, prevede l'acquisizione di immagini pulite dal simulatore CARLA. Questo avviene grazie a un progetto di "inserisci nome del progetto github", il quale avvia n simulazioni diverse di guida autonoma. Di ciascuna di queste salva un numero fisso di immagini, acquisite dal sensore della fotocamera RGB della macchina.
+La prima fase del processo di costruzione del dataset, prevede l'acquisizione di immagini pulite dal simulatore CARLA.  Questo avviene grazie a un progetto di "inserisci nome del progetto github", il quale avvia n simulazioni diverse di guida autonoma. Di ciascuna di queste salva un numero fisso di immagini, acquisite dal sensore della fotocamera RGB della macchina.
 Nel caso di questo progetto il numero di simulazioni avviate è stato di 500, da cui per ciascuno sono state prodotte 300 immagini (800*600)
 \subsection{Sporcatura}
 La seconda fase del processo di costruzione, prevede la "sporcatura" delle immagini salvate nella prima fase, immagazzinandole in maniera tale da essere poi usate dall'IA.
