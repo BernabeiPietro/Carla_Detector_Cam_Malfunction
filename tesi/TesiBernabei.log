@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.9)  28 SEP 2020 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.7.14)  29 SEP 2020 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1002,56 +1002,106 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
- [4] [5] [6] [7]
-Overfull \hbox (25.33461pt too wide) in paragraph at lines 157--160
+ [4] [5] [6]
+
+LaTeX Warning: Citation 'cenelec199950126' on page 7 undefined on input line 13
+2.
+
+
+LaTeX Warning: Citation 'cenelec199950126' on page 7 undefined on input line 13
+5.
+
+
+Overfull \hbox (0.7377pt too wide) in paragraph at lines 132--147
+[]\OT1/cmr/m/n/14.4 Una com-pleta anal-isi dei rischi (risk anal-y-sis, [[]])
+ []
+
+[7]
+Overfull \hbox (25.33461pt too wide) in paragraph at lines 155--158
 []\OT1/cmr/bx/n/14.4 Disponibilit^^Ra (avail-abil-ity): \OT1/cmr/m/n/14.4 ^^Re 
 la pron-tezza del sis-tema nell'erogare
  []
 
 
-Overfull \hbox (12.9433pt too wide) in paragraph at lines 157--160
+Overfull \hbox (12.9433pt too wide) in paragraph at lines 155--158
 \OT1/cmr/m/n/14.4 un servizio cor-retto; misura la for-ni-tura di servizio cor-
 retto, rispetto
  []
 
-[8] [9] [10] [11]
-Overfull \hbox (8.73946pt too wide) in paragraph at lines 267--272
+[8]
+Overfull \hbox (5.06454pt too wide) in paragraph at lines 162--168
+ []\OT1/cmr/bx/n/14.4 La si-curezza (safety)[] \OT1/cmr/m/n/14.4 ^^Re poi l'ass
+enza di con-seguenze catas-trofiche
+ []
+
+
+LaTeX Warning: Citation 'nicol2004model' on page 9 undefined on input line 169.
+
+
+[9] [10] [11]
+Overfull \hbox (8.73946pt too wide) in paragraph at lines 260--265
 \OT1/cmr/m/n/14.4 Solitamente l'attivit^^Ra di fault han-dling ^^Re se-guita da
  azioni di manutenzio-
  []
 
-[12] [13] [14] [15] [16] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
+[12] [13]
+
+LaTeX Warning: Citation 'russell2005intelligenza' on page 14 undefined on input
+ line 312.
+
+
+Overfull \hbox (49.80399pt too wide) in paragraph at lines 309--316
+\OT1/cmr/m/n/14.4 di-care gli in-put percettivi dell'agente in dato istante.[[]
+]
+ []
+
+[14] [15] [16]
+Overfull \hbox (21.77933pt too wide) in paragraph at lines 358--360
+\OT1/cmr/m/n/14.4 La prima fase del pro-cesso di costruzione del dataset, preve
+de l'acquisizione
+ []
+
+[17] [18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 388.
+ [19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 388.
  (./TesiBernabei.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 388.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 388.
 Package rerunfilecheck Info: File `TesiBernabei.out' has not changed.
 (rerunfilecheck)             Checksum: AC32EF90705AC9DC7F8DD75E3DD31573;1620.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                TesiBernabei
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'TesiBernabei.run.xml'.
 \openout1 = `TesiBernabei.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 388.
  ) 
 Here is how much of TeX's memory you used:
- 15528 strings out of 494880
- 252275 string characters out of 6179602
- 702832 words of memory out of 5000000
+ 15533 strings out of 494880
+ 252323 string characters out of 6179601
+ 700832 words of memory out of 5000000
  18632 multiletter control sequences out of 15000+600000
  9621 words of font info for 35 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 45i,7n,72p,950b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,6n,72p,950b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on TesiBernabei.pdf (18 pages, 117460 bytes).
+Output written on TesiBernabei.pdf (19 pages, 119278 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
+ 262 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
  190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
