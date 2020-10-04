@@ -109,9 +109,11 @@ def brightness(images, progressiveName, pathModified):
 
 def greyscale(images, progressiveName, pathModified):
     for img in images:
-        img= cv2toPIL(img)
-        img=img.convert('LA')
-        img=PIltocv2(img)
+
+        #img= cv2toPIL(img)
+        #img=img.convert('L')
+        #img=PIltocv2(img)
+        img=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
         progressiveName=progressiveName+1
     return progressiveName
