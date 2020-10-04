@@ -4,7 +4,7 @@
 \usepackage[english]{babel}
 \usepackage[final]{pdfpages}
 \usepackage{imakeidx}
-
+\usepackage{version}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -84,7 +84,8 @@ come la capacità di evitare fallimenti che siano più frequenti e più severi d
 limite accettabile \cite{avizienis2004basic}.
 
 Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella totalità, non ambiguo e precisa. 
-Per questo si può la dependability puo essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
+Per questo la dependability può essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
+
 Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
 
 \begin{itemize}
@@ -106,21 +107,25 @@ Si definisce:\cite{bondavalli2011analisi}
 \end{itemize}
 
 \subparagraph{Il guasto} può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
-stato del sistema che può causare un successivo fallimento. I guasti di un
-sistema possono essere classificati secondo diversi punti di vista, ad esempio
+stato del sistema che può causare un successivo fallimento. 
+\begin{comment}
+I guasti di un sistema possono essere classificati secondo diversi punti di vista, ad esempio
 fisico, logico e di interazione. Un’altra suddivisione può essere fatta in base
 alla natura del guasto: un guasto può essere intenzionale o accidentale, malizioso oppure non malizioso; ed ancora in base alla persistenza dove abbiamo
 guasti permanenti, transienti ed intermittenti. Per una tassonomia completa
 si rimanda a \cite{avizienis2004basic}. \textbf{(riguarda)}
+\end{comment}
 
 \subparagraph{Il fallimento} di un componente si verifica quando il servizio fornito devia
 dalla sua specifica: si verifica nel momento in cui un errore del componente
 si manifesta alla sua interfaccia, e diventa quindi un guasto per il sistema. Il
-fallimento è quindi l’effetto, osservabile esternamente, di un errore nel siste-
-ma; gli errori sono in stato latente fino a che non vengono rilevati e/o non
+fallimento è quindi l’effetto, osservabile esternamente, di un errore nel sistema; gli errori sono in stato latente fino a che non vengono rilevati e/o non
 producono un fallimento.
+
 La deviazione dal servizio corretto può assumere diverse forme, che vengono chiamate modi di fallimento e possono venire classificati secondo la loro
-gravità (severity). I modi di fallimento caratterizzano un servizio non corretto
+gravità (severity).
+
+\begin{comment} I modi di fallimento caratterizzano un servizio non corretto
 da quattro punti di vista:
 \begin{itemize}
 \item Il dominio dei fallimenti,
@@ -133,17 +138,15 @@ Una completa analisi dei rischi (risk analysis, \cite{cenelec199950126}) e delle
 attività sono generalmente classificate come obbligatorie negli stessi standard
 per la certificazione del rispetto di requisiti di dependability (ad esempio in
 \cite{cenelec199950126}).
+\end{comment}
+
 Un sistema è formato da un insieme di componenti che interagiscono tra
 loro, perciò lo stato del sistema è l’insieme degli stati dei suoi componenti. Un
 guasto causa inizialmente un errore nello stato di uno (o più) componenti, ma
 il fallimento del sistema non si verifica fino a quanto l’errore non raggiunge l’interfaccia del servizio. La propagazione di errori può permettere ad un errore
 di raggiungere l’interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti guasto-errore-fallimento (fault-error-failure)
-mostrata in Figura 1.3.
 La propagazione all’interno di un componente (propagazione interna) è
-causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori. La propagazione da un componente A verso un componente B che riceve un servizio da A (propagazione esterna) (Figura 1.4) avviene
-quando un errore raggiunge l’interfaccia di servizio del componente A. A questo punto, il servizio che B riceve da A diventa non corretto e il fallimento di
-A appare a B come un guasto esterno, e si propaga come un errore all’interno
-di B.
+causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori.
 \subsubsection{Gli attributi della dependability}
 Il concetto di dependability è la sintesi di più attributi che forniscono misure
 quantitative o qualitative del sistema:
@@ -153,30 +156,29 @@ corretto.
 \item \textbf{Manutenibilità (maintainability):} la capacità del sistema di subire modifiche e riparazioni; misura il tempo necessario per ristabilire un servizio
 corretto.
 \item \textbf{Disponibilità (availability):} è la prontezza del sistema nell’erogare un
-servizio corretto; misura la fornitura di servizio corretto, rispetto all’al-
-ternanza fra servizio corretto e non corretto.
+servizio corretto; misura la fornitura di servizio corretto, rispetto all’alternanza fra servizio corretto e non corretto.
 \item \textbf{Confidenzialità (confidentiality):} è l’assenza di diffusione non autorizzata di informazioni; misura l’assenza di esposizione non autorizzata di
 informazione.
 \item \textbf{Integrità (integrity):} descrive l’assenza di alterazioni improprie del sistema; misura l’assenza di alterazioni improprie dello stato del sistema.
-\end{itemize}
-\subparagraph{La sicurezza (safety)} è poi l’assenza di conseguenze catastrofiche sugli
+
+\item \textbf{La sicurezza (safety)} è poi l’assenza di conseguenze catastrofiche sugli
 utenti e sull’ambiente circostante. La safety può essere vista come l’affidabilità
-del sistema, considerando come corretti anche gli stati in cui il sistema subisce
+del sistema \begin{comment}, considerando come corretti anche gli stati in cui il sistema subisce
 un fallimento benigno (possiamo quindi fondere in un unico stato sia gli stati
 corretti che i fallimenti benigni del sistema, e valutare in questo nuovo schema
-l’affidabilità).
-\subparagraph{La sicurezza (security)} può quindi essere vista come la contemporanea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
+l’affidabilità)\end{comment}.
+\item \textbf{sicurezza (security)} può quindi essere vista come la contemporanea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
 integrity, dove per “improprie” si intende “non autorizzate” \cite{nicol2004model}.
+\end{itemize}
 Ciascuno di questi attributi può essere più o meno importante in base all’applicazione: la disponibilità del servizio è sempre richiesta, anche se può
 variare sia l’importanza relativa che il livello quantitativo richiesto, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
 o meno. Nella loro definizione, la disponibilità e la affidabilità evidenziano la
 capacità di evitare i fallimenti, mentre la safety e la security evidenziano la
 capacità di evitare specifiche classi di fallimenti come ad esempio fallimenti
 catastrofici e accesso non autorizzato alle informazioni.
-I requisiti di dependability di un sistema sono forniti attraverso una de-
-scrizione degli obiettivi richiesti per uno o più degli attributi sopra descritti,
-rispetto alle modalità di fallimento previste per il sistema. Se i modi di falli-
-mento previsti sono specificati e limitati, si parla di sistemi fail-controlled; un
+
+I requisiti di dependability di un sistema sono forniti attraverso una descrizione degli obiettivi richiesti per uno o più degli attributi sopra descritti,
+rispetto alle modalità di fallimento previste per il sistema. Se i modi di fallimento previsti sono specificati e limitati, si parla di sistemi fail-controlled; un
 sistema i cui fallimenti sono limitati soltanto all’interruzione del servizio sono
 chiamati fail-stop o fail-silent. I sistemi fail-safe, invece, sono quelli per cui i
 fallimenti possibili sono solamente fallimenti non catastrofici.
@@ -309,19 +311,59 @@ Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un 
 Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.\cite{russell2005intelligenza}
 Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi, come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.(attuatori)
 Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,radar e tanti altri, mentre come attuatori: motori,freni, e tanti altri. 
-Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza} 
+Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza}
 La totalità delle percezioni generate dall'agente in tutta la sua storia, è definità invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante puo dipendere dall'intera sequenza percettiva osservata fino a quel momento.
 In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
 Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.  \cite{russell2005intelligenza}
+\subsubsection{Agenti che apprendono}
+Si definisce un agente sta imparando se migliora le proprie prestazioni nelle attività future dopo aver effettuato le osservazioni
+sul mondo. \cite{russell2005intelligenza}
+E perchè deve imparare?
+Un agente deve impare per tre motivi:
+\begin{itemize}
+\item  il programmatore non può anticipare tutte le possibili situazioni che l'agente si potrà trovare davanti.
+\item il programmatore non può anticipare tutti i cambiamenti nel tempo.
+\item il programmatori spesso non sanno come programmare loro la soluzione a un problema.
+\end{itemize}\cite{russell2005intelligenza}
+
+Detto ciò, come esistono agenti diversi, per problemi diversi, esistono apprendimenti diversi per ogni agente, che possono essere applicati alle varie componenti dell'agente.
+Una loro classificazione si basa su 4 fattori:
+\begin{itemize}
+\item \textbf{componente} dell'agente migliorata.
+\item \textbf{rappresentazione} usata per i dati e i componenti
+\item \textbf{prior knowledge} dell'agente presente.
+\item \textbf{feedback}  disponibili da apprendere. 
+\end{itemize} 
 
 
 
+Esistono tre grosse tipologie di feedback che determinano i tre principali tipi di apprendimento:
+\subparagraph{unsupervised learning}, dove un agente apprende patterns dall'input senza feedback espliciti. 
+
+\subparagraph{reinforcement learning}, dove un agente apprende da una serie di rinforzi, punizioni o premi.
+\subparagraph{supervised learning}, dove ha un agente sono forniti coppie di valori input-output e apprende una funzione che mappi dall'input all'output. 
+Nello specifico, il compito di un apprendimento supervisionato è quello che dato un training set di N esempi della forma input-output
+
+(x1.y1),(x2,y2),...(xn,yn),
+dove ogni valore y è generato da un funzione sconosciuta y=f(x), questa scopre una funzione h che approssima la funzione f.  
+Il Learning problem si può definire in due maniere a seconda del l'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
+ si definisce come \textbf{regressione}
 
 
- mentre la \textbf{misura di prestazione}, rappresenta il criterio in base al quale valutare il successo del comportamento di un agente.
-Mentre per \textbf{ambiente}, si definisce
-\subsubsection{Perceptron}
 \subsubsection{Neural Network}
+Una particolare forma di supervised learning, come ci suggerisce il titolo del seguite capitolo, sono le artificial neural network o più brevemente neural network. 
+La \textbf{rete neurale} è composta da un insieme di nodi o unità connesse da link orientati.\cite{russell2005intelligenza}
+ La topologia e le propietà dei nodi determina le proprietà della rete.
+\subparagraph{Neurone}
+Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando quando una combinazione lineare dei suoi input superano la sua hard o soft threshold. L'output dei neuroni finali sarà il risultato della task.
+\subparagraph{Collegamenti}
+Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j. Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
+\subparagraph{Funzionamento}
+In generale un neurone, calcola una somma pesata dei suoi input:
+\[in_j=\sum_{i=0}^n  w_{i,j}a_{i}\]
+A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deriva l'output:
+\[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
+\subsubsection{Perceptron}
 
 \subsubsection{Convulutional Neural Network}
 

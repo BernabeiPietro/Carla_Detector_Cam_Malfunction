@@ -85,5 +85,96 @@
   Critiche e Sistemi Affidabili}
     \field{year}{2011}
   \endentry
+
+  \entry{cenelec199950126}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CE}{%
+         family={CENELEC},
+         familyi={C\bibinitperiod},
+         given={EN},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CE1}
+    \strng{fullhash}{CE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{50126-railway applications: The specification and
+  demonstration of reliability, availability, maintainability and safety
+  (rams)}
+    \field{volume}{6}
+    \field{journaltitle}{European Committee for Electrotechnical
+  Standardization}
+    \field{year}{1999}
+  \endentry
+
+  \entry{nicol2004model}{article}{}
+    \name{author}{3}{}{%
+      {{hash=NDM}{%
+         family={Nicol},
+         familyi={N\bibinitperiod},
+         given={David\bibnamedelima M},
+         giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=SWH}{%
+         family={Sanders},
+         familyi={S\bibinitperiod},
+         given={William\bibnamedelima H},
+         giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=TKS}{%
+         family={Trivedi},
+         familyi={T\bibinitperiod},
+         given={Kishor\bibnamedelima S},
+         giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{NDMSWHTKS1}
+    \strng{fullhash}{NDMSWHTKS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{number}{1}
+    \field{pages}{48\bibrangedash 65}
+    \field{title}{Model-based evaluation: from dependability to security}
+    \field{volume}{1}
+    \field{journaltitle}{IEEE Transactions on dependable and secure computing}
+    \field{year}{2004}
+  \endentry
+
+  \entry{russell2005intelligenza}{book}{}
+    \name{author}{2}{}{%
+      {{hash=RSJ}{%
+         family={Russell},
+         familyi={R\bibinitperiod},
+         given={Stuart\bibnamedelima J},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=NP}{%
+         family={Norvig},
+         familyi={N\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pearson Italia Spa}%
+    }
+    \strng{namehash}{RSJNP1}
+    \strng{fullhash}{RSJNP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{title}{Intelligenza artificiale. Un approccio moderno}
+    \field{volume}{1}
+    \field{year}{2005}
+  \endentry
 \enddatalist
 \endinput
