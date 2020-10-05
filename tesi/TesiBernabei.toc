@@ -51,24 +51,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Collegamenti}{16}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Funzionamento}{17}{section*.13}
+\contentsline {subparagraph}{funzione di attivazione}{17}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.4}Perceptron}{17}{subsubsection.2.2.4}
+\contentsline {subparagraph}{feed-forward network}{17}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.5}Convulutional Neural Network}{17}{subsubsection.2.2.5}
+\contentsline {subparagraph}{perceptron network}{17}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Costruzione del dataset}{17}{section.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{18}{subsubsection.2.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Acquisizione}{18}{subsection.3.1}
+\contentsline {section}{\numberline {3}Costruzione del dataset}{18}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Sporcatura}{18}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.1}Acquisizione}{19}{subsection.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Sporcatura}{19}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Costruzione del detector}{19}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{19}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{20}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{19}{section.5}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{20}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{19}{section.6}
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{20}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}A Manuale utente}{19}{section.7}
+\contentsline {section}{\numberline {7}A Manuale utente}{20}{section.7}
