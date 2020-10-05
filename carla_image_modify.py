@@ -115,7 +115,7 @@ def modify_photo(classes, mp, list, j, tv):
     return j_original
 
 
-path =   "/home/bernabei/carla0.8.4/PythonClient/_out/" #"/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/"
-classes_of_modified = ["blur", "black", "brightness", "50_death_pixels", "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale"]
-mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
-manage_image(mp, classes_of_modified[4:7])
+path = "/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/" # "/home/bernabei/carla0.8.4/PythonClient/_out/" #
+classes_of_modified = ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale"]
+mp = manager_of_path.ManagerOfPath(path, classes_of_modified[10:12], True)
+manage_image(mp, classes_of_modified[10:12])

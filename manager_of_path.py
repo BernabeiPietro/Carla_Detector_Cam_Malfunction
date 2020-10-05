@@ -28,7 +28,7 @@ class ManagerOfPath:
 
     def get_path_classes(self,classes):
         dict_path={}
-        if(len(self.path_classes_modify.keys())==1):
+        if(not(self.setting_type_folder)):
             classes="all"
         dict_path["train_original"] = self.path_classes_modify[classes] + self.path_train + self.path_original
         dict_path["train_modified"] = self.path_classes_modify[classes] +  self.path_train + self.path_modified
