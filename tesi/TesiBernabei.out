@@ -14,10 +14,8 @@
 \BOOKMARK [3][-]{subsubsection.2.2.3}{Neural Network}{subsection.2.2}% 14
 \BOOKMARK [3][-]{subsubsection.2.2.4}{Convulutional Neural Network}{subsection.2.2}% 15
 \BOOKMARK [1][-]{section.3}{Costruzione del dataset}{}% 16
-\BOOKMARK [2][-]{subsection.3.1}{Acquisizione}{section.3}% 17
-\BOOKMARK [2][-]{subsection.3.2}{Sporcatura}{section.3}% 18
-\BOOKMARK [1][-]{section.4}{Costruzione del detector}{}% 19
-\BOOKMARK [2][-]{subsection.4.1}{Addestramento del rete convuluzionale}{section.4}% 20
-\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 21
-\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 22
-\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 23
+\BOOKMARK [1][-]{section.4}{Costruzione del detector}{}% 17
+\BOOKMARK [2][-]{subsection.4.1}{Addestramento del rete convuluzionale}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 19
+\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 20
+\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 21

@@ -61,9 +61,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Costruzione del dataset}{18}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Acquisizione}{19}{subsection.3.1}
+\contentsline {subparagraph}{Acquisizione}{19}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Sporcatura}{19}{subsection.3.2}
+\contentsline {subparagraph}{Sporcatura}{19}{section*.17}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Costruzione del detector}{19}{section.4}
 \defcounter {refsection}{0}\relax 
