@@ -55,22 +55,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{feed-forward network}{17}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{perceptron network}{17}{section*.15}
+\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{17}{subsubsection.2.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{18}{subsubsection.2.2.4}
+\contentsline {subparagraph}{L'architettura}{18}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Costruzione del dataset}{18}{section.3}
+\contentsline {subparagraph}{La convuluzione}{18}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Acquisizione}{19}{section*.16}
+\contentsline {subparagraph}{Convulutional Layer:}{19}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Sporcatura}{19}{section*.17}
+\contentsline {section}{\numberline {3}Costruzione del dataset}{19}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Costruzione del detector}{19}{section.4}
+\contentsline {subparagraph}{Acquisizione}{20}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{20}{subsection.4.1}
+\contentsline {subparagraph}{Sporcatura}{20}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{20}{section.5}
+\contentsline {section}{\numberline {4}Costruzione del detector}{20}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{20}{section.6}
+\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{21}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}A Manuale utente}{20}{section.7}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{21}{section.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{21}{section.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}A Manuale utente}{21}{section.7}

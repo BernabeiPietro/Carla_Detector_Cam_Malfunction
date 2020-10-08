@@ -86,30 +86,6 @@
     \field{year}{2011}
   \endentry
 
-  \entry{cenelec199950126}{article}{}
-    \name{author}{1}{}{%
-      {{hash=CE}{%
-         family={CENELEC},
-         familyi={C\bibinitperiod},
-         given={EN},
-         giveni={E\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{CE1}
-    \strng{fullhash}{CE1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{C}
-    \field{sortinithash}{C}
-    \field{title}{50126-railway applications: The specification and
-  demonstration of reliability, availability, maintainability and safety
-  (rams)}
-    \field{volume}{6}
-    \field{journaltitle}{European Committee for Electrotechnical
-  Standardization}
-    \field{year}{1999}
-  \endentry
-
   \entry{nicol2004model}{article}{}
     \name{author}{3}{}{%
       {{hash=NDM}{%

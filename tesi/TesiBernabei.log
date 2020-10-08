@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.7.14)  5 OCT 2020 17:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.9)  8 OCT 2020 12:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1031,54 +1031,68 @@ Overfull \hbox (31.501pt too wide) in paragraph at lines 341--342
 te ap-prende pat-terns dall'input
  []
 
-[15] [16] [17]
-Overfull \hbox (6.94559pt too wide) in paragraph at lines 409--414
+[15] [16]
+Overfull \hbox (13.11057pt too wide) in paragraph at lines 379--381
+\OT1/cmr/m/n/14.4 net-work dove la strato con-vu-luzionale com-pare al-meno una
+ volta. L'input
+ []
+
+[17]
+
+LaTeX Warning: Citation 'torresin2019sviluppo' on page 18 undefined on input li
+ne 392.
+
+[18]
+Overfull \hbox (6.94559pt too wide) in paragraph at lines 428--433
  []\OT1/cmr/bx/n/14.4 Acquisizione[] \OT1/cmr/m/n/14.4 La prima fase del pro-ce
 sso di costruzione del dataset
  []
 
-[18]
-<"cnnmodel".jpeg, id=227, 2055.68pt x 1155.31625pt>
+[19]
+<"cnnmodel".jpeg, id=233, 2055.68pt x 1155.31625pt>
 File: "cnnmodel".jpeg Graphic file (type jpg)
 <use "cnnmodel".jpeg>
-Package pdftex.def Info: "cnnmodel".jpeg  used on input line 423.
+Package pdftex.def Info: "cnnmodel".jpeg  used on input line 441.
 (pdftex.def)             Requested size: 205.58003pt x 115.53839pt.
- [19 <./cnnmodel.jpeg>] [20]
-Overfull \hbox (1.95853pt too wide) in paragraph at lines 443--443
-[]\OT1/cmr/m/n/14.4 EN CEN-ELEC. ``50126-railway ap-pli-ca-tions: The spec-i-fi
--ca-tion and
+
+Overfull \hbox (7.85579pt too wide) in paragraph at lines 446--450
+\OT1/cmr/m/n/14.4 layer. Il primo layer ha un ^^Re un conv2D layer, di ben 800*
+600*3=1440000
  []
 
-
-Overfull \hbox (1.38554pt too wide) in paragraph at lines 443--443
-\OT1/cmr/m/n/14.4 demon-stra-tion of re-li-a-bil-ity, avail-abil-ity, main-tain
--abil-ity and safety
- []
-
-
-Overfull \hbox (0.49954pt too wide) in paragraph at lines 443--443
+[20 <./cnnmodel.jpeg>] [21]
+Overfull \hbox (0.49954pt too wide) in paragraph at lines 464--464
 \OT1/cmr/m/n/14.4 based eval-u-a-tion: from de-pend-abil-ity to se-cu-rity''. I
 n: \OT1/cmr/m/it/14.4 IEEE Trans-
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 444.
-[21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 444.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 465.
+[22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 465.
  (./TesiBernabei.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 444.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 444.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 465.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 465.
 Package rerunfilecheck Info: File `TesiBernabei.out' has not changed.
 (rerunfilecheck)             Checksum: 33C4121FE7D9B64CD757A085E2238BB0;1509.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                TesiBernabei
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'TesiBernabei.run.xml'.
 \openout1 = `TesiBernabei.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 444.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 465.
  ) 
 Here is how much of TeX's memory you used:
  15577 strings out of 494880
- 253228 string characters out of 6179601
+ 253137 string characters out of 6179602
  701230 words of memory out of 5000000
- 18656 multiletter control sequences out of 15000+600000
+ 18654 multiletter control sequences out of 15000+600000
  9621 words of font info for 35 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  45i,8n,72p,950b,1630s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1092,10 +1106,10 @@ t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmtt12.pfb>
-Output written on TesiBernabei.pdf (21 pages, 306512 bytes).
+Output written on TesiBernabei.pdf (22 pages, 308376 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 303 PDF objects out of 1000 (max. 8388607)
+ 264 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
  179 words of extra memory for PDF output out of 10000 (max. 10000000)
 

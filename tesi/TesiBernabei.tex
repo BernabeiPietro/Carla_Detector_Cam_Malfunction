@@ -52,8 +52,8 @@ Come verrà espresso in seguito, le telecamere negli attuali sistemi, ricoprono 
 Nella seguente tesi si propone un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo.
 \subsection{Organizzazione del lavoro} 
 Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. 
-Per questo la soluzione descritta propone di impiegare la tecnologia dell'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (NNC), per il suo sviluppo.
-Come verrà esposto meglio in seguito, una NNC è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche NNC richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi prenderà le proprie decisioni.
+Per questo la soluzione descritta propone di impiegare la tecnologia dell'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (CNN), per il suo sviluppo.
+Come verrà esposto meglio in seguito, una CNN è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi prenderà le proprie decisioni.
 Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
 \item Definizione e generazione Dataset
@@ -370,15 +370,33 @@ Esistono due principali tipologie:
 la \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
 Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formano un sistema dinamico che raggiunge uno stato stabile o
 esibiscono oscillazioni o addirittura comportamenti caotici. Questa caratteristica, permette alla rete di supportare un memoria a breve termine.
+\begin{comment}
 \subparagraph{perceptron network}:
 Una forma semplice di feed-forward network, è il perceptron network o anche chiamato single-layer neural networl. Questo prevede che i suoi neuroni di input siano direttamente connessi a quelli di output. 
+\end{comment}
 
 \subsubsection{Convulutional Neural Network}
-Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network che impiega un operazione matematica chiamata \textbf{convuluzione}.
+Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network dove la strato convuluzionale compare almeno una volta.
+L'input di una convulutional neurale network o ConvNet,\begin{comment} è ampiamente utilizzata nelle applicazioni di visione artificiale,\end{comment}, è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
+\subparagraph{L'architettura} 
+Le reti neurali convoluzionali operano su strutture a griglia contraddistinte da relazioni spaziali tra pixel, ereditate da uno strato al successivo tramite valori che descrivono
+piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o
+activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
+Una CNN è composta da successioni di strati, illustrati in dettaglio nei paragrafi
+seguenti. Gli strati principali sono:
+\begin{itemize}
+\item convolutional layer;
+\item activation layer;
+\item pooling layer;
+\item dense layer;
+\end{itemize}
+\cite{torresin2019sviluppo}
+
+\subparagraph{Convolutional layer}
 \subparagraph{La convuluzione} è un tipo specializzato di operazione lineare, applicata a due funzioni (f e g) che produce una terza funzione (f*g) esprimendo come la forma dell'uno viene modificata dall'altra.
+
 L'architettura di una CNN è simile a tutte le reti neurali, quindi da un layer di input, uno di output e da diversi hidden layer, dove come suggerisce il nome della rete, sarà presente almeno un tipo di layer che effettuerà la convuluzione. 
-\subparagraph{Convulutional Layer:}
-Layer impiegati anche come layer di input, ricevono 
+ 
 
 
 
