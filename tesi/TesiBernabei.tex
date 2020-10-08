@@ -358,26 +358,38 @@ La \textbf{rete neurale} è composta da un insieme di nodi o unità connesse da 
 Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando quando una combinazione lineare dei suoi input superano la sua hard o soft threshold. L'output dei neuroni finali sarà il risultato della task.
 \subparagraph{Collegamenti}
 Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j. Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
-\subparagraph{Funzionamento}
+\subparagraph{funzione di attivazione}
 In generale un neurone, calcola una somma pesata dei suoi input:
 \[in_j=\sum_{i=0}^n  w_{i,j}a_{i}\]
 A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deriva l'output:
 \[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
-\subsubsection{Perceptron}
+Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.
+\subparagraph{feed-forward network}
+Definito il modello matematico di ogni neurone, questi dovranno connettersi insieme, a formare una rete.
+Esistono due principali tipologie: 
+la \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
+Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formano un sistema dinamico che raggiunge uno stato stabile o
+esibiscono oscillazioni o addirittura comportamenti caotici. Questa caratteristica, permette alla rete di supportare un memoria a breve termine.
+\subparagraph{perceptron network}:
+Una forma semplice di feed-forward network, è il perceptron network o anche chiamato single-layer neural networl. Questo prevede che i suoi neuroni di input siano direttamente connessi a quelli di output. 
 
 \subsubsection{Convulutional Neural Network}
-
-
+Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network che impiega un operazione matematica chiamata \textbf{convuluzione}.
+\subparagraph{La convuluzione} è un tipo specializzato di operazione lineare, applicata a due funzioni (f e g) che produce una terza funzione (f*g) esprimendo come la forma dell'uno viene modificata dall'altra.
+L'architettura di una CNN è simile a tutte le reti neurali, quindi da un layer di input, uno di output e da diversi hidden layer, dove come suggerisce il nome della rete, sarà presente almeno un tipo di layer che effettuerà la convuluzione. 
+\subparagraph{Convulutional Layer:}
+Layer impiegati anche come layer di input, ricevono 
 
 
 
 \section{Costruzione del dataset}
-Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo, nel quale si va a fornirgli una  conoscenza di base su cui si baserà.
-Detto ciò, la prima cosa che è necessario predisporre, è il dataset di dati, nel nostro caso, immagini, da fornirgli.
-Nel caso di questa tesi, i detector sono implementati attraverso singoli classicatori binari, dove ciascuno è stato allenato ad apprendere singoli casi di malfunzionamento.
+Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo.
+Detto ciò, la prima cosa che è necessario predisporre è il dataset di dati, da fornirgli. 
+Nel caso di questa tesi, i detector sono implementati attraverso singoli classicatori binari, dove ciascuno è stato allenato ad apprendere singoli casi di malfunzionamento. 
 Come spiegato precedentemente, le reti neurali prevedono due diversi dataset: il training set  e il validation set. 
 Entrambi suddivisi in golden run e sporcate.
-Quindi il database avrà la seguente forma generale a tutte:
+
+Quindi il dataset avrà la seguente forma, generale a tutti i malfunzionamenti presi in considerazione:
 \begin{itemize}
 \item Training set
 \begin{itemize}
@@ -396,23 +408,30 @@ Dovendo ottenere un simil risultato, si è proceduto con le due seguenti fasi:
 \item Sporcatura;
 \end{itemize}
 
-\subsection{Acquisizione}
-La prima fase del processo di costruzione del dataset, prevede l'acquisizione di immagini pulite dal simulatore CARLA.  Questo avviene grazie a un progetto di "inserisci nome del progetto github", il quale avvia n simulazioni diverse di guida autonoma. Di ciascuna di queste salva un numero fisso di immagini, acquisite dal sensore della fotocamera RGB della macchina.
+\subparagraph{Acquisizione}
+La prima fase del processo di costruzione del dataset  prevede l'acquisizione di immagini pulite dal simulatore CARLA. Attraverso il seguente software github, è stato possibile acquisire le immagini senza errori.
+Sono state avviate 500 simulazioni diverse, dove da ciascuna sono state acquisite 300 immagini .png nella forma (800*600)
+\begin{comment}
 Nel caso di questo progetto il numero di simulazioni avviate è stato di 500, da cui per ciascuno sono state prodotte 300 immagini (800*600)
-\subsection{Sporcatura}
-La seconda fase del processo di costruzione, prevede la "sporcatura" delle immagini salvate nella prima fase, immagazzinandole in maniera tale da essere poi usate dall'IA.
-Per "sporcatura" di una immagine, è inteso l'applicazione di un effetto all'immagine che ne simuli un guasto al sensore RGB della vettura.
-Per fare questo è stato usato il progetto github "progetto secci", adattando le funzioni al progetto.
-I diversi effetti utilizzati nel progetto sono le seguenti:
--
--
--
--
--
-differenza tra death pixel 50 e death pixel 200 
+\end{comment}
+\subparagraph{Sporcatura}
+La seconda fase del processo di costruzione, prevede la "sporcatura" delle immagini salvate nella prima fase, immagazzinandole in maniera tale da essere poi usate dalla rete neurale.
+Per "sporcatura" di una immagine, è inteso l'applicazione di un effetto all'immagine che simuli un guasto al sensore ottico della vettura.
+Per fare questo è stato usato il progetto github "progetto secci".
 
 \section{Costruzione del detector}
-La costruzione del detector, è costituita da due fasi:
+Per la  costruzione del detector,  è stata implementata una rete neurale convuluzionale. 
+\begin{figure}[h!]
+  \includegraphics[scale=0.1]{"cnnmodel"}
+  \caption{CNN detector}
+  \label{fig:CNN}
+\end{figure}
+
+Come si nota dalla figura ~\ref{fig:CNN}, questa è composta da un insieme di layer.
+Il primo layer ha un è un conv2D layer, di ben 800*600*3=1440000 neuroni.
+Le dimensioni di questo primo sono date dalla necessità di poter elaborare un immagine per intero, e infatti (800,600) sono le dimensioni di larghezza e altezza delle immagini, e quindi il numero di pixelche compongono l'immagine sono 800*600=480000,  l'ultimo fattore è dato dalla composizione interna di un pixel. Questo rappresenta il numero di canali dei colori,ed essendo immagini rgb (red,green,blue) sono 3.
+Definito l'input del primo layer e quindi dell'intera rete, si può passare all'output.
+   
 \subsection{Addestramento del rete convuluzionale}
 
 
