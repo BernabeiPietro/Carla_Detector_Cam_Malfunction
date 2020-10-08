@@ -17,6 +17,60 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{aggarwal2018neural}{book}{}
+    \true{moreauthor}
+    \name{author}{1}{}{%
+      {{hash=ACC}{%
+         family={Aggarwal},
+         familyi={A\bibinitperiod},
+         given={Charu\bibnamedelima C},
+         giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{ACC+1}
+    \strng{fullhash}{ACC+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{Neural networks and deep learning}
+    \field{year}{2018}
+  \endentry
+
+  \entry{aghdam2017guide}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AHH}{%
+         family={Aghdam},
+         familyi={A\bibinitperiod},
+         given={Hamed\bibnamedelima Habibi},
+         giveni={H\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=HEJ}{%
+         family={Heravi},
+         familyi={H\bibinitperiod},
+         given={Elnaz\bibnamedelima Jahani},
+         giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{AHHHEJ1}
+    \strng{fullhash}{AHHHEJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{pages}{978\bibrangedash 973}
+    \field{title}{Guide to convolutional neural networks}
+    \field{volume}{10}
+    \field{journaltitle}{New York, NY: Springer}
+    \field{year}{2017}
+  \endentry
+
   \entry{avizienis2004basic}{article}{}
     \name{author}{4}{}{%
       {{hash=AA}{%
@@ -151,6 +205,26 @@
     \field{title}{Intelligenza artificiale. Un approccio moderno}
     \field{volume}{1}
     \field{year}{2005}
+  \endentry
+
+  \entry{torresin2019sviluppo}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TL}{%
+         family={Torresin},
+         familyi={T\bibinitperiod},
+         given={Luca},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TL1}
+    \strng{fullhash}{TL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{Sviluppo ed applicazione di reti neurali per segmentazione
+  semantica a supporto della navigazione di rover marziani}
+    \field{year}{2019}
   \endentry
 \enddatalist
 \endinput

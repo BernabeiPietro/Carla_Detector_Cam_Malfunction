@@ -59,22 +59,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{L'architettura}{18}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{La convuluzione}{18}{section*.16}
+\contentsline {subparagraph}{Convolutional layer}{18}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Convulutional Layer:}{19}{section*.17}
+\contentsline {subparagraph}{Funzione di attivazione Relu}{21}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Costruzione del dataset}{19}{section.3}
+\contentsline {subparagraph}{Pooling layer}{22}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Acquisizione}{20}{section*.18}
+\contentsline {subparagraph}{dense layer}{23}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Sporcatura}{20}{section*.19}
+\contentsline {section}{\numberline {3}Costruzione del dataset}{23}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Costruzione del detector}{20}{section.4}
+\contentsline {subparagraph}{Acquisizione}{24}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{21}{subsection.4.1}
+\contentsline {subparagraph}{Sporcatura}{24}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{21}{section.5}
+\contentsline {section}{\numberline {4}Costruzione del detector}{24}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{21}{section.6}
+\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{25}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}A Manuale utente}{21}{section.7}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{25}{section.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{25}{section.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}A Manuale utente}{25}{section.7}

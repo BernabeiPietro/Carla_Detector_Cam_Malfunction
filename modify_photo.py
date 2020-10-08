@@ -3,6 +3,7 @@ import numpy as np
 from PIL import Image, ImageEnhance
 import chromaticaberration2
 
+
 def open_cv2(pathImage, name):
     array_image = []
     for n in name:
@@ -98,6 +99,8 @@ def dead_pixel_200(images, progressiveName, pathModified):
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
         progressiveName = progressiveName + 1
     return progressiveName
+
+
 def chromaticaberration(images, progressiveName, pathModified):
     for img in images:
         img = cv2toPIL(img)
@@ -119,12 +122,14 @@ def chromaticaberration(images, progressiveName, pathModified):
         # 2, no blur
         # 1, blur
         # 2, blur
-        img = chromaticaberration2.add_chromatic(img, strength=1, no_blur=False)  # metodo da invocare per aggiungere effetto
+        img = chromaticaberration2.add_chromatic(img, strength=1,
+                                                 no_blur=False)  # metodo da invocare per aggiungere effetto
         imOriginal.paste(img)
         pixels = PIltocv2(imOriginal)
         cv2.imwrite(pathModified + str(progressiveName) + ".png", pixels)
         progressiveName = progressiveName + 1
     return progressiveName
+
 
 def condensation(images, progressiveName, pathModified):
     img = images[0]
@@ -142,6 +147,7 @@ def condensation(images, progressiveName, pathModified):
         progressiveName = progressiveName + 1
     return progressiveName
 
+
 def rain(images, progressiveName, pathModified):
     img = images[0]
     imgM = []
@@ -158,9 +164,10 @@ def rain(images, progressiveName, pathModified):
         progressiveName = progressiveName + 1
     return progressiveName
 
+
 def dirty_lens(images, progressiveName, pathModified):
     img = images[0]
-    img=cv2toPIL(img)
+    img = cv2toPIL(img)
     imgM = []
     for i in range(1, 37):
         img2 = Image.open("lensDirt/LensDirt-" + str(i) + ".png").convert(img.mode)

@@ -393,12 +393,118 @@ seguenti. Gli strati principali sono:
 \cite{torresin2019sviluppo}
 
 \subparagraph{Convolutional layer}
-\subparagraph{La convuluzione} è un tipo specializzato di operazione lineare, applicata a due funzioni (f e g) che produce una terza funzione (f*g) esprimendo come la forma dell'uno viene modificata dall'altra.
+La convoluzione è l’operazione fondamentale delle CNN. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
+eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
+Un filtro è caratterizzato dai
+seguenti iperparametri (hyperparameters):
+\begin{itemize}
+\item altezza Fq
+\item larghezza Fq
+\item profondità d
+\item numero q
 
-L'architettura di una CNN è simile a tutte le reti neurali, quindi da un layer di input, uno di output e da diversi hidden layer, dove come suggerisce il nome della rete, sarà presente almeno un tipo di layer che effettuerà la convuluzione. 
- 
+\end{itemize}
+Solitamente i filtri hanno forma quadrata e profondità uguale a quella dello strato al
+quale sono applicati. Per un’immagine RGB, il primo filtro convoluzionale
+F*F*d potrà avere dimensione  5*5*3 o 7*7*3. Il numero di possibili
+allineamenti tra filtro e immagine definisce altezza e larghezza della successiva feature
+map.
+Dallo strato nascosto q1, il filtro produce uno nuovo strato nascosto q2
+Lq+1 = Lq - Fq + 1
+Bq+1 = Bq - Fq + 1
+Ad esempio, per immagini di dimensioni 32 * 32, un filtro 5 * 5 genera uno strato
+nascosto 28 x 28.
+È opportuno fare distinzione tra profondità del filtro e profondità di strato nascosto/mappa di attivazione: la prima, d è la stessa dello strato al quale è applicato, la
+seconda deriva invece dal numero di filtri applicati. Il numero di filtri è un iperparametro definito sulla base della capacità di distinguere forme sempre più complesse che
+si vuole conferire alla rete. I filtri sono dunque i componenti a cui saranno associate le
+caratteristiche dei pattern delle immagini.
+I filtri dei primi strati individuano forme primitive, quelli successvi imparano a distinguere forme sempre più grandi e complesse. Una proprietà della convoluzione è
+l’\textbf{equivarianza alla traslazione}: immagini traslate sono interpretate allo stesso modo e
+i valori delle mappa di attivazione traslano con i valori di input \cite{torresin2019sviluppo}. Ciò significa che forme particolari generano feature maps simili, indipendentemente dalla loro collocazione
+nell’immagine.
+Una delle proprietà della convoluzione è la seguente. Una convoluzione sullo strato
+q incrementa il campo recettivo di una feature dallo strato q allo strato q + 1. In altre parole, ogni valore della mappa di attivazione dello strato successivo cattura una regione
+spaziale più ampia del precedente. Feature maps degli strati catturano aspetti caratteristici di regioni via via maggiori e questo è il motivo per cui le CNN possono essere
+definite “profonde”: per studiare l’intera immagine sono necessarie lunghe successioni
+di “blocchi” di strati. 
+In figura, un esempio dell’operazione di convoluzione.
 
 
+\textbf{Padding} L’operazione di convoluzione comporta una contrazione dello strato q rispetto a q + 1 ed una conseguente perdita di informazioni. Il problema può essere
+arginato utilizzando il cosiddetto padding, una tecnica che prevede l’aggiunta di $\frac{(Fmeno1)}{2}$ pixel ai bordi delle mappe di attivazione per mantenere l’impronta spaziale. Ovviamente, 
+per non alterare l’informazione, ai pixel sono assegnati valori nulli. Il risultato
+\cite{aggarwal2018neural} è un incremento delle dimensioni (altezza e larghezza) del volume di input di F - 1,
+esattamente la quantità di cui è ridotto a seguito della convoluzione.
+Essendo il prodotto zero, le regioni esterne soggette a padding non contribuiscono al risultato finale del prodotto scalare. Ciò che invece accade è permettere al filtro convoluzionale di scavalcare i bordi dello strato e computare il prodotto scalare
+solamente per le celle di valori diversi da 0. Questa tipologia di padding è definita
+“half-padding” in quanto circa metà del filtro oltrepassa i bordi, quando collocato alle
+estremità. L’half-padding è utilizzato per mantenere il “footprint” spaziale.
+Quando il padding non è utilizzato, si parla semplicemente di valid-padding e nella
+pratica non dà buoni risultati per il seguente motivo: mentre con l’half-padding le
+celle ai bordi contribuiscono all’informazione, nel caso di valid-padding, queste non
+vedono il passaggio del filtro e sono sotto-rappresentate.
+Un’altra forma di padding è il full-padding, con il quale si lascia che il filtro esuli
+completamente dal layer andando ad occupare celle di soli zeri. Così facendo si incrementa l’impronta spaziale dello strato, allo stesso modo in cui il valid-padding la
+riduce.\cite{aggarwal2018neural} 
+Strides Un filtro convoluzionale computa il prodotto scalare in ogni singola posizione dello strato di input ma è altresì possibile limitare la computazione ad un numero
+inferiore di posizioni, facendo uso dello stride S. La convoluzione è allora applicata
+alle posizioni 1, S + 1, 2S + 1 etc., lungo entrambe le dimensioni. L’output avrà altezza
+e larghezza, rispettivamente:
+Lq+1 = Lq - F/S+ 1
+Bq+1 = Bq - F/S+1
+Ne consegue che lo stride comporta una riduzione delle dimensioni di un fattore
+di circa 1/S, e dell’area di S alla seconda 2. Generalmente si usano valori limitati a 1 o 2 mentre con
+stride maggiori si punta alla riduzione della richiesta di memoria. Tramite lo stride è
+possibile catturare pattern complessi in vaste porzioni di immagine, con risultati simili
+a quelli prodotti dal max-pooling.
+In genere le dimensioni delle immagini in input sono ridotte a L = B, per evitare complicazioni nella definizione degli iperparametri. Per quanto concerne la convoluzione,
+il numero di filtri è solitamente potenza di 2 per facilitare la computazione, lo stride di
+1 o 2, le dimensioni del filtro di 3 o 5. Filtri piccoli significano reti più profonde e più
+performanti.
+Ogni filtro convoluzionale è infine associato ad un bias: dato un filtro p, ed il layer
+q, bias è indicato con b(p, q). Il bias è un fattore di moltiplicazione della mappa di
+attivazione e la sua presenza incrementa il numero di parametri di un’unità. Il numero
+di features in ogni strato sarà dunque 1 + L x B x d. Come tutti gli altri parametri, il
+valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}
+\subparagraph{Funzione di attivazione Relu}
+L’operazione di attivazione non-lineare segue l’operazione di convoluzione. Per ogni
+strato Lq x Bq x d, la funzione di attivazione genera uno strato di eguale dimensione
+Lq x Bq x d di valori limitati da soglie: in quanto semplice mappatura uno-a-uno dei
+valori di attivazione, la funzione ReLU non altera l’importa spaziale dello strato.
+L’attivazione avviene tramite funzioni matematiche. Mentre in passato la tangente iperbolica, la funzione sigmoide, softsign godevano di ampia diffusione, ora sono
+limitate a reti non-profonde e ormai rimpiazzate dalla funzione di attivazione ReLU
+(Rectified Linear Unit). Il motivo principale è che in reti neurali profonde, il gradiente
+di queste tre funzioni di attivazione si annulla durante la retropropagazione ed impedisce all’algoritmo di proseguire con l’addestramento. Inoltre, la funzione ReLU è
+computazionalmente molto più efficiente. ReLU è definita come segue:
+
+
+ReLU è di fatto una funzione di rimozione di valori negativi rivelatasi efficace ed efficiente: la sua derivata in IR+ è sempre 1 e non satura in IR; in altre parole, il codominio
+della funzione è [0, inf). In corrispondenza dell’origine, la funzione non approssima
+l’identità e genera invece un gradiente elevato impedendone la scomparsa. \cite{aghdam2017guide}
+\subparagraph{Pooling layer}
+Il max-pooling estrae il massimo valore contenuto in matrici P x P di ogni mappa di
+attivazione e produce un altro hidden layer di eguale profondità. Anche in questo caso,
+come per la convoluzione, si fa uso di stride: se lo stride è 1 lo strato 2 così generato
+avrà dimensioni:
+L2 = L1 - P + 1
+B2 = B1 - P + 1
+d2 = d1.
+Per stride maggiori di 1, come solitamente si usa, altezza e larghezza saranno, rispettivamente:
+L2 = L1 - P/S + 1
+B2 = B1 - P/S+ 1
+Rispetto alla convoluzione, il pooling è effettuato al livello di ciascuna mappa di attivazione, quindi il loro numero rimane alterato e l’output è uno strato della stessa profondità (ma di altezza e larghezza differenti). Una configurazione tipica è dimensione
+2x2 e stride 2: così facendo non c’è sovrapposizione tra regioni.
+
+L’uso dello stride nel pooling è importante per tre motivi. Il primo è la riduzione
+dell’impronta spaziale delle mappe di attivazione, il secondo è un certo grado di invarianza alla traslazione e il terzo è un incremento del campo ricettivo. Si osservi che per
+ridurre l’impronta spaziale possono essere utilizzati unicamente strati convoluzionali
+con stride maggiori di 1. Nonostante ciò, si preferisce tuttora utilizzare max-pooling o
+qualche altra variante dato il grado di non-linearità e invarianza alla traslazione che
+introducono.\cite{aggarwal2018neural}
+\subparagraph{dense layer}
+Connette ogni feature in input con la corrispondente feature in output. Presenta la struttura di una rete feed-forward tradizionale e aumenta a dismisura il numero di parametri
+addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
+parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
 
 \section{Costruzione del dataset}
 Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo.
