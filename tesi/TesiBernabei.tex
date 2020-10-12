@@ -52,17 +52,18 @@ Come verrà espresso in seguito, le telecamere negli attuali sistemi, ricoprono 
 Nella seguente tesi si propone un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo.
 \subsection{Organizzazione del lavoro} 
 Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. 
-Per questo la soluzione descritta propone di impiegare la tecnologia dell'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (CNN), per il suo sviluppo.
-Come verrà esposto meglio in seguito, una CNN è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi prenderà le proprie decisioni.
+Per questo la soluzione descritta,impiega una particolare forma di intelligenza artificiale,la rete neurale convuluzionale (CNN)...
+Come verrà esposto meglio in seguito, una convulutional neural network è una particolare forma di supervisioned learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di intere immagini o identificazione di elementi al loro interno. I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knowledge base), sulla quale si baserà per prendere le decisioni.
 Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
 \item Definizione e generazione Dataset
 \item Creazione CNN
 \item Training CNN
 \end{itemize}
-\section{Fondamenti}
+
+\section{Fondamenti teorici}
 \subsection{Sistemi Critici}
-Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali quali velocità di elaborazione o altre misure di efficienza
+Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali quali velocità di elaborazione o altre misure di efficienza,
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
 convincano della adeguatezza dei nostri manufatti per i compiti sempre più
 critici e delicati per i quali li utilizziamo.
@@ -83,7 +84,7 @@ Una definizione alternativa, che stabilisce un criterio per decidere se un deter
 come la capacità di evitare fallimenti che siano più frequenti e più severi del
 limite accettabile \cite{avizienis2004basic}.
 
-Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella totalità, non ambiguo e precisa. 
+Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella sua totalità, senza ambiguità e precisa. 
 Per questo la dependability può essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
 
 Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
@@ -108,13 +109,12 @@ Si definisce:\cite{bondavalli2011analisi}
 
 \subparagraph{Il guasto} può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
 stato del sistema che può causare un successivo fallimento. 
-\begin{comment}
 I guasti di un sistema possono essere classificati secondo diversi punti di vista, ad esempio
 fisico, logico e di interazione. Un’altra suddivisione può essere fatta in base
 alla natura del guasto: un guasto può essere intenzionale o accidentale, malizioso oppure non malizioso; ed ancora in base alla persistenza dove abbiamo
 guasti permanenti, transienti ed intermittenti. Per una tassonomia completa
 si rimanda a \cite{avizienis2004basic}. \textbf{(riguarda)}
-\end{comment}
+
 
 \subparagraph{Il fallimento} di un componente si verifica quando il servizio fornito devia
 dalla sua specifica: si verifica nel momento in cui un errore del componente
@@ -147,6 +147,7 @@ il fallimento del sistema non si verifica fino a quanto l’errore non raggiunge
 di raggiungere l’interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti guasto-errore-fallimento (fault-error-failure)
 La propagazione all’interno di un componente (propagazione interna) è
 causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori.
+%guarda se aggiungere anche il parallelismo con carla forse è utile
 \subsubsection{Gli attributi della dependability}
 Il concetto di dependability è la sintesi di più attributi che forniscono misure
 quantitative o qualitative del sistema:
@@ -171,7 +172,7 @@ l’affidabilità)\end{comment}.
 integrity, dove per “improprie” si intende “non autorizzate” \cite{nicol2004model}.
 \end{itemize}
 Ciascuno di questi attributi può essere più o meno importante in base all’applicazione: la disponibilità del servizio è sempre richiesta, anche se può
-variare sia l’importanza relativa che il livello quantitativo richiesto, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
+variare sia l’importanza relativa che il livello quantitativo richiesto mentre, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
 o meno. Nella loro definizione, la disponibilità e la affidabilità evidenziano la
 capacità di evitare i fallimenti, mentre la safety e la security evidenziano la
 capacità di evitare specifiche classi di fallimenti come ad esempio fallimenti
@@ -182,6 +183,7 @@ rispetto alle modalità di fallimento previste per il sistema. Se i modi di fall
 sistema i cui fallimenti sono limitati soltanto all’interruzione del servizio sono
 chiamati fail-stop o fail-silent. I sistemi fail-safe, invece, sono quelli per cui i
 fallimenti possibili sono solamente fallimenti non catastrofici.
+\begin{comment}
 Il grado con cui un sistema possiede questi attributi deve essere interpre-
 tato in senso probabilistico e non in senso assoluto, deterministico: a causa
 dell’inevitabile occorrenza dei guasti i sistemi non sono mai totalmente di-
@@ -202,7 +204,7 @@ ripristinato un servizio corretto dopo un fallimento.
 
 \end{itemize}
 **guarda se aggiungere ultima parte con le formule
-
+\end{comment}
 \subsubsection{I mezzi per ottenere la dependability}
 Lo sviluppo di sistemi dependable richiede l’utilizzo combinato di quattro
 tipologie di tecniche:
@@ -219,7 +221,7 @@ sistema, la loro incidenza futura, o le loro probabili conseguenze.
 \end{itemize}
 \subparagraph{Prevenzione dei guasti}
 
-La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware. Queste tecniche comprendono ad esempio
+La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware.\begin{comment} Queste tecniche comprendono ad esempio
 la programmazione strutturata e modulare, l’uso di linguaggi fortemente tipati, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
 il software, mentre per quanto riguarda l’hardware l’uso di rigorosi processi
 produttivi e di strumenti per la progettazione come linguaggi di alto livello
@@ -228,7 +230,7 @@ zioni, ad esempio dalle radiazioni e interferenze elettromagnetiche. Guasti
 che originano da interazioni umane possono invece essere prevenuti tramite
 un’appropriata formazione del personale, o la creazione di procedure di manu-
 tenzione rigorose. Guasti originati da attacchi esterni possono essere prevenuti
-tramite firewall e dispositivi di sicurezza simili.
+tramite firewall e dispositivi di sicurezza simili.\end{comment}
 \subparagraph{Tolleranza ai guasti}
 La “Fault Tolerance” mira a preservare l’erogazione di un servizio corretto in
 presenza di guasti attivi. Essa viene solitamente implementata tramite rilevazione di errori (error detection) e conseguente recupero dello stato del sistema
@@ -294,7 +296,7 @@ sistema eroga diversi servizi, e spesso esistono due o più modi di erogazione
 del servizio, ad esempio da servizio a pieno regime, a servizio di emergenza.
 Questi modi distinguono la qualità o completezza del servizio erogato. Misu-
 re di dependability collegate alla qualita’ del servizio erogato (performance)
-vengono solitamente riassunte nella nozione di performability [4].
+vengono solitamente riassunte nella nozione di performability \cite{smith1988performability}.
 I due principali approcci alla previsione dei guasti quantitativa sono la
 costruzione di modelli e la loro soluzione (analitica o tramite simulazione), in
 cui il comportamento del sistema è riprodotto tramite un modello (tipicamente

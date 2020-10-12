@@ -9,7 +9,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3}Organizzazione del lavoro}{3}{subsection.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Fondamenti}{4}{section.2}
+\contentsline {section}{\numberline {2}Fondamenti teorici}{4}{section.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Sistemi Critici}{4}{subsection.2.1}
 \defcounter {refsection}{0}\relax 
@@ -17,11 +17,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.1.2}Le Minacce: guasti, errori e fallimenti}{6}{subsubsection.2.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Il guasto}{6}{section*.2}
+\contentsline {subparagraph}{Il guasto}{7}{section*.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Il fallimento}{7}{section*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.1.3}Gli attributi della dependability}{7}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.3}Gli attributi della dependability}{8}{subsubsection.2.1.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.1.4}I mezzi per ottenere la dependability}{9}{subsubsection.2.1.4}
 \defcounter {refsection}{0}\relax 
@@ -29,13 +29,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Tolleranza ai guasti}{10}{section*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Rimozione dei guasti}{12}{section*.6}
+\contentsline {subparagraph}{Rimozione dei guasti}{11}{section*.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Previsione dei guasti}{12}{section*.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2}Artificial Intelligence}{13}{subsection.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1}Agente razionale,Misura di prestazione,Ambiente}{14}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.1}Agente razionale,Misura di prestazione,Ambiente}{13}{subsubsection.2.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.2.2}Agenti che apprendono}{14}{subsubsection.2.2.2}
 \defcounter {refsection}{0}\relax 
@@ -43,35 +43,35 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{reinforcement learning}{15}{section*.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{supervised learning}{16}{section*.10}
+\contentsline {subparagraph}{supervised learning}{15}{section*.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{16}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{15}{subsubsection.2.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Neurone}{16}{section*.11}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Collegamenti}{16}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{funzione di attivazione}{17}{section*.13}
+\contentsline {subparagraph}{funzione di attivazione}{16}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{feed-forward network}{17}{section*.14}
+\contentsline {subparagraph}{feed-forward network}{16}{section*.14}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{17}{subsubsection.2.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{L'architettura}{18}{section*.15}
+\contentsline {subparagraph}{L'architettura}{17}{section*.15}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Convolutional layer}{18}{section*.16}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Funzione di attivazione Relu}{21}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Pooling layer}{22}{section*.18}
+\contentsline {subparagraph}{Pooling layer}{21}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{dense layer}{23}{section*.19}
+\contentsline {subparagraph}{dense layer}{22}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Costruzione del dataset}{23}{section.3}
+\contentsline {section}{\numberline {3}Costruzione del dataset}{22}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Acquisizione}{24}{section*.20}
+\contentsline {subparagraph}{Acquisizione}{23}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Sporcatura}{24}{section*.21}
+\contentsline {subparagraph}{Sporcatura}{23}{section*.21}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Costruzione del detector}{24}{section.4}
 \defcounter {refsection}{0}\relax 
