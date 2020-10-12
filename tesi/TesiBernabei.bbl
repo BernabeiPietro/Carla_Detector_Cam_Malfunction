@@ -207,6 +207,45 @@
     \field{year}{2005}
   \endentry
 
+  \entry{smith1988performability}{article}{}
+    \name{author}{3}{}{%
+      {{hash=SR}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={RM},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=TKS}{%
+         family={Trivedi},
+         familyi={T\bibinitperiod},
+         given={Kishor\bibnamedelima S.},
+         giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Ramesh},
+         familyi={R\bibinitperiod},
+         given={AV},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{SRTKSRA1}
+    \strng{fullhash}{SRTKSRA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{4}
+    \field{pages}{406\bibrangedash 417}
+    \field{title}{Performability analysis: measures, an algorithm, and a case
+  study}
+    \field{volume}{37}
+    \field{journaltitle}{IEEE Transactions on Computers}
+    \field{year}{1988}
+  \endentry
+
   \entry{torresin2019sviluppo}{article}{}
     \name{author}{1}{}{%
       {{hash=TL}{%
