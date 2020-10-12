@@ -507,7 +507,26 @@ addestrabili per effetto del numero di connessioni. Ad esempio, se due strati co
 parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
 
 \section{Costruzione del dataset}
+Siccome il detector impiega la CNN,  come strumento per l'identificazione di guasti nel sensore della telecamera del veicolo, è necessario istruire il sistema alla loro identificazione. Per fare questo , è necessario predisporre un dataset su cui  istruire il sitema.
+Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
+Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
+\subparagraph{Dataset}
+
+\subparagraph{CARLA}
+CARlA è un software open source di simulazione per la ricerca di guida autonoma.
+Il simulatore CARLA è costituito da un'architettura client-server scalabile.
+Il server è responsabile di tutto ciò che riguarda la simulazione stessa: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. Poiché mira a risultati realistici, la soluzione migliore sarebbe eseguire il server con una GPU dedicata, soprattutto quando si ha a che fare con l'apprendimento automatico.
+Il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
 Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo.
+\subparagraph{Acquisizione}
+La scelta di utilizzare una soluzione software per la simulazione di una 
+
+
+
+
+
+
+
 Detto ciò, la prima cosa che è necessario predisporre è il dataset di dati, da fornirgli. 
 Nel caso di questa tesi, i detector sono implementati attraverso singoli classicatori binari, dove ciascuno è stato allenato ad apprendere singoli casi di malfunzionamento. 
 Come spiegato precedentemente, le reti neurali prevedono due diversi dataset: il training set  e il validation set. 
