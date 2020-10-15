@@ -61,17 +61,25 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Convolutional layer}{18}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Funzione di attivazione Relu}{21}{section*.17}
+\contentsline {paragraph}{Padding}{19}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Pooling layer}{21}{section*.18}
+\contentsline {subparagraph}{Funzione di attivazione Relu}{21}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{dense layer}{22}{section*.19}
+\contentsline {subparagraph}{Pooling layer}{21}{section*.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{dense layer}{22}{section*.20}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Costruzione del dataset}{22}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Acquisizione}{23}{section*.20}
+\contentsline {subparagraph}{Dataset}{23}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Sporcatura}{23}{section*.21}
+\contentsline {subparagraph}{CARLA}{23}{section*.22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Acquisizione}{23}{section*.23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Acquisizione}{24}{section*.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Sporcatura}{24}{section*.25}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Costruzione del detector}{24}{section.4}
 \defcounter {refsection}{0}\relax 

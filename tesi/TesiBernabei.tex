@@ -306,6 +306,291 @@ valutazione sperimentale del sistema ai fini della fault forecasting, in quanto
 permette di esaminare l’evoluzione e le conseguenze dei guasti in un sistema.
 
 
+
+\subsection{Autonomous Driving}
+Nell’ultimo decennio, il settore dell’Automotive è stato in continua evo-
+luzione. In particolar modo, le grandi aziende automobilistiche e mol-
+ti gruppi di ricerca si sono mossi verso l’automazione della guida ed
+il miglioramento delle infrastrutture già esistenti. I motivi di questo
+interessamento del settore verso la guida autonoma sono vari:
+• riduzione del numero di incidenti, anche fino al 90%,
+• riduzione dei consumi,
+• riduzione delle emissioni di CO 2 ,
+• nonché la riduzione di tutte le varie problematiche della sicurezza
+stradale.
+
+livelli di automazione della guida - SAE
+La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
+In questo sistema di classificazione, all’aumentare del livello di automa-
+zione, la responsabilità del conducente passa dalla guida alle attività di
+supervisione.
+Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui non è presente nessuna  automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
+\begin{itemize}
+\item Livelli 0:
+Veicoli privi di qualsiasi sistema di automazione.
+\item Livello 1: 
+Veicoli  i quali mettono a disposizione dell'autista, almeno un sistema di assistenza, per esempio, l'assistenza alla frenata.
+\item Livello 2:
+Veicoli i quali cobinano due o più sistemi avanzati di assistenza alla guida
+Una combinazione di due o più sistemi avanzati di assistenza alla guida
+(ADAS - Advanced Driver-Assistance Systems), in cui questi a volte aiu-
+tano a controllare la frenata, l’accelerazione e/o lo sterzo, è definita di
+livello 2. Esistono molti nomi e acronimi diversi utilizzati dalle diverse
+case automobilistiche per descrivere gli ADAS, come:
+• Adaptive Cruise Control −→ il guidatore può lasciare il pedale
+dell’acceleratore e il mezzo viaggerà ad una velocità costante perce-
+pendo il veicolo che precede e rallentando per mantenere la distanza
+impostata,
+
+elementi principali di guida autonoma
+• Lane-Keeping Assist −→ controlla lo sterzo del veicolo per impe-
+dire al conducente di uscire involontariamente dalla propria corsia
+autostradale,
+• Automatic Emergency Braking −→ il veicolo rileva un incidente
+imminente e applica i freni per prevenire o limitare la gravità della
+collisione.
+A questi livelli, il conducente deve mantenere il controllo del veicolo in
+ogni momento.
+Oggi, uno dei più avanzati sistemi di assistenza alla guida è sicuramente
+rappresentato dall’Autopilot di Tesla.
+3.1.1.1 Autopilot di Tesla
+L’Autopilot di Tesla è un’ADAS presente in ogni modello della casa
+americana. Questo offre diverse funzionalità, fra cui: il mantenimento di
+corsia, il controllo adattivo della velocità, il parcheggio automatico e la
+possibilità, soltanto azionando una freccia direzionale, di far cambiare in
+modo autonomo corsia autostradale alla vettura [30].
+Uno degli obiettivi del marchio americano, forse il più importante, an-
+nunciato da Elon Musk, è quello di arrivare, in un futuro non troppo
+lontano, ad avere una vera e propria guida autonoma in tutto e per tutto,
+con la quale saremo soltanto passeggeri.
+Con il primo Autopilot, offerto per la prima volta su una Tesla Mo-
+del S, nell’Ottobre del 2014, le capacità autonome dell’auto erano molto
+limitate, ad esempio a funzionalità che permettevano il parcheggio del
+veicolo senza interazione dell’utente. Ultimamente, quello che il veicolo
+riesce a fare è di gran lunga superiore alla prima versione rilasciata anni
+fa. Infatti, negli ultimi anni, dal 2016, la casa americana ha cominciato a
+parlare della cosiddetta Full Self-Driving (FSD). Questo pacchetto è già
+disponibile sulle auto attualmente in vendita ed è considerato un’optional
+selezionabile in fase di ordinazione. Rispetto al precedente Autopilot,
+questo si presenta come un qualcosa di molto più avanzato, non ferman-
+dosi alla possibilità di sterzare, accelerare e frenare automaticamente, ma
+andando oltre:
+• gestione automatica dello svincolo autostradale, inclusi incroci e
+sorpassi di auto più lente;
+• cambi di corsia automatici durante la guida in autostrada;
+• parcheggio parallelo e perpendicolare (Autopark);
+• parcheggio e recupero automatico del veicolo (Summon);
+• riconoscimento e risposta ai semafori e ai segnali di stop;
+• guida automatica sulle strade cittadine;
+• possibilità di far uscire l’auto dal parcheggio per venire a prenderti
+(Summon Avanzato).
+Naturalmente, questi ultimi sviluppi si vanno a collocare in un Livello
+SAE diverso, in quanto l’auto riesce a gestire situazioni anche fuori dai
+tratti autostradali in modo completamente autonomo. Anche se queste
+capacità potrebbero rientrare nel Livello 4, per motivi soprattutto legali, si
+può dire che queste sono limitate al Livello 3 (Assistenza condizionata,
+Fig. 4).
+
+Livello 3
+Da questo livello si può cominciare a parlare di guida semi-autonoma.
+Infatti, il veicolo è in grado di gestire diverse situazioni, anche al di fuori
+del contesto autostradale. Dato che l’auto si prenderà la responsabilità
+soltanto per alcuni momenti di un viaggio, ad un certo punto, il sistema
+avviserà il conducente che deve riprendere il controllo del mezzo. Questo
+avviso, se va a buon fine, porterà il conducente di nuovo a controllare
+il veicolo. Qualora gli avvisi non fossero uditi, percepiti dal conducente,
+molto probabilmente il sistema provvederà ad arrestare il veicolo nel
+modo più sicuro possibile.
+Al momento non esistono in commercio veicoli che hanno questo livello
+di guida autonoma.
+
+Livello 4
+Con questo livello si entra in quella che può essere definita guida auto-
+noma. I veicoli dotati di questa tecnologia sono in grado di procedere
+per molti chilometri e superare una varietà di ostacoli, ad esempio caselli
+autostradali.
+Tuttavia, il funzionamento di questi veicoli sarà in qualche modo limitato:
+• ad una determinata area geografica,
+• da condizioni meteo avverse,
+• da una velocità massima e così via.
+Un esempio di questi veicoli si può ritrovare nelle navette recentemente
+impiegate dalla Sacramento State University nel proprio campus.
+
+Livello 5
+Il funzionamento senza pilota e senza restrizioni definisce i veicoli di
+livello 5. In questi veicoli il conducente molto probabilmente non esisterà
+più. Infatti, saranno capaci di procedere in ogni condizione e luogo senza
+che un umano prenda parte all’azione di guida. Questo livello è molto3
+utilizzato in produzioni cinematografiche, soprattutto fantascientifiche,
+in quanto forse mai riusciremo ad avere una tecnologia simile.
+Altro aspetto da considerare è quello che molti esperti del settore credono che il livello 4, veicoli ad alta capacità, sia veramente l’obiettivo da
+raggiungere e che potrà trasformare le città e di conseguenza il mondo
+[31].
+
+3.2
+visione artificiale
+Uno dei principali problemi da affrontare con le auto a guida autonoma
+è la loro percezione dell’ambiente. Infatti, non sono dotati di un occhio o
+più occhi umani, per prendere le loro decisioni, bensì di occhi artificiali.
+In questi veicoli si parla di visione artificiale avanzata e le principali
+tecnologie (Fig. 6) utilizzate in questo ambito comprendono [31]:
+• Videocamere,
+• Radar,
+• Lidar,
+• GPS.
+Figura 6.: Le tre principali tecnologie utilizzate per la guida autonoma [3]
+Tutte insieme, queste tecnologie, mirano a creare un modello del mondo
+reale (3D) partendo da immagini bidimensionali (2D), nel modo più fede-
+le possibile alla realtà. Lo scopo della visione artificiale, infatti, è proprio
+quello di riprodurre la vista umana [32]. In questo ambito, "vedere" non è
+inteso come la sola acquisizione del fotogramma, ma significa interpretar-
+ne il suo contenuto, in modo da poter prendere decisioni autonomamente.
+2930
+elementi principali di guida autonoma
+Un’idea di come queste tecnologie vengono posizionate su un veicolo si
+ha in Fig. 7.
+Figura 7.: I Sensori presenti nelle auto a guida autonoma
+Il componente analizzato in questo elaborato è la Telecamera. Sui veicoli
+di oggi sono presenti più dispositivi di questo genere ed il loro obiettivo
+è catturare i fotogrammi e renderli disponibili come input per software
+impiegati nella scelta del comportamento da tenere.
+3.2.1
+LIDAR - Light Detection And Ranging
+È una tecnologia di telerilevamento. I suoi usi sono molto vari soprattutto
+perché il suo obiettivo principale è quello di raccogliere informazioni
+3D e usare la luce sotto forma di un laser pulsato per misurare diverse
+distanze. Il suo ruolo è quello di raccogliere informazioni cinematiche sul
+veicolo e informazioni fisiche sull’ambiente circostante. Il sensore ottico
+LIDAR è installato sul tettuccio del veicolo autonomo. È composto da un
+laser, un filtro per obiettivo, un ricevitore, un regolatore di potenza, uno
+specchio rotante e un processore integrato [31].
+Diversamente dal Radar, che al posto della luce utilizza onde radio,3.2 visione artificiale
+la distanza dell’oggetto è determinata misurando il tempo trascorso fra
+l’emissione dell’impulso e la ricezione del segnale retrodiffuso. L’unità
+di elaborazione deve essere collocata in una posizione abbastanza rialza-
+ta da terra; inoltre, sono necessarie misure di sicurezza per proteggere
+l’unità da urti o vibrazioni derivanti da incidenti o dalla navigazione su
+terreni accidentati, che potrebbero causare guasti al sistema.
+3.2.2
+RADAR - RAdio Detection And Ranging
+È un sistema che utilizza onde radio per il rilevamento e la determina-
+zione della posizione ed eventualmente della velocità di oggetti fissi o
+mobili, come aerei, navi, veicoli, formazioni atmosferiche o il suolo. Le
+onde radio vengono trasmesse nell’ambiente per raccogliere informazioni
+sugli ostacoli intorno al veicolo e aumentare la consapevolezza del po-
+sizionamento degli altri soggetti davanti e dietro. Questo sensore tiene
+d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
+a seconda del comportamento degli altri conducenti [31].
+È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
+di sensori anteriori e posteriori.
+3.2.3
+Videocamera
+Le telecamere sono necessarie nel sistema di trasporto intelligente affin-
+ché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
+veicolo in considerazione. Le immagini bidimensionali derivanti da una
+singola fotocamera o le mappe 3D risultanti dall’utilizzo della doppia
+fotocamera, potrebbero individuare stereoscopicamente lo spazio dispo-
+nibile per i movimenti autonomi del veicolo. Queste immagini o mappe
+vengono utilizzate per estrarre informazioni quantitative dalle scene e
+per tracciare gli obiettivi del veicolo. Le immagini sono segmentate in un
+certo numero di pixel. Ogni pixel viene elaborato e memorizzato, il che ri-
+chiede un’elevata velocità di calcolo ed un elevato spazio di archiviazione
+[31].
+3.2.4
+GPS - Global Positioning System
+Il Sistema di Posizionamento Globale, attraverso una rete dedicata di sa-
+telliti artificiali in orbita, fornisce a un terminale mobile o ad un ricevitore
+3132
+elementi principali di guida autonoma
+GPS informazioni sulle sue coordinate geografiche e sul suo orario in
+quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
+che potrebbero impedirne l’invio e la ricezione dei segnali (edifici molto
+alti, gallerie, ecc.). A causa dei disturbi del segnale e altre interferenze
+dell’atmosfera, la posizione stimata utilizzando un GPS potrebbe essere
+sbagliata di diversi metri. La localizzazione avviene tramite la trasmissio-
+ne di un segnale radio da parte di ciascun satellite e l’elaborazione dei
+segnali ricevuti da parte del ricevitore [31].
+Per far procedere autonomamente il veicolo, il GPS, con l’aiuto di altri
+sensori, crea mappe precise della carreggiata e guida nella direzione
+esatta. Questo rilevamento potrebbe anche permettere di vedere in tempo
+reale altri veicoli sulla stessa strada e mostrarne la posizione attuale.
+3.3
+reti neurali
+Le Reti Neurali sono oggi ampliamente accettate come soluzioni domi-
+nanti per la visione artificiale, per il riconoscimento vocale e per l’elabo-
+razione del linguaggio naturale. La cosa su cui ci siamo concentrati in
+questo elaborato è proprio la visione artificiale che un veicolo a guida
+autonoma deve avere per poter garantire la sicurezza di passeggeri e am-
+biente esterno. Il problema principale di questi sistemi è il riconoscimento
+di quello che hanno intorno e la conseguente decisione che prendono
+per far muovere il veicolo. Infatti, come accaduto, ad esempio durante
+l’utilizzo del cosiddetto Autopilot di Tesla, il veicolo può non riconoscere
+una certa situazione di pericolo od un ostacolo e quindi minare la sicu-
+rezza, non solo degli individui nell’abitacolo, ma anche di quelli presenti
+all’esterno, che essi siano altri pedoni o altri mezzi nelle vicinanze.
+Per quanto riguarda le prestazioni di queste Reti Neurali, sono stati
+registrati punteggi di accuratezza spesso corrispondenti a quelli di un
+individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
+ti i punteggi osservati quando si considerano i casi peggiori. Con casi
+peggiori si vuole intendere quei casi definiti Adversarial Examples [33] o
+input perturbati, anche solo leggermente, che dal punto di vista umano
+risultano sempre comprensibili, mentre da quello della macchina, cam-
+biano totalmente di significato. Naturalmente, se queste Reti vengono
+utilizzate su veicoli che devono muoversi in un ambiente nel quale si
+trova un’eterogeneità di soggetti e comportamenti, si parla di contesti3.3 reti neurali
+nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
+dependability di un sistema sono al primo posto in ordine di importanza.
+3.3.1
+Classificatori
+Molto importante, per la guida autonoma, è il processo di classificazione:
+esso si può definire come individuazione, dato un insieme di oggetti
+(nel nostro caso immagini o fotogrammi), di particolari caratteristiche
+che permettono al sistema di prendere una decisione sulla base dei dati
+estrapolati. Nel nostro contesto si parlerà di classificatori basati sulle Reti
+Neurali. Su di essi sono state osservate diverse vulnerabilità prendendo
+in considerazione immagini di input trasformate spazialmente [33]: con
+questo termine si intende rappresentare tutte le possibili trasformazioni
+che un’immagine può subire, ad esempio ruotandola, tagliandola, sca-
+landola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
+contesti:
+• verificare il livello di completezza di un classificatore,
+• allenare una rete neurale,
+• ricreare scenari o situazioni con cui il veicolo su cui è installata una
+determinata rete può avere a che fare.
+Con il termine "trasformata spazialmente" non ci si deve immaginare
+una modifica profonda del fotogramma in questione, ma anzi, basta
+anche solo una piccola rotazione, di meno di un grado, per far sì che il
+classificatore confonda, ad esempio, un revolver con una trappola per topi
+[33], il che, pensando ad un utilizzo anche diverso da quello che se ne fa
+su un veicolo a guida autonoma, può far sorgere molte preoccupazioni e
+domande (si pensi all’ambito aeroportuale).
+3.3.2
+Object Recognition
+In generale, ci si riconduce al problema dell’Object Recognition o ricono-
+scimento artificiale degli oggetti. Questo richiede che ci sia una nozione
+di somiglianza visiva, difficile da far apprendere ad un sistema: signifi-
+cherebbe catturare e insegnare ad una macchina la nozione di percezione
+umana [33].
+3334
+elementi principali di guida autonoma
+Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto presta-
+zioni all’avanguardia, talvolta competitive con la percezione umana.
+Una della sfide principali nella guida autonoma è il cambiamento am-
+bientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
+differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
+stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
+muove nello spazio [34].
+Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
+di valutazione nella navigazione potrebbe causare incidenti altamente
+devastanti.
+Figura 8.: Schema training e impiego della Rete Neurale su un veicolo
+Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
+analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
+dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infra-
+struttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
+della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
+della superficie stradale non sono state incluse [31].
+
 \subsection{Artificial Intelligence}
 Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
@@ -367,7 +652,7 @@ A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deri
 \[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
 Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.
 \subparagraph{feed-forward network}
-Definito il modello matematico di ogni neurone, questi dovranno connettersi insieme, a formare una rete.
+Definito il modello matematico di ogni neurone, questi si connetteranno insieme, a formare una rete.
 Esistono due principali tipologie: 
 la \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
 Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formano un sistema dinamico che raggiunge uno stato stabile o
@@ -384,8 +669,7 @@ L'input di una convulutional neurale network o ConvNet,\begin{comment} è ampiam
 Le reti neurali convoluzionali operano su strutture a griglia contraddistinte da relazioni spaziali tra pixel, ereditate da uno strato al successivo tramite valori che descrivono
 piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o
 activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
-Una CNN è composta da successioni di strati, illustrati in dettaglio nei paragrafi
-seguenti. Gli strati principali sono:
+Una CNN è composta da  un insieme di strati che si susseguono, illustrati in dettaglio nei paragrafi seguenti. Gli strati principali sono:
 \begin{itemize}
 \item convolutional layer;
 \item activation layer;
@@ -395,7 +679,7 @@ seguenti. Gli strati principali sono:
 \cite{torresin2019sviluppo}
 
 \subparagraph{Convolutional layer}
-La convoluzione è l’operazione fondamentale delle CNN. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
+La convoluzione è l’operazione fondamentale delle ConvNet. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
 eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
 Un filtro è caratterizzato dai
 seguenti iperparametri (hyperparameters):
@@ -404,14 +688,13 @@ seguenti iperparametri (hyperparameters):
 \item larghezza Fq
 \item profondità d
 \item numero q
-
 \end{itemize}
 Solitamente i filtri hanno forma quadrata e profondità uguale a quella dello strato al
-quale sono applicati. Per un’immagine RGB, il primo filtro convoluzionale
-F*F*d potrà avere dimensione  5*5*3 o 7*7*3. Il numero di possibili
+quale sono applicati, nel caso di immagini RGB, 3. \begin{comment}Per un’immagine RGB,  per esempio il primo filtro convoluzionale
+F*F*d potrà avere dimensione  5*5*3 o 7*7*3.\end{comment} Il numero di possibili
 allineamenti tra filtro e immagine definisce altezza e larghezza della successiva feature
 map.
-Dallo strato nascosto q1, il filtro produce uno nuovo strato nascosto q2
+Dal hidden layer q1, il filtro produce uno nuovo hidden layer q2
 Lq+1 = Lq - Fq + 1
 Bq+1 = Bq - Fq + 1
 Ad esempio, per immagini di dimensioni 32 * 32, un filtro 5 * 5 genera uno strato
@@ -424,15 +707,15 @@ I filtri dei primi strati individuano forme primitive, quelli successvi imparano
 l’\textbf{equivarianza alla traslazione}: immagini traslate sono interpretate allo stesso modo e
 i valori delle mappa di attivazione traslano con i valori di input \cite{torresin2019sviluppo}. Ciò significa che forme particolari generano feature maps simili, indipendentemente dalla loro collocazione
 nell’immagine.
-Una delle proprietà della convoluzione è la seguente. Una convoluzione sullo strato
+Una delle proprietà della convoluzione è la seguente:
+	 Una convoluzione sullo strato
 q incrementa il campo recettivo di una feature dallo strato q allo strato q + 1. In altre parole, ogni valore della mappa di attivazione dello strato successivo cattura una regione
 spaziale più ampia del precedente. Feature maps degli strati catturano aspetti caratteristici di regioni via via maggiori e questo è il motivo per cui le CNN possono essere
 definite “profonde”: per studiare l’intera immagine sono necessarie lunghe successioni
 di “blocchi” di strati. 
 In figura, un esempio dell’operazione di convoluzione.
 
-
-\textbf{Padding} L’operazione di convoluzione comporta una contrazione dello strato q rispetto a q + 1 ed una conseguente perdita di informazioni. Il problema può essere
+\subparagraph{Padding} L’operazione di convoluzione comporta una contrazione dello strato q rispetto a q + 1 ed una conseguente perdita di informazioni. Il problema può essere
 arginato utilizzando il cosiddetto padding, una tecnica che prevede l’aggiunta di $\frac{(Fmeno1)}{2}$ pixel ai bordi delle mappe di attivazione per mantenere l’impronta spaziale. Ovviamente, 
 per non alterare l’informazione, ai pixel sono assegnati valori nulli. Il risultato
 \cite{aggarwal2018neural} è un incremento delle dimensioni (altezza e larghezza) del volume di input di F - 1,
@@ -448,7 +731,8 @@ vedono il passaggio del filtro e sono sotto-rappresentate.
 Un’altra forma di padding è il full-padding, con il quale si lascia che il filtro esuli
 completamente dal layer andando ad occupare celle di soli zeri. Così facendo si incrementa l’impronta spaziale dello strato, allo stesso modo in cui il valid-padding la
 riduce.\cite{aggarwal2018neural} 
-Strides Un filtro convoluzionale computa il prodotto scalare in ogni singola posizione dello strato di input ma è altresì possibile limitare la computazione ad un numero
+\begin{comment}
+\subparagraph{Strides} Un filtro convoluzionale computa il prodotto scalare in ogni singola posizione dello strato di input ma è altresì possibile limitare la computazione ad un numero
 inferiore di posizioni, facendo uso dello stride S. La convoluzione è allora applicata
 alle posizioni 1, S + 1, 2S + 1 etc., lungo entrambe le dimensioni. L’output avrà altezza
 e larghezza, rispettivamente:
@@ -467,7 +751,7 @@ Ogni filtro convoluzionale è infine associato ad un bias: dato un filtro p, ed 
 q, bias è indicato con b(p, q). Il bias è un fattore di moltiplicazione della mappa di
 attivazione e la sua presenza incrementa il numero di parametri di un’unità. Il numero
 di features in ogni strato sarà dunque 1 + L x B x d. Come tutti gli altri parametri, il
-valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}
+valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}\end{comment
 \subparagraph{Funzione di attivazione Relu}
 L’operazione di attivazione non-lineare segue l’operazione di convoluzione. Per ogni
 strato Lq x Bq x d, la funzione di attivazione genera uno strato di eguale dimensione
@@ -507,19 +791,25 @@ introducono.\cite{aggarwal2018neural}
 Connette ogni feature in input con la corrispondente feature in output. Presenta la struttura di una rete feed-forward tradizionale e aumenta a dismisura il numero di parametri
 addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
 parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
-
-\section{Costruzione del dataset}
-Siccome il detector impiega la CNN,  come strumento per l'identificazione di guasti nel sensore della telecamera del veicolo, è necessario istruire il sistema alla loro identificazione. Per fare questo , è necessario predisporre un dataset su cui  istruire il sitema.
-Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
-Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
-\subparagraph{Dataset}
-
-\subparagraph{CARLA}
+\subsection{CARLA}
 CARlA è un software open source di simulazione per la ricerca di guida autonoma.
 Il simulatore CARLA è costituito da un'architettura client-server scalabile.
 Il server è responsabile di tutto ciò che riguarda la simulazione stessa: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. Poiché mira a risultati realistici, la soluzione migliore sarebbe eseguire il server con una GPU dedicata, soprattutto quando si ha a che fare con l'apprendimento automatico.
 Il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
-Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo.
+\subsubsection{Sensori}
+CARLA consente una configurazione flessibile della suite di sensori dell’agente. I sensori sono limitati alle fotocamere RGB ed agli pseudo-sensori
+che forniscono ground-truth depth e ground-truth semantic segmenta-
+tion (Fig. 26). Nella figura sottostante, a partire da sinistra, è illustrata la
+visione attraverso i tre sensori precedentemente nominati.
+Figura 26.: Tre tipologie di sensori forniti dal simulatore CARLA
+Il numero di telecamere ed il loro tipo e posizione possono essere specificati dal cliente. I parametri della fotocamera includono la posizione 3D,
+l’orientamento 3D rispetto al sistema di coordinate dell’auto, al campo
+visivo e alla profondità di campo. 
+\section{Costruzione del dataset}
+Siccome il detector impiega la CNN,  come strumento per l'identificazione di guasti nel sensore della telecamera del veicolo, è necessario istruire il sistema alla loro identificazione. Per fare questo , è necessario predisporre un dataset su cui  istruire il sitema.
+Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
+Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
+
 \subparagraph{Acquisizione}
 La scelta di utilizzare una soluzione software per la simulazione di una 
 
