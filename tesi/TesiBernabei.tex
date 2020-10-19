@@ -306,234 +306,6 @@ valutazione sperimentale del sistema ai fini della fault forecasting, in quanto
 permette di esaminare l’evoluzione e le conseguenze dei guasti in un sistema.
 
 
-
-\subsection{Autonomous Driving}
-Nell’ultimo decennio, il settore dell’Automotive è stato in continua evo-
-luzione. In particolar modo, le grandi aziende automobilistiche e mol-
-ti gruppi di ricerca si sono mossi verso l’automazione della guida ed
-il miglioramento delle infrastrutture già esistenti. I motivi di questo
-interessamento del settore verso la guida autonoma sono vari:
-• riduzione del numero di incidenti, anche fino al 90%,
-• riduzione dei consumi,
-• riduzione delle emissioni di CO 2 ,
-• nonché la riduzione di tutte le varie problematiche della sicurezza
-stradale.
-
-livelli di automazione della guida - SAE
-La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
-In questo sistema di classificazione, all’aumentare del livello di automa-
-zione, la responsabilità del conducente passa dalla guida alle attività di
-supervisione.
-Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui non è presente nessuna  automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
-\begin{itemize}
-\item Livelli 0:
-Veicoli privi di qualsiasi sistema di automazione.
-\item Livello 1: 
-Veicoli  i quali mettono a disposizione dell'autista, almeno un sistema di assistenza, per esempio, l'assistenza alla frenata.
-\item Livello 2:
-Veicoli i quali cobinano due o più sistemi avanzati di assistenza alla guida, come l'adaptive cruise control, Lane-Keeping assist, e l'Automatic Emergency Braking. Tutti questi rientrano sotto la dicitura ADAS (Advanced Driver-Assistance Systems). Un 
-\item Livello 3:
-Veicoli definiti a guida semi-autonoma, siccome sono in grado di  gestire situazioni variegate, anche al di fuori di un contesto autostradale. Nel senso che si prendono la responsabilità di gestire tratti della percorrenza 
-Da questo livello si può cominciare a parlare di guida semi-autonoma.
-Infatti, il veicolo è in grado di gestire diverse situazioni, anche al di fuori
-del contesto autostradale. Dato che l’auto si prenderà la responsabilità
-soltanto per alcuni momenti di un viaggio, ad un certo punto, il sistema
-avviserà il conducente che deve riprendere il controllo del mezzo. Questo
-avviso, se va a buon fine, porterà il conducente di nuovo a controllare
-il veicolo. Qualora gli avvisi non fossero uditi, percepiti dal conducente,
-molto probabilmente il sistema provvederà ad arrestare il veicolo nel
-modo più sicuro possibile.
-Al momento non esistono in commercio veicoli che hanno questo livello
-di guida autonoma.
-
-
-
-Livello 4
-Con questo livello si entra in quella che può essere definita guida auto-
-noma. I veicoli dotati di questa tecnologia sono in grado di procedere
-per molti chilometri e superare una varietà di ostacoli, ad esempio caselli
-autostradali.
-Tuttavia, il funzionamento di questi veicoli sarà in qualche modo limitato:
-• ad una determinata area geografica,
-• da condizioni meteo avverse,
-• da una velocità massima e così via.
-Un esempio di questi veicoli si può ritrovare nelle navette recentemente
-impiegate dalla Sacramento State University nel proprio campus.
-
-Livello 5
-Il funzionamento senza pilota e senza restrizioni definisce i veicoli di
-livello 5. In questi veicoli il conducente molto probabilmente non esisterà
-più. Infatti, saranno capaci di procedere in ogni condizione e luogo senza
-che un umano prenda parte all’azione di guida. Questo livello è molto3
-utilizzato in produzioni cinematografiche, soprattutto fantascientifiche,
-in quanto forse mai riusciremo ad avere una tecnologia simile.
-Altro aspetto da considerare è quello che molti esperti del settore credono che il livello 4, veicoli ad alta capacità, sia veramente l’obiettivo da
-raggiungere e che potrà trasformare le città e di conseguenza il mondo
-[31].
-\end{itemize}
-visione artificiale
-Uno dei principali problemi da affrontare con le auto a guida autonoma
-è la loro percezione dell’ambiente. Infatti, non sono dotati di un occhio o
-più occhi umani, per prendere le loro decisioni, bensì di occhi artificiali.
-In questi veicoli si parla di visione artificiale avanzata e le principali
-tecnologie (Fig. 6) utilizzate in questo ambito comprendono [31]:
-• Videocamere,
-• Radar,
-• Lidar,
-• GPS.
-Figura 6.: Le tre principali tecnologie utilizzate per la guida autonoma [3]
-Tutte insieme, queste tecnologie, mirano a creare un modello del mondo
-reale (3D) partendo da immagini bidimensionali (2D), nel modo più fede-
-le possibile alla realtà. Lo scopo della visione artificiale, infatti, è proprio
-quello di riprodurre la vista umana [32]. In questo ambito, "vedere" non è
-inteso come la sola acquisizione del fotogramma, ma significa interpretar-
-ne il suo contenuto, in modo da poter prendere decisioni autonomamente.
-2930
-elementi principali di guida autonoma
-Un’idea di come queste tecnologie vengono posizionate su un veicolo si
-ha in Fig. 7.
-Figura 7.: I Sensori presenti nelle auto a guida autonoma
-Il componente analizzato in questo elaborato è la Telecamera. Sui veicoli
-di oggi sono presenti più dispositivi di questo genere ed il loro obiettivo
-è catturare i fotogrammi e renderli disponibili come input per software
-impiegati nella scelta del comportamento da tenere.
-3.2.1
-LIDAR - Light Detection And Ranging
-È una tecnologia di telerilevamento. I suoi usi sono molto vari soprattutto
-perché il suo obiettivo principale è quello di raccogliere informazioni
-3D e usare la luce sotto forma di un laser pulsato per misurare diverse
-distanze. Il suo ruolo è quello di raccogliere informazioni cinematiche sul
-veicolo e informazioni fisiche sull’ambiente circostante. Il sensore ottico
-LIDAR è installato sul tettuccio del veicolo autonomo. È composto da un
-laser, un filtro per obiettivo, un ricevitore, un regolatore di potenza, uno
-specchio rotante e un processore integrato [31].
-Diversamente dal Radar, che al posto della luce utilizza onde radio,3.2 visione artificiale
-la distanza dell’oggetto è determinata misurando il tempo trascorso fra
-l’emissione dell’impulso e la ricezione del segnale retrodiffuso. L’unità
-di elaborazione deve essere collocata in una posizione abbastanza rialza-
-ta da terra; inoltre, sono necessarie misure di sicurezza per proteggere
-l’unità da urti o vibrazioni derivanti da incidenti o dalla navigazione su
-terreni accidentati, che potrebbero causare guasti al sistema.
-3.2.2
-RADAR - RAdio Detection And Ranging
-È un sistema che utilizza onde radio per il rilevamento e la determina-
-zione della posizione ed eventualmente della velocità di oggetti fissi o
-mobili, come aerei, navi, veicoli, formazioni atmosferiche o il suolo. Le
-onde radio vengono trasmesse nell’ambiente per raccogliere informazioni
-sugli ostacoli intorno al veicolo e aumentare la consapevolezza del po-
-sizionamento degli altri soggetti davanti e dietro. Questo sensore tiene
-d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
-a seconda del comportamento degli altri conducenti [31].
-È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
-di sensori anteriori e posteriori.
-3.2.3
-Videocamera
-Le telecamere sono necessarie nel sistema di trasporto intelligente affin-
-ché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
-veicolo in considerazione. Le immagini bidimensionali derivanti da una
-singola fotocamera o le mappe 3D risultanti dall’utilizzo della doppia
-fotocamera, potrebbero individuare stereoscopicamente lo spazio dispo-
-nibile per i movimenti autonomi del veicolo. Queste immagini o mappe
-vengono utilizzate per estrarre informazioni quantitative dalle scene e
-per tracciare gli obiettivi del veicolo. Le immagini sono segmentate in un
-certo numero di pixel. Ogni pixel viene elaborato e memorizzato, il che ri-
-chiede un’elevata velocità di calcolo ed un elevato spazio di archiviazione
-[31].
-3.2.4
-GPS - Global Positioning System
-Il Sistema di Posizionamento Globale, attraverso una rete dedicata di sa-
-telliti artificiali in orbita, fornisce a un terminale mobile o ad un ricevitore
-3132
-elementi principali di guida autonoma
-GPS informazioni sulle sue coordinate geografiche e sul suo orario in
-quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
-che potrebbero impedirne l’invio e la ricezione dei segnali (edifici molto
-alti, gallerie, ecc.). A causa dei disturbi del segnale e altre interferenze
-dell’atmosfera, la posizione stimata utilizzando un GPS potrebbe essere
-sbagliata di diversi metri. La localizzazione avviene tramite la trasmissio-
-ne di un segnale radio da parte di ciascun satellite e l’elaborazione dei
-segnali ricevuti da parte del ricevitore [31].
-Per far procedere autonomamente il veicolo, il GPS, con l’aiuto di altri
-sensori, crea mappe precise della carreggiata e guida nella direzione
-esatta. Questo rilevamento potrebbe anche permettere di vedere in tempo
-reale altri veicoli sulla stessa strada e mostrarne la posizione attuale.
-3.3
-reti neurali
-Le Reti Neurali sono oggi ampliamente accettate come soluzioni domi-
-nanti per la visione artificiale, per il riconoscimento vocale e per l’elabo-
-razione del linguaggio naturale. La cosa su cui ci siamo concentrati in
-questo elaborato è proprio la visione artificiale che un veicolo a guida
-autonoma deve avere per poter garantire la sicurezza di passeggeri e am-
-biente esterno. Il problema principale di questi sistemi è il riconoscimento
-di quello che hanno intorno e la conseguente decisione che prendono
-per far muovere il veicolo. Infatti, come accaduto, ad esempio durante
-l’utilizzo del cosiddetto Autopilot di Tesla, il veicolo può non riconoscere
-una certa situazione di pericolo od un ostacolo e quindi minare la sicu-
-rezza, non solo degli individui nell’abitacolo, ma anche di quelli presenti
-all’esterno, che essi siano altri pedoni o altri mezzi nelle vicinanze.
-Per quanto riguarda le prestazioni di queste Reti Neurali, sono stati
-registrati punteggi di accuratezza spesso corrispondenti a quelli di un
-individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
-ti i punteggi osservati quando si considerano i casi peggiori. Con casi
-peggiori si vuole intendere quei casi definiti Adversarial Examples [33] o
-input perturbati, anche solo leggermente, che dal punto di vista umano
-risultano sempre comprensibili, mentre da quello della macchina, cam-
-biano totalmente di significato. Naturalmente, se queste Reti vengono
-utilizzate su veicoli che devono muoversi in un ambiente nel quale si
-trova un’eterogeneità di soggetti e comportamenti, si parla di contesti3.3 reti neurali
-nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
-dependability di un sistema sono al primo posto in ordine di importanza.
-3.3.1
-Classificatori
-Molto importante, per la guida autonoma, è il processo di classificazione:
-esso si può definire come individuazione, dato un insieme di oggetti
-(nel nostro caso immagini o fotogrammi), di particolari caratteristiche
-che permettono al sistema di prendere una decisione sulla base dei dati
-estrapolati. Nel nostro contesto si parlerà di classificatori basati sulle Reti
-Neurali. Su di essi sono state osservate diverse vulnerabilità prendendo
-in considerazione immagini di input trasformate spazialmente [33]: con
-questo termine si intende rappresentare tutte le possibili trasformazioni
-che un’immagine può subire, ad esempio ruotandola, tagliandola, sca-
-landola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
-contesti:
-• verificare il livello di completezza di un classificatore,
-• allenare una rete neurale,
-• ricreare scenari o situazioni con cui il veicolo su cui è installata una
-determinata rete può avere a che fare.
-Con il termine "trasformata spazialmente" non ci si deve immaginare
-una modifica profonda del fotogramma in questione, ma anzi, basta
-anche solo una piccola rotazione, di meno di un grado, per far sì che il
-classificatore confonda, ad esempio, un revolver con una trappola per topi
-[33], il che, pensando ad un utilizzo anche diverso da quello che se ne fa
-su un veicolo a guida autonoma, può far sorgere molte preoccupazioni e
-domande (si pensi all’ambito aeroportuale).
-3.3.2
-Object Recognition
-In generale, ci si riconduce al problema dell’Object Recognition o ricono-
-scimento artificiale degli oggetti. Questo richiede che ci sia una nozione
-di somiglianza visiva, difficile da far apprendere ad un sistema: signifi-
-cherebbe catturare e insegnare ad una macchina la nozione di percezione
-umana [33].
-3334
-elementi principali di guida autonoma
-Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto presta-
-zioni all’avanguardia, talvolta competitive con la percezione umana.
-Una della sfide principali nella guida autonoma è il cambiamento am-
-bientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
-differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
-stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
-muove nello spazio [34].
-Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
-di valutazione nella navigazione potrebbe causare incidenti altamente
-devastanti.
-Figura 8.: Schema training e impiego della Rete Neurale su un veicolo
-Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
-analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
-dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infra-
-struttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
-della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
-della superficie stradale non sono state incluse [31].
-
 \subsection{Artificial Intelligence}
 Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
@@ -694,7 +466,7 @@ Ogni filtro convoluzionale è infine associato ad un bias: dato un filtro p, ed 
 q, bias è indicato con b(p, q). Il bias è un fattore di moltiplicazione della mappa di
 attivazione e la sua presenza incrementa il numero di parametri di un’unità. Il numero
 di features in ogni strato sarà dunque 1 + L x B x d. Come tutti gli altri parametri, il
-valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}\end{comment
+valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}\end{comment}
 \subparagraph{Funzione di attivazione Relu}
 L’operazione di attivazione non-lineare segue l’operazione di convoluzione. Per ogni
 strato Lq x Bq x d, la funzione di attivazione genera uno strato di eguale dimensione
@@ -734,17 +506,231 @@ introducono.\cite{aggarwal2018neural}
 Connette ogni feature in input con la corrispondente feature in output. Presenta la struttura di una rete feed-forward tradizionale e aumenta a dismisura il numero di parametri
 addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
 parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
+
+
+
+\subsection{Autonomous Driving}
+Nell’ultimo decennio, il settore dell’Automotive è stato in continua evo-
+luzione. In particolar modo, le grandi aziende automobilistiche e mol-
+ti gruppi di ricerca si sono mossi verso l’automazione della guida ed
+il miglioramento delle infrastrutture già esistenti. I motivi di questo
+interessamento del settore verso la guida autonoma sono vari:
+\begin{itemize}
+\item riduzione del numero di incidenti, anche fino al 90%,
+\item  riduzione dei consumi,
+\item  riduzione delle emissioni di CO 2 ,
+\item  nonché la riduzione di tutte le varie problematiche della sicurezza
+stradale.
+
+\end{itemize}
+\subsubsection{Livelli di automazione della guida}
+La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
+In questo sistema di classificazione, all’aumentare del livello di automa-
+zione, la responsabilità del conducente passa dalla guida alle attività di
+supervisione.
+Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui non è presente nessuna  automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
+\begin{itemize}
+\item Livelli 0:
+Veicoli privi di qualsiasi sistema di automazione.
+\item Livello 1: 
+Veicoli  i quali mettono a disposizione dell'autista, almeno un sistema di assistenza, per esempio, l'assistenza alla frenata.
+\item Livello 2:
+Veicoli i quali cobinano due o più sistemi avanzati di assistenza alla guida, come l'adaptive cruise control, Lane-Keeping assist, e l'Automatic Emergency Braking. Tutti questi rientrano sotto la dicitura ADAS (Advanced Driver-Assistance Systems). Un 
+\item Livello 3:
+Veicoli definiti a guida semi-autonoma, siccome sono in grado di  gestire situazioni variegate, anche al di fuori di un contesto autostradale. Nel senso che si prendono la responsabilità di gestire tratti del tragitto, richiedendo però alla fine di questi la ripresa del controllo da parte del conducente. Nel caso questo non avvenisse, fermeranno nella maniera più sicura il  veicolo
+\item Livello 4
+Veicoli definiti a guida autonoma, sono dotati di un set di tecnologie in grado di procedere per lunghi tragitti, superando una varietà di ostacoli, come i caselli autostradali.Tuttavia il loro funzionamento sarà limitato:
+• ad una determinata area geografica,
+• da condizioni meteo avverse,
+• da una velocità massima e così via.
+\item Livello 5
+Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi condizione e luogo
+\end{itemize}
+Al momento la serie di veicoli con il livello più alto, è l'Autopilot di Tesla, che effettivamente di può ritenere di livello 4, ma per motivi legali è categorizzato come livello 3, e la navetta Olly, classificata come livello 4.
+
+\subsubsection{Visione artificiale}
+Come definito nella sezione precedente dedicata all'intelligenza artificiale, ogni agente prende in input una sensazione, la elabora, prende una decisione, e la attua con gli attuatori. Applicando questo concetto all'autonomus driving, anche questi hanno una serie di sensori, che gli permettono di prendere coscienza dell'ambiente circostante in cui è immersa la vettura.
+Le principali tecnologie, presenti al momento su questi sistemi sono\cite{das2018risk}:
+\begin{itemize}
+\item Videocamere,
+\item Radar,
+\item Lidar,
+\item GPS.
+\end{itemize}
+che insieme compongono la visione artificiale avanzata dell'autonomus driving.
+Tutte insieme, forniscono un modello del ambiente circostante (3D),  attraverso immagini bidimensionali(2D).
+Lo scopo della visione artificiale è proprio quella di riprodurre la vista umana.\cite{wiki:visart}
+Come pre-annunciato il seguente elaborato prenderà definirà un detector dei guasti sulla fotocamera. Questa scelta è data dal fatto che sui veicoli
+di oggi sono presenti più dispositivi di questo genere ed il loro obiettivo
+è catturare i fotogrammi e renderli disponibili come input per software
+impiegati nella scelta del comportamento da tenere.
+\subparagraph{LIDAR - Light Detection And Ranging}
+Il Lidar è  solito essere installato sul tettuccio del veicolo, è un sensore che attraverso l'emissione e ricezione di segnali luminosi, laser, ottiene informazioni fisiche  dell'ambiente e  cinematiche sul  veicolo.
+\begin{comment}
+È una tecnologia di telerilevamento. I suoi usi sono molto vari soprattutto
+perché il suo obiettivo principale è quello di raccogliere informazioni
+3D e usare la luce sotto forma di un laser pulsato per misurare diverse
+distanze. Il suo ruolo è quello di raccogliere informazioni cinematiche sul
+veicolo e informazioni fisiche sull’ambiente circostante. Il sensore ottico
+LIDAR è installato sul tettuccio del veicolo autonomo. È composto da un
+laser, un filtro per obiettivo, un ricevitore, un regolatore di potenza, uno
+specchio rotante e un processore integrato \citep{das2018risk}.
+Diversamente dal Radar, che al posto della luce utilizza onde radio,3.2 visione artificiale
+la distanza dell’oggetto è determinata misurando il tempo trascorso fra
+l’emissione dell’impulso e la ricezione del segnale retrodiffuso. L’unità
+di elaborazione deve essere collocata in una posizione abbastanza rialza-
+ta da terra; inoltre, sono necessarie misure di sicurezza per proteggere
+l’unità da urti o vibrazioni derivanti da incidenti o dalla navigazione su
+terreni accidentati, che potrebbero causare guasti al sistema.
+\end{comment}
+\subparagraph{RADAR - RAdio Detection And Ranging}
+E' un sistema che utilizza onde radio trasmesse nell'ambiente, al fine di raccogliere informazioni sugli  ostacoli intorno al veicolo e aumentare la consapevolezza del  posizionamento degli altri veicoli presenti. Questo sensore tiene
+d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
+a seconda del comportamento degli altri conducenti \cite{das2018risk}.
+\begin{comment}
+È un sistema che utilizza onde radio per il rilevamento e la determina-
+zione della posizione ed eventualmente della velocità di oggetti fissi o
+mobili, come aerei, navi, veicoli, formazioni atmosferiche o il suolo. Le
+onde radio vengono trasmesse nell’ambiente per raccogliere informazioni
+sugli ostacoli intorno al veicolo e aumentare la consapevolezza del po-
+sizionamento degli altri soggetti davanti e dietro. Questo sensore tiene
+d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
+a seconda del comportamento degli altri conducenti \cite{das2018risk}.
+È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
+di sensori anteriori e posteriori.
+\begin{end}
+\subparagraph{Videocamera}
+Le telecamere sono necessarie nel sistema di trasporto intelligente affinché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
+veicolo in considerazione. Le immagini bidimensionali derivanti da una
+singola fotocamera o le mappe 3D risultanti dall’utilizzo della doppia
+fotocamera, potrebbero individuare stereoscopicamente lo spazio disponibile per i movimenti autonomi del veicolo. Queste immagini o mappe
+vengono utilizzate per estrarre informazioni quantitative dalle scene e
+per tracciare gli obiettivi del veicolo. Le immagini sono segmentate in un
+certo numero di pixel. Ogni pixel viene elaborato e memorizzato, il che richiede un’elevata velocità di calcolo ed un elevato spazio di archiviazione
+\cite{das2018risk}.
+
+\subparagraph{GPS - Global Positioning System}
+Il Sistema di Posizionamento Globale, attraverso una rete dedicata di sa-
+telliti artificiali in orbita, fornisce a un terminale mobile o ad un ricevitore
+GPS informazioni sulle sue coordinate geografiche e sul suo orario in
+quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
+che potrebbero impedirne l’invio e la ricezione dei segnali (edifici molto
+alti, gallerie, ecc.), generando errori dell'ordine di metri.
+\begin{comment}
+La localizzazione avviene tramite la trasmissione di un segnale radio da parte di ciascun satellite e l’elaborazione dei
+segnali ricevuti da parte del ricevitore \cite{das2018risk}
+Per far procedere autonomamente il veicolo, il GPS, con l’aiuto di altri
+sensori, crea mappe precise della carreggiata e guida nella direzione
+esatta. 
+\end{comment}
+\subsubsection{Reti neurali applicate all'autonomus driving}
+Le Reti Neurali sono oggi ampliamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l’elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degl'utenti esterni al veicolo. 
+Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo, come un caso di autopilot di Tesla.
+Per quanto riguarda le prestazioni misurate su questa tecnologia, sono stati
+registrati punteggi di accuratezza spesso corrispondenti a quelli di un
+individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
+ti i punteggi osservati quando si considerano i casi peggiori. Con casi
+peggiori si vuole intendere quei casi definiti Adversarial Examples \cite{engstrom2019exploring} o
+input perturbati, anche solo leggermente, che dal punto di vista umano
+risultano sempre comprensibili, mentre da quello della macchina, cam-
+biano totalmente di significato. Naturalmente, se queste Reti vengono
+utilizzate su veicoli che devono muoversi in un ambiente nel quale si
+trova un’eterogeneità di soggetti e comportamenti, si parla di contesti
+nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
+dependability di un sistema sono al primo posto in ordine di importanza.
+
+\subsubsection{Classificatori}
+Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prenderà delle decisioni.
+Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con
+questo termine si intende rappresentare tutte le possibili trasformazioni
+che un’immagine può subire, ad esempio ruotandola, tagliandola, sca-
+landola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
+contesti:
+• verificare il livello di completezza di un classificatore,
+• allenare una rete neurale,
+• ricreare scenari o situazioni con cui il veicolo su cui è installata una
+determinata rete può avere a che fare.
+Con il termine "trasformata spazialmente" non ci si deve immaginare
+una modifica profonda del fotogramma in questione, ma anzi, basta
+anche solo una piccola rotazione, di meno di un grado, per far sì che il
+classificatore confonda, ad esempio, un revolver con una trappola per topi
+\cite{engstrom2019exploring}, il che, pensando ad un utilizzo anche diverso da quello che se ne fa
+su un veicolo a guida autonoma, può far sorgere molte preoccupazioni e
+domande (si pensi all’ambito aeroportuale).
+
+\subsubsection{Object Recognition}
+In generale, ci si riconduce al problema dell’Object Recognition o ricono-
+scimento artificiale degli oggetti. Questo richiede che ci sia una nozione
+di somiglianza visiva, difficile da far apprendere ad un sistema: signifi-
+cherebbe catturare e insegnare ad una macchina la nozione di percezione
+umana \cite{engstrom2019exploring}.
+\begin{comment}
+Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto presta-
+zioni all’avanguardia, talvolta competitive con la percezione umana.
+Una della sfide principali nella guida autonoma è il cambiamento am-
+bientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
+differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
+stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
+muove nello spazio [34].
+Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
+di valutazione nella navigazione potrebbe causare incidenti altamente
+devastanti.
+Figura 8.: Schema training e impiego della Rete Neurale su un veicolo
+Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
+analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
+dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infra-
+struttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
+della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
+della superficie stradale non sono state incluse [31].
+\end{comment}
+
 \subsection{CARLA}
-CARlA è un software open source di simulazione per la ricerca di guida autonoma.
-Il simulatore CARLA è costituito da un'architettura client-server scalabile.
-Il server è responsabile di tutto ciò che riguarda la simulazione stessa: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. Poiché mira a risultati realistici, la soluzione migliore sarebbe eseguire il server con una GPU dedicata, soprattutto quando si ha a che fare con l'apprendimento automatico.
-Il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
+\subparagraph{Autonomus driver simulator}
+Lo sviluppo della guida senza conducente è un argomento attuale e di
+grande interesse, su cui molte società automobilistiche stanno investendo
+dato che promette di essere un mercato da miliardi di dollari [15].Di contro, la guida in ambiente cittadino è una sfida
+molto più grande, per via del maggiore grado di variabilità degli scenari
+che si possono presentare e degli oggetti che devono essere riconosciuti,
+ed è necessario ancora molto lavoro prima che sia disponibile un sistema
+in grado di muoversi da solo in questi ambienti senza pericolo e in modo
+efficiente.
+Nell’ottica dello sviluppo di un sistema di guida autonoma efficiente
+e sicuro, si rende necessario lo sviluppo di metodi e strumenti per il
+miglioramento dell’efficienza del prodotto e per la validazione dello
+stesso. Tra le tecniche utilizzate per automobili a guida autonoma ci sono
+metodi di apprendimento automatico che richiedono una gran quantità di
+immagini, inoltre sia per lo sviluppo che soprattutto per la validazione, si
+deve considerare che esistono una quantità infinita di scenari (situazioni)
+che si possono presentare e che il sistema progettato deve essere in grado
+di agire nel modo più sicuro in ognuno di essi. Il problema è di per sé mal
+posto, visto che non è dato sapere se un’auto che reagisce correttamente
+in una certa situazione farà lo stesso cambiando qualche variabile dello
+scenario.
+lo sviluppo e la validazione delle auto a guida autonoma si configura
+per quanto detto come molto complicato e costoso, visto che è necessario
+effettuare un gran numero di prove in diversi scenari.
+Per aiutare a risolvere il problema dei costi dello sviluppo con testing
+in ambiente fisico e della richiesta di dati che abbiamo presentato, sono
+stati sviluppati dei simulatori che permettono di sperimentare il software
+sviluppato in un ambiente virtuale, tra questi NVIDIA DRIVE Constella-
+tion, AirSim, e CARLA Simulator. Questi simulatori riproducono scenari di guida cittadina
+in cui è possibile testare un auto a guida autonoma che raccoglie dati
+dall’ambiente. Per le considerazioni fatte in precedenza, un simulatore
+si presenta come un alleato fondamentale nel processo di sviluppo e di
+validazione. Infatti un simulatore in grado di riprodurre realisticamente
+il complicato ambiente cittadino può essere utilizzato per lo sviluppo
+con tecniche di machine learning avide di dati, per cui sono necessari
+centinaia di migliaia di riproduzioni per ottenere risultati, e per testare il
+sistema in altrettanti scenari, anche eticamente o fisicamente difficili da
+riprodurre, prima o congiuntamente allo sviluppo e al testing su strada.
+
+In particolare CARLA è un simulatore grafico open source costituito da un'architettura client-server scalabile.
+dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'ambiente in tutti i suoi aspetti: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. 
+Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
 \subsubsection{Sensori}
-CARLA consente una configurazione flessibile della suite di sensori dell’agente. I sensori sono limitati alle fotocamere RGB ed agli pseudo-sensori
-che forniscono ground-truth depth e ground-truth semantic segmenta-
-tion (Fig. 26). Nella figura sottostante, a partire da sinistra, è illustrata la
-visione attraverso i tre sensori precedentemente nominati.
-Figura 26.: Tre tipologie di sensori forniti dal simulatore CARLA
+Come un veicolo reale di guida autonoma, CARLA predispone una suite di sensori dell'agente oltre a configigurazioni flessibili e integrazioni di ulteriori.
+ I sensori pre-esistenti sono le fotocamere RGB e i  pseudo-sensori
+che forniscono ground-truth depth e ground-truth semantic segmentation .
 Il numero di telecamere ed il loro tipo e posizione possono essere specificati dal cliente. I parametri della fotocamera includono la posizione 3D,
 l’orientamento 3D rispetto al sistema di coordinate dell’auto, al campo
 visivo e alla profondità di campo. 

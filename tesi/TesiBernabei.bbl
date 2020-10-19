@@ -140,6 +140,71 @@
     \field{year}{2011}
   \endentry
 
+  \entry{das2018risk}{article}{}
+    \name{author}{1}{}{%
+      {{hash=DP}{%
+         family={Das},
+         familyi={D\bibinitperiod},
+         given={Plaban},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DP1}
+    \strng{fullhash}{DP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{title}{Risk analysis of autonomous vehicle and its safety impact on
+  mixed traffic stream}
+    \field{year}{2018}
+  \endentry
+
+  \entry{engstrom2019exploring}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=EL}{%
+         family={Engstrom},
+         familyi={E\bibinitperiod},
+         given={Logan},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=TB}{%
+         family={Tran},
+         familyi={T\bibinitperiod},
+         given={Brandon},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=TD}{%
+         family={Tsipras},
+         familyi={T\bibinitperiod},
+         given={Dimitris},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SL}{%
+         family={Schmidt},
+         familyi={S\bibinitperiod},
+         given={Ludwig},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MA}{%
+         family={Madry},
+         familyi={M\bibinitperiod},
+         given={Aleksander},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EL+1}
+    \strng{fullhash}{ELTBTDSLMA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{booktitle}{International Conference on Machine Learning}
+    \field{pages}{1802\bibrangedash 1811}
+    \field{title}{Exploring the landscape of spatial robustness}
+    \field{year}{2019}
+  \endentry
+
   \entry{nicol2004model}{article}{}
     \name{author}{3}{}{%
       {{hash=NDM}{%
@@ -264,6 +329,28 @@
     \field{title}{Sviluppo ed applicazione di reti neurali per segmentazione
   semantica a supporto della navigazione di rover marziani}
     \field{year}{2019}
+  \endentry
+
+  \entry{wiki:visart}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={Wikipedia},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{note}{[Online; in data 15-ottobre-2020]}
+    \field{title}{Visione artificiale --- Wikipedia{,} L'enciclopedia libera}
+    \verb{url}
+    \verb http://it.wikipedia.org/w/index.php?title=Visione_artificiale&oldid=1
+    \verb 11327669
+    \endverb
+    \field{year}{2020}
   \endentry
 \enddatalist
 \endinput
