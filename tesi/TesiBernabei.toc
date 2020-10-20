@@ -83,24 +83,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.3.4}Classificatori}{26}{subsubsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}CARLA}{28}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.3.5}Object Recognition}{27}{subsubsection.2.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.1}Sensori}{28}{subsubsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4}CARLA}{27}{subsection.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Autonomus driver simulator}{27}{section*.23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.4.1}Sensori}{29}{subsubsection.2.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Costruzione del dataset}{29}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Acquisizione}{29}{section*.23}
+\contentsline {subsection}{\numberline {3.1}Acquisizione}{29}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Acquisizione}{30}{section*.24}
+\contentsline {subsection}{\numberline {3.2}Sporcatura}{30}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Sporcatura}{30}{section*.25}
+\contentsline {subparagraph}{rappresentazione dei vari guasti con breve descrizione}{30}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Costruzione del detector}{30}{section.4}
+\contentsline {section}{\numberline {4}Costruzione del detector}{31}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Addestramento del rete convuluzionale}{31}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Convulutional network}{31}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{31}{section.5}
+\contentsline {subsection}{\numberline {4.2}Addestramento del rete convuluzionale}{32}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{31}{section.6}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{32}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}A Manuale utente}{31}{section.7}
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{32}{section.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}A Manuale utente}{32}{section.7}
