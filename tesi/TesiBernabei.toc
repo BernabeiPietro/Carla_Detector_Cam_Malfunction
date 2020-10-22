@@ -55,58 +55,56 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{feed-forward network}{17}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.4}Convulutional Neural Network}{18}{subsubsection.2.2.4}
+\contentsline {subsection}{\numberline {2.3}Autonomous Driving}{18}{subsection.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{L'architettura}{18}{section*.15}
+\contentsline {subsubsection}{\numberline {2.3.1}Livelli di automazione della guida}{18}{subsubsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Convolutional layer}{19}{section*.16}
+\contentsline {subsubsection}{\numberline {2.3.2}Visione artificiale}{20}{subsubsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Padding}{20}{section*.17}
+\contentsline {subparagraph}{LIDAR - Light Detection And Ranging}{20}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Funzione di attivazione Relu}{21}{section*.18}
+\contentsline {subparagraph}{RADAR - RAdio Detection And Ranging}{21}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Pooling layer}{22}{section*.19}
+\contentsline {subsubsection}{\numberline {2.3.3}Reti neurali applicate all'autonomus driving}{21}{subsubsection.2.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{dense layer}{22}{section*.20}
+\contentsline {subsubsection}{\numberline {2.3.4}Classificatori}{22}{subsubsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Autonomous Driving}{23}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.5}Object Recognition}{22}{subsubsection.2.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.1}Livelli di automazione della guida}{23}{subsubsection.2.3.1}
+\contentsline {subsection}{\numberline {2.4}CARLA}{23}{subsection.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.2}Visione artificiale}{24}{subsubsection.2.3.2}
+\contentsline {subparagraph}{Autonomus driver simulator}{23}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{LIDAR - Light Detection And Ranging}{25}{section*.21}
+\contentsline {subsubsection}{\numberline {2.4.1}Sensori}{24}{subsubsection.2.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{RADAR - RAdio Detection And Ranging}{25}{section*.22}
+\contentsline {section}{\numberline {3}Costruzione del dataset}{25}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.3}Reti neurali applicate all'autonomus driving}{26}{subsubsection.2.3.3}
+\contentsline {subsection}{\numberline {3.1}Acquisizione}{25}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.4}Classificatori}{26}{subsubsection.2.3.4}
+\contentsline {subsection}{\numberline {3.2}Sporcatura}{25}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.5}Object Recognition}{27}{subsubsection.2.3.5}
+\contentsline {subparagraph}{rappresentazione dei vari guasti con breve descrizione}{26}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}CARLA}{27}{subsection.2.4}
+\contentsline {section}{\numberline {4}Costruzione del detector}{26}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Autonomus driver simulator}{27}{section*.23}
+\contentsline {subsection}{\numberline {4.1}Convulutional Neural Network}{27}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.1}Sensori}{29}{subsubsection.2.4.1}
+\contentsline {subparagraph}{L'architettura}{27}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Costruzione del dataset}{29}{section.3}
+\contentsline {subparagraph}{Convolutional layer}{28}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Acquisizione}{29}{subsection.3.1}
+\contentsline {subparagraph}{Padding}{29}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Sporcatura}{30}{subsection.3.2}
+\contentsline {subparagraph}{Funzione di attivazione Relu}{30}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{rappresentazione dei vari guasti con breve descrizione}{30}{section*.24}
+\contentsline {subparagraph}{Pooling layer}{30}{section*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Costruzione del detector}{31}{section.4}
+\contentsline {subparagraph}{dense layer}{31}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Convulutional network}{31}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Addestramento del rete convuluzionale}{33}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Addestramento del rete convuluzionale}{32}{subsection.4.2}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{33}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{32}{section.5}
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{33}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{32}{section.6}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}A Manuale utente}{32}{section.7}
+\contentsline {section}{\numberline {7}A Manuale utente}{33}{section.7}

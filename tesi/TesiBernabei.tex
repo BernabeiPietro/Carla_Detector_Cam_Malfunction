@@ -787,11 +787,25 @@ Il primo layer ha un è un conv2D layer, di ben 800*600*3=1440000 neuroni.
 Le dimensioni di questo primo sono date dalla necessità di poter elaborare un immagine per intero, e infatti (800,600) sono le dimensioni di larghezza e altezza delle immagini, e quindi il numero di pixelche compongono l'immagine sono 800*600=480000,  l'ultimo fattore è dato dalla composizione interna di un pixel. Questo rappresenta il numero di canali dei colori,ed essendo immagini rgb (red,green,blue) sono 3.
 Definito l'input del primo layer e quindi dell'intera rete, si può passare all'output.
  \end{comment}
-Per la tesi è stato sviluppatana un convnet dalla seguente architettura 
+Nel caso del detector la struttura della convnet è  mostrata in seguito con:
+
+\includegraphics[scale=0.3]{strutturarete.png}
+
+
+
 \subsection{Addestramento del rete convuluzionale}
+Le ConvNet sono tipologie di reti neurali 
+Per l'addestramento della rete convuluzionale, sono stati predisposti 5 epochs, con batch di dimensione 4.
 
+\subsubsection{Batch}
+Siccome le reti richiedono grosse quantità di dati per essere allenate, si definiscono due modi per fare ciò: la prima prevede l'uso di una infrastruttura hardware in grado di processare l'intera mole tutta insieme nello stesso momento, e questo può risultare effettivamente difficile, mentre il secondo modo prevede di dividere il dataset in porzioni, e fornirle una per una alla rete.
+Le dimensioni di queste porzioni, è definità come \textbf{Batch Size}.
+Il numero di batch  necessari a processare l'interno dataset, definisce il numero di iterazioni.
 
-
+\subsubsection{Epochs}
+Ultima componente fondamentale di un addestramento, sono le Epochs.
+Dato il dataset di 300000 elementi, e un batch size di 4, si avranno 75000 iterazioni per epoch, quindi un epoch è l'intero ciclo di elaborazione di un training set, e le epochs identificano quante epoch saranno eseguite. Questo elemento è importante, perchè ad ogni epoch mantenendo il dataset costante, modifica i pesi della rete, portando la curva da uno stato underfitting, a uno ottimale, a un overfitting. 
+Il numero di epoch necesarioo a ottenere una curva ottimale varia da dataset a dataset
 
 \section{Esecuzione e risultati}
 
