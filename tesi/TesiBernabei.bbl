@@ -272,6 +272,33 @@
     \field{year}{2005}
   \endentry
 
+  \entry{secci2020failures}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SF}{%
+         family={Secci},
+         familyi={S\bibinitperiod},
+         given={Francesco},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Ceccarelli},
+         familyi={C\bibinitperiod},
+         given={Andrea},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SFCA1}
+    \strng{fullhash}{SFCA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{On failures of RGB cameras and their effects in autonomous
+  driving applications}
+    \field{journaltitle}{arXiv preprint arXiv:2008.05938}
+    \field{year}{2020}
+  \endentry
+
   \entry{smith1988performability}{article}{}
     \name{author}{3}{}{%
       {{hash=SR}{%

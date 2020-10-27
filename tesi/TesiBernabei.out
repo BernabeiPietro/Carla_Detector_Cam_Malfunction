@@ -21,11 +21,14 @@
 \BOOKMARK [2][-]{subsection.2.4}{CARLA}{section.2}% 21
 \BOOKMARK [3][-]{subsubsection.2.4.1}{Sensori}{subsection.2.4}% 22
 \BOOKMARK [1][-]{section.3}{Costruzione del dataset}{}% 23
-\BOOKMARK [2][-]{subsection.3.1}{Acquisizione}{section.3}% 24
-\BOOKMARK [2][-]{subsection.3.2}{Sporcatura}{section.3}% 25
-\BOOKMARK [1][-]{section.4}{Costruzione del detector}{}% 26
-\BOOKMARK [2][-]{subsection.4.1}{Convulutional Neural Network}{section.4}% 27
-\BOOKMARK [2][-]{subsection.4.2}{Addestramento del rete convuluzionale}{section.4}% 28
-\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 29
-\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 30
-\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 31
+\BOOKMARK [2][-]{subsection.3.1}{Definizione delle classi}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.2}{Acquisizione}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.3}{Sporcatura}{section.3}% 26
+\BOOKMARK [1][-]{section.4}{Costruzione del detector}{}% 27
+\BOOKMARK [2][-]{subsection.4.1}{Convulutional Neural Network}{section.4}% 28
+\BOOKMARK [2][-]{subsection.4.2}{Addestramento del rete convuluzionale}{section.4}% 29
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Batch}{subsection.4.2}% 30
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Epochs}{subsection.4.2}% 31
+\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 32
+\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 33
+\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 34

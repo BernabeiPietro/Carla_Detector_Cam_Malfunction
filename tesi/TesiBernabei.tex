@@ -33,9 +33,8 @@
 
 \begin{document}
 
-\title{\includegraphics{download.jpeg} \vspace{2cm} \textbf{\\Tesi di Laurea}}
-
-\author{\texttt{Pietro Bernabei} - \texttt{matricola:6291312}\\ \texttt{Anno Accademico 2019/20}}
+\title{\includegraphics[scale=0.2]{download.jpeg} \vspace{2cm} Scuola di Scienze  Matematiche,Fisiche e Naturali \\ Corso di Laurea in Informatica \\Tesi di Laurea \\ \texttt{Individuazione di immagine alterate da una telecamera RGB malfunzionante attraverso un agente addestrato}\\ \texttt{Detection of failed images from an RGB camera through trained agents}}
+\author{\texttt{Pietro Bernabei} \\ \texttt{Anno Accademico 2019/20}}
 \date{}
 \maketitle
 \newpage
@@ -44,26 +43,29 @@
 \newpage
 \section{Introduzione}
 \subsection{Motivazioni}
-Nel giro di un paio di secoli il mondo, è passato dal viaggiare in groppa a un cavallo, alla groppa di una macchina, dal essere il conducente, al condotto. Le macchine a guida autonoma parziali e totali stanno diventando ogni giorno che avanza, realtà. Questa rivoluzione sta permeando il nostro stile di vita, diventandone dipendenti a tal punto da richiedere che questi siano continuativi, privi da possibili errori o malfunzionamenti.
-
-Come per un essere umano, che soffre di miopia, guidare senza occhiali è pericoloso, anche per il sistema di guida autonoma, guidare con le telecamere con guasti porta a incidenti.
+Nel giro di un paio di secoli il mondo,si  è passati dal viaggiare in groppa a un cavallo, alla groppa di una macchina, dal essere il conducente, al condotto. Le macchine a guida autonoma parziali e totali stanno diventando ogni giorno che avanza, realtà. Questa rivoluzione sta permeando il nostro stile di vita, diventando sempre di più accessibili.  Questa presenza sempre più forte nella quotidianità di tutti i giorni, fa si che queste tecnologia debba rispettare degli standard sempre più stringenti, garantendo la continuità del servizio, l'assenza di possibilli errori e malfunzionamento.
+Come per un essere umano, che soffre di miopia, guidare senza occhiali è pericoloso, anche per il sistema di guida autonoma, guidare con le telecamere affette da guasti porta a incidenti.
 Come verrà espresso in seguito, le telecamere negli attuali sistemi, ricoprono un ruolo decisivo nel momento decisionale della guida autonoma, e un loro malfunzionamento nel processo di acquisizione riperquote nel sistema decisionale, errori non molto graditi al guidatore.
+
 \subsection{Obiettivo}
-Nella seguente tesi si propone un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo.
+Nella seguente tesi si propone un detector, ovvero un sistema software in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di guasti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo, prevenendo lo sviluppo di fallimenti.
 \subsection{Organizzazione del lavoro} 
-Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. 
-Per questo la soluzione descritta,impiega una particolare forma di intelligenza artificiale,la rete neurale convuluzionale (CNN)...
+Come verrà esposto in seguito un veicolo a guida autonoma, presenta una suite di sensori, attraverso i quali "vede" l'ambiente circostante. Su queste percezioni, il suo sistema decisionale guida il veicolo in sicurezza.
+Un particolare componente di questa suite di sensori, sono le fotocamere RGB le quali risultano le più impiegate e importanti tra le tutte, e proprio la  loro importanza fa si che un loro guasto,  comporti un fallimento nel sistema decisionale.
+Per questo il detector è posto tra il  sistema di acquisizione della fotocamera RGB e il sistema decisionale, al fine di rilevare la presenza dei guasti nel sensore e comunicare questa al sistema di guida su cui prenderà  le sue decisioni.
+Il detector descritto nella seguente tesi impiega una particolare forma di intelligenza artificiale, rete neurale convuluzionale.
 Come verrà esposto meglio in seguito, una convulutional neural network è una particolare forma di supervisioned learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di intere immagini o identificazione di elementi al loro interno. I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knowledge base), sulla quale si baserà per prendere le decisioni.
 Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
 \item Definizione e generazione Dataset
-\item Creazione CNN
-\item Training CNN
+\item Creazione del modello della ConvNet
+\item Training del modello della ConvNet
 \end{itemize}
 
 \section{Fondamenti teorici}
+
 \subsection{Sistemi Critici}
-Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali quali velocità di elaborazione o altre misure di efficienza,
+Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
 convincano della adeguatezza dei nostri manufatti per i compiti sempre più
 critici e delicati per i quali li utilizziamo.
@@ -79,16 +81,16 @@ La \textbf{dependability} è una delle proprietà fondamentali dei sistemi infor
 Detto ciò nella sua definizione originale \textbf{dependability} è
 la capacità di un sistema di fornire un servizio su cui è possibile fare affidamento in
 modo giustificato.\cite{bondavalli2011analisi}
-
+\begin{comment}
 Una definizione alternativa, che stabilisce un criterio per decidere se un determinato servizio è dependable, definisce la \textbf{dependability} di un sistema
 come la capacità di evitare fallimenti che siano più frequenti e più severi del
 limite accettabile \cite{avizienis2004basic}.
 
 Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella sua totalità, senza ambiguità e precisa. 
 Per questo la dependability può essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
-
+\end{comment}
 Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
-
+La dependability, a sua volta è  composta da tre diversi aspetti di cui è necessario tenere conto:
 \begin{itemize}
 \item \textbf{Le minacce o impedimenti alla dependability.} Gli impedimenti sono le
 cause potenziali di comportamenti non previsti.
@@ -100,7 +102,7 @@ degli impedimenti.
 \end{itemize}
 
 \subsubsection{Le Minacce: guasti, errori e fallimenti}
-Si definisce:\cite{bondavalli2011analisi}
+Si definisce come:\cite{bondavalli2011analisi}
 \begin{itemize}
 \item \textbf{guasto:} la causa accertata o ipotizzata di un errore, derivante da malfunzionamenti di componenti, interferenze ambientali di natura fisica, sbagli dell’operatore o da una progettazione fallace.
 \item \textbf{errore:} è la parte dello stato del sistema che può causare un susseguente fallimento; in alternativa si definisce errore la manifestazione di un guasto all’interno di un programma o di una struttura dati.
@@ -113,9 +115,9 @@ I guasti di un sistema possono essere classificati secondo diversi punti di vist
 fisico, logico e di interazione. Un’altra suddivisione può essere fatta in base
 alla natura del guasto: un guasto può essere intenzionale o accidentale, malizioso oppure non malizioso; ed ancora in base alla persistenza dove abbiamo
 guasti permanenti, transienti ed intermittenti. Per una tassonomia completa
-si rimanda a \cite{avizienis2004basic}. \textbf{(riguarda)}
+si rimanda a \cite{avizienis2004basic} 
 
-
+\textbf{(riguarda)}
 \subparagraph{Il fallimento} di un componente si verifica quando il servizio fornito devia
 dalla sua specifica: si verifica nel momento in cui un errore del componente
 si manifesta alla sua interfaccia, e diventa quindi un guasto per il sistema. Il
@@ -282,9 +284,7 @@ stati segnalati come la causa di uno o più errori, la manutenzione preventiva
 cerca di scovare e rimuovere i guasti prima che causino degli errori durante la
 normale operazione del sistema.
 \subparagraph{Previsione dei guasti}
-La “Fault Forecasting” è condotta effettuando una valutazione del comporta-
-mento del sistema rispetto all’occorrenza e attivazione dei guasti. La valuta-
-zione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
+La “Fault Forecasting” è condotta effettuando una valutazione del comportamento del sistema rispetto all’occorrenza e attivazione dei guasti. La valutazione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
 e valutare i modi di fallimento o le combinazioni di eventi che porterebbero ad
 un fallimento del sistema; quantitativa (o probabilistica), che mira a valutare
 in termini probabilistici il grado con cui alcuni attributi vengono soddisfatti
@@ -347,23 +347,25 @@ Nello specifico, il compito di un apprendimento supervisionato è quello che dat
 (x1.y1),(x2,y2),...(xn,yn),
 dove ogni valore y è generato da un funzione sconosciuta y=f(x), questa scopre una funzione h che approssima la funzione f.  
 Il Learning problem si può definire in due maniere a seconda del l'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
- si definisce come \textbf{regressione}
-
-
+ è definito come \textbf{regressione}.
+ 
 \subsubsection{Neural Network}
 Una particolare forma di supervised learning, come ci suggerisce il titolo del seguite capitolo, sono le artificial neural network o più brevemente neural network. 
 La \textbf{rete neurale} è composta da un insieme di nodi o unità connesse da link orientati.\cite{russell2005intelligenza}
- La topologia e le propietà dei nodi determina le proprietà della rete.
+ La topologia e le propietà dei nodi determinano le proprietà della rete.
 \subparagraph{Neurone}
-Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando quando una combinazione lineare dei suoi input superano la sua hard o soft threshold. L'output dei neuroni finali sarà il risultato della task.
-\subparagraph{Collegamenti}
-Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j. Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
-\subparagraph{funzione di attivazione}
+Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua hard o soft, threshold. L'output dei neuroni finali sarà il risultato della task.
+\subparagraph{Funzione di attivazione-da rivedere}
 In generale un neurone, calcola una somma pesata dei suoi input:
 \[in_j=\sum_{i=0}^n  w_{i,j}a_{i}\]
 A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deriva l'output:
 \[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
 Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.
+\subparagraph{Collegamenti}
+I neuroni sono interconnessi tra di  loro,  al fine di  propagare il risultato della funzione di attivazione di un nodo padre a un nodo figlio.
+%Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j.
+ Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
+ 
 \subparagraph{feed-forward network}
 Definito il modello matematico di ogni neurone, questi si connetteranno insieme, a formare una rete.
 Esistono due principali tipologie: 
@@ -376,63 +378,60 @@ Una forma semplice di feed-forward network, è il perceptron network o anche chi
 \end{comment}
 
 
-
-
 \subsection{Autonomous Driving}
-Nell’ultimo decennio, il settore dell’Automotive è stato in continua evo-
-luzione. In particolar modo, le grandi aziende automobilistiche e mol-
-ti gruppi di ricerca si sono mossi verso l’automazione della guida ed
+Nell’ultimo decennio, il settore dell’Automotive è stato in continua evoluzione. In particolar modo, le grandi aziende automobilistiche e molti gruppi di ricerca si sono mossi verso l’automazione della guida ed
 il miglioramento delle infrastrutture già esistenti. I motivi di questo
-interessamento del settore verso la guida autonoma sono vari:
+interesse del settore verso la guida autonoma sono vari:
 \begin{itemize}
 \item riduzione del numero di incidenti, anche fino al 90%,
 \item  riduzione dei consumi,
-\item  riduzione delle emissioni di CO 2 ,
-\item  nonché la riduzione di tutte le varie problematiche della sicurezza
+\item  riduzione delle emissioni di $CO_{2}$ ,
+\item  riduzione di tutte le varie problematiche della sicurezza
 stradale.
-
 \end{itemize}
+
 \subsubsection{Livelli di automazione della guida}
 La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
-In questo sistema di classificazione, all’aumentare del livello di automa-
-zione, la responsabilità del conducente passa dalla guida alle attività di
+In questo sistema di classificazione, all’aumentare del livello di automazione, la responsabilità del conducente passa dalla guida alle attività di
 supervisione.
-Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui non è presente nessuna  automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
+Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui è assente qualsiasi tipologia di automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
+
 \begin{itemize}
 \item Livelli 0:
 Veicoli privi di qualsiasi sistema di automazione.
 \item Livello 1: 
 Veicoli  i quali mettono a disposizione dell'autista, almeno un sistema di assistenza, per esempio, l'assistenza alla frenata.
 \item Livello 2:
-Veicoli i quali cobinano due o più sistemi avanzati di assistenza alla guida, come l'adaptive cruise control, Lane-Keeping assist, e l'Automatic Emergency Braking. Tutti questi rientrano sotto la dicitura ADAS (Advanced Driver-Assistance Systems). Un 
+Veicoli i quali combinano due o più sistemi avanzati di assistenza alla guida, come l'adaptive cruise control, Lane-Keeping assist, e l'Automatic Emergency Braking. Tutti questi rientrano sotto la dicitura ADAS (Advanced Driver-Assistance Systems). 
 \item Livello 3:
-Veicoli definiti a guida semi-autonoma, siccome sono in grado di  gestire situazioni variegate, anche al di fuori di un contesto autostradale. Nel senso che si prendono la responsabilità di gestire tratti del tragitto, richiedendo però alla fine di questi la ripresa del controllo da parte del conducente. Nel caso questo non avvenisse, fermeranno nella maniera più sicura il  veicolo
+Veicoli definiti a guida semi-autonoma, siccome sono in grado di  gestire situazioni variegate, anche al di fuori di un contesto autostradale. Nel senso che si prendono la responsabilità di gestire tratti del tragitto, richiedendo però alla fine di questi la ripresa del controllo da parte del conducente. Nel caso questo non avvenisse, arresteranno in sicurezza il  veicolo.
 \item Livello 4
 Veicoli definiti a guida autonoma, sono dotati di un set di tecnologie in grado di procedere per lunghi tragitti, superando una varietà di ostacoli, come i caselli autostradali.Tuttavia il loro funzionamento sarà limitato:
-• ad una determinata area geografica,
-• da condizioni meteo avverse,
-• da una velocità massima e così via.
-\item Livello 5
-Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi condizione e luogo
+\begin{itemize}
+\item ad una determinata area geografica,
+\item condizioni meteo avverse,
+\item da una velocità massima e così via.
 \end{itemize}
-Al momento la serie di veicoli con il livello più alto, è l'Autopilot di Tesla, che effettivamente di può ritenere di livello 4, ma per motivi legali è categorizzato come livello 3, e la navetta Olly, classificata come livello 4.
 
+\item Livello 5
+Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi condizione e luogo.
+\end{itemize}
+\begin{comment}
+Al momento la serie di veicoli con il livello più alto, è l'Autopilot di Tesla, che effettivamente si può ritenere di livello 4, ma per motivi legali è categorizzato come livello 3, e la navetta Olly, classificata come livello 4.
+\end{comment}
 \subsubsection{Visione artificiale}
 Come definito nella sezione precedente dedicata all'intelligenza artificiale, ogni agente prende in input una sensazione, la elabora, prende una decisione, e la attua con gli attuatori. Applicando questo concetto all'autonomus driving, anche questi hanno una serie di sensori, che gli permettono di prendere coscienza dell'ambiente circostante in cui è immersa la vettura.
 Le principali tecnologie, presenti al momento su questi sistemi sono\cite{das2018risk}:
 \begin{itemize}
-\item Videocamere,
-\item Radar,
-\item Lidar,
-\item GPS.
+\item Fotocamere
+\item Radar
+\item Lidar
+\item GPS
 \end{itemize}
 che insieme compongono la visione artificiale avanzata dell'autonomus driving.
 Tutte insieme, forniscono un modello del ambiente circostante (3D),  attraverso immagini bidimensionali(2D).
 Lo scopo della visione artificiale è proprio quella di riprodurre la vista umana.\cite{wiki:visart}
-Come pre-annunciato il seguente elaborato prenderà definirà un detector dei guasti sulla fotocamera. Questa scelta è data dal fatto che sui veicoli
-di oggi sono presenti più dispositivi di questo genere ed il loro obiettivo
-è catturare i fotogrammi e renderli disponibili come input per software
-impiegati nella scelta del comportamento da tenere.
+
 \subparagraph{LIDAR - Light Detection And Ranging}
 Il Lidar è  solito essere installato sul tettuccio del veicolo, è un sensore che attraverso l'emissione e ricezione di segnali luminosi, laser, ottiene informazioni fisiche  dell'ambiente e  cinematiche sul  veicolo.
 \begin{comment}
@@ -454,7 +453,7 @@ terreni accidentati, che potrebbero causare guasti al sistema.
 \end{comment}
 \subparagraph{RADAR - RAdio Detection And Ranging}
 E' un sistema che utilizza onde radio trasmesse nell'ambiente, al fine di raccogliere informazioni sugli  ostacoli intorno al veicolo e aumentare la consapevolezza del  posizionamento degli altri veicoli presenti. Questo sensore tiene
-d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
+d’occhio le altre auto e indica al veicolo autonomo di accelerare o rallentare
 a seconda del comportamento degli altri conducenti \cite{das2018risk}.
 \begin{comment}
 È un sistema che utilizza onde radio per il rilevamento e la determina-
@@ -467,7 +466,7 @@ d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
 a seconda del comportamento degli altri conducenti \cite{das2018risk}.
 È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
 di sensori anteriori e posteriori.
-\begin{end}
+\end{comment}
 \subparagraph{Videocamera}
 Le telecamere sono necessarie nel sistema di trasporto intelligente affinché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
 veicolo in considerazione. Le immagini bidimensionali derivanti da una
@@ -492,9 +491,10 @@ Per far procedere autonomamente il veicolo, il GPS, con l’aiuto di altri
 sensori, crea mappe precise della carreggiata e guida nella direzione
 esatta. 
 \end{comment}
+La scelta di sviluppare un detector sulle fotocamera dei veicoli, è data dalla loro  attuale, alta presenza in tutti i veicoli.
 \subsubsection{Reti neurali applicate all'autonomus driving}
 Le Reti Neurali sono oggi ampliamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l’elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degl'utenti esterni al veicolo. 
-Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo, come un caso di autopilot di Tesla.
+Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo.%, come un caso di autopilot di Tesla.
 Per quanto riguarda le prestazioni misurate su questa tecnologia, sono stati
 registrati punteggi di accuratezza spesso corrispondenti a quelli di un
 individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
@@ -512,43 +512,40 @@ dependability di un sistema sono al primo posto in ordine di importanza.
 Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prenderà delle decisioni.
 Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con
 questo termine si intende rappresentare tutte le possibili trasformazioni
-che un’immagine può subire, ad esempio ruotandola, tagliandola, sca-
-landola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
+che un’immagine può subire, ad esempio ruotandola, tagliandola, scalandola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
 contesti:
-• verificare il livello di completezza di un classificatore,
-• allenare una rete neurale,
-• ricreare scenari o situazioni con cui il veicolo su cui è installata una
+\begin{itemize}
+\item verificare il livello di completezza di un classificatore,
+\item allenare una rete neurale,
+\item ricreare scenari o situazioni con cui il veicolo su cui è installata una
 determinata rete può avere a che fare.
+\end{itemize}
+
 Con il termine "trasformata spazialmente" non ci si deve immaginare
 una modifica profonda del fotogramma in questione, ma anzi, basta
 anche solo una piccola rotazione, di meno di un grado, per far sì che il
 classificatore confonda, ad esempio, un revolver con una trappola per topi
 \cite{engstrom2019exploring}, il che, pensando ad un utilizzo anche diverso da quello che se ne fa
 su un veicolo a guida autonoma, può far sorgere molte preoccupazioni e
-domande (si pensi all’ambito aeroportuale).
+domande.%(si pensi all’ambito aeroportuale).
 
 \subsubsection{Object Recognition}
-In generale, ci si riconduce al problema dell’Object Recognition o ricono-
-scimento artificiale degli oggetti. Questo richiede che ci sia una nozione
-di somiglianza visiva, difficile da far apprendere ad un sistema: signifi-
-cherebbe catturare e insegnare ad una macchina la nozione di percezione
+In generale, ci si riconduce al problema dell’Object Recognition o riconoscimento artificiale degli oggetti. Questo richiede che ci sia una nozione
+di somiglianza visiva, difficile da far apprendere ad un sistema: significherebbe catturare e insegnare ad una macchina la nozione di percezione
 umana \cite{engstrom2019exploring}.
-\begin{comment}
-Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto presta-
-zioni all’avanguardia, talvolta competitive con la percezione umana.
-Una della sfide principali nella guida autonoma è il cambiamento am-
-bientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
+
+Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto prestazioni all’avanguardia, talvolta competitive con la percezione umana.
+Una della sfide principali nella guida autonoma è il cambiamento ambientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
 differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
 stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
-muove nello spazio [34].
+muove nello spazio \cite[eykholt2018robust] .
 Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
 di valutazione nella navigazione potrebbe causare incidenti altamente
 devastanti.
-Figura 8.: Schema training e impiego della Rete Neurale su un veicolo
+\begin{comment}
 Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
 analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
-dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infra-
-struttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
+dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infrastruttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
 della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
 della superficie stradale non sono state incluse [31].
 \end{comment}
@@ -557,7 +554,8 @@ della superficie stradale non sono state incluse [31].
 \subparagraph{Autonomus driver simulator}
 Lo sviluppo della guida senza conducente è un argomento attuale e di
 grande interesse, su cui molte società automobilistiche stanno investendo
-dato che promette di essere un mercato da miliardi di dollari [15].Di contro, la guida in ambiente cittadino è una sfida
+dato che promette di essere un mercato da miliardi di dollari. %[15]
+Di contro, la guida in ambiente cittadino è una sfida
 molto più grande, per via del maggiore grado di variabilità degli scenari
 che si possono presentare e degli oggetti che devono essere riconosciuti,
 ed è necessario ancora molto lavoro prima che sia disponibile un sistema
@@ -575,14 +573,13 @@ di agire nel modo più sicuro in ognuno di essi. Il problema è di per sé mal
 posto, visto che non è dato sapere se un’auto che reagisce correttamente
 in una certa situazione farà lo stesso cambiando qualche variabile dello
 scenario.
-lo sviluppo e la validazione delle auto a guida autonoma si configura
+Lo sviluppo e la validazione delle auto a guida autonoma si configura
 per quanto detto come molto complicato e costoso, visto che è necessario
 effettuare un gran numero di prove in diversi scenari.
 Per aiutare a risolvere il problema dei costi dello sviluppo con testing
 in ambiente fisico e della richiesta di dati che abbiamo presentato, sono
 stati sviluppati dei simulatori che permettono di sperimentare il software
-sviluppato in un ambiente virtuale, tra questi NVIDIA DRIVE Constella-
-tion, AirSim, e CARLA Simulator. Questi simulatori riproducono scenari di guida cittadina
+sviluppato in un ambiente virtuale, tra questi NVIDIA DRIVE Constellation, AirSim, e CARLA Simulator. Questi simulatori riproducono scenari di guida cittadina
 in cui è possibile testare un auto a guida autonoma che raccoglie dati
 dall’ambiente. Per le considerazioni fatte in precedenza, un simulatore
 si presenta come un alleato fondamentale nel processo di sviluppo e di
@@ -598,29 +595,84 @@ dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'a
 Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
 \subsubsection{Sensori}
 Come un veicolo reale di guida autonoma, Carla predispone una suite di sensori preimpostasti,come fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
-La loro posizione, numero e direzonamento possono essere specificate dal client.
-Per una presentazione completa dei sensori si rimanda a \cite{inserisci qualcosa}
+La loro posizione, numero e direzionamento possono essere specificate dal client.
+Per una presentazione completa dei sensori si rimanda a \cite{tesi niccolo galli}
 E proprio della fotocamera RGB di Carla si farà uso al fine di costruire il dataset di immagini.
+
 \section{Costruzione del dataset}
-Siccome il detector impiega la CNN,  come strumento per l'identificazione di guasti nel sensore della telecamera del veicolo, è necessario istruire il sistema alla loro identificazione. Per fare questo , è necessario predisporre un dataset su cui  istruire il sistema.
-Il CNN richiede due tipologie di dataset, il training set e il validation set. Entrambi sono composti dalla stessa quantità di immagini classificate nello stesso modo.
+Il detector utilizza come tecnologia una Convulutional Neural Network, una forma di rete neurale. 
+Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
+Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
+L’addestramento di una generica rete neurale prevede la creazione di un dataset sulla
+base della procedura:
+\begin{itemize}
+\item Definizione delle classi
+\item Acquisizione immagini
+\item Sporcatura immagini
+\item Suddivisione del dataset
+\end{itemize}
+
+Ciascuno step è illustrato in dettaglio nei paragrafi seguenti.
+
 \begin{comment}
+Questo prevede che siano forniti tre diverse dataset di immagini:
+\begin{itemize}
+	\item Training set
+	\item Validation set
+	\item Test set
+\end{itemize}
+
+Per il seguente elaborato avendo la possibilità di acquisire grandi quantità di dati come verrà esposto in seguito, il training set avrà dimensioni di 240000 immagini, suddivise equamente tra pulite e sporche
 Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
 Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
 \end{comment}
+
+\subsection{Definizione delle classi}
+Il problema della classificazione delle immagini è un problema che come dice il verbo, deve assegnare a un elemento in input una classe.
+Quindi le classi, o etichette(label) sono gruppi di elementi che hanno determinate caratteristiche in comune. Più le differenze tra classi diverse, sono poco accentuate, più è difficile distinguerle.
+Nel caso del detector,  le classi rispecchiano i diversi guasti che la fotocamera può subire. Per una esposizione completa dei guasti che sono stati presi in considerazione si rimanda a \cite{secci2020failures}.
+Di seguito si espone le diverse classi che hanno composto i dataset per il training del modello:
+\begin{itemize}
+\item Golden Run
+\item Blur
+\item Black
+\item Brightness
+\item 50 death pixels
+\item 200 death pixels
+\item Nodemos
+\item Noise
+\item Sharpness
+\item Brokenlen
+\item Icelens
+\item Banding
+\item Greyscale
+\item Condensation
+\item Dirty lens
+\item Chromatic aberration
+\item Rain
+griglia di immagini di ciascun classe
+\item All
+
+\end{itemize}
+L'ultima classe All, non identifica un singolo guasto come le precedenti, ma riunisce in se tutti i possibili guasti presi in considerazione.
+
 \subsection{Acquisizione}
+Definite le classi, la fase successiva nella costruzione dei dataset, è l'acquisizione delle immagini.
+Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client è stato impostato per generare 600 simulazioni diverse, ovvero 600 ambienti generati casualmente, con condizioni atmosferiche diverse, e in momenti diversi della giornata. In ciascuna delle simulazioni il veicolo si muove nelle vie della città, seguendo percorsi randomici. Durante il tragitto il Client è stato impostato per acquisire 300 immagini dal sensore della fotocamera frontale della vettura, nel formato .png e nelle dimensioni di 800*600.
+Per fare tutto ciò è stato impiegato il software del progetto github \href{https://github.com/enginBozkurt/CarlaSimulatorDataCollector}{CarlaSimulatorDataCollector}. Visionare la sezione Appendice A-Manuale Utente per gli script utilizzati
+\begin{comment}
+Per l'acquisizione delle immagini 
 Per acquisire questa mole di dati non potendo usare un sistema fisico per l'acquisizione, dati le  problematiche gia  citate, è stato impiegato CARLA.
 Sono state avviate 500 simulazioni, con caratteristiche diverse, come città,meteo e  elementi ambientali, generate in maniera casuale dal sistema. Da ogni run, attraverso il progetto github \textbf{cita}, è stato possibile acquisire 300 frame della fotocamera RGB posto sul veicolo, mentre questo sis spostava nell'ambiente. 
 Le immagini cosi ottenute, sono del formato (800*600) nel formato  .png.
 Queste rappresentano la base di partenza per la creazione del dataset, essendo tutte immagini pulite, ovvero immagini che non presentano malfunzionamenti o modifiche di qualsiasi genere.
+\end{comment}
 \subsection{Sporcatura}
-
+Ottenute queste grande mole di immagini pari a 180000 immagini
 Ottenuto La base di 150000 immagini pulite dalle varie simulazioni, a queste sono stati applicati diversi filtri al fine di simulare i vari guasti alla fotocamera.
 I guasti presi in considerazione dalla seguente tesi,  non sono sicuramente gli unici, come nella realtà non si presentano singolarmente, ma sono pur sempre una buona base di partenza, si basano su uno studio fatto definiti nella seguente tesi \cite{secci2020failures} dove è possibile trovare una documentazione sull'argomento più approfondità.
-\subparagraph{rappresentazione dei vari guasti con breve descrizione}
-
-
-
+\subparagraph{Rappresentazione dei vari guasti con breve descrizione}
+...
 
 Per ciascun guasto è stato definito un detector in grado di classificare la presenza di un malfunzionamento, quindi sono stati apprestati per ciascuno un proprio dataset definito per tutti nella stessa maniera:
 \begin{itemize}
