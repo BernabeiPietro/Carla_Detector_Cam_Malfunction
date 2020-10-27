@@ -631,7 +631,7 @@ Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi clas
 Il problema della classificazione delle immagini è un problema che come dice il verbo, deve assegnare a un elemento in input una classe.
 Quindi le classi, o etichette(label) sono gruppi di elementi che hanno determinate caratteristiche in comune. Più le differenze tra classi diverse, sono poco accentuate, più è difficile distinguerle.
 Nel caso del detector,  le classi rispecchiano i diversi guasti che la fotocamera può subire. Per una esposizione completa dei guasti che sono stati presi in considerazione si rimanda a \cite{secci2020failures}.
-Di seguito si espone le diverse classi che hanno composto i dataset per il training del modello:
+Le classi prese in considerazione per la costruzione dei vari dataset su cui sarà allenato l'agente, sono 18, di cui una rappresenta le immagini pulite(Golden Run), 16 rappresentano ciascuna un determinato guasto, e l'ultima (All) contiene al suo interno tutte e 16 i guasti presi in considerazione
 \begin{itemize}
 \item Golden Run
 \item Blur
@@ -650,16 +650,14 @@ Di seguito si espone le diverse classi che hanno composto i dataset per il train
 \item Dirty lens
 \item Chromatic aberration
 \item Rain
-griglia di immagini di ciascun classe
 \item All
-
 \end{itemize}
-L'ultima classe All, non identifica un singolo guasto come le precedenti, ma riunisce in se tutti i possibili guasti presi in considerazione.
+
 
 \subsection{Acquisizione}
 Definite le classi, la fase successiva nella costruzione dei dataset, è l'acquisizione delle immagini.
-Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client è stato impostato per generare 600 simulazioni diverse, ovvero 600 ambienti generati casualmente, con condizioni atmosferiche diverse, e in momenti diversi della giornata. In ciascuna delle simulazioni il veicolo si muove nelle vie della città, seguendo percorsi randomici. Durante il tragitto il Client è stato impostato per acquisire 300 immagini dal sensore della fotocamera frontale della vettura, nel formato .png e nelle dimensioni di 800*600.
-Per fare tutto ciò è stato impiegato il software del progetto github \href{https://github.com/enginBozkurt/CarlaSimulatorDataCollector}{CarlaSimulatorDataCollector}. Visionare la sezione Appendice A-Manuale Utente per gli script utilizzati
+Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client è stato impostato per generare 517 simulazioni diverse, ovvero 517 ambienti generati casualmente, con condizioni atmosferiche diverse, e in localizzate in luoghi diversi sulla stessa mappa. In ciascuna delle simulazioni il veicolo si muove nelle vie della città, seguendo percorsi randomici. Durante il tragitto il Client è stato impostato per acquisire 300 immagini dal sensore della fotocamera frontale della vettura, nel formato .png e ciascuna dalle  dimensioni di 800*600 pixels.
+Si rimanda alla sezione "Manuale Utente" per le note sugli script utilizzati
 \begin{comment}
 Per l'acquisizione delle immagini 
 Per acquisire questa mole di dati non potendo usare un sistema fisico per l'acquisizione, dati le  problematiche gia  citate, è stato impiegato CARLA.
@@ -668,13 +666,17 @@ Le immagini cosi ottenute, sono del formato (800*600) nel formato  .png.
 Queste rappresentano la base di partenza per la creazione del dataset, essendo tutte immagini pulite, ovvero immagini che non presentano malfunzionamenti o modifiche di qualsiasi genere.
 \end{comment}
 \subsection{Sporcatura}
-Ottenute queste grande mole di immagini pari a 180000 immagini
-Ottenuto La base di 150000 immagini pulite dalle varie simulazioni, a queste sono stati applicati diversi filtri al fine di simulare i vari guasti alla fotocamera.
-I guasti presi in considerazione dalla seguente tesi,  non sono sicuramente gli unici, come nella realtà non si presentano singolarmente, ma sono pur sempre una buona base di partenza, si basano su uno studio fatto definiti nella seguente tesi \cite{secci2020failures} dove è possibile trovare una documentazione sull'argomento più approfondità.
+Ottenute queste grande mole di immagini pulite, prive di qualsiasi "errore", questa fase del processo, prevede l'applicazione dei guasti alle immagini.
+Si intende l'applicazione di filtri, che simulino il guasto alla fotocamera, della corrispettiva classe.
+I filtri sono ripresi dal progetto github di Francesco Secci, Python Image Failures, i quali sono stati riadatti per l'uso nella seguente tesi.
 \subparagraph{Rappresentazione dei vari guasti con breve descrizione}
-...
+Per una illustrazione completa dei guasti si rimanda  a \cite{secci2020failures}, da cui è stato ripreso lo studio su l'effetto di determinati guasti alla fotocamera, portino a un rate di fallimenti più elevato. 
 
-Per ciascun guasto è stato definito un detector in grado di classificare la presenza di un malfunzionamento, quindi sono stati apprestati per ciascuno un proprio dataset definito per tutti nella stessa maniera:
+\subsection{Suddivisione del dataset}
+La Convnet sviluppata, è un classificatore binario, e come tale distingue solamente tra due classi, immagini pulite e immagini sporche, ovvero: golden run e classe dei guasti.
+Detto ciò sono stati costruiti 17 dataset diversi, ciascuno per ogni classe.Ogni dataset è composto da 30000 elementi,suddiviso su due classi, 150000 immagini per classe. Queste immagini sono ulteriormente suddivise in training set e validation set, dove delle 150000 immagini di una classe, 120000 sono dedicate al training set e 30000 sono dedicate al validation set.
+Questa suddivisione tra training set e validation set delle immagini, risulta molto importante nella fase di training dei modelli, come si vedra in seguito.
+Uno schema di suddivisione (o immagine):
 \begin{itemize}
 \item Training set:240000 elementi
 \begin{itemize}
@@ -687,8 +689,9 @@ Per ciascun guasto è stato definito un detector in grado di classificare la pre
 \item Dirty Run: 30000 elementi
 \end{itemize}
 \end{itemize}
+Un agente classificatore non prevede solo una fase di allenamento, ma anche una fase di test, nella quale attraverso un dataset di immagini dedicate, si va a valutare la capacità effettiva di distinzione della rete.
 
-
+Da finire con i dati del test set
 \section{Costruzione del detector}
 Come un metal dector, che rileva il metallo nella suolo, come un mine detector, rileva le mine sempre nel suolo, il detector ivi proposto, è stato sviluppato al fine di rilevare all'interno del flusso di immagini di una fotocamera RGB, dei malfunzionamenti.
 Per fare ciò come anticipato è stato usato una CNN o anche meglio conosciuta  rete neurale convuluzionale.

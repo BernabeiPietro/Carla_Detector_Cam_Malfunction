@@ -89,7 +89,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Sporcatura}{28}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Rappresentazione dei vari guasti con breve descrizione}{29}{section*.20}
+\contentsline {subparagraph}{Rappresentazione dei vari guasti con breve descrizione}{28}{section*.20}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4}Suddivisione del dataset}{28}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Costruzione del detector}{29}{section.4}
 \defcounter {refsection}{0}\relax 
@@ -103,7 +105,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{Funzione di attivazione Relu}{33}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Pooling layer}{33}{section*.25}
+\contentsline {subparagraph}{Pooling layer}{34}{section*.25}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{dense layer}{34}{section*.26}
 \defcounter {refsection}{0}\relax 
