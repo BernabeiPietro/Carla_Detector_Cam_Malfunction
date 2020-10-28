@@ -95,18 +95,18 @@ def print_result(epochs, history):
 if __name__ == "__main__":
 
     path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
-    classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale"]
+    classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
-        for classes in classes_of_modified[10:12]:
-            mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
+        for classes in classes_of_modified[16:]:
+            mp = manager_of_path.ManagerOfPath(path, classes_of_modified, False)
             path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
             p = multiprocessing.Process(target=classificator, args=(lock,mp, classes, path_checkpoint))
-            p.start()
+            p.start();print(classes);
             p.join()
     else:
-        mp = manager_of_path.ManagerOfPath(path, classes_of_modified[9:11], True)
+        mp = manager_of_path.ManagerOfPath(path, classes_of_modified[12:], True)
         path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
         classificator(mp,classes_of_modified[5],path_checkpoint)
 
