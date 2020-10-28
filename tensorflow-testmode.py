@@ -32,27 +32,17 @@ def tester(lock,mp,classes):
                                                      verbose=1,
                                                      period=5)
 
-    model = Sequential([
-        Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
-        MaxPooling2D(),
-        Conv2D(32, 3, padding='same', activation='relu'),
-        MaxPooling2D(),
-        Conv2D(64, 3, padding='same', activation='relu'),
-        MaxPooling2D(),
-        Flatten(),
-        Dense(512, activation='relu'),
-        Dense(1)
-    ])
+    model=tf.keras.models.load_model(checkpoint_dir + "/model")
     model.summary()
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes(classes)["train"],
                                                               shuffle=True,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
-    model.load_model(checkpoint_dir+"/model")
+
     loss, acc = model.evaluate_generator(test_data_gen, verbose=2)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
-
+    print("Restored model, loss: {:5.2f}%".format(100 * loss))
     lock.release();
     #print_result(epochs, history)
 
