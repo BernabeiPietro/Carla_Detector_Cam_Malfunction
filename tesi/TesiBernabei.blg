@@ -3,8 +3,8 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: TesiBernabei.aux
 The style file: biblatex.bst
 White space in argument---line 117 of file TesiBernabei.aux
- : \citation{inserisci
- :                     qualcosa}
+ : \citation{tesi
+ :                niccolo galli}
 I'm skipping whatever remains of this command
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
@@ -22,49 +22,48 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: TesiBernabei-blx.bib
 Database file #2: bibliografia.bib
-Warning--I didn't find a database entry for "."
 Biblatex version: 3.8
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 You've used 13 entries,
             6268 wiz_defined-function locations,
-            1240 strings with 10580 characters,
-and the built_in function-call counts, 64196 in all, are:
-= -- 4189
-> -- 1341
-< -- 396
-+ -- 1460
-- -- 497
-* -- 4704
-:= -- 6265
+            1239 strings with 10777 characters,
+and the built_in function-call counts, 69219 in all, are:
+= -- 4669
+> -- 1365
+< -- 385
++ -- 1754
+- -- 518
+* -- 5056
+:= -- 7111
 add.period$ -- 0
 call.type$ -- 13
-change.case$ -- 192
+change.case$ -- 182
 chr.to.int$ -- 30
 cite$ -- 24
-duplicate$ -- 6858
-empty$ -- 6078
-format.name$ -- 787
-if$ -- 13415
+duplicate$ -- 7650
+empty$ -- 6375
+format.name$ -- 854
+if$ -- 14167
 int.to.chr$ -- 0
-int.to.str$ -- 31
+int.to.str$ -- 30
 missing$ -- 0
-newline$ -- 376
-num.names$ -- 585
-pop$ -- 4121
+newline$ -- 414
+num.names$ -- 574
+pop$ -- 4216
 preamble$ -- 1
-purify$ -- 251
+purify$ -- 254
 quote$ -- 0
-skip$ -- 2178
+skip$ -- 2157
 stack$ -- 0
-substring$ -- 6738
-swap$ -- 1741
-text.length$ -- 353
+substring$ -- 7498
+swap$ -- 1816
+text.length$ -- 357
 text.prefix$ -- 12
 top$ -- 1
 type$ -- 430
 warning$ -- 0
-while$ -- 765
+while$ -- 904
 width$ -- 0
-write$ -- 364
+write$ -- 402
 (There was 1 error message)

@@ -538,7 +538,7 @@ Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto prestazioni all’a
 Una della sfide principali nella guida autonoma è il cambiamento ambientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
 differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
 stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
-muove nello spazio \cite[eykholt2018robust] .
+muove nello spazio \cite{eykholt2018robust} .
 Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
 di valutazione nella navigazione potrebbe causare incidenti altamente
 devastanti.
@@ -693,18 +693,16 @@ Un agente classificatore non prevede solo una fase di allenamento, ma anche una 
 
 Da finire con i dati del test set
 \section{Costruzione del detector}
-Come un metal dector, che rileva il metallo nella suolo, come un mine detector, rileva le mine sempre nel suolo, il detector ivi proposto, è stato sviluppato al fine di rilevare all'interno del flusso di immagini di una fotocamera RGB, dei malfunzionamenti.
-Per fare ciò come anticipato è stato usato una CNN o anche meglio conosciuta  rete neurale convuluzionale.
-Tecnologia basata sulle rete neurali più generiche, è gia impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a voice riconoscimento, è stata usata come cuore del detector. 
-La rete neurale progettata per la seguente tesi svolge funzione di classificatore binario, e nel preciso caso di questo progetto classifica una immagine tra "pulita", ovvero la telecamera non presenta guasti e quindi non si svilupperà un fallimento nel veicolo,  o foto "sporcata", ovvero immagine ottenuta da il sensore RGB che presenta un malfunzionamento.
+Lo scopo del detector, è quello di individuare all'interno del flusso di immagini della fotocamera, la presenza di distorsioni, ovvero riuscire a prevenire che un guasto al sensore della fotocamera, arrivi al sistema decisionale, scaturendo un possibile fallimento. Per perseguire il suo scopo, il detector deve essere in grado di classificare ciascuna immagine del flusso, tra immagini pulite, ovvero immagini che non generano fallimenti nel sistema,e immagini sporche, generate da un guasto.Questa distinzione binaria, tra le due sole tipologie di immagini, scaturisce dal fatto che non è richiesta l'identificazione precisa di un singolo guasto,(multiclassificatore), ma si richiede solo la distinzione tra buone e cattive.
+L'elemento classificatore è svolto da una rete neurale convuluzionale o ConvNet.
+Come dice il nome, la  ConvNet è  una tecnologia basata sulle rete neurali più generiche, ed è gia ampliamnete impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a vocal recognition.
 
 \subsection{Convulutional Neural Network}
 Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network dove la strato convuluzionale compare almeno una volta.
 L'input di una convulutional neurale network o ConvNet,\begin{comment} è ampiamente utilizzata nelle applicazioni di visione artificiale,\end{comment}, è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
-\subparagraph{L'architettura} 
+\subsubsection{L'architettura} 
 Le reti neurali convoluzionali operano su strutture a griglia contraddistinte da relazioni spaziali tra pixel, ereditate da uno strato al successivo tramite valori che descrivono
-piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o
-activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
+piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
 Una CNN è composta da  un insieme di strati che si susseguono, illustrati in dettaglio nei paragrafi seguenti. Gli strati principali sono:
 \begin{itemize}
 \item convolutional layer;
@@ -714,7 +712,7 @@ Una CNN è composta da  un insieme di strati che si susseguono, illustrati in de
 \end{itemize}
 \cite{torresin2019sviluppo}
 
-\subparagraph{Convolutional layer}
+\subsubsection{Convolutional layer}
 La convoluzione è l’operazione fondamentale delle ConvNet. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
 eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
 Un filtro è caratterizzato dai
@@ -726,9 +724,11 @@ seguenti iperparametri (hyperparameters):
 \item numero q
 \end{itemize}
 Solitamente i filtri hanno forma quadrata e profondità uguale a quella dello strato al
-quale sono applicati, nel caso di immagini RGB, 3. \begin{comment}Per un’immagine RGB,  per esempio il primo filtro convoluzionale
-F*F*d potrà avere dimensione  5*5*3 o 7*7*3.\end{comment} Il numero di possibili
-allineamenti tra filtro e immagine definisce altezza e larghezza della successiva feature
+quale sono applicati, nel caso di immagini RGB, 3. \begin{comment}
+
+Per un’immagine RGB,  per esempio il primo filtro convoluzionale
+F*F*d potrà avere dimensione  5*5*3 o 7*7*3.\end{comment} 
+Il numero di possibili allineamenti tra filtro e immagine definisce altezza e larghezza della successiva feature
 map.
 Dal hidden layer q1, il filtro produce uno nuovo hidden layer q2
 Lq+1 = Lq - Fq + 1
@@ -744,12 +744,10 @@ l’\textbf{equivarianza alla traslazione}: immagini traslate sono interpretate 
 i valori delle mappa di attivazione traslano con i valori di input \cite{torresin2019sviluppo}. Ciò significa che forme particolari generano feature maps simili, indipendentemente dalla loro collocazione
 nell’immagine.
 Una delle proprietà della convoluzione è la seguente:
-	 Una convoluzione sullo strato
-q incrementa il campo recettivo di una feature dallo strato q allo strato q + 1. In altre parole, ogni valore della mappa di attivazione dello strato successivo cattura una regione
+Una convoluzione sullo strato q incrementa il campo recettivo di una feature dallo strato q allo strato q + 1. In altre parole, ogni valore della mappa di attivazione dello strato successivo cattura una regione
 spaziale più ampia del precedente. Feature maps degli strati catturano aspetti caratteristici di regioni via via maggiori e questo è il motivo per cui le CNN possono essere
 definite “profonde”: per studiare l’intera immagine sono necessarie lunghe successioni
 di “blocchi” di strati. 
-In figura, un esempio dell’operazione di convoluzione.
 
 \subparagraph{Padding} L’operazione di convoluzione comporta una contrazione dello strato q rispetto a q + 1 ed una conseguente perdita di informazioni. Il problema può essere
 arginato utilizzando il cosiddetto padding, una tecnica che prevede l’aggiunta di $\frac{(Fmeno1)}{2}$ pixel ai bordi delle mappe di attivazione per mantenere l’impronta spaziale. Ovviamente, 
@@ -768,6 +766,7 @@ Un’altra forma di padding è il full-padding, con il quale si lascia che il fi
 completamente dal layer andando ad occupare celle di soli zeri. Così facendo si incrementa l’impronta spaziale dello strato, allo stesso modo in cui il valid-padding la
 riduce.\cite{aggarwal2018neural} 
 \begin{comment}
+
 \subparagraph{Strides} Un filtro convoluzionale computa il prodotto scalare in ogni singola posizione dello strato di input ma è altresì possibile limitare la computazione ad un numero
 inferiore di posizioni, facendo uso dello stride S. La convoluzione è allora applicata
 alle posizioni 1, S + 1, 2S + 1 etc., lungo entrambe le dimensioni. L’output avrà altezza
@@ -788,7 +787,7 @@ q, bias è indicato con b(p, q). Il bias è un fattore di moltiplicazione della 
 attivazione e la sua presenza incrementa il numero di parametri di un’unità. Il numero
 di features in ogni strato sarà dunque 1 + L x B x d. Come tutti gli altri parametri, il
 valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}\end{comment}
-\subparagraph{Funzione di attivazione Relu}
+\subsubsection{Funzione di attivazione Relu}
 L’operazione di attivazione non-lineare segue l’operazione di convoluzione. Per ogni
 strato Lq x Bq x d, la funzione di attivazione genera uno strato di eguale dimensione
 Lq x Bq x d di valori limitati da soglie: in quanto semplice mappatura uno-a-uno dei
@@ -797,13 +796,13 @@ L’attivazione avviene tramite funzioni matematiche. Mentre in passato la tange
 limitate a reti non-profonde e ormai rimpiazzate dalla funzione di attivazione ReLU
 (Rectified Linear Unit). Il motivo principale è che in reti neurali profonde, il gradiente
 di queste tre funzioni di attivazione si annulla durante la retropropagazione ed impedisce all’algoritmo di proseguire con l’addestramento. Inoltre, la funzione ReLU è
-computazionalmente molto più efficiente. ReLU è definita come segue:
-
-
+computazionalmente molto più efficiente.
+\begin{comment}
 ReLU è di fatto una funzione di rimozione di valori negativi rivelatasi efficace ed efficiente: la sua derivata in IR+ è sempre 1 e non satura in IR; in altre parole, il codominio
 della funzione è [0, inf). In corrispondenza dell’origine, la funzione non approssima
 l’identità e genera invece un gradiente elevato impedendone la scomparsa. \cite{aghdam2017guide}
-\subparagraph{Pooling layer}
+\end{comment}
+\subsubsection{Pooling layer}
 Il max-pooling estrae il massimo valore contenuto in matrici P x P di ogni mappa di
 attivazione e produce un altro hidden layer di eguale profondità. Anche in questo caso,
 come per la convoluzione, si fa uso di stride: se lo stride è 1 lo strato 2 così generato
@@ -814,21 +813,24 @@ d2 = d1.
 Per stride maggiori di 1, come solitamente si usa, altezza e larghezza saranno, rispettivamente:
 L2 = L1 - P/S + 1
 B2 = B1 - P/S+ 1
-Rispetto alla convoluzione, il pooling è effettuato al livello di ciascuna mappa di attivazione, quindi il loro numero rimane alterato e l’output è uno strato della stessa profondità (ma di altezza e larghezza differenti). Una configurazione tipica è dimensione
-2x2 e stride 2: così facendo non c’è sovrapposizione tra regioni.
+Rispetto alla convoluzione, il pooling è effettuato al livello di ciascuna mappa di attivazione, quindi il loro numero rimane alterato e l’output è uno strato della stessa profondità (ma di altezza e larghezza differenti).
 
+ Una configurazione tipica è dimensione
+2x2 e stride 2: così facendo non c’è sovrapposizione tra regioni.
 L’uso dello stride nel pooling è importante per tre motivi. Il primo è la riduzione
 dell’impronta spaziale delle mappe di attivazione, il secondo è un certo grado di invarianza alla traslazione e il terzo è un incremento del campo ricettivo. Si osservi che per
 ridurre l’impronta spaziale possono essere utilizzati unicamente strati convoluzionali
 con stride maggiori di 1. Nonostante ciò, si preferisce tuttora utilizzare max-pooling o
 qualche altra variante dato il grado di non-linearità e invarianza alla traslazione che
 introducono.\cite{aggarwal2018neural}
-\subparagraph{dense layer}
+\subsubsection{Dense layer}
 Connette ogni feature in input con la corrispondente feature in output. Presenta la struttura di una rete feed-forward tradizionale e aumenta a dismisura il numero di parametri
 addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
 parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
 
-
+\subsection{La rete}
+La struttura della rete sviluppata nel seguente progetto è mostrata in seguito: (temporanea)\\
+\includegraphics[scale=0.5]{Struttura-della_rete1.png}
 \begin{comment}
 Per la  costruzione del detector,  è stata implementata una rete neurale convuluzionale. 
 \begin{figure}[h!]
@@ -842,15 +844,8 @@ Il primo layer ha un è un conv2D layer, di ben 800*600*3=1440000 neuroni.
 Le dimensioni di questo primo sono date dalla necessità di poter elaborare un immagine per intero, e infatti (800,600) sono le dimensioni di larghezza e altezza delle immagini, e quindi il numero di pixelche compongono l'immagine sono 800*600=480000,  l'ultimo fattore è dato dalla composizione interna di un pixel. Questo rappresenta il numero di canali dei colori,ed essendo immagini rgb (red,green,blue) sono 3.
 Definito l'input del primo layer e quindi dell'intera rete, si può passare all'output.
  \end{comment}
-Nel caso del detector la struttura della convnet è  mostrata in seguito con:
-
-\includegraphics[scale=0.3]{strutturarete.png}
-
-
-
 \subsection{Addestramento del rete convuluzionale}
-Le ConvNet sono tipologie di reti neurali 
-Per l'addestramento della rete convuluzionale, sono stati predisposti 5 epochs, con batch di dimensione 4.
+Avendo predisposto la rete, e i vari dataset, il passo successivo è il suo addestramento.
 
 \subsubsection{Batch}
 Siccome le reti richiedono grosse quantità di dati per essere allenate, si definiscono due modi per fare ciò: la prima prevede l'uso di una infrastruttura hardware in grado di processare l'intera mole tutta insieme nello stesso momento, e questo può risultare effettivamente difficile, mentre il secondo modo prevede di dividere il dataset in porzioni, e fornirle una per una alla rete.
@@ -860,7 +855,9 @@ Il numero di batch  necessari a processare l'interno dataset, definisce il numer
 \subsubsection{Epochs}
 Ultima componente fondamentale di un addestramento, sono le Epochs.
 Dato il dataset di 300000 elementi, e un batch size di 4, si avranno 75000 iterazioni per epoch, quindi un epoch è l'intero ciclo di elaborazione di un training set, e le epochs identificano quante epoch saranno eseguite. Questo elemento è importante, perchè ad ogni epoch mantenendo il dataset costante, modifica i pesi della rete, portando la curva da uno stato underfitting, a uno ottimale, a un overfitting. 
-Il numero di epoch necesario a ottenere una curva ottimale varia da dataset a dataset
+Il numero di epoch necessario a ottenere una curva ottimale varia da dataset a dataset
+\subsection{Testing della rete}
+
 \section{Esecuzione e risultati}
 
 \section{Conclusioni e lavori futuri}

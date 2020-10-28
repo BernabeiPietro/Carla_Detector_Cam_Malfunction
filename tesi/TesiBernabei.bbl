@@ -40,37 +40,6 @@
     \field{year}{2018}
   \endentry
 
-  \entry{aghdam2017guide}{article}{}
-    \name{author}{2}{}{%
-      {{hash=AHH}{%
-         family={Aghdam},
-         familyi={A\bibinitperiod},
-         given={Hamed\bibnamedelima Habibi},
-         giveni={H\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=HEJ}{%
-         family={Heravi},
-         familyi={H\bibinitperiod},
-         given={Elnaz\bibnamedelima Jahani},
-         giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer}%
-    }
-    \strng{namehash}{AHHHEJ1}
-    \strng{fullhash}{AHHHEJ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{A}
-    \field{sortinithash}{A}
-    \field{pages}{978\bibrangedash 973}
-    \field{title}{Guide to convolutional neural networks}
-    \field{volume}{10}
-    \field{journaltitle}{New York, NY: Springer}
-    \field{year}{2017}
-  \endentry
-
   \entry{avizienis2004basic}{article}{}
     \name{author}{4}{}{%
       {{hash=AA}{%
@@ -203,6 +172,77 @@
     \field{pages}{1802\bibrangedash 1811}
     \field{title}{Exploring the landscape of spatial robustness}
     \field{year}{2019}
+  \endentry
+
+  \entry{eykholt2018robust}{inproceedings}{}
+    \name{author}{9}{}{%
+      {{hash=EK}{%
+         family={Eykholt},
+         familyi={E\bibinitperiod},
+         given={Kevin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=EI}{%
+         family={Evtimov},
+         familyi={E\bibinitperiod},
+         given={Ivan},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=FE}{%
+         family={Fernandes},
+         familyi={F\bibinitperiod},
+         given={Earlence},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=LB}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Bo},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Rahmati},
+         familyi={R\bibinitperiod},
+         given={Amir},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=XC}{%
+         family={Xiao},
+         familyi={X\bibinitperiod},
+         given={Chaowei},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=PA}{%
+         family={Prakash},
+         familyi={P\bibinitperiod},
+         given={Atul},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KT}{%
+         family={Kohno},
+         familyi={K\bibinitperiod},
+         given={Tadayoshi},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Song},
+         familyi={S\bibinitperiod},
+         given={Dawn},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EK+1}
+    \strng{fullhash}{EKEIFELBRAXCPAKTSD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{booktitle}{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}
+    \field{pages}{1625\bibrangedash 1634}
+    \field{title}{Robust physical-world attacks on deep learning visual
+  classification}
+    \field{year}{2018}
   \endentry
 
   \entry{nicol2004model}{article}{}

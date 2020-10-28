@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.9)  27 OCT 2020 11:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.10.20)  27 OCT 2020 18:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -984,7 +984,7 @@ Package biblatex Info: ... file 'TesiBernabei.bbl' found.
 (./TesiBernabei.bbl)
 Package biblatex Info: Reference section=0 on input line 34.
 Package biblatex Info: Reference segment=0 on input line 34.
-<download.jpeg, id=140, 216.81pt x 233.87375pt>
+<download.jpeg, id=172, 216.81pt x 233.87375pt>
 File: download.jpeg Graphic file (type jpg)
 <use download.jpeg>
 Package pdftex.def Info: download.jpeg  used on input line 40.
@@ -1038,10 +1038,6 @@ s-sarie nel sis-tema di trasporto
  []
 
 [21] [22]
-
-LaTeX Warning: Citation '.' on page 23 undefined on input line 541.
-
-
 Overfull \hbox (16.10266pt too wide) in paragraph at lines 537--552
 \OT1/cmr/m/n/14.4 prestazioni all'avanguardia, tal-volta com-pet-i-tive con la 
 percezione umana.
@@ -1059,67 +1055,78 @@ Overfull \hbox (2.25397pt too wide) in paragraph at lines 673--674
  []
 
 [28] [29]
-Overfull \hbox (13.11057pt too wide) in paragraph at lines 702--704
+Overfull \hbox (13.11057pt too wide) in paragraph at lines 701--703
 \OT1/cmr/m/n/14.4 net-work dove la strato con-vu-luzionale com-pare al-meno una
  volta. L'input
  []
 
-[30] [31] [32] [33] [34]
-<strutturarete.png, id=397, 1371.1225pt x 770.88pt>
-File: strutturarete.png Graphic file (type png)
-<use strutturarete.png>
-Package pdftex.def Info: strutturarete.png  used on input line 847.
-(pdftex.def)             Requested size: 411.33992pt x 231.26578pt.
-
-Overfull \hbox (2.48967pt too wide) in paragraph at lines 847--848
-[][] 
+[30] [31] [32]
+Overfull \hbox (16.76598pt too wide) in paragraph at lines 791--805
+\OT1/cmr/m/n/14.4 L'operazione di at-ti-vazione non-lineare segue l'operazione 
+di con-voluzione.
  []
 
-[35 <./strutturarete.png>]
-Overfull \hbox (1.9563pt too wide) in paragraph at lines 861--864
+[33] [34]
+<Struttura-della_rete1.png, id=432, 1002.74625pt x 595.22375pt>
+File: Struttura-della_rete1.png Graphic file (type png)
+<use Struttura-della_rete1.png>
+Package pdftex.def Info: Struttura-della_rete1.png  used on input line 833.
+(pdftex.def)             Requested size: 501.3719pt x 297.61115pt.
+
+Overfull \hbox (71.3719pt too wide) in paragraph at lines 832--847
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 832--847
+
+ []
+
+[35 <./Struttura-della_rete1.png>]
+Overfull \hbox (1.9563pt too wide) in paragraph at lines 856--859
 \OT1/cmr/m/n/14.4 Ultima com-po-nente fon-da-men-tale di un ad-de-stra-mento, s
 ono le Epochs.
  []
 
 [36]
-Overfull \hbox (0.25531pt too wide) in paragraph at lines 872--872
+Overfull \hbox (0.25531pt too wide) in paragraph at lines 869--869
 []\OT1/cmr/m/n/14.4 Andrea Bon-davalli. \OT1/cmr/m/it/14.4 L'analisi quan-ti-ta
 -tiva dei sis-temi crit-ici: Fon-
  []
 
 
-Overfull \hbox (2.73346pt too wide) in paragraph at lines 872--872
+Overfull \hbox (25.5115pt too wide) in paragraph at lines 869--869
+\OT1/cmr/m/it/14.4 fer-ence on Com-puter Vi-sion and Pat-tern Recog-ni-tion\OT1
+/cmr/m/n/14.4 . 2018, pp. 1625{
+ []
+
+
+Overfull \hbox (2.73346pt too wide) in paragraph at lines 869--869
 []\OT1/cmr/m/n/14.4 David M Nicol, William H Sanders, and Kishor S Trivedi. ``M
 odel-
  []
 
 
-Overfull \hbox (7.54945pt too wide) in paragraph at lines 872--872
+Overfull \hbox (7.54945pt too wide) in paragraph at lines 869--869
 \OT1/cmr/m/n/14.4 based eval-u-a-tion: from de-pend-abil-ity to se-cu-rity''. I
 n: \OT1/cmr/m/it/14.4 IEEE Trans-
  []
 
 [37]
-Overfull \hbox (29.96753pt too wide) in paragraph at lines 872--872
+Overfull \hbox (29.96753pt too wide) in paragraph at lines 869--869
 \OT1/cmr/m/n/14.4 men-tazione se-man-tica a sup-porto della nav-igazione di rov
 er marziani''.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 873.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 870.
 [38]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 873.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 870.
  (./TesiBernabei.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 873.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 873.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 870.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 870.
+Package rerunfilecheck Info: File `TesiBernabei.out' has not changed.
+(rerunfilecheck)             Checksum: AC90249BD87A8EC2D408961E504B1152;3037.
 
-
-Package rerunfilecheck Warning: File `TesiBernabei.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `TesiBernabei.out':
-(rerunfilecheck)             Before: 0EF77ABBB39EE66521A4124BBC66DD3B;2453
-(rerunfilecheck)             After:  A3C523115B936D3A11A870D3A7833F39;2527.
 
 LaTeX Warning: There were undefined references.
 
@@ -1131,13 +1138,13 @@ Package biblatex Warning: Please (re)run BibTeX on the file(s):
 Package logreq Info: Writing requests to 'TesiBernabei.run.xml'.
 \openout1 = `TesiBernabei.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 873.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 870.
  ) 
 Here is how much of TeX's memory you used:
- 15654 strings out of 494880
- 254862 string characters out of 6179602
+ 15665 strings out of 494880
+ 255172 string characters out of 6179600
  702230 words of memory out of 5000000
- 18688 multiletter control sequences out of 15000+600000
+ 18697 multiletter control sequences out of 15000+600000
  9953 words of font info for 37 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  45i,7n,72p,950b,1897s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1152,10 +1159,10 @@ ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt12.pfb>
-Output written on TesiBernabei.pdf (38 pages, 365500 bytes).
+Output written on TesiBernabei.pdf (38 pages, 332546 bytes).
 PDF statistics:
- 489 PDF objects out of 1000 (max. 8388607)
- 430 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
- 283 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 524 PDF objects out of 1000 (max. 8388607)
+ 465 compressed objects within 5 object streams
+ 115 named destinations out of 1000 (max. 500000)
+ 347 words of extra memory for PDF output out of 10000 (max. 10000000)
 
