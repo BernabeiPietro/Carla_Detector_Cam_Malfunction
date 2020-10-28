@@ -13,10 +13,9 @@ import matplotlib.pyplot as plt
 import manager_of_path
 
 
-def classificator(lock,mp,classes,path_checkpoint):
+def tester(lock,mp,classes,path_checkpoint):
     lock.acquire()
     batch_size = 4 # batch =divisione del dataset
-    epochs = 5  # epochs= numero di volte che un dataset viene ripetuto nella rete
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_test = 7200
@@ -62,18 +61,18 @@ def classificator(lock,mp,classes,path_checkpoint):
 
 if __name__ == "__main__":
 
-    path = "/home/bernabei/carla0.8.4/PythonClient/_out/all"
-    path_check=" /home/bernabei/carla0.8.4/PythonClient/_out_prima_run/checkpoint"
+    path_of_test= "/home/bernabei/carla0.8.4/PythonClient/_out/"
+    path_check=" /home/bernabei/carla0.8.4/PythonClient/_out/"
     classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
         for classes in classes_of_modified[:]:
-            mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
+            mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified, True)
             path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
-            p = multiprocessing.Process(target=classificator, args=(lock,mp, classes, path_checkpoint));p.start();print(classes);
+            p = multiprocessing.Process(target=tester, args=(lock,mp, classes, path_checkpoint));p.start();print(classes);
             p.join()
     else:
-        mp = manager_of_path.ManagerOfPath(path, classes_of_modified[9:11], True)
+        mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified[9:11], True)
         path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
         classificator(mp,classes_of_modified[5],path_checkpoint)
