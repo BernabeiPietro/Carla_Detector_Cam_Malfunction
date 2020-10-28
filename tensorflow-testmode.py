@@ -49,7 +49,7 @@ def tester(lock,mp,classes):
                                                               shuffle=True,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
-    model.load_weights(checkpoint_dir)
+    model.load_model(checkpoint_dir+"/model")
     loss, acc = model.evaluate_generator(test_data_gen, verbose=2)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
 
