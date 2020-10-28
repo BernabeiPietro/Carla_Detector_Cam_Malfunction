@@ -44,3 +44,6 @@ class ManagerOfPath:
             os.makedirs(dict_path[path], exist_ok=True)
 
         return dict_path
+    def generate_every_path(self,classes):
+        for cl in classes:
+            self.get_path_classes(cl)

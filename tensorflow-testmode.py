@@ -62,10 +62,10 @@ def classificator(lock,mp,classes,path_checkpoint):
 
 if __name__ == "__main__":
 
-    path = "/home/bernabei/carla0.8.4/PythonClient/_out/"
-    classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale","all"]
+    path = "/home/bernabei/carla0.8.4/PythonClient/_out/all"
+    path_check=" /home/bernabei/carla0.8.4/PythonClient/_out_prima_run/checkpoint"
+    classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
-/home/bernabei/carla0.8.4/PythonClient/_out_prima_run
     lock= multiprocessing.Lock()
     if multiproc==True:
         for classes in classes_of_modified[:]:
