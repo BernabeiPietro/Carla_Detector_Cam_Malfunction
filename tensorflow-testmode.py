@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 import manager_of_path
 
 
-def tester(lock,mp,classes,path_checkpoint):
+def tester(lock,mp,classes):
     lock.acquire()
     batch_size = 4 # batch =divisione del dataset
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_test = 7200
-    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"]+path_checkpoint)
+    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"])
     test_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our test data
     #manage gpu memory usage
     config = tf.ConfigProto()
@@ -69,10 +69,8 @@ if __name__ == "__main__":
     if multiproc==True:
         for classes in classes_of_modified[:]:
             mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified, True)
-            path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
-            p = multiprocessing.Process(target=tester, args=(lock,mp, classes, path_checkpoint));p.start();print(classes);
+            p = multiprocessing.Process(target=tester, args=(lock,mp, classes));p.start();print(classes);
             p.join()
     else:
         mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified[9:11], True)
-        path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
-        classificator(mp,classes_of_modified[5],path_checkpoint)
+        tester(mp,classes_of_modified[5],)
