@@ -1,0 +1,16 @@
+
+
+
+detection of RGB camera failures through trained agents
+Individuazione di fallimenti di una telecamera RGB attraverso un agente addestrato
+
+
+
+detection of failed images from an RGB camera through trained agents
+
+
+
+Individuazione di immagine alterate da una telecamera RGB malfunzionante attraverso un agente addestrato
+
+
+meet.google.com/yoj-xmqo-zmt

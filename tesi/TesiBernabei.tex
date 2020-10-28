@@ -33,9 +33,8 @@
 
 \begin{document}
 
-\title{\includegraphics{download.jpeg} \vspace{2cm} \textbf{\\Tesi di Laurea}}
-
-\author{\texttt{Pietro Bernabei} - \texttt{matricola:6291312}\\ \texttt{Anno Accademico 2019/20}}
+\title{\includegraphics[scale=0.2]{download.jpeg} \vspace{2cm} Scuola di Scienze  Matematiche,Fisiche e Naturali \\ Corso di Laurea in Informatica \\Tesi di Laurea \\ \texttt{Individuazione di immagine alterate da una telecamera RGB malfunzionante attraverso un agente addestrato}\\ \texttt{Detection of failed images from an RGB camera through trained agents}}
+\author{\texttt{Pietro Bernabei} \\ \texttt{Anno Accademico 2019/20}}
 \date{}
 \maketitle
 \newpage
@@ -44,25 +43,29 @@
 \newpage
 \section{Introduzione}
 \subsection{Motivazioni}
-Nel giro di un paio di secoli il mondo, è passato dal viaggiare in groppa a un cavallo, alla groppa di una macchina, dal essere il conducente, al condotto. Le macchine a guida autonoma parziali e totali stanno diventando ogni giorno che avanza, realtà. Questa rivoluzione sta permeando il nostro stile di vita, diventandone dipendenti a tal punto da richiedere che questi siano continuativi, privi da possibili errori o malfunzionamenti.
-
-Come per un essere umano, che soffre di miopia, guidare senza occhiali è pericoloso, anche per il sistema di guida autonoma, guidare con le telecamere con guasti porta a incidenti.
+Nel giro di un paio di secoli il mondo,si  è passati dal viaggiare in groppa a un cavallo, alla groppa di una macchina, dal essere il conducente, al condotto. Le macchine a guida autonoma parziali e totali stanno diventando ogni giorno che avanza, realtà. Questa rivoluzione sta permeando il nostro stile di vita, diventando sempre di più accessibili.  Questa presenza sempre più forte nella quotidianità di tutti i giorni, fa si che queste tecnologia debba rispettare degli standard sempre più stringenti, garantendo la continuità del servizio, l'assenza di possibilli errori e malfunzionamento.
+Come per un essere umano, che soffre di miopia, guidare senza occhiali è pericoloso, anche per il sistema di guida autonoma, guidare con le telecamere affette da guasti porta a incidenti.
 Come verrà espresso in seguito, le telecamere negli attuali sistemi, ricoprono un ruolo decisivo nel momento decisionale della guida autonoma, e un loro malfunzionamento nel processo di acquisizione riperquote nel sistema decisionale, errori non molto graditi al guidatore.
+
 \subsection{Obiettivo}
-Nella seguente tesi si propone un sistema software, detto Detector, in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di malfunzionamenti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo.
+Nella seguente tesi si propone un detector, ovvero un sistema software in grado di rilevare, nel flusso di immagini generate dalla telecamera di un mezzo a guida autonoma, la presenza di guasti nel sistema di acquisizione, come congelamento, pixel bruciati,e tanti altri, per poi notificare i possibili esiti al sistema  decisionale del mezzo, prevenendo lo sviluppo di fallimenti.
 \subsection{Organizzazione del lavoro} 
-Avendo definito il detector, come un sistema in grado di rilevare una variazione malevola nel flusso di immagini acquisite dalla fotocamera, questo dovrà essere in grado di classificare l'immagine sottoposta a decisione. 
-Per questo la soluzione descritta propone di impiegare la tecnologia dell'Intelligenza Artificiale, e nello specifico la rete neurale convuluzionale (NNC), per il suo sviluppo.
-Come verrà esposto meglio in seguito, una NNC è una particolare forma di supervisioned learning, rivolta alla ...(classificazione) . I supervisioned learning, e quindi anche NNC richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knoledge base), sulla quale poi prenderà le proprie decisioni.
+Come verrà esposto in seguito un veicolo a guida autonoma, presenta una suite di sensori, attraverso i quali "vede" l'ambiente circostante. Su queste percezioni, il suo sistema decisionale guida il veicolo in sicurezza.
+Un particolare componente di questa suite di sensori, sono le fotocamere RGB le quali risultano le più impiegate e importanti tra le tutte, e proprio la  loro importanza fa si che un loro guasto,  comporti un fallimento nel sistema decisionale.
+Per questo il detector è posto tra il  sistema di acquisizione della fotocamera RGB e il sistema decisionale, al fine di rilevare la presenza dei guasti nel sensore e comunicare questa al sistema di guida su cui prenderà  le sue decisioni.
+Il detector descritto nella seguente tesi impiega una particolare forma di intelligenza artificiale, rete neurale convuluzionale.
+Come verrà esposto meglio in seguito, una convulutional neural network è una particolare forma di supervisioned learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di intere immagini o identificazione di elementi al loro interno. I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knowledge base), sulla quale si baserà per prendere le decisioni.
 Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
 \item Definizione e generazione Dataset
-\item Creazione CNN
-\item Training CNN
+\item Creazione del modello della ConvNet
+\item Training del modello della ConvNet
 \end{itemize}
-\section{Fondamenti}
+
+\section{Fondamenti teorici}
+
 \subsection{Sistemi Critici}
-Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali quali velocità di elaborazione o altre misure di efficienza
+Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
 convincano della adeguatezza dei nostri manufatti per i compiti sempre più
 critici e delicati per i quali li utilizziamo.
@@ -78,16 +81,16 @@ La \textbf{dependability} è una delle proprietà fondamentali dei sistemi infor
 Detto ciò nella sua definizione originale \textbf{dependability} è
 la capacità di un sistema di fornire un servizio su cui è possibile fare affidamento in
 modo giustificato.\cite{bondavalli2011analisi}
-
+\begin{comment}
 Una definizione alternativa, che stabilisce un criterio per decidere se un determinato servizio è dependable, definisce la \textbf{dependability} di un sistema
 come la capacità di evitare fallimenti che siano più frequenti e più severi del
 limite accettabile \cite{avizienis2004basic}.
 
-Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella totalità, non ambiguo e precisa. 
+Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella sua totalità, senza ambiguità e precisa. 
 Per questo la dependability può essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
-
+\end{comment}
 Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
-
+La dependability, a sua volta è  composta da tre diversi aspetti di cui è necessario tenere conto:
 \begin{itemize}
 \item \textbf{Le minacce o impedimenti alla dependability.} Gli impedimenti sono le
 cause potenziali di comportamenti non previsti.
@@ -99,7 +102,7 @@ degli impedimenti.
 \end{itemize}
 
 \subsubsection{Le Minacce: guasti, errori e fallimenti}
-Si definisce:\cite{bondavalli2011analisi}
+Si definisce come:\cite{bondavalli2011analisi}
 \begin{itemize}
 \item \textbf{guasto:} la causa accertata o ipotizzata di un errore, derivante da malfunzionamenti di componenti, interferenze ambientali di natura fisica, sbagli dell’operatore o da una progettazione fallace.
 \item \textbf{errore:} è la parte dello stato del sistema che può causare un susseguente fallimento; in alternativa si definisce errore la manifestazione di un guasto all’interno di un programma o di una struttura dati.
@@ -108,14 +111,13 @@ Si definisce:\cite{bondavalli2011analisi}
 
 \subparagraph{Il guasto} può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
 stato del sistema che può causare un successivo fallimento. 
-\begin{comment}
 I guasti di un sistema possono essere classificati secondo diversi punti di vista, ad esempio
 fisico, logico e di interazione. Un’altra suddivisione può essere fatta in base
 alla natura del guasto: un guasto può essere intenzionale o accidentale, malizioso oppure non malizioso; ed ancora in base alla persistenza dove abbiamo
 guasti permanenti, transienti ed intermittenti. Per una tassonomia completa
-si rimanda a \cite{avizienis2004basic}. \textbf{(riguarda)}
-\end{comment}
+si rimanda a \cite{avizienis2004basic} 
 
+\textbf{(riguarda)}
 \subparagraph{Il fallimento} di un componente si verifica quando il servizio fornito devia
 dalla sua specifica: si verifica nel momento in cui un errore del componente
 si manifesta alla sua interfaccia, e diventa quindi un guasto per il sistema. Il
@@ -147,6 +149,7 @@ il fallimento del sistema non si verifica fino a quanto l’errore non raggiunge
 di raggiungere l’interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti guasto-errore-fallimento (fault-error-failure)
 La propagazione all’interno di un componente (propagazione interna) è
 causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori.
+%guarda se aggiungere anche il parallelismo con carla forse è utile
 \subsubsection{Gli attributi della dependability}
 Il concetto di dependability è la sintesi di più attributi che forniscono misure
 quantitative o qualitative del sistema:
@@ -171,7 +174,7 @@ l’affidabilità)\end{comment}.
 integrity, dove per “improprie” si intende “non autorizzate” \cite{nicol2004model}.
 \end{itemize}
 Ciascuno di questi attributi può essere più o meno importante in base all’applicazione: la disponibilità del servizio è sempre richiesta, anche se può
-variare sia l’importanza relativa che il livello quantitativo richiesto, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
+variare sia l’importanza relativa che il livello quantitativo richiesto mentre, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
 o meno. Nella loro definizione, la disponibilità e la affidabilità evidenziano la
 capacità di evitare i fallimenti, mentre la safety e la security evidenziano la
 capacità di evitare specifiche classi di fallimenti come ad esempio fallimenti
@@ -182,6 +185,7 @@ rispetto alle modalità di fallimento previste per il sistema. Se i modi di fall
 sistema i cui fallimenti sono limitati soltanto all’interruzione del servizio sono
 chiamati fail-stop o fail-silent. I sistemi fail-safe, invece, sono quelli per cui i
 fallimenti possibili sono solamente fallimenti non catastrofici.
+\begin{comment}
 Il grado con cui un sistema possiede questi attributi deve essere interpre-
 tato in senso probabilistico e non in senso assoluto, deterministico: a causa
 dell’inevitabile occorrenza dei guasti i sistemi non sono mai totalmente di-
@@ -202,7 +206,7 @@ ripristinato un servizio corretto dopo un fallimento.
 
 \end{itemize}
 **guarda se aggiungere ultima parte con le formule
-
+\end{comment}
 \subsubsection{I mezzi per ottenere la dependability}
 Lo sviluppo di sistemi dependable richiede l’utilizzo combinato di quattro
 tipologie di tecniche:
@@ -219,7 +223,7 @@ sistema, la loro incidenza futura, o le loro probabili conseguenze.
 \end{itemize}
 \subparagraph{Prevenzione dei guasti}
 
-La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware. Queste tecniche comprendono ad esempio
+La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware.\begin{comment} Queste tecniche comprendono ad esempio
 la programmazione strutturata e modulare, l’uso di linguaggi fortemente tipati, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
 il software, mentre per quanto riguarda l’hardware l’uso di rigorosi processi
 produttivi e di strumenti per la progettazione come linguaggi di alto livello
@@ -228,7 +232,7 @@ zioni, ad esempio dalle radiazioni e interferenze elettromagnetiche. Guasti
 che originano da interazioni umane possono invece essere prevenuti tramite
 un’appropriata formazione del personale, o la creazione di procedure di manu-
 tenzione rigorose. Guasti originati da attacchi esterni possono essere prevenuti
-tramite firewall e dispositivi di sicurezza simili.
+tramite firewall e dispositivi di sicurezza simili.\end{comment}
 \subparagraph{Tolleranza ai guasti}
 La “Fault Tolerance” mira a preservare l’erogazione di un servizio corretto in
 presenza di guasti attivi. Essa viene solitamente implementata tramite rilevazione di errori (error detection) e conseguente recupero dello stato del sistema
@@ -280,9 +284,7 @@ stati segnalati come la causa di uno o più errori, la manutenzione preventiva
 cerca di scovare e rimuovere i guasti prima che causino degli errori durante la
 normale operazione del sistema.
 \subparagraph{Previsione dei guasti}
-La “Fault Forecasting” è condotta effettuando una valutazione del comporta-
-mento del sistema rispetto all’occorrenza e attivazione dei guasti. La valuta-
-zione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
+La “Fault Forecasting” è condotta effettuando una valutazione del comportamento del sistema rispetto all’occorrenza e attivazione dei guasti. La valutazione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
 e valutare i modi di fallimento o le combinazioni di eventi che porterebbero ad
 un fallimento del sistema; quantitativa (o probabilistica), che mira a valutare
 in termini probabilistici il grado con cui alcuni attributi vengono soddisfatti
@@ -294,7 +296,7 @@ sistema eroga diversi servizi, e spesso esistono due o più modi di erogazione
 del servizio, ad esempio da servizio a pieno regime, a servizio di emergenza.
 Questi modi distinguono la qualità o completezza del servizio erogato. Misu-
 re di dependability collegate alla qualita’ del servizio erogato (performance)
-vengono solitamente riassunte nella nozione di performability [4].
+vengono solitamente riassunte nella nozione di performability \cite{smith1988performability}.
 I due principali approcci alla previsione dei guasti quantitativa sono la
 costruzione di modelli e la loro soluzione (analitica o tramite simulazione), in
 cui il comportamento del sistema è riprodotto tramite un modello (tipicamente
@@ -335,8 +337,6 @@ Una loro classificazione si basa su 4 fattori:
 \item \textbf{feedback}  disponibili da apprendere. 
 \end{itemize} 
 
-
-
 Esistono tre grosse tipologie di feedback che determinano i tre principali tipi di apprendimento:
 \subparagraph{unsupervised learning}, dove un agente apprende patterns dall'input senza feedback espliciti. 
 
@@ -347,79 +347,489 @@ Nello specifico, il compito di un apprendimento supervisionato è quello che dat
 (x1.y1),(x2,y2),...(xn,yn),
 dove ogni valore y è generato da un funzione sconosciuta y=f(x), questa scopre una funzione h che approssima la funzione f.  
 Il Learning problem si può definire in due maniere a seconda del l'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
- si definisce come \textbf{regressione}
-
-
+ è definito come \textbf{regressione}.
+ 
 \subsubsection{Neural Network}
 Una particolare forma di supervised learning, come ci suggerisce il titolo del seguite capitolo, sono le artificial neural network o più brevemente neural network. 
 La \textbf{rete neurale} è composta da un insieme di nodi o unità connesse da link orientati.\cite{russell2005intelligenza}
- La topologia e le propietà dei nodi determina le proprietà della rete.
+ La topologia e le propietà dei nodi determinano le proprietà della rete.
 \subparagraph{Neurone}
-Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando quando una combinazione lineare dei suoi input superano la sua hard o soft threshold. L'output dei neuroni finali sarà il risultato della task.
-\subparagraph{Collegamenti}
-Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j. Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
-\subparagraph{funzione di attivazione}
+Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua hard o soft, threshold. L'output dei neuroni finali sarà il risultato della task.
+\subparagraph{Funzione di attivazione-da rivedere}
 In generale un neurone, calcola una somma pesata dei suoi input:
 \[in_j=\sum_{i=0}^n  w_{i,j}a_{i}\]
 A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deriva l'output:
 \[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
 Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.
+\subparagraph{Collegamenti}
+I neuroni sono interconnessi tra di  loro,  al fine di  propagare il risultato della funzione di attivazione di un nodo padre a un nodo figlio.
+%Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j.
+ Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
+ 
 \subparagraph{feed-forward network}
-Definito il modello matematico di ogni neurone, questi dovranno connettersi insieme, a formare una rete.
+Definito il modello matematico di ogni neurone, questi si connetteranno insieme, a formare una rete.
 Esistono due principali tipologie: 
 la \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
 Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formano un sistema dinamico che raggiunge uno stato stabile o
 esibiscono oscillazioni o addirittura comportamenti caotici. Questa caratteristica, permette alla rete di supportare un memoria a breve termine.
+\begin{comment}
 \subparagraph{perceptron network}:
 Una forma semplice di feed-forward network, è il perceptron network o anche chiamato single-layer neural networl. Questo prevede che i suoi neuroni di input siano direttamente connessi a quelli di output. 
-
-\subsubsection{Convulutional Neural Network}
-Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network che impiega un operazione matematica chiamata \textbf{convuluzione}.
-\subparagraph{La convuluzione} è un tipo specializzato di operazione lineare, applicata a due funzioni (f e g) che produce una terza funzione (f*g) esprimendo come la forma dell'uno viene modificata dall'altra.
-L'architettura di una CNN è simile a tutte le reti neurali, quindi da un layer di input, uno di output e da diversi hidden layer, dove come suggerisce il nome della rete, sarà presente almeno un tipo di layer che effettuerà la convuluzione. 
-\subparagraph{Convulutional Layer:}
-Layer impiegati anche come layer di input, ricevono 
+\end{comment}
 
 
+\subsection{Autonomous Driving}
+Nell’ultimo decennio, il settore dell’Automotive è stato in continua evoluzione. In particolar modo, le grandi aziende automobilistiche e molti gruppi di ricerca si sono mossi verso l’automazione della guida ed
+il miglioramento delle infrastrutture già esistenti. I motivi di questo
+interesse del settore verso la guida autonoma sono vari:
+\begin{itemize}
+\item riduzione del numero di incidenti, anche fino al 90%,
+\item  riduzione dei consumi,
+\item  riduzione delle emissioni di $CO_{2}$ ,
+\item  riduzione di tutte le varie problematiche della sicurezza
+stradale.
+\end{itemize}
+
+\subsubsection{Livelli di automazione della guida}
+La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
+In questo sistema di classificazione, all’aumentare del livello di automazione, la responsabilità del conducente passa dalla guida alle attività di
+supervisione.
+Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui è assente qualsiasi tipologia di automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
+
+\begin{itemize}
+\item Livelli 0:
+Veicoli privi di qualsiasi sistema di automazione.
+\item Livello 1: 
+Veicoli  i quali mettono a disposizione dell'autista, almeno un sistema di assistenza, per esempio, l'assistenza alla frenata.
+\item Livello 2:
+Veicoli i quali combinano due o più sistemi avanzati di assistenza alla guida, come l'adaptive cruise control, Lane-Keeping assist, e l'Automatic Emergency Braking. Tutti questi rientrano sotto la dicitura ADAS (Advanced Driver-Assistance Systems). 
+\item Livello 3:
+Veicoli definiti a guida semi-autonoma, siccome sono in grado di  gestire situazioni variegate, anche al di fuori di un contesto autostradale. Nel senso che si prendono la responsabilità di gestire tratti del tragitto, richiedendo però alla fine di questi la ripresa del controllo da parte del conducente. Nel caso questo non avvenisse, arresteranno in sicurezza il  veicolo.
+\item Livello 4
+Veicoli definiti a guida autonoma, sono dotati di un set di tecnologie in grado di procedere per lunghi tragitti, superando una varietà di ostacoli, come i caselli autostradali.Tuttavia il loro funzionamento sarà limitato:
+\begin{itemize}
+\item ad una determinata area geografica,
+\item condizioni meteo avverse,
+\item da una velocità massima e così via.
+\end{itemize}
+
+\item Livello 5
+Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi condizione e luogo.
+\end{itemize}
+\begin{comment}
+Al momento la serie di veicoli con il livello più alto, è l'Autopilot di Tesla, che effettivamente si può ritenere di livello 4, ma per motivi legali è categorizzato come livello 3, e la navetta Olly, classificata come livello 4.
+\end{comment}
+\subsubsection{Visione artificiale}
+Come definito nella sezione precedente dedicata all'intelligenza artificiale, ogni agente prende in input una sensazione, la elabora, prende una decisione, e la attua con gli attuatori. Applicando questo concetto all'autonomus driving, anche questi hanno una serie di sensori, che gli permettono di prendere coscienza dell'ambiente circostante in cui è immersa la vettura.
+Le principali tecnologie, presenti al momento su questi sistemi sono\cite{das2018risk}:
+\begin{itemize}
+\item Fotocamere
+\item Radar
+\item Lidar
+\item GPS
+\end{itemize}
+che insieme compongono la visione artificiale avanzata dell'autonomus driving.
+Tutte insieme, forniscono un modello del ambiente circostante (3D),  attraverso immagini bidimensionali(2D).
+Lo scopo della visione artificiale è proprio quella di riprodurre la vista umana.\cite{wiki:visart}
+
+\subparagraph{LIDAR - Light Detection And Ranging}
+Il Lidar è  solito essere installato sul tettuccio del veicolo, è un sensore che attraverso l'emissione e ricezione di segnali luminosi, laser, ottiene informazioni fisiche  dell'ambiente e  cinematiche sul  veicolo.
+\begin{comment}
+È una tecnologia di telerilevamento. I suoi usi sono molto vari soprattutto
+perché il suo obiettivo principale è quello di raccogliere informazioni
+3D e usare la luce sotto forma di un laser pulsato per misurare diverse
+distanze. Il suo ruolo è quello di raccogliere informazioni cinematiche sul
+veicolo e informazioni fisiche sull’ambiente circostante. Il sensore ottico
+LIDAR è installato sul tettuccio del veicolo autonomo. È composto da un
+laser, un filtro per obiettivo, un ricevitore, un regolatore di potenza, uno
+specchio rotante e un processore integrato \citep{das2018risk}.
+Diversamente dal Radar, che al posto della luce utilizza onde radio,3.2 visione artificiale
+la distanza dell’oggetto è determinata misurando il tempo trascorso fra
+l’emissione dell’impulso e la ricezione del segnale retrodiffuso. L’unità
+di elaborazione deve essere collocata in una posizione abbastanza rialza-
+ta da terra; inoltre, sono necessarie misure di sicurezza per proteggere
+l’unità da urti o vibrazioni derivanti da incidenti o dalla navigazione su
+terreni accidentati, che potrebbero causare guasti al sistema.
+\end{comment}
+\subparagraph{RADAR - RAdio Detection And Ranging}
+E' un sistema che utilizza onde radio trasmesse nell'ambiente, al fine di raccogliere informazioni sugli  ostacoli intorno al veicolo e aumentare la consapevolezza del  posizionamento degli altri veicoli presenti. Questo sensore tiene
+d’occhio le altre auto e indica al veicolo autonomo di accelerare o rallentare
+a seconda del comportamento degli altri conducenti \cite{das2018risk}.
+\begin{comment}
+È un sistema che utilizza onde radio per il rilevamento e la determina-
+zione della posizione ed eventualmente della velocità di oggetti fissi o
+mobili, come aerei, navi, veicoli, formazioni atmosferiche o il suolo. Le
+onde radio vengono trasmesse nell’ambiente per raccogliere informazioni
+sugli ostacoli intorno al veicolo e aumentare la consapevolezza del po-
+sizionamento degli altri soggetti davanti e dietro. Questo sensore tiene
+d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
+a seconda del comportamento degli altri conducenti \cite{das2018risk}.
+È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
+di sensori anteriori e posteriori.
+\end{comment}
+\subparagraph{Videocamera}
+Le telecamere sono necessarie nel sistema di trasporto intelligente affinché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
+veicolo in considerazione. Le immagini bidimensionali derivanti da una
+singola fotocamera o le mappe 3D risultanti dall’utilizzo della doppia
+fotocamera, potrebbero individuare stereoscopicamente lo spazio disponibile per i movimenti autonomi del veicolo. Queste immagini o mappe
+vengono utilizzate per estrarre informazioni quantitative dalle scene e
+per tracciare gli obiettivi del veicolo. Le immagini sono segmentate in un
+certo numero di pixel. Ogni pixel viene elaborato e memorizzato, il che richiede un’elevata velocità di calcolo ed un elevato spazio di archiviazione
+\cite{das2018risk}.
+
+\subparagraph{GPS - Global Positioning System}
+Il Sistema di Posizionamento Globale, attraverso una rete dedicata di sa-
+telliti artificiali in orbita, fornisce a un terminale mobile o ad un ricevitore
+GPS informazioni sulle sue coordinate geografiche e sul suo orario in
+quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
+che potrebbero impedirne l’invio e la ricezione dei segnali (edifici molto
+alti, gallerie, ecc.), generando errori dell'ordine di metri.
+\begin{comment}
+La localizzazione avviene tramite la trasmissione di un segnale radio da parte di ciascun satellite e l’elaborazione dei
+segnali ricevuti da parte del ricevitore \cite{das2018risk}
+Per far procedere autonomamente il veicolo, il GPS, con l’aiuto di altri
+sensori, crea mappe precise della carreggiata e guida nella direzione
+esatta. 
+\end{comment}
+La scelta di sviluppare un detector sulle fotocamera dei veicoli, è data dalla loro  attuale, alta presenza in tutti i veicoli.
+\subsubsection{Reti neurali applicate all'autonomus driving}
+Le Reti Neurali sono oggi ampliamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l’elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degl'utenti esterni al veicolo. 
+Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo.%, come un caso di autopilot di Tesla.
+Per quanto riguarda le prestazioni misurate su questa tecnologia, sono stati
+registrati punteggi di accuratezza spesso corrispondenti a quelli di un
+individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
+ti i punteggi osservati quando si considerano i casi peggiori. Con casi
+peggiori si vuole intendere quei casi definiti Adversarial Examples \cite{engstrom2019exploring} o
+input perturbati, anche solo leggermente, che dal punto di vista umano
+risultano sempre comprensibili, mentre da quello della macchina, cam-
+biano totalmente di significato. Naturalmente, se queste Reti vengono
+utilizzate su veicoli che devono muoversi in un ambiente nel quale si
+trova un’eterogeneità di soggetti e comportamenti, si parla di contesti
+nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
+dependability di un sistema sono al primo posto in ordine di importanza.
+
+\subsubsection{Classificatori}
+Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prenderà delle decisioni.
+Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con
+questo termine si intende rappresentare tutte le possibili trasformazioni
+che un’immagine può subire, ad esempio ruotandola, tagliandola, scalandola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
+contesti:
+\begin{itemize}
+\item verificare il livello di completezza di un classificatore,
+\item allenare una rete neurale,
+\item ricreare scenari o situazioni con cui il veicolo su cui è installata una
+determinata rete può avere a che fare.
+\end{itemize}
+
+Con il termine "trasformata spazialmente" non ci si deve immaginare
+una modifica profonda del fotogramma in questione, ma anzi, basta
+anche solo una piccola rotazione, di meno di un grado, per far sì che il
+classificatore confonda, ad esempio, un revolver con una trappola per topi
+\cite{engstrom2019exploring}, il che, pensando ad un utilizzo anche diverso da quello che se ne fa
+su un veicolo a guida autonoma, può far sorgere molte preoccupazioni e
+domande.%(si pensi all’ambito aeroportuale).
+
+\subsubsection{Object Recognition}
+In generale, ci si riconduce al problema dell’Object Recognition o riconoscimento artificiale degli oggetti. Questo richiede che ci sia una nozione
+di somiglianza visiva, difficile da far apprendere ad un sistema: significherebbe catturare e insegnare ad una macchina la nozione di percezione
+umana \cite{engstrom2019exploring}.
+
+Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto prestazioni all’avanguardia, talvolta competitive con la percezione umana.
+Una della sfide principali nella guida autonoma è il cambiamento ambientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
+differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
+stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
+muove nello spazio \cite[eykholt2018robust] .
+Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
+di valutazione nella navigazione potrebbe causare incidenti altamente
+devastanti.
+\begin{comment}
+Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
+analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
+dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infrastruttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
+della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
+della superficie stradale non sono state incluse [31].
+\end{comment}
+
+\subsection{CARLA}
+\subparagraph{Autonomus driver simulator}
+Lo sviluppo della guida senza conducente è un argomento attuale e di
+grande interesse, su cui molte società automobilistiche stanno investendo
+dato che promette di essere un mercato da miliardi di dollari. %[15]
+Di contro, la guida in ambiente cittadino è una sfida
+molto più grande, per via del maggiore grado di variabilità degli scenari
+che si possono presentare e degli oggetti che devono essere riconosciuti,
+ed è necessario ancora molto lavoro prima che sia disponibile un sistema
+in grado di muoversi da solo in questi ambienti senza pericolo e in modo
+efficiente.
+Nell’ottica dello sviluppo di un sistema di guida autonoma efficiente
+e sicuro, si rende necessario lo sviluppo di metodi e strumenti per il
+miglioramento dell’efficienza del prodotto e per la validazione dello
+stesso. Tra le tecniche utilizzate per automobili a guida autonoma ci sono
+metodi di apprendimento automatico che richiedono una gran quantità di
+immagini, inoltre sia per lo sviluppo che soprattutto per la validazione, si
+deve considerare che esistono una quantità infinita di scenari (situazioni)
+che si possono presentare e che il sistema progettato deve essere in grado
+di agire nel modo più sicuro in ognuno di essi. Il problema è di per sé mal
+posto, visto che non è dato sapere se un’auto che reagisce correttamente
+in una certa situazione farà lo stesso cambiando qualche variabile dello
+scenario.
+Lo sviluppo e la validazione delle auto a guida autonoma si configura
+per quanto detto come molto complicato e costoso, visto che è necessario
+effettuare un gran numero di prove in diversi scenari.
+Per aiutare a risolvere il problema dei costi dello sviluppo con testing
+in ambiente fisico e della richiesta di dati che abbiamo presentato, sono
+stati sviluppati dei simulatori che permettono di sperimentare il software
+sviluppato in un ambiente virtuale, tra questi NVIDIA DRIVE Constellation, AirSim, e CARLA Simulator. Questi simulatori riproducono scenari di guida cittadina
+in cui è possibile testare un auto a guida autonoma che raccoglie dati
+dall’ambiente. Per le considerazioni fatte in precedenza, un simulatore
+si presenta come un alleato fondamentale nel processo di sviluppo e di
+validazione. Infatti un simulatore in grado di riprodurre realisticamente
+il complicato ambiente cittadino può essere utilizzato per lo sviluppo
+con tecniche di machine learning avide di dati, per cui sono necessari
+centinaia di migliaia di riproduzioni per ottenere risultati, e per testare il
+sistema in altrettanti scenari, anche eticamente o fisicamente difficili da
+riprodurre, prima o congiuntamente allo sviluppo e al testing su strada.
+
+In particolare CARLA è un simulatore grafico open source costituito da un'architettura client-server scalabile.
+dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'ambiente in tutti i suoi aspetti: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. 
+Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
+\subsubsection{Sensori}
+Come un veicolo reale di guida autonoma, Carla predispone una suite di sensori preimpostasti,come fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
+La loro posizione, numero e direzionamento possono essere specificate dal client.
+Per una presentazione completa dei sensori si rimanda a \cite{tesi niccolo galli}
+E proprio della fotocamera RGB di Carla si farà uso al fine di costruire il dataset di immagini.
 
 \section{Costruzione del dataset}
-Come predetto il detector ivi esposto impiega come sistema classificatore una rete neurale convuluzionale, ed essendo questo una  forma di apprendimento supervisionato, richiede una fase di training prima del suo utilizzo.
-Detto ciò, la prima cosa che è necessario predisporre è il dataset di dati, da fornirgli. 
-Nel caso di questa tesi, i detector sono implementati attraverso singoli classicatori binari, dove ciascuno è stato allenato ad apprendere singoli casi di malfunzionamento. 
-Come spiegato precedentemente, le reti neurali prevedono due diversi dataset: il training set  e il validation set. 
-Entrambi suddivisi in golden run e sporcate.
-
-Quindi il dataset avrà la seguente forma, generale a tutti i malfunzionamenti presi in considerazione:
+Il detector utilizza come tecnologia una Convulutional Neural Network, una forma di rete neurale. 
+Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
+Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
+L’addestramento di una generica rete neurale prevede la creazione di un dataset sulla
+base della procedura:
 \begin{itemize}
-\item Training set
-\begin{itemize}
-\item{Originale}
-\item{Sporcata}
-\end{itemize}
-\item Validation set
-\begin{itemize}
-\item{Originale}
-\item{Sporcata}
-\end{itemize}
-\end{itemize}
-Dovendo ottenere un simil risultato, si è proceduto con le due seguenti fasi:
-\begin{itemize}
-\item Acquisizione;
-\item Sporcatura;
+\item Definizione delle classi
+\item Acquisizione immagini
+\item Sporcatura immagini
+\item Suddivisione del dataset
 \end{itemize}
 
-\subparagraph{Acquisizione}
-La prima fase del processo di costruzione del dataset  prevede l'acquisizione di immagini pulite dal simulatore CARLA. Attraverso il seguente software github, è stato possibile acquisire le immagini senza errori.
-Sono state avviate 500 simulazioni diverse, dove da ciascuna sono state acquisite 300 immagini .png nella forma (800*600)
+Ciascuno step è illustrato in dettaglio nei paragrafi seguenti.
+
 \begin{comment}
-Nel caso di questo progetto il numero di simulazioni avviate è stato di 500, da cui per ciascuno sono state prodotte 300 immagini (800*600)
-\end{comment}
-\subparagraph{Sporcatura}
-La seconda fase del processo di costruzione, prevede la "sporcatura" delle immagini salvate nella prima fase, immagazzinandole in maniera tale da essere poi usate dalla rete neurale.
-Per "sporcatura" di una immagine, è inteso l'applicazione di un effetto all'immagine che simuli un guasto al sensore ottico della vettura.
-Per fare questo è stato usato il progetto github "progetto secci".
+Questo prevede che siano forniti tre diverse dataset di immagini:
+\begin{itemize}
+	\item Training set
+	\item Validation set
+	\item Test set
+\end{itemize}
 
+Per il seguente elaborato avendo la possibilità di acquisire grandi quantità di dati come verrà esposto in seguito, il training set avrà dimensioni di 240000 immagini, suddivise equamente tra pulite e sporche
+Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
+Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
+\end{comment}
+
+\subsection{Definizione delle classi}
+Il problema della classificazione delle immagini è un problema che come dice il verbo, deve assegnare a un elemento in input una classe.
+Quindi le classi, o etichette(label) sono gruppi di elementi che hanno determinate caratteristiche in comune. Più le differenze tra classi diverse, sono poco accentuate, più è difficile distinguerle.
+Nel caso del detector,  le classi rispecchiano i diversi guasti che la fotocamera può subire. Per una esposizione completa dei guasti che sono stati presi in considerazione si rimanda a \cite{secci2020failures}.
+Le classi prese in considerazione per la costruzione dei vari dataset su cui sarà allenato l'agente, sono 18, di cui una rappresenta le immagini pulite(Golden Run), 16 rappresentano ciascuna un determinato guasto, e l'ultima (All) contiene al suo interno tutte e 16 i guasti presi in considerazione
+\begin{itemize}
+\item Golden Run
+\item Blur
+\item Black
+\item Brightness
+\item 50 death pixels
+\item 200 death pixels
+\item Nodemos
+\item Noise
+\item Sharpness
+\item Brokenlen
+\item Icelens
+\item Banding
+\item Greyscale
+\item Condensation
+\item Dirty lens
+\item Chromatic aberration
+\item Rain
+\item All
+\end{itemize}
+
+
+\subsection{Acquisizione}
+Definite le classi, la fase successiva nella costruzione dei dataset, è l'acquisizione delle immagini.
+Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client è stato impostato per generare 517 simulazioni diverse, ovvero 517 ambienti generati casualmente, con condizioni atmosferiche diverse, e in localizzate in luoghi diversi sulla stessa mappa. In ciascuna delle simulazioni il veicolo si muove nelle vie della città, seguendo percorsi randomici. Durante il tragitto il Client è stato impostato per acquisire 300 immagini dal sensore della fotocamera frontale della vettura, nel formato .png e ciascuna dalle  dimensioni di 800*600 pixels.
+Si rimanda alla sezione "Manuale Utente" per le note sugli script utilizzati
+\begin{comment}
+Per l'acquisizione delle immagini 
+Per acquisire questa mole di dati non potendo usare un sistema fisico per l'acquisizione, dati le  problematiche gia  citate, è stato impiegato CARLA.
+Sono state avviate 500 simulazioni, con caratteristiche diverse, come città,meteo e  elementi ambientali, generate in maniera casuale dal sistema. Da ogni run, attraverso il progetto github \textbf{cita}, è stato possibile acquisire 300 frame della fotocamera RGB posto sul veicolo, mentre questo sis spostava nell'ambiente. 
+Le immagini cosi ottenute, sono del formato (800*600) nel formato  .png.
+Queste rappresentano la base di partenza per la creazione del dataset, essendo tutte immagini pulite, ovvero immagini che non presentano malfunzionamenti o modifiche di qualsiasi genere.
+\end{comment}
+\subsection{Sporcatura}
+Ottenute queste grande mole di immagini pulite, prive di qualsiasi "errore", questa fase del processo, prevede l'applicazione dei guasti alle immagini.
+Si intende l'applicazione di filtri, che simulino il guasto alla fotocamera, della corrispettiva classe.
+I filtri sono ripresi dal progetto github di Francesco Secci, Python Image Failures, i quali sono stati riadatti per l'uso nella seguente tesi.
+\subparagraph{Rappresentazione dei vari guasti con breve descrizione}
+Per una illustrazione completa dei guasti si rimanda  a \cite{secci2020failures}, da cui è stato ripreso lo studio su l'effetto di determinati guasti alla fotocamera, portino a un rate di fallimenti più elevato. 
+
+\subsection{Suddivisione del dataset}
+La Convnet sviluppata, è un classificatore binario, e come tale distingue solamente tra due classi, immagini pulite e immagini sporche, ovvero: golden run e classe dei guasti.
+Detto ciò sono stati costruiti 17 dataset diversi, ciascuno per ogni classe.Ogni dataset è composto da 30000 elementi,suddiviso su due classi, 150000 immagini per classe. Queste immagini sono ulteriormente suddivise in training set e validation set, dove delle 150000 immagini di una classe, 120000 sono dedicate al training set e 30000 sono dedicate al validation set.
+Questa suddivisione tra training set e validation set delle immagini, risulta molto importante nella fase di training dei modelli, come si vedra in seguito.
+Uno schema di suddivisione (o immagine):
+\begin{itemize}
+\item Training set:240000 elementi
+\begin{itemize}
+\item Golden Run: 120000 elementi
+\item Dirty Run: 120000 elementi
+\end{itemize}
+\item Validation set: 60000 elementi
+\begin{itemize}
+\item Golden Run: 30000 elementi
+\item Dirty Run: 30000 elementi
+\end{itemize}
+\end{itemize}
+Un agente classificatore non prevede solo una fase di allenamento, ma anche una fase di test, nella quale attraverso un dataset di immagini dedicate, si va a valutare la capacità effettiva di distinzione della rete.
+
+Da finire con i dati del test set
 \section{Costruzione del detector}
+Come un metal dector, che rileva il metallo nella suolo, come un mine detector, rileva le mine sempre nel suolo, il detector ivi proposto, è stato sviluppato al fine di rilevare all'interno del flusso di immagini di una fotocamera RGB, dei malfunzionamenti.
+Per fare ciò come anticipato è stato usato una CNN o anche meglio conosciuta  rete neurale convuluzionale.
+Tecnologia basata sulle rete neurali più generiche, è gia impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a voice riconoscimento, è stata usata come cuore del detector. 
+La rete neurale progettata per la seguente tesi svolge funzione di classificatore binario, e nel preciso caso di questo progetto classifica una immagine tra "pulita", ovvero la telecamera non presenta guasti e quindi non si svilupperà un fallimento nel veicolo,  o foto "sporcata", ovvero immagine ottenuta da il sensore RGB che presenta un malfunzionamento.
+
+\subsection{Convulutional Neural Network}
+Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network dove la strato convuluzionale compare almeno una volta.
+L'input di una convulutional neurale network o ConvNet,\begin{comment} è ampiamente utilizzata nelle applicazioni di visione artificiale,\end{comment}, è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
+\subparagraph{L'architettura} 
+Le reti neurali convoluzionali operano su strutture a griglia contraddistinte da relazioni spaziali tra pixel, ereditate da uno strato al successivo tramite valori che descrivono
+piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o
+activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
+Una CNN è composta da  un insieme di strati che si susseguono, illustrati in dettaglio nei paragrafi seguenti. Gli strati principali sono:
+\begin{itemize}
+\item convolutional layer;
+\item activation layer;
+\item pooling layer;
+\item dense layer;
+\end{itemize}
+\cite{torresin2019sviluppo}
+
+\subparagraph{Convolutional layer}
+La convoluzione è l’operazione fondamentale delle ConvNet. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
+eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
+Un filtro è caratterizzato dai
+seguenti iperparametri (hyperparameters):
+\begin{itemize}
+\item altezza Fq
+\item larghezza Fq
+\item profondità d
+\item numero q
+\end{itemize}
+Solitamente i filtri hanno forma quadrata e profondità uguale a quella dello strato al
+quale sono applicati, nel caso di immagini RGB, 3. \begin{comment}Per un’immagine RGB,  per esempio il primo filtro convoluzionale
+F*F*d potrà avere dimensione  5*5*3 o 7*7*3.\end{comment} Il numero di possibili
+allineamenti tra filtro e immagine definisce altezza e larghezza della successiva feature
+map.
+Dal hidden layer q1, il filtro produce uno nuovo hidden layer q2
+Lq+1 = Lq - Fq + 1
+Bq+1 = Bq - Fq + 1
+Ad esempio, per immagini di dimensioni 32 * 32, un filtro 5 * 5 genera uno strato
+nascosto 28 x 28.
+È opportuno fare distinzione tra profondità del filtro e profondità di strato nascosto/mappa di attivazione: la prima, d è la stessa dello strato al quale è applicato, la
+seconda deriva invece dal numero di filtri applicati. Il numero di filtri è un iperparametro definito sulla base della capacità di distinguere forme sempre più complesse che
+si vuole conferire alla rete. I filtri sono dunque i componenti a cui saranno associate le
+caratteristiche dei pattern delle immagini.
+I filtri dei primi strati individuano forme primitive, quelli successvi imparano a distinguere forme sempre più grandi e complesse. Una proprietà della convoluzione è
+l’\textbf{equivarianza alla traslazione}: immagini traslate sono interpretate allo stesso modo e
+i valori delle mappa di attivazione traslano con i valori di input \cite{torresin2019sviluppo}. Ciò significa che forme particolari generano feature maps simili, indipendentemente dalla loro collocazione
+nell’immagine.
+Una delle proprietà della convoluzione è la seguente:
+	 Una convoluzione sullo strato
+q incrementa il campo recettivo di una feature dallo strato q allo strato q + 1. In altre parole, ogni valore della mappa di attivazione dello strato successivo cattura una regione
+spaziale più ampia del precedente. Feature maps degli strati catturano aspetti caratteristici di regioni via via maggiori e questo è il motivo per cui le CNN possono essere
+definite “profonde”: per studiare l’intera immagine sono necessarie lunghe successioni
+di “blocchi” di strati. 
+In figura, un esempio dell’operazione di convoluzione.
+
+\subparagraph{Padding} L’operazione di convoluzione comporta una contrazione dello strato q rispetto a q + 1 ed una conseguente perdita di informazioni. Il problema può essere
+arginato utilizzando il cosiddetto padding, una tecnica che prevede l’aggiunta di $\frac{(Fmeno1)}{2}$ pixel ai bordi delle mappe di attivazione per mantenere l’impronta spaziale. Ovviamente, 
+per non alterare l’informazione, ai pixel sono assegnati valori nulli. Il risultato
+\cite{aggarwal2018neural} è un incremento delle dimensioni (altezza e larghezza) del volume di input di F - 1,
+esattamente la quantità di cui è ridotto a seguito della convoluzione.
+Essendo il prodotto zero, le regioni esterne soggette a padding non contribuiscono al risultato finale del prodotto scalare. Ciò che invece accade è permettere al filtro convoluzionale di scavalcare i bordi dello strato e computare il prodotto scalare
+solamente per le celle di valori diversi da 0. Questa tipologia di padding è definita
+“half-padding” in quanto circa metà del filtro oltrepassa i bordi, quando collocato alle
+estremità. L’half-padding è utilizzato per mantenere il “footprint” spaziale.
+Quando il padding non è utilizzato, si parla semplicemente di valid-padding e nella
+pratica non dà buoni risultati per il seguente motivo: mentre con l’half-padding le
+celle ai bordi contribuiscono all’informazione, nel caso di valid-padding, queste non
+vedono il passaggio del filtro e sono sotto-rappresentate.
+Un’altra forma di padding è il full-padding, con il quale si lascia che il filtro esuli
+completamente dal layer andando ad occupare celle di soli zeri. Così facendo si incrementa l’impronta spaziale dello strato, allo stesso modo in cui il valid-padding la
+riduce.\cite{aggarwal2018neural} 
+\begin{comment}
+\subparagraph{Strides} Un filtro convoluzionale computa il prodotto scalare in ogni singola posizione dello strato di input ma è altresì possibile limitare la computazione ad un numero
+inferiore di posizioni, facendo uso dello stride S. La convoluzione è allora applicata
+alle posizioni 1, S + 1, 2S + 1 etc., lungo entrambe le dimensioni. L’output avrà altezza
+e larghezza, rispettivamente:
+Lq+1 = Lq - F/S+ 1
+Bq+1 = Bq - F/S+1
+Ne consegue che lo stride comporta una riduzione delle dimensioni di un fattore
+di circa 1/S, e dell’area di S alla seconda 2. Generalmente si usano valori limitati a 1 o 2 mentre con
+stride maggiori si punta alla riduzione della richiesta di memoria. Tramite lo stride è
+possibile catturare pattern complessi in vaste porzioni di immagine, con risultati simili
+a quelli prodotti dal max-pooling.
+In genere le dimensioni delle immagini in input sono ridotte a L = B, per evitare complicazioni nella definizione degli iperparametri. Per quanto concerne la convoluzione,
+il numero di filtri è solitamente potenza di 2 per facilitare la computazione, lo stride di
+1 o 2, le dimensioni del filtro di 3 o 5. Filtri piccoli significano reti più profonde e più
+performanti.
+Ogni filtro convoluzionale è infine associato ad un bias: dato un filtro p, ed il layer
+q, bias è indicato con b(p, q). Il bias è un fattore di moltiplicazione della mappa di
+attivazione e la sua presenza incrementa il numero di parametri di un’unità. Il numero
+di features in ogni strato sarà dunque 1 + L x B x d. Come tutti gli altri parametri, il
+valore del bias è definito tramite retropropagazione in fase di addestramento. \cite{aggarwal2018neural}\end{comment}
+\subparagraph{Funzione di attivazione Relu}
+L’operazione di attivazione non-lineare segue l’operazione di convoluzione. Per ogni
+strato Lq x Bq x d, la funzione di attivazione genera uno strato di eguale dimensione
+Lq x Bq x d di valori limitati da soglie: in quanto semplice mappatura uno-a-uno dei
+valori di attivazione, la funzione ReLU non altera l’importa spaziale dello strato.
+L’attivazione avviene tramite funzioni matematiche. Mentre in passato la tangente iperbolica, la funzione sigmoide, softsign godevano di ampia diffusione, ora sono
+limitate a reti non-profonde e ormai rimpiazzate dalla funzione di attivazione ReLU
+(Rectified Linear Unit). Il motivo principale è che in reti neurali profonde, il gradiente
+di queste tre funzioni di attivazione si annulla durante la retropropagazione ed impedisce all’algoritmo di proseguire con l’addestramento. Inoltre, la funzione ReLU è
+computazionalmente molto più efficiente. ReLU è definita come segue:
+
+
+ReLU è di fatto una funzione di rimozione di valori negativi rivelatasi efficace ed efficiente: la sua derivata in IR+ è sempre 1 e non satura in IR; in altre parole, il codominio
+della funzione è [0, inf). In corrispondenza dell’origine, la funzione non approssima
+l’identità e genera invece un gradiente elevato impedendone la scomparsa. \cite{aghdam2017guide}
+\subparagraph{Pooling layer}
+Il max-pooling estrae il massimo valore contenuto in matrici P x P di ogni mappa di
+attivazione e produce un altro hidden layer di eguale profondità. Anche in questo caso,
+come per la convoluzione, si fa uso di stride: se lo stride è 1 lo strato 2 così generato
+avrà dimensioni:
+L2 = L1 - P + 1
+B2 = B1 - P + 1
+d2 = d1.
+Per stride maggiori di 1, come solitamente si usa, altezza e larghezza saranno, rispettivamente:
+L2 = L1 - P/S + 1
+B2 = B1 - P/S+ 1
+Rispetto alla convoluzione, il pooling è effettuato al livello di ciascuna mappa di attivazione, quindi il loro numero rimane alterato e l’output è uno strato della stessa profondità (ma di altezza e larghezza differenti). Una configurazione tipica è dimensione
+2x2 e stride 2: così facendo non c’è sovrapposizione tra regioni.
+
+L’uso dello stride nel pooling è importante per tre motivi. Il primo è la riduzione
+dell’impronta spaziale delle mappe di attivazione, il secondo è un certo grado di invarianza alla traslazione e il terzo è un incremento del campo ricettivo. Si osservi che per
+ridurre l’impronta spaziale possono essere utilizzati unicamente strati convoluzionali
+con stride maggiori di 1. Nonostante ciò, si preferisce tuttora utilizzare max-pooling o
+qualche altra variante dato il grado di non-linearità e invarianza alla traslazione che
+introducono.\cite{aggarwal2018neural}
+\subparagraph{dense layer}
+Connette ogni feature in input con la corrispondente feature in output. Presenta la struttura di una rete feed-forward tradizionale e aumenta a dismisura il numero di parametri
+addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
+parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
+
+
+\begin{comment}
 Per la  costruzione del detector,  è stata implementata una rete neurale convuluzionale. 
 \begin{figure}[h!]
   \includegraphics[scale=0.1]{"cnnmodel"}
@@ -431,12 +841,26 @@ Come si nota dalla figura ~\ref{fig:CNN}, questa è composta da un insieme di la
 Il primo layer ha un è un conv2D layer, di ben 800*600*3=1440000 neuroni.
 Le dimensioni di questo primo sono date dalla necessità di poter elaborare un immagine per intero, e infatti (800,600) sono le dimensioni di larghezza e altezza delle immagini, e quindi il numero di pixelche compongono l'immagine sono 800*600=480000,  l'ultimo fattore è dato dalla composizione interna di un pixel. Questo rappresenta il numero di canali dei colori,ed essendo immagini rgb (red,green,blue) sono 3.
 Definito l'input del primo layer e quindi dell'intera rete, si può passare all'output.
-   
+ \end{comment}
+Nel caso del detector la struttura della convnet è  mostrata in seguito con:
+
+\includegraphics[scale=0.3]{strutturarete.png}
+
+
+
 \subsection{Addestramento del rete convuluzionale}
+Le ConvNet sono tipologie di reti neurali 
+Per l'addestramento della rete convuluzionale, sono stati predisposti 5 epochs, con batch di dimensione 4.
 
+\subsubsection{Batch}
+Siccome le reti richiedono grosse quantità di dati per essere allenate, si definiscono due modi per fare ciò: la prima prevede l'uso di una infrastruttura hardware in grado di processare l'intera mole tutta insieme nello stesso momento, e questo può risultare effettivamente difficile, mentre il secondo modo prevede di dividere il dataset in porzioni, e fornirle una per una alla rete.
+Le dimensioni di queste porzioni, è definità come \textbf{Batch Size}.
+Il numero di batch  necessari a processare l'interno dataset, definisce il numero di iterazioni.
 
-
-
+\subsubsection{Epochs}
+Ultima componente fondamentale di un addestramento, sono le Epochs.
+Dato il dataset di 300000 elementi, e un batch size di 4, si avranno 75000 iterazioni per epoch, quindi un epoch è l'intero ciclo di elaborazione di un training set, e le epochs identificano quante epoch saranno eseguite. Questo elemento è importante, perchè ad ogni epoch mantenendo il dataset costante, modifica i pesi della rete, portando la curva da uno stato underfitting, a uno ottimale, a un overfitting. 
+Il numero di epoch necesario a ottenere una curva ottimale varia da dataset a dataset
 \section{Esecuzione e risultati}
 
 \section{Conclusioni e lavori futuri}

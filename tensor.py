@@ -103,7 +103,11 @@ if __name__ == "__main__":
             mp = manager_of_path.ManagerOfPath(path, classes_of_modified, False)
             path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
             p = multiprocessing.Process(target=classificator, args=(lock,mp, classes, path_checkpoint))
+<<<<<<< HEAD
             p.start();print(classes);
+=======
+
+>>>>>>> 2a0104046bcf540676b741d3f632a5340ec450de
             p.join()
     else:
         mp = manager_of_path.ManagerOfPath(path, classes_of_modified[12:], True)

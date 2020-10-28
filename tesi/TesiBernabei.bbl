@@ -17,6 +17,60 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{aggarwal2018neural}{book}{}
+    \true{moreauthor}
+    \name{author}{1}{}{%
+      {{hash=ACC}{%
+         family={Aggarwal},
+         familyi={A\bibinitperiod},
+         given={Charu\bibnamedelima C},
+         giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{ACC+1}
+    \strng{fullhash}{ACC+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{Neural networks and deep learning}
+    \field{year}{2018}
+  \endentry
+
+  \entry{aghdam2017guide}{article}{}
+    \name{author}{2}{}{%
+      {{hash=AHH}{%
+         family={Aghdam},
+         familyi={A\bibinitperiod},
+         given={Hamed\bibnamedelima Habibi},
+         giveni={H\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=HEJ}{%
+         family={Heravi},
+         familyi={H\bibinitperiod},
+         given={Elnaz\bibnamedelima Jahani},
+         giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{AHHHEJ1}
+    \strng{fullhash}{AHHHEJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{pages}{978\bibrangedash 973}
+    \field{title}{Guide to convolutional neural networks}
+    \field{volume}{10}
+    \field{journaltitle}{New York, NY: Springer}
+    \field{year}{2017}
+  \endentry
+
   \entry{avizienis2004basic}{article}{}
     \name{author}{4}{}{%
       {{hash=AA}{%
@@ -86,28 +140,69 @@
     \field{year}{2011}
   \endentry
 
-  \entry{cenelec199950126}{article}{}
+  \entry{das2018risk}{article}{}
     \name{author}{1}{}{%
-      {{hash=CE}{%
-         family={CENELEC},
-         familyi={C\bibinitperiod},
-         given={EN},
-         giveni={E\bibinitperiod},
+      {{hash=DP}{%
+         family={Das},
+         familyi={D\bibinitperiod},
+         given={Plaban},
+         giveni={P\bibinitperiod},
       }}%
     }
-    \strng{namehash}{CE1}
-    \strng{fullhash}{CE1}
+    \strng{namehash}{DP1}
+    \strng{fullhash}{DP1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{C}
-    \field{sortinithash}{C}
-    \field{title}{50126-railway applications: The specification and
-  demonstration of reliability, availability, maintainability and safety
-  (rams)}
-    \field{volume}{6}
-    \field{journaltitle}{European Committee for Electrotechnical
-  Standardization}
-    \field{year}{1999}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{title}{Risk analysis of autonomous vehicle and its safety impact on
+  mixed traffic stream}
+    \field{year}{2018}
+  \endentry
+
+  \entry{engstrom2019exploring}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=EL}{%
+         family={Engstrom},
+         familyi={E\bibinitperiod},
+         given={Logan},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=TB}{%
+         family={Tran},
+         familyi={T\bibinitperiod},
+         given={Brandon},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=TD}{%
+         family={Tsipras},
+         familyi={T\bibinitperiod},
+         given={Dimitris},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SL}{%
+         family={Schmidt},
+         familyi={S\bibinitperiod},
+         given={Ludwig},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=MA}{%
+         family={Madry},
+         familyi={M\bibinitperiod},
+         given={Aleksander},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{EL+1}
+    \strng{fullhash}{ELTBTDSLMA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{booktitle}{International Conference on Machine Learning}
+    \field{pages}{1802\bibrangedash 1811}
+    \field{title}{Exploring the landscape of spatial robustness}
+    \field{year}{2019}
   \endentry
 
   \entry{nicol2004model}{article}{}
@@ -175,6 +270,114 @@
     \field{title}{Intelligenza artificiale. Un approccio moderno}
     \field{volume}{1}
     \field{year}{2005}
+  \endentry
+
+  \entry{secci2020failures}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SF}{%
+         family={Secci},
+         familyi={S\bibinitperiod},
+         given={Francesco},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=CA}{%
+         family={Ceccarelli},
+         familyi={C\bibinitperiod},
+         given={Andrea},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SFCA1}
+    \strng{fullhash}{SFCA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{On failures of RGB cameras and their effects in autonomous
+  driving applications}
+    \field{journaltitle}{arXiv preprint arXiv:2008.05938}
+    \field{year}{2020}
+  \endentry
+
+  \entry{smith1988performability}{article}{}
+    \name{author}{3}{}{%
+      {{hash=SR}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={RM},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=TKS}{%
+         family={Trivedi},
+         familyi={T\bibinitperiod},
+         given={Kishor\bibnamedelima S.},
+         giveni={K\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Ramesh},
+         familyi={R\bibinitperiod},
+         given={AV},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{SRTKSRA1}
+    \strng{fullhash}{SRTKSRA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{number}{4}
+    \field{pages}{406\bibrangedash 417}
+    \field{title}{Performability analysis: measures, an algorithm, and a case
+  study}
+    \field{volume}{37}
+    \field{journaltitle}{IEEE Transactions on Computers}
+    \field{year}{1988}
+  \endentry
+
+  \entry{torresin2019sviluppo}{article}{}
+    \name{author}{1}{}{%
+      {{hash=TL}{%
+         family={Torresin},
+         familyi={T\bibinitperiod},
+         given={Luca},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TL1}
+    \strng{fullhash}{TL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{Sviluppo ed applicazione di reti neurali per segmentazione
+  semantica a supporto della navigazione di rover marziani}
+    \field{year}{2019}
+  \endentry
+
+  \entry{wiki:visart}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={Wikipedia},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{note}{[Online; in data 15-ottobre-2020]}
+    \field{title}{Visione artificiale --- Wikipedia{,} L'enciclopedia libera}
+    \verb{url}
+    \verb http://it.wikipedia.org/w/index.php?title=Visione_artificiale&oldid=1
+    \verb 11327669
+    \endverb
+    \field{year}{2020}
   \endentry
 \enddatalist
 \endinput
