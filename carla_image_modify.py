@@ -4,9 +4,9 @@ import manager_of_path
 
 
 def manage_image(mp, classes_of_modified):
-    total_classes = 500
-    train_classes = 400  # 400
-    validation_classes = 100
+    total_classes = 24#500
+    train_classes = 24  # 400
+    validation_classes = 0 #100
     i = 0
     j = 0
     if mp.setting_type_folder:
@@ -136,9 +136,20 @@ def modify_photo(classes, mp, list, j, tv):
 
 
 
+<<<<<<< HEAD
 
 path = "/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/"  #"/home/bernabei/carla0.8.4/PythonClient/_out/" #
 classes_of_modified = ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale","condensation","dirty_lens","chromaticaberration","rain"]
 mp = manager_of_path.ManagerOfPath(path, classes_of_modified[14:], True)
 manage_image(mp, classes_of_modified[15:])
+=======
+path = "/home/bernabei/carla0.8.4/PythonClient/_out/" #"/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/" 
+classes_of_modified = ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale","condensation","dirty_lens","chromaticaberration","rain"]
+mp = manager_of_path.ManagerOfPath(path, classes_of_modified, False)
+manage_image(mp, classes_of_modified)
+
+
+
+
+>>>>>>> 2586f71b810d7a1a56f3f077080db24715f3988e
 
