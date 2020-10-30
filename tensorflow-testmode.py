@@ -75,6 +75,10 @@ def tester(lock,mp,classes):
 
 if __name__ == "__main__":
 
+<<<<<<< HEAD
+=======
+    path_of_test= "/home/bernabei/carla0.8.4/PythonClient/_out/"
+>>>>>>> bb920781b80f88e39acde22e6ad95f2c48f40cde
     path_check="/home/bernabei/carla0.8.4/PythonClient/_out/"
     classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
