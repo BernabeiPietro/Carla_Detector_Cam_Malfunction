@@ -18,7 +18,7 @@ class ManagerOfPath:
         self.setting_type_folder=type_of_folder
         if type_of_folder:
             for c in classes_of_modified:
-                self.path_classes_modify[c]=self.path_of_classes+"/"+c
+                self.path_classes_modify[c]=self.path_of_classes+c
         else:
             self.path_classes_modify["all"]=self.path_of_classes+"/all"
         self.path_episode_long = self.path_of_classes + self.path_episode

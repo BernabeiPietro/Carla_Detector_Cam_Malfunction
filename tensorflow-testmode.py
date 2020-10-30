@@ -6,6 +6,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.python.keras import losses
 import PIL.Image
 import os
 import numpy as np
@@ -19,7 +20,8 @@ def tester(lock,mp,classes):
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_test = 7200
-    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"])
+    #checkpoint_dir=mp.get_path_classes(classes)["checkpoint"]#+"training_1/cp-{epoch:04d}.ckpt"
+    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"])#+"training_1/cp-{epoch:04d}.ckpt")
     test_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our test data
     #manage gpu memory usage
     config = tf.ConfigProto()
@@ -27,39 +29,60 @@ def tester(lock,mp,classes):
     config.log_device_placement = True  # to log device placement (on which device the operation ran)
     sess = tf.Session(config=config)
     #tf.set_session(sess)  # set this TensorFlow session as the default session for Keras
-    cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=mp.get_path_classes(classes)["checkpoint"],
-                                                     save_weights_only=True,
-                                                     verbose=1,
-                                                     period=5)
-
-    model=tf.keras.models.load_model(checkpoint_dir + "/model")
+    model = Sequential([
+        Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+        MaxPooling2D(),
+        Conv2D(32, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Conv2D(64, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Flatten(),
+        Dense(512, activation='relu'),
+        Dense(1)
+    ])
+    #
+   
+    lastest = tf.train.latest_checkpoint(checkpoint_dir)
+    print(checkpoint_dir)
+    print(lastest)
+    model.load_weights(checkpoint_dir+"/training_1")
+    #model.load_weights(checkpoint_dir+"training_1.index")
+    #model1=tf.keras.models.load_model(lastest)
+    #model1.summary()
     model.summary()
+    model.compile(optimizer='adam',
+                  loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
-                                                              directory=mp.get_path_classes(classes)["train"],
+                                                              directory=mp.get_path_classes("all")["train"],
                                                               shuffle=True,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
 
-    loss, acc = model.evaluate_generator(test_data_gen, verbose=2)
-    print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
-    print("Restored model, loss: {:5.2f}%".format(100 * loss))
+    loss_ev_a, acc_ev_a = model.evaluate(test_data_gen,batch_size=4,verbose=1)
+    print(classes)
+    print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
+    print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
+# predict restistuisce numpy array
+    #loss_predict_a, acc_predict_a = model.predict(test_data_gen,batch_size=4,verbose=1) 
+    #print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
+    #print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
     lock.release();
-    #print_result(epochs, history)
+ 
 
 
 
 
 if __name__ == "__main__":
 
-    path_of_test= "/home/bernabei/carla0.8.4/PythonClient/_out/"
-    path_check=" /home/bernabei/carla0.8.4/PythonClient/_out/"
+    path_check="/home/bernabei/carla0.8.4/PythonClient/_out/"
     classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
-        for classes in classes_of_modified[:]:
+        for classes in classes_of_modified[11:]:
             mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified, True)
-            p = multiprocessing.Process(target=tester, args=(lock,mp, classes));p.start();print(classes);
+            p = multiprocessing.Process(target=tester, args=(lock,mp, classes));p.start();
             p.join()
     else:
         mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified[9:11], True)
