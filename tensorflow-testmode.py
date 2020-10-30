@@ -52,7 +52,7 @@ def tester(lock,mp,classes):
 if __name__ == "__main__":
 
     path_of_test= "/home/bernabei/carla0.8.4/PythonClient/_out/"
-    path_check=" /home/bernabei/carla0.8.4/PythonClient/_out/"
+    path_check="/home/bernabei/carla0.8.4/PythonClient/_out/"
     classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
     lock= multiprocessing.Lock()
