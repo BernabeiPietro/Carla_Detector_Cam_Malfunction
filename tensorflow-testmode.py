@@ -20,8 +20,7 @@ def tester(lock,mp,classes):
     IMG_HEIGHT = 800
     IMG_WIDTH = 600
     total_test = 7200
-    #checkpoint_dir=mp.get_path_classes(classes)["checkpoint"]#+"training_1/cp-{epoch:04d}.ckpt"
-    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"])#+"training_1/cp-{epoch:04d}.ckpt")
+    checkpoint_dir=os.path.dirname(mp.get_path_classes(classes)["checkpoint"])
     test_image_generator = ImageDataGenerator(rescale=1. / 255)  # Generator for our test data
     #manage gpu memory usage
     config = tf.ConfigProto()
@@ -40,21 +39,21 @@ def tester(lock,mp,classes):
         Dense(512, activation='relu'),
         Dense(1)
     ])
-    #
    
+    #model.summary()
     lastest = tf.train.latest_checkpoint(checkpoint_dir)
-    print(checkpoint_dir)
     print(lastest)
-    model.load_weights(checkpoint_dir+"/training_1")
+    model.load_weights(lastest)
     #model.load_weights(checkpoint_dir+"training_1.index")
-    #model1=tf.keras.models.load_model(lastest)
-    #model1.summary()
-    model.summary()
     model.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
                   metrics=['accuracy'])
+    #model1=tf.keras.models.load_model(checkpoint_dir+"/model")
+    #model1.summary()
+    #model.summary()
+    
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
-                                                              directory=mp.get_path_classes("all")["train"],
+                                                              directory=mp.get_path_classes(classes)["train"],
                                                               shuffle=True,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
@@ -75,16 +74,13 @@ def tester(lock,mp,classes):
 
 if __name__ == "__main__":
 
-<<<<<<< HEAD
-=======
-    path_of_test= "/home/bernabei/carla0.8.4/PythonClient/_out/"
->>>>>>> bb920781b80f88e39acde22e6ad95f2c48f40cde
+
     path_check="/home/bernabei/carla0.8.4/PythonClient/_out/"
     classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
-        for classes in classes_of_modified[11:]:
+        for classes in classes_of_modified[:]:
             mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified, True)
             p = multiprocessing.Process(target=tester, args=(lock,mp, classes));p.start();
             p.join()
