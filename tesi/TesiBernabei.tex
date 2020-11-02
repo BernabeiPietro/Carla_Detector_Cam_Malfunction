@@ -10,6 +10,10 @@
 \usepackage{xcolor}
 \usepackage{color}
 
+\usepackage{caption}
+\usepackage{subcaption}
+
+
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
@@ -656,6 +660,138 @@ Si intende l'applicazione di filtri, che simulino il guasto alla fotocamera, del
 I filtri sono ripresi dal progetto github di Francesco Secci, Python Image Failures, i quali sono stati riadatti per l'uso nella seguente tesi.
 \subparagraph{Rappresentazione dei vari guasti con breve descrizione}
 Per una illustrazione completa dei guasti si rimanda  a \cite{secci2020failures}, da cui è stato ripreso lo studio su l'effetto di determinati guasti alla fotocamera, portino a un rate di fallimenti più elevato. 
+Di seguito si riporta una breve rappresentazione della stessa immagini, acquisita dalla fotocamera di un veicolo nel simulatore CARLA, a cui è applicata i diversi filtri che simulano i guasti impiegati nel progetto.
+
+
+	\begin{figure}
+	     \centering
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+	 		 \includegraphics[scale=0.1]{./foto_sporcature/original.png}
+	         \caption{golden run}
+	         \label{fig:golden run}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/50_death_pixels.png}
+	         \caption{50 death pixel}
+	         \label{fig:50}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/200_death_pixels.png}
+	         \caption{200 death pixel}
+	         \label{fig:200}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+		     \includegraphics[scale=0.1]{./foto_sporcature/banding.png}
+	         \caption{banding}
+	         \label{fig:banding}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/birghtness.png}
+	    	 \caption{brightness}
+	         \label{fig:brightness}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/black.png}
+	         \caption{black}
+	         \label{fig:black}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/blur.png}
+	         \caption{blur 3.5}
+	         \label{fig:blur}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/brokenlens.png}
+	         \caption{brokenlens}
+	         \label{fig:brokenlens}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/chromaticaberrration.png}
+	         \caption{chromaticaberrration}
+	         \label{fig:chromaticaberrration}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/condensation.png}
+	         \caption{condensation}
+	         \label{fig:condensation}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/dirty_lens.png}
+	         \caption{dirty lens}
+	         \label{fig:dirty_lens}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/greyscale.png}
+	         \caption{greyscale}
+	         \label{fig:greyscale}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/icelens.png}
+	         \caption{icelens}
+	         \label{fig:icelens}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.05]{./foto_sporcature/nodemos.png}
+	         \caption{nodemos}
+	         \label{fig:nodemos}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/noise.png}
+	         \caption{noise}
+	         \label{fig:noise}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/rain.png}
+	         \caption{rain}
+	         \label{fig:rain}
+	     \end{subfigure}
+	        \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			\includegraphics[scale=0.1]{./foto_sporcature/sharpness.png}
+	         \caption{sharpness}
+	         \label{fig:sharpness}
+	     \end{subfigure}
+	        \caption{Esempi dei filtri applicati}
+	        \label{fig:Esempi dei filtri applicati}
+	\end{figure}
+
+
+
+
+
+
 
 \subsection{Suddivisione del dataset}
 La Convnet sviluppata, è un classificatore binario, e come tale distingue solamente tra due classi, immagini pulite e immagini sporche, ovvero: golden run e classe dei guasti.
@@ -830,7 +966,9 @@ Le dimensioni di questo primo sono date dalla necessità di poter elaborare un i
 Definito l'input del primo layer e quindi dell'intera rete, si può passare all'output.
  \end{comment}
 \subsection{Addestramento del rete convuluzionale}
-Quando si 
+Dopo aver definito la struttura della rete, e avendo suddiviso il dataset in tre parti: training set, validation set e test set, la fase successiva prevede l'addestramento della rete.
+Per addestramento di una rete si intendo, elaborazione da parte della  rete del training set, ovvero la modifica dei pesi dei collegamenti, al fine di modellare il meglio possibile la rete sui dati.
+In generale il sistema di apprendimento prevede che sia utilizzato il training set per l'addestramento della regressione logica, ovvero una modifica dei pesi 
 
 Durante l'addestramento della CNN, il set di dati deve essere suddiviso in tre parti:
 il training set, il validation set e il test set. Il training set
