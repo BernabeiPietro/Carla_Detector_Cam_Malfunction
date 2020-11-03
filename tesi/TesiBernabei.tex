@@ -10,6 +10,10 @@
 \usepackage{xcolor}
 \usepackage{color}
 
+\usepackage{caption}
+\usepackage{subcaption}
+
+
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
@@ -53,8 +57,8 @@ Nella seguente tesi si propone un detector, ovvero un sistema software in grado 
 Come verrà esposto in seguito un veicolo a guida autonoma, presenta una suite di sensori, attraverso i quali "vede" l'ambiente circostante. Su queste percezioni, il suo sistema decisionale guida il veicolo in sicurezza.
 Un particolare componente di questa suite di sensori, sono le fotocamere RGB le quali risultano le più impiegate e importanti tra le tutte, e proprio la  loro importanza fa si che un loro guasto,  comporti un fallimento nel sistema decisionale.
 Per questo il detector è posto tra il  sistema di acquisizione della fotocamera RGB e il sistema decisionale, al fine di rilevare la presenza dei guasti nel sensore e comunicare questa al sistema di guida su cui prenderà  le sue decisioni.
-Il detector descritto nella seguente tesi impiega una particolare forma di intelligenza artificiale, rete neurale convuluzionale.
-Come verrà esposto meglio in seguito, una convulutional neural network è una particolare forma di supervisioned learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di intere immagini o identificazione di elementi al loro interno. I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knowledge base), sulla quale si baserà per prendere le decisioni.
+Il detector descritto nella seguente tesi impiega una particolare forma di intelligenza artificiale, rete neurale convoluzionale.
+Come verrà esposto meglio in seguito, una convolutional neural network è una particolare forma di supervisioned learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di intere immagini o identificazione di elementi al loro interno. I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knowledge base), sulla quale si baserà per prendere le decisioni.
 Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
 \item Definizione e generazione Dataset
@@ -65,7 +69,7 @@ Detto ciò lo sviluppo del detector si divide in:
 \section{Fondamenti teorici}
 
 \subsection{Sistemi Critici}
-Ogni giorno, una persona usa infrastutture, mezzi, telecumicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perchè ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
+Ogni giorno, una persona usa infrastrutture, mezzi, telecomunicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perché ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
 convincano della adeguatezza dei nostri manufatti per i compiti sempre più
 critici e delicati per i quali li utilizziamo.
@@ -74,7 +78,7 @@ critici e delicati per i quali li utilizziamo.
 La \textbf{dependability} è una delle proprietà fondamentali dei sistemi informatici insieme a funzionalità, usabilità, performance e costo. Per fornirne una prima definizione, è necessario illustrare i concetti di: \cite{avizienis2004basic}.
 \begin{itemize}
 \item \textbf{Servizio:} Il servizio fornito da un sistema è il comportamento del sistema stesso, così come viene percepito dai suoi utenti.
-\item \textbf{Utente:}Un utente di un sistema è un altro sistema che interagisce attraverso l’interfaccia del servizio.
+\item \textbf{Utente:}Un utente di un sistema è un altro sistema che interagisce attraverso l'interfaccia del servizio.
 \item \textbf{Funzione di sistema:}La funzione di un sistema rappresenta che cosa ci attendiamo dal sistema; la descrizione della funzione di un sistema è fornita attraverso la sua specifica funzionale. Il servizio è detto corretto se realizza la funzione del sistema.
 \end{itemize}
 
@@ -89,7 +93,7 @@ limite accettabile \cite{avizienis2004basic}.
 Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella sua totalità, senza ambiguità e precisa. 
 Per questo la dependability può essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
 \end{comment}
-Un’esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
+Un'esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
 La dependability, a sua volta è  composta da tre diversi aspetti di cui è necessario tenere conto:
 \begin{itemize}
 \item \textbf{Le minacce o impedimenti alla dependability.} Gli impedimenti sono le
@@ -104,15 +108,15 @@ degli impedimenti.
 \subsubsection{Le Minacce: guasti, errori e fallimenti}
 Si definisce come:\cite{bondavalli2011analisi}
 \begin{itemize}
-\item \textbf{guasto:} la causa accertata o ipotizzata di un errore, derivante da malfunzionamenti di componenti, interferenze ambientali di natura fisica, sbagli dell’operatore o da una progettazione fallace.
-\item \textbf{errore:} è la parte dello stato del sistema che può causare un susseguente fallimento; in alternativa si definisce errore la manifestazione di un guasto all’interno di un programma o di una struttura dati.
-\item \textbf{fallimento:} di sistema è un evento che occorre quando un errore raggiunge l’interfaccia di servizio, alterando il servizio stesso. Quando un sistema viola la sua specifica di servizio si dice che è avvenuto un fallimento; il fallimento è quindi una transizione da un servizio corretto a un servizio non corretto. La transizione inversa, da un servizio non corretto ad uno corretto, è detta ripristino.
+\item \textbf{guasto:} la causa accertata o ipotizzata di un errore, derivante da malfunzionamenti di componenti, interferenze ambientali di natura fisica, sbagli dell'operatore o da una progettazione fallace.
+\item \textbf{errore:} è la parte dello stato del sistema che può causare un susseguente fallimento; in alternativa si definisce errore la manifestazione di un guasto all'interno di un programma o di una struttura dati.
+\item \textbf{fallimento:} di sistema è un evento che occorre quando un errore raggiunge l'interfaccia di servizio, alterando il servizio stesso. Quando un sistema viola la sua specifica di servizio si dice che è avvenuto un fallimento; il fallimento è quindi una transizione da un servizio corretto a un servizio non corretto. La transizione inversa, da un servizio non corretto ad uno corretto, è detta ripristino.
 \end{itemize}
 
-\subparagraph{Il guasto} può rimanere dormiente per un certo periodo, fino alla sua attivazione. L’attivazione di un guasto porta ad un errore, che è la parte dello
+\subparagraph{Il guasto} può rimanere dormiente per un certo periodo, fino alla sua attivazione. L'attivazione di un guasto porta ad un errore, che è la parte dello
 stato del sistema che può causare un successivo fallimento. 
 I guasti di un sistema possono essere classificati secondo diversi punti di vista, ad esempio
-fisico, logico e di interazione. Un’altra suddivisione può essere fatta in base
+fisico, logico e di interazione. Un'altra suddivisione può essere fatta in base
 alla natura del guasto: un guasto può essere intenzionale o accidentale, malizioso oppure non malizioso; ed ancora in base alla persistenza dove abbiamo
 guasti permanenti, transienti ed intermittenti. Per una tassonomia completa
 si rimanda a \cite{avizienis2004basic} 
@@ -121,7 +125,7 @@ si rimanda a \cite{avizienis2004basic}
 \subparagraph{Il fallimento} di un componente si verifica quando il servizio fornito devia
 dalla sua specifica: si verifica nel momento in cui un errore del componente
 si manifesta alla sua interfaccia, e diventa quindi un guasto per il sistema. Il
-fallimento è quindi l’effetto, osservabile esternamente, di un errore nel sistema; gli errori sono in stato latente fino a che non vengono rilevati e/o non
+fallimento è quindi l'effetto, osservabile esternamente, di un errore nel sistema; gli errori sono in stato latente fino a che non vengono rilevati e/o non
 producono un fallimento.
 
 La deviazione dal servizio corretto può assumere diverse forme, che vengono chiamate modi di fallimento e possono venire classificati secondo la loro
@@ -143,11 +147,11 @@ per la certificazione del rispetto di requisiti di dependability (ad esempio in
 \end{comment}
 
 Un sistema è formato da un insieme di componenti che interagiscono tra
-loro, perciò lo stato del sistema è l’insieme degli stati dei suoi componenti. Un
+loro, perciò lo stato del sistema è l'insieme degli stati dei suoi componenti. Un
 guasto causa inizialmente un errore nello stato di uno (o più) componenti, ma
-il fallimento del sistema non si verifica fino a quanto l’errore non raggiunge l’interfaccia del servizio. La propagazione di errori può permettere ad un errore
-di raggiungere l’interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti guasto-errore-fallimento (fault-error-failure)
-La propagazione all’interno di un componente (propagazione interna) è
+il fallimento del sistema non si verifica fino a quanto l'errore non raggiunge l'interfaccia del servizio. La propagazione di errori può permettere ad un errore
+di raggiungere l'interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti guasto-errore-fallimento (fault-error-failure)
+La propagazione all'interno di un componente (propagazione interna) è
 causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori.
 %guarda se aggiungere anche il parallelismo con carla forse è utile
 \subsubsection{Gli attributi della dependability}
@@ -158,23 +162,23 @@ quantitative o qualitative del sistema:
 corretto.
 \item \textbf{Manutenibilità (maintainability):} la capacità del sistema di subire modifiche e riparazioni; misura il tempo necessario per ristabilire un servizio
 corretto.
-\item \textbf{Disponibilità (availability):} è la prontezza del sistema nell’erogare un
-servizio corretto; misura la fornitura di servizio corretto, rispetto all’alternanza fra servizio corretto e non corretto.
-\item \textbf{Confidenzialità (confidentiality):} è l’assenza di diffusione non autorizzata di informazioni; misura l’assenza di esposizione non autorizzata di
+\item \textbf{Disponibilità (availability):} è la prontezza del sistema nell'erogare un
+servizio corretto; misura la fornitura di servizio corretto, rispetto all'alternanza fra servizio corretto e non corretto.
+\item \textbf{Confidenzialità (confidentiality):} è l'assenza di diffusione non autorizzata di informazioni; misura l'assenza di esposizione non autorizzata di
 informazione.
-\item \textbf{Integrità (integrity):} descrive l’assenza di alterazioni improprie del sistema; misura l’assenza di alterazioni improprie dello stato del sistema.
+\item \textbf{Integrità (integrity):} descrive l'assenza di alterazioni improprie del sistema; misura l’assenza di alterazioni improprie dello stato del sistema.
 
-\item \textbf{La sicurezza (safety)} è poi l’assenza di conseguenze catastrofiche sugli
-utenti e sull’ambiente circostante. La safety può essere vista come l’affidabilità
+\item \textbf{La sicurezza (safety)} è poi l'assenza di conseguenze catastrofiche sugli
+utenti e sull'ambiente circostante. La safety può essere vista come l'affidabilità
 del sistema \begin{comment}, considerando come corretti anche gli stati in cui il sistema subisce
 un fallimento benigno (possiamo quindi fondere in un unico stato sia gli stati
 corretti che i fallimenti benigni del sistema, e valutare in questo nuovo schema
-l’affidabilità)\end{comment}.
+l'affidabilità)\end{comment}.
 \item \textbf{sicurezza (security)} può quindi essere vista come la contemporanea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
 integrity, dove per “improprie” si intende “non autorizzate” \cite{nicol2004model}.
 \end{itemize}
-Ciascuno di questi attributi può essere più o meno importante in base all’applicazione: la disponibilità del servizio è sempre richiesta, anche se può
-variare sia l’importanza relativa che il livello quantitativo richiesto mentre, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
+Ciascuno di questi attributi può essere più o meno importante in base all'applicazione: la disponibilità del servizio è sempre richiesta, anche se può
+variare sia l'importanza relativa che il livello quantitativo richiesto mentre, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
 o meno. Nella loro definizione, la disponibilità e la affidabilità evidenziano la
 capacità di evitare i fallimenti, mentre la safety e la security evidenziano la
 capacità di evitare specifiche classi di fallimenti come ad esempio fallimenti
@@ -182,24 +186,22 @@ catastrofici e accesso non autorizzato alle informazioni.
 
 I requisiti di dependability di un sistema sono forniti attraverso una descrizione degli obiettivi richiesti per uno o più degli attributi sopra descritti,
 rispetto alle modalità di fallimento previste per il sistema. Se i modi di fallimento previsti sono specificati e limitati, si parla di sistemi fail-controlled; un
-sistema i cui fallimenti sono limitati soltanto all’interruzione del servizio sono
+sistema i cui fallimenti sono limitati soltanto all'interruzione del servizio sono
 chiamati fail-stop o fail-silent. I sistemi fail-safe, invece, sono quelli per cui i
 fallimenti possibili sono solamente fallimenti non catastrofici.
 \begin{comment}
-Il grado con cui un sistema possiede questi attributi deve essere interpre-
-tato in senso probabilistico e non in senso assoluto, deterministico: a causa
-dell’inevitabile occorrenza dei guasti i sistemi non sono mai totalmente di-
-sponibili, affidabili, safe o secure. Per questo gli attributi di dependability
+Il grado con cui un sistema possiede questi attributi deve essere interpretato in senso probabilistico e non in senso assoluto, deterministico: a causa
+dell'inevitabile occorrenza dei guasti i sistemi non sono mai totalmente disponibili, affidabili, safe o secure. Per questo gli attributi di dependability
 possono essere definiti in senso probabilistico cosi da poterli trattare in modo
 quantitativo.
 Ad esempio:
 \begin{itemize}
-\item L’affidabilità può essere rappresentata dalla probabilità che il sistema
+\item L'affidabilità può essere rappresentata dalla probabilità che il sistema
 non fallisca durante il periodo di missione del sistema. Se si assumono
-distribuzioni esponenziali, possiamo rappresentare l’affidabilità tramite
+distribuzioni esponenziali, possiamo rappresentare l'affidabilità tramite
 il tasso di fallimenti (ad esempio, in numero medio di fallimenti all’ora).
 \item La disponibilità è la probabilità che il sistema sia operativo al tempo t,
-considerando l’alternanza fra gli stati di servizio corretto e servizio non
+considerando l'alternanza fra gli stati di servizio corretto e servizio non
 corretto.
 \item La manutenibilità può essere rappresentata dalla velocità con cui viene
 ripristinato un servizio corretto dopo un fallimento.
@@ -208,15 +210,15 @@ ripristinato un servizio corretto dopo un fallimento.
 **guarda se aggiungere ultima parte con le formule
 \end{comment}
 \subsubsection{I mezzi per ottenere la dependability}
-Lo sviluppo di sistemi dependable richiede l’utilizzo combinato di quattro
+Lo sviluppo di sistemi dependable richiede l'utilizzo combinato di quattro
 tipologie di tecniche:
 \begin{itemize}
 
-\item \textbf{prevenzione dei guasti}, per prevenire l’occorrenza o introduzione di
+\item \textbf{prevenzione dei guasti}, per prevenire l'occorrenza o introduzione di
 guasti nel sistema;
 \item \textbf{tolleranza ai guasti}, per erogare un servizio corretto anche in presenza
 di guasti;
-\item \textbf{rimozione dei guasti}, per ridurre il numero o la gravita’ dei guasti;
+\item \textbf{rimozione dei guasti}, per ridurre il numero o la gravità dei guasti;
 \item \textbf{previsione dei guasti}, per stimare il numero di guasti presenti nel
 sistema, la loro incidenza futura, o le loro probabili conseguenze.
 
@@ -224,67 +226,60 @@ sistema, la loro incidenza futura, o le loro probabili conseguenze.
 \subparagraph{Prevenzione dei guasti}
 
 La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware.\begin{comment} Queste tecniche comprendono ad esempio
-la programmazione strutturata e modulare, l’uso di linguaggi fortemente tipati, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
+la programmazione strutturata e modulare, l'uso di linguaggi fortemente tipati, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
 il software, mentre per quanto riguarda l’hardware l’uso di rigorosi processi
 produttivi e di strumenti per la progettazione come linguaggi di alto livello
-(VHDL). Guasti di origine fisica vengono prevenuti tramite specifiche prote-
-zioni, ad esempio dalle radiazioni e interferenze elettromagnetiche. Guasti
+(VHDL). Guasti di origine fisica vengono prevenuti tramite specifiche protezioni, ad esempio dalle radiazioni e interferenze elettromagnetiche. Guasti
 che originano da interazioni umane possono invece essere prevenuti tramite
-un’appropriata formazione del personale, o la creazione di procedure di manu-
-tenzione rigorose. Guasti originati da attacchi esterni possono essere prevenuti
+un'appropriata formazione del personale, o la creazione di procedure di manutenzione rigorose. Guasti originati da attacchi esterni possono essere prevenuti
 tramite firewall e dispositivi di sicurezza simili.\end{comment}
 \subparagraph{Tolleranza ai guasti}
-La “Fault Tolerance” mira a preservare l’erogazione di un servizio corretto in
+La “Fault Tolerance” mira a preservare l'erogazione di un servizio corretto in
 presenza di guasti attivi. Essa viene solitamente implementata tramite rilevazione di errori (error detection) e conseguente recupero dello stato del sistema
 (system recovery). In particolare, la rilevazione degli errori origina un segnale
-di errore all’interno del sistema; esistono due classi di tecniche di rilevazione
-di errori: concurrent error detection viene effettuata durante l’erogazione del
-servizio, preemptive error detection viene effettuata quando l’erogazione del
+di errore all'interno del sistema; esistono due classi di tecniche di rilevazione
+di errori: concurrent error detection viene effettuata durante l'erogazione del
+servizio, preemptive error detection viene effettuata quando l'erogazione del
 servizio è sospesa e controlla la presenza di errori latenti e guasti dormienti.
 Il recupero dello stato del sistema trasforma uno stato che contiene uno o più
 errori attivi (ed eventualmente guasti), in uno stato che non contiene errori
 rilevati e guasti che possono essere nuovamente attivati. Il recovery consiste
 in error handling e fault handling. Error handling elimina gli errori dallo
-stato del sistema e può assumere tre forme: rollback, dove la trasformazio-
-ne consiste nel ritornare ad uno stato in cui si trovava il sistema prima della
-rilevazione dell’errore; rollforward, dove si porta il sistema in uno stato del
+stato del sistema e può assumere tre forme: rollback, dove la trasformazione consiste nel ritornare ad uno stato in cui si trovava il sistema prima della
+rilevazione dell'errore; rollforward, dove si porta il sistema in uno stato del
 tutto nuovo, e compensation, dove lo stato contiene abbastanza ridondanza
 per eliminare la parte erronea. Fault handling impedisce che i guasti che sono
 stati localizzati vengano nuovamente attivati, attraverso quattro fasi:
 \begin{itemize}
-\item \textbf{fault diagnosis} identifica l’origine della cause degli errori, in termini di
+\item \textbf{fault diagnosis} identifica l'origine della cause degli errori, in termini di
 locazione e tipo;
-\item \textbf{fault isolation} isola logicamente o fisicamente il componente, impedendogli di partecipare all’erogazione del servizio, trasformando il guasto in
+\item \textbf{fault isolation} isola logicamente o fisicamente il componente, impedendogli di partecipare all'erogazione del servizio, trasformando il guasto in
 un guasto dormiente;
-\item \textbf{system reconfiguration} che riconfigura il sistema, ad esempio atti-
-vando componenti di riserva o ridistribuendo il carico tra i componenti
+\item \textbf{system reconfiguration} che riconfigura il sistema, ad esempio attivando componenti di riserva o ridistribuendo il carico tra i componenti
 funzionanti;
-\item \textbf{system reinitialization}, che esegue i controlli e gli aggiornamenti ne-
-cessari in seguito alla nuova configurazione.
+\item \textbf{system reinitialization}, che esegue i controlli e gli aggiornamenti necessari in seguito alla nuova configurazione.
 
 \end{itemize}
-Solitamente l’attività di fault handling è seguita da azioni di manutenzio-
-ne correttiva, che rimuovono i guasti isolati dal fault handling, ad esempio
+Solitamente l'attività di fault handling è seguita da azioni di manutenzione correttiva, che rimuovono i guasti isolati dal fault handling, ad esempio
 sostituendo un componente segnalato come guasto. Il fattore che distingue la
-fault tolerance dalla manutenzione (maintenance) e’ che quest’ultima richiede
-l’intervento di un agente esterno.
+fault tolerance dalla manutenzione (maintenance) è che quest'ultima richiede
+l'intervento di un agente esterno.
 \subparagraph{Rimozione dei guasti}
 La “Fault Removal” viene effettuata sia durante la fase di sviluppo, che durante la vita operazionale del sistema.
 La rimozione dei guasti è uno degli obiettivi del processo di verifica e validazione (V\&V).
 La verifica è un processo attraverso cui si determina se il sistema soddisfa alcune proprietà determinate dalle
-specifiche o imposte all’inizio della fase di sviluppo; se cosi non è si cerca di
+specifiche o imposte all'inizio della fase di sviluppo; se cosi non è si cerca di
 individuare il guasto che impedisce di soddisfare tali proprietà e lo si corregge.
 La validazione consiste invece nel controllare se il sistema soddisfa le proprie
 specifiche e se le specifiche descrivono adeguatamente la funzione intesa per il
-sistema. Le tecniche di verifica possono essere classificate in base alla necessita’ di esercitare il sistema. La verifica di un sistema senza la sua esecuzione
+sistema. Le tecniche di verifica possono essere classificate in base alla necessità di esercitare il sistema. La verifica di un sistema senza la sua esecuzione
 è una verifica statica, altrimenti è una verifica dinamica. La rimozione dei
-guasti durante la sua vita operazionale è manutenzione correttiva o preven-
-tiva. La manutenzione correttiva ha l’obiettivo di rimuovere guasti che sono
+guasti durante la sua vita operazionale è manutenzione correttiva o preventiva. La manutenzione correttiva ha l'obiettivo di rimuovere guasti che sono
 stati segnalati come la causa di uno o più errori, la manutenzione preventiva
 cerca di scovare e rimuovere i guasti prima che causino degli errori durante la
 normale operazione del sistema.
 \subparagraph{Previsione dei guasti}
-La “Fault Forecasting” è condotta effettuando una valutazione del comportamento del sistema rispetto all’occorrenza e attivazione dei guasti. La valutazione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
+La “Fault Forecasting” è condotta effettuando una valutazione del comportamento del sistema rispetto all'occorrenza e attivazione dei guasti. La valutazione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
 e valutare i modi di fallimento o le combinazioni di eventi che porterebbero ad
 un fallimento del sistema; quantitativa (o probabilistica), che mira a valutare
 in termini probabilistici il grado con cui alcuni attributi vengono soddisfatti
@@ -294,8 +289,7 @@ un modello del sistema richiede delle informazioni su alcuni processi di base
 del sistema, che possono essere acquisite tramite testing. Generalmente, un
 sistema eroga diversi servizi, e spesso esistono due o più modi di erogazione
 del servizio, ad esempio da servizio a pieno regime, a servizio di emergenza.
-Questi modi distinguono la qualità o completezza del servizio erogato. Misu-
-re di dependability collegate alla qualita’ del servizio erogato (performance)
+Questi modi distinguono la qualità o completezza del servizio erogato. Misure di dependability collegate alla qualità del servizio erogato (performance)
 vengono solitamente riassunte nella nozione di performability \cite{smith1988performability}.
 I due principali approcci alla previsione dei guasti quantitativa sono la
 costruzione di modelli e la loro soluzione (analitica o tramite simulazione), in
@@ -303,25 +297,25 @@ cui il comportamento del sistema è riprodotto tramite un modello (tipicamente
 un modello stato-transizione), e la osservazione e la valutazione (anche tramite
 test specifici) sperimentale. Le attività di fault injection sono un esempio di
 valutazione sperimentale del sistema ai fini della fault forecasting, in quanto
-permette di esaminare l’evoluzione e le conseguenze dei guasti in un sistema.
+permette di esaminare l'evoluzione e le conseguenze dei guasti in un sistema.
 
 
 \subsection{Artificial Intelligence}
-Nel pensiero comune quando si pensa al'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
+Nel pensiero comune quando si pensa all'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
 
 Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.\cite{russell2005intelligenza}
 Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi, come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.(attuatori)
 Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,radar e tanti altri, mentre come attuatori: motori,freni, e tanti altri. 
 Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza}
-La totalità delle percezioni generate dall'agente in tutta la sua storia, è definità invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante puo dipendere dall'intera sequenza percettiva osservata fino a quel momento.
+La totalità delle percezioni generate dall'agente in tutta la sua storia, è definita invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante può dipendere dall'intera sequenza percettiva osservata fino a quel momento.
 In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
 Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.  \cite{russell2005intelligenza}
 \subsubsection{Agenti che apprendono}
 Si definisce un agente sta imparando se migliora le proprie prestazioni nelle attività future dopo aver effettuato le osservazioni
 sul mondo. \cite{russell2005intelligenza}
-E perchè deve imparare?
-Un agente deve impare per tre motivi:
+E perché deve imparare?
+Un agente deve imparare per tre motivi:
 \begin{itemize}
 \item  il programmatore non può anticipare tutte le possibili situazioni che l'agente si potrà trovare davanti.
 \item il programmatore non può anticipare tutti i cambiamenti nel tempo.
@@ -346,13 +340,13 @@ Nello specifico, il compito di un apprendimento supervisionato è quello che dat
 
 (x1.y1),(x2,y2),...(xn,yn),
 dove ogni valore y è generato da un funzione sconosciuta y=f(x), questa scopre una funzione h che approssima la funzione f.  
-Il Learning problem si può definire in due maniere a seconda del l'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
+Il learning problem si può definire in due maniere a seconda del l'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
  è definito come \textbf{regressione}.
  
 \subsubsection{Neural Network}
 Una particolare forma di supervised learning, come ci suggerisce il titolo del seguite capitolo, sono le artificial neural network o più brevemente neural network. 
 La \textbf{rete neurale} è composta da un insieme di nodi o unità connesse da link orientati.\cite{russell2005intelligenza}
- La topologia e le propietà dei nodi determinano le proprietà della rete.
+ La topologia e le proprietà dei nodi determinano le proprietà della rete.
 \subparagraph{Neurone}
 Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua hard o soft, threshold. L'output dei neuroni finali sarà il risultato della task.
 \subparagraph{Funzione di attivazione-da rivedere}
@@ -379,7 +373,7 @@ Una forma semplice di feed-forward network, è il perceptron network o anche chi
 
 
 \subsection{Autonomous Driving}
-Nell’ultimo decennio, il settore dell’Automotive è stato in continua evoluzione. In particolar modo, le grandi aziende automobilistiche e molti gruppi di ricerca si sono mossi verso l’automazione della guida ed
+Nell'ultimo decennio, il settore dell'Automotive è stato in continua evoluzione. In particolar modo, le grandi aziende automobilistiche e molti gruppi di ricerca si sono mossi verso l'automazione della guida ed
 il miglioramento delle infrastrutture già esistenti. I motivi di questo
 interesse del settore verso la guida autonoma sono vari:
 \begin{itemize}
@@ -392,7 +386,7 @@ stradale.
 
 \subsubsection{Livelli di automazione della guida}
 La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
-In questo sistema di classificazione, all’aumentare del livello di automazione, la responsabilità del conducente passa dalla guida alle attività di
+In questo sistema di classificazione, all'aumentare del livello di automazione, la responsabilità del conducente passa dalla guida alle attività di
 supervisione.
 Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui è assente qualsiasi tipologia di automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
 
@@ -446,8 +440,7 @@ specchio rotante e un processore integrato \citep{das2018risk}.
 Diversamente dal Radar, che al posto della luce utilizza onde radio,3.2 visione artificiale
 la distanza dell’oggetto è determinata misurando il tempo trascorso fra
 l’emissione dell’impulso e la ricezione del segnale retrodiffuso. L’unità
-di elaborazione deve essere collocata in una posizione abbastanza rialza-
-ta da terra; inoltre, sono necessarie misure di sicurezza per proteggere
+di elaborazione deve essere collocata in una posizione abbastanza rialzata da terra; inoltre, sono necessarie misure di sicurezza per proteggere
 l’unità da urti o vibrazioni derivanti da incidenti o dalla navigazione su
 terreni accidentati, che potrebbero causare guasti al sistema.
 \end{comment}
@@ -456,13 +449,11 @@ E' un sistema che utilizza onde radio trasmesse nell'ambiente, al fine di raccog
 d’occhio le altre auto e indica al veicolo autonomo di accelerare o rallentare
 a seconda del comportamento degli altri conducenti \cite{das2018risk}.
 \begin{comment}
-È un sistema che utilizza onde radio per il rilevamento e la determina-
-zione della posizione ed eventualmente della velocità di oggetti fissi o
+È un sistema che utilizza onde radio per il rilevamento e la determinazione della posizione ed eventualmente della velocità di oggetti fissi o
 mobili, come aerei, navi, veicoli, formazioni atmosferiche o il suolo. Le
-onde radio vengono trasmesse nell’ambiente per raccogliere informazioni
-sugli ostacoli intorno al veicolo e aumentare la consapevolezza del po-
-sizionamento degli altri soggetti davanti e dietro. Questo sensore tiene
-d’occhio le altre auto e indica all’auto autonoma di accelerare o rallentare
+onde radio vengono trasmesse nell'ambiente per raccogliere informazioni
+sugli ostacoli intorno al veicolo e aumentare la consapevolezza del posizionamento degli altri soggetti davanti e dietro. Questo sensore tiene
+d'occhio le altre auto e indica all'auto autonoma di accelerare o rallentare
 a seconda del comportamento degli altri conducenti \cite{das2018risk}.
 È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
 di sensori anteriori e posteriori.
@@ -470,30 +461,29 @@ di sensori anteriori e posteriori.
 \subparagraph{Videocamera}
 Le telecamere sono necessarie nel sistema di trasporto intelligente affinché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
 veicolo in considerazione. Le immagini bidimensionali derivanti da una
-singola fotocamera o le mappe 3D risultanti dall’utilizzo della doppia
-fotocamera, potrebbero individuare stereoscopicamente lo spazio disponibile per i movimenti autonomi del veicolo. Queste immagini o mappe
+singola fotocamera o le mappe 3D risultanti dall'utilizzo della doppia
+fotocamera, potrebbero individuare in modo stereoscopico lo spazio disponibile per i movimenti autonomi del veicolo. Queste immagini o mappe
 vengono utilizzate per estrarre informazioni quantitative dalle scene e
 per tracciare gli obiettivi del veicolo. Le immagini sono segmentate in un
-certo numero di pixel. Ogni pixel viene elaborato e memorizzato, il che richiede un’elevata velocità di calcolo ed un elevato spazio di archiviazione
+certo numero di pixel. Ogni pixel viene elaborato e memorizzato, il che richiede un'elevata velocità di calcolo ed un elevato spazio di archiviazione
 \cite{das2018risk}.
 
 \subparagraph{GPS - Global Positioning System}
-Il Sistema di Posizionamento Globale, attraverso una rete dedicata di sa-
-telliti artificiali in orbita, fornisce a un terminale mobile o ad un ricevitore
+Il Sistema di Posizionamento Globale, attraverso una rete dedicata di satelliti artificiali in orbita, fornisce a un terminale mobile o ad un ricevitore
 GPS informazioni sulle sue coordinate geografiche e sul suo orario in
 quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
-che potrebbero impedirne l’invio e la ricezione dei segnali (edifici molto
+che potrebbero impedirne l'invio e la ricezione dei segnali (edifici molto
 alti, gallerie, ecc.), generando errori dell'ordine di metri.
 \begin{comment}
-La localizzazione avviene tramite la trasmissione di un segnale radio da parte di ciascun satellite e l’elaborazione dei
+La localizzazione avviene tramite la trasmissione di un segnale radio da parte di ciascun satellite e l'elaborazione dei
 segnali ricevuti da parte del ricevitore \cite{das2018risk}
-Per far procedere autonomamente il veicolo, il GPS, con l’aiuto di altri
+Per far procedere autonomamente il veicolo, il GPS, con l'aiuto di altri
 sensori, crea mappe precise della carreggiata e guida nella direzione
 esatta. 
 \end{comment}
 La scelta di sviluppare un detector sulle fotocamera dei veicoli, è data dalla loro  attuale, alta presenza in tutti i veicoli.
 \subsubsection{Reti neurali applicate all'autonomus driving}
-Le Reti Neurali sono oggi ampliamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l’elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degl'utenti esterni al veicolo. 
+Le Reti Neurali sono oggi ampiamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l'elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degli utenti esterni al veicolo. 
 Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo.%, come un caso di autopilot di Tesla.
 Per quanto riguarda le prestazioni misurate su questa tecnologia, sono stati
 registrati punteggi di accuratezza spesso corrispondenti a quelli di un
@@ -501,10 +491,9 @@ individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
 ti i punteggi osservati quando si considerano i casi peggiori. Con casi
 peggiori si vuole intendere quei casi definiti Adversarial Examples \cite{engstrom2019exploring} o
 input perturbati, anche solo leggermente, che dal punto di vista umano
-risultano sempre comprensibili, mentre da quello della macchina, cam-
-biano totalmente di significato. Naturalmente, se queste Reti vengono
+risultano sempre comprensibili, mentre da quello della macchina, cambiano totalmente di significato. Naturalmente, se queste Reti vengono
 utilizzate su veicoli che devono muoversi in un ambiente nel quale si
-trova un’eterogeneità di soggetti e comportamenti, si parla di contesti
+trova un'eterogeneità di soggetti e comportamenti, si parla di contesti
 nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
 dependability di un sistema sono al primo posto in ordine di importanza.
 
@@ -512,7 +501,7 @@ dependability di un sistema sono al primo posto in ordine di importanza.
 Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prenderà delle decisioni.
 Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con
 questo termine si intende rappresentare tutte le possibili trasformazioni
-che un’immagine può subire, ad esempio ruotandola, tagliandola, scalandola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
+che un'immagine può subire, ad esempio ruotandola, tagliandola, scalandola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
 contesti:
 \begin{itemize}
 \item verificare il livello di completezza di un classificatore,
@@ -530,13 +519,13 @@ su un veicolo a guida autonoma, può far sorgere molte preoccupazioni e
 domande.%(si pensi all’ambito aeroportuale).
 
 \subsubsection{Object Recognition}
-In generale, ci si riconduce al problema dell’Object Recognition o riconoscimento artificiale degli oggetti. Questo richiede che ci sia una nozione
+In generale, ci si riconduce al problema dell'Object Recognition o riconoscimento artificiale degli oggetti. Questo richiede che ci sia una nozione
 di somiglianza visiva, difficile da far apprendere ad un sistema: significherebbe catturare e insegnare ad una macchina la nozione di percezione
 umana \cite{engstrom2019exploring}.
 
-Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto prestazioni all’avanguardia, talvolta competitive con la percezione umana.
+Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto prestazioni all'avanguardia, talvolta competitive con la percezione umana.
 Una della sfide principali nella guida autonoma è il cambiamento ambientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
-differenti distanze e angolazioni con cui viene percepito l’ambiente circo-
+differenti distanze e angolazioni con cui viene percepito l'ambiente circo-
 stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
 muove nello spazio \cite{eykholt2018robust} .
 Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
@@ -545,7 +534,7 @@ devastanti.
 \begin{comment}
 Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
 analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
-dei sottosistemi di veicoli autonomi e/o alcuni componenti dell’infrastruttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
+dei sottosistemi di veicoli autonomi e/o alcuni componenti dell'infrastruttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
 della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
 della superficie stradale non sono state incluse [31].
 \end{comment}
@@ -561,16 +550,16 @@ che si possono presentare e degli oggetti che devono essere riconosciuti,
 ed è necessario ancora molto lavoro prima che sia disponibile un sistema
 in grado di muoversi da solo in questi ambienti senza pericolo e in modo
 efficiente.
-Nell’ottica dello sviluppo di un sistema di guida autonoma efficiente
+Nell'ottica dello sviluppo di un sistema di guida autonoma efficiente
 e sicuro, si rende necessario lo sviluppo di metodi e strumenti per il
-miglioramento dell’efficienza del prodotto e per la validazione dello
+miglioramento dell'efficienza del prodotto e per la validazione dello
 stesso. Tra le tecniche utilizzate per automobili a guida autonoma ci sono
 metodi di apprendimento automatico che richiedono una gran quantità di
 immagini, inoltre sia per lo sviluppo che soprattutto per la validazione, si
 deve considerare che esistono una quantità infinita di scenari (situazioni)
 che si possono presentare e che il sistema progettato deve essere in grado
 di agire nel modo più sicuro in ognuno di essi. Il problema è di per sé mal
-posto, visto che non è dato sapere se un’auto che reagisce correttamente
+posto, visto che non è dato sapere se un'auto che reagisce correttamente
 in una certa situazione farà lo stesso cambiando qualche variabile dello
 scenario.
 Lo sviluppo e la validazione delle auto a guida autonoma si configura
@@ -581,7 +570,7 @@ in ambiente fisico e della richiesta di dati che abbiamo presentato, sono
 stati sviluppati dei simulatori che permettono di sperimentare il software
 sviluppato in un ambiente virtuale, tra questi NVIDIA DRIVE Constellation, AirSim, e CARLA Simulator. Questi simulatori riproducono scenari di guida cittadina
 in cui è possibile testare un auto a guida autonoma che raccoglie dati
-dall’ambiente. Per le considerazioni fatte in precedenza, un simulatore
+dall'ambiente. Per le considerazioni fatte in precedenza, un simulatore
 si presenta come un alleato fondamentale nel processo di sviluppo e di
 validazione. Infatti un simulatore in grado di riprodurre realisticamente
 il complicato ambiente cittadino può essere utilizzato per lo sviluppo
@@ -595,7 +584,7 @@ dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'a
 Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
 \subsubsection{Sensori}
 Come un veicolo reale di guida autonoma, Carla predispone una suite di sensori preimpostasti,come fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
-La loro posizione, numero e direzionamento possono essere specificate dal client.
+La loro posizione, numero e direzione possono essere specificate dal client.
 Per una presentazione completa dei sensori si rimanda a \cite{tesi niccolo galli}
 E proprio della fotocamera RGB di Carla si farà uso al fine di costruire il dataset di immagini.
 
@@ -603,7 +592,7 @@ E proprio della fotocamera RGB di Carla si farà uso al fine di costruire il dat
 Il detector utilizza come tecnologia una Convulutional Neural Network, una forma di rete neurale. 
 Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
 Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
-L’addestramento di una generica rete neurale prevede la creazione di un dataset sulla
+L'addestramento di una generica rete neurale prevede la creazione di un dataset sulla
 base della procedura:
 \begin{itemize}
 \item Definizione delle classi
@@ -660,7 +649,7 @@ Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client
 Si rimanda alla sezione "Manuale Utente" per le note sugli script utilizzati
 \begin{comment}
 Per l'acquisizione delle immagini 
-Per acquisire questa mole di dati non potendo usare un sistema fisico per l'acquisizione, dati le  problematiche gia  citate, è stato impiegato CARLA.
+Per acquisire questa mole di dati non potendo usare un sistema fisico per l'acquisizione, dati le  problematiche già  citate, è stato impiegato CARLA.
 Sono state avviate 500 simulazioni, con caratteristiche diverse, come città,meteo e  elementi ambientali, generate in maniera casuale dal sistema. Da ogni run, attraverso il progetto github \textbf{cita}, è stato possibile acquisire 300 frame della fotocamera RGB posto sul veicolo, mentre questo sis spostava nell'ambiente. 
 Le immagini cosi ottenute, sono del formato (800*600) nel formato  .png.
 Queste rappresentano la base di partenza per la creazione del dataset, essendo tutte immagini pulite, ovvero immagini che non presentano malfunzionamenti o modifiche di qualsiasi genere.
@@ -671,11 +660,143 @@ Si intende l'applicazione di filtri, che simulino il guasto alla fotocamera, del
 I filtri sono ripresi dal progetto github di Francesco Secci, Python Image Failures, i quali sono stati riadatti per l'uso nella seguente tesi.
 \subparagraph{Rappresentazione dei vari guasti con breve descrizione}
 Per una illustrazione completa dei guasti si rimanda  a \cite{secci2020failures}, da cui è stato ripreso lo studio su l'effetto di determinati guasti alla fotocamera, portino a un rate di fallimenti più elevato. 
+Di seguito si riporta una breve rappresentazione della stessa immagini, acquisita dalla fotocamera di un veicolo nel simulatore CARLA, a cui è applicata i diversi filtri che simulano i guasti impiegati nel progetto.
+
+
+	\begin{figure}
+	     \centering
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+	 		 \includegraphics[scale=0.1]{./foto_sporcature/original.png}
+	         \caption{golden run}
+	         \label{fig:golden run}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/50_death_pixels.png}
+	         \caption{50 death pixel}
+	         \label{fig:50}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/200_death_pixels.png}
+	         \caption{200 death pixel}
+	         \label{fig:200}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+		     \includegraphics[scale=0.1]{./foto_sporcature/banding.png}
+	         \caption{banding}
+	         \label{fig:banding}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/birghtness.png}
+	    	 \caption{brightness}
+	         \label{fig:brightness}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/black.png}
+	         \caption{black}
+	         \label{fig:black}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/blur.png}
+	         \caption{blur 3.5}
+	         \label{fig:blur}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/brokenlens.png}
+	         \caption{brokenlens}
+	         \label{fig:brokenlens}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/chromaticaberrration.png}
+	         \caption{chromaticaberrration}
+	         \label{fig:chromaticaberrration}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/condensation.png}
+	         \caption{condensation}
+	         \label{fig:condensation}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/dirty_lens.png}
+	         \caption{dirty lens}
+	         \label{fig:dirty_lens}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/greyscale.png}
+	         \caption{greyscale}
+	         \label{fig:greyscale}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/icelens.png}
+	         \caption{icelens}
+	         \label{fig:icelens}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.05]{./foto_sporcature/nodemos.png}
+	         \caption{nodemos}
+	         \label{fig:nodemos}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/noise.png}
+	         \caption{noise}
+	         \label{fig:noise}
+	     \end{subfigure}
+	     \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			 \includegraphics[scale=0.1]{./foto_sporcature/rain.png}
+	         \caption{rain}
+	         \label{fig:rain}
+	     \end{subfigure}
+	        \hfill
+	     \begin{subfigure}[b]{0.3\textwidth}
+	         \centering
+			\includegraphics[scale=0.1]{./foto_sporcature/sharpness.png}
+	         \caption{sharpness}
+	         \label{fig:sharpness}
+	     \end{subfigure}
+	        \caption{Esempi dei filtri applicati}
+	        \label{fig:Esempi dei filtri applicati}
+	\end{figure}
+
+
+
+
+
+
 
 \subsection{Suddivisione del dataset}
 La Convnet sviluppata, è un classificatore binario, e come tale distingue solamente tra due classi, immagini pulite e immagini sporche, ovvero: golden run e classe dei guasti.
 Detto ciò sono stati costruiti 17 dataset diversi, ciascuno per ogni classe.Ogni dataset è composto da 30000 elementi,suddiviso su due classi, 150000 immagini per classe. Queste immagini sono ulteriormente suddivise in training set e validation set, dove delle 150000 immagini di una classe, 120000 sono dedicate al training set e 30000 sono dedicate al validation set.
-Questa suddivisione tra training set e validation set delle immagini, risulta molto importante nella fase di training dei modelli, come si vedra in seguito.
+Questa suddivisione tra training set e validation set delle immagini, risulta molto importante nella fase di training dei modelli, come si vedrà in seguito.
 Uno schema di suddivisione (o immagine):
 \begin{itemize}
 \item Training set:240000 elementi
@@ -695,7 +816,7 @@ Da finire con i dati del test set
 \section{Costruzione del detector}
 Lo scopo del detector, è quello di individuare all'interno del flusso di immagini della fotocamera, la presenza di distorsioni, ovvero riuscire a prevenire che un guasto al sensore della fotocamera, arrivi al sistema decisionale, scaturendo un possibile fallimento. Per perseguire il suo scopo, il detector deve essere in grado di classificare ciascuna immagine del flusso, tra immagini pulite, ovvero immagini che non generano fallimenti nel sistema,e immagini sporche, generate da un guasto.Questa distinzione binaria, tra le due sole tipologie di immagini, scaturisce dal fatto che non è richiesta l'identificazione precisa di un singolo guasto,(multiclassificatore), ma si richiede solo la distinzione tra buone e cattive.
 L'elemento classificatore è svolto da una rete neurale convuluzionale o ConvNet.
-Come dice il nome, la  ConvNet è  una tecnologia basata sulle rete neurali più generiche, ed è gia ampliamnete impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a vocal recognition.
+Come dice il nome, la  ConvNet è  una tecnologia basata sulle rete neurali più generiche, ed è già ampiamente impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a vocal recognition.
 
 \subsection{Convulutional Neural Network}
 Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network dove la strato convuluzionale compare almeno una volta.
@@ -845,6 +966,26 @@ Le dimensioni di questo primo sono date dalla necessità di poter elaborare un i
 Definito l'input del primo layer e quindi dell'intera rete, si può passare all'output.
  \end{comment}
 \subsection{Addestramento del rete convuluzionale}
+Dopo aver definito la struttura della rete, e avendo suddiviso il dataset in tre parti: training set, validation set e test set, la fase successiva prevede l'addestramento della rete.
+Per addestramento di una rete si intendo, elaborazione da parte della  rete del training set, ovvero la modifica dei pesi dei collegamenti, al fine di modellare il meglio possibile la rete sui dati.
+In generale il sistema di apprendimento prevede che sia utilizzato il training set per l'addestramento della regressione logica, ovvero una modifica dei pesi 
+
+Durante l'addestramento della CNN, il set di dati deve essere suddiviso in tre parti:
+il training set, il validation set e il test set. Il training set
+set viene utilizzato per addestrare la CNN utilizzando la regressione logistica, che addestrerà la rete neurale convoluzionale, che sarà spiegato di seguito. Dopo ogni round di training, la rete è
+testata su una parte casuale del validation set. Il risultato viene utilizzato per valutare l'accuratezza della rete nel rilevare gli oggetti corretti,
+al fine di determinare se i pesi vengono regolati nel modo migliore.
+Il test set viene utilizzato per valutare le prestazioni della CNN dopo che
+il processo di formazione è terminato. Tuttavia, può essere pericoloso modificare
+la rete in base ai risultati utilizzando il set di test, a causa del rischio
+di overfitting. La dimensione esatta dei diversi set varia a seconda
+sul set di dati fornito, ma di solito il set di addestramento è composto da
+circa il 75-80\% dei dati totali, mentre la convalida e
+i set di test utilizzano entrambi metà dei dati rimanenti, circa 10-
+12,5\% ciascuno \cite{guyon1997scaling}.
+
+
+
 Avendo predisposto la rete, e i vari dataset, il passo successivo è il suo addestramento.
 
 \subsubsection{Batch}
