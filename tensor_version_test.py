@@ -66,7 +66,7 @@ def classificator(lock,mp_train,classes,path_checkpoint):
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
                   metrics=['accuracy'])
     model.summary()
-    model.save_weights(checkpoint_dir.format(epoch=0))
+ 
     model.fit(
         train_data_gen,
         steps_per_epoch=total_train // batch_size,
@@ -75,9 +75,10 @@ def classificator(lock,mp_train,classes,path_checkpoint):
         validation_steps=total_val // batch_size,
         callbacks=[cp_callback]
     )
-    mp_test = manager_of_path.ManagerOfPath("/home/bernabei/carla0.8.4/PythonClient/_out/", classes, False)
+    model.save_weights(checkpoint_dir)
+    mp_test = manager_of_path.ManagerOfPath("/home/bernabei/carla0.8.4/PythonClient/_out/", classes, True)
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
-                                                              directory=mp_test.get_path_classes(classes)["train"],
+                                                              directory=mp_test.get_path_classes("all")["train"],
                                                               shuffle=True,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
@@ -85,7 +86,15 @@ def classificator(lock,mp_train,classes,path_checkpoint):
     print(classes)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
     print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
-    model.save(mp.get_path_classes(classes)["checkpoint"]+"/model")
+    test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
+                                                              directory=mp_test.get_path_classes(classes)["train"],
+                                                              shuffle=True,
+                                                              target_size=(IMG_HEIGHT, IMG_WIDTH),
+                                                              class_mode='binary')
+    loss_ev_c, acc_ev_c = model.evaluate(test_data_gen,batch_size=4,verbose=1)
+    print(classes)
+    print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_c))
+    print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_c))
     lock.release();
     #print_result(epochs, history)
 
@@ -117,8 +126,8 @@ if __name__ == "__main__":
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
-        for classes in classes_of_modified[16:]:
-            mp_train = manager_of_path.ManagerOfPath(path_train, classes_of_modified, False)
+        for classes in classes_of_modified[0:1]:
+            mp_train = manager_of_path.ManagerOfPath(path_train, classes_of_modified, True)
             
             path_checkpoint = "training_1/cp-{epoch:04d}.ckpt"
             p = multiprocessing.Process(target=classificator, args=(lock,mp_train, classes, path_checkpoint))

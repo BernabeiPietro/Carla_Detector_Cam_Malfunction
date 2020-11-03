@@ -28,37 +28,47 @@ def tester(lock,mp,classes):
     config.log_device_placement = True  # to log device placement (on which device the operation ran)
     sess = tf.Session(config=config)
     #tf.set_session(sess)  # set this TensorFlow session as the default session for Keras
-    model = Sequential([
-        Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
-        MaxPooling2D(),
-        Conv2D(32, 3, padding='same', activation='relu'),
-        MaxPooling2D(),
-        Conv2D(64, 3, padding='same', activation='relu'),
-        MaxPooling2D(),
-        Flatten(),
-        Dense(512, activation='relu'),
-        Dense(1)
-    ])
+    #model = Sequential([
+    #    Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    #    MaxPooling2D(),
+    #    Conv2D(32, 3, padding='same', activation='relu'),
+    #    MaxPooling2D(),
+    #    Conv2D(64, 3, padding='same', activation='relu'),
+    #    MaxPooling2D(),
+    #    Flatten(),
+    #    Dense(512, activation='relu'),
+    #    Dense(1)
+    #])
    
     #model.summary()
-    lastest = tf.train.latest_checkpoint(checkpoint_dir)
-    print(lastest)
-    model.load_weights(lastest)
+    #lastest = tf.train.latest_checkpoint(checkpoint_dir)
+    #print(lastest)
+    #model.load_weights(lastest)
     #model.load_weights(checkpoint_dir+"training_1.index")
-    model.compile(optimizer='adam',
+    
+    model1=tf.keras.models.load_model(checkpoint_dir+"/model",compile=False)
+    model1.summary()
+    #model.summary()
+    model1.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
                   metrics=['accuracy'])
-    #model1=tf.keras.models.load_model(checkpoint_dir+"/model")
-    #model1.summary()
-    #model.summary()
-    
+    test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
+                                                              directory=mp.get_path_classes("all")["train"],
+                                                              shuffle=True,
+                                                              target_size=(IMG_HEIGHT, IMG_WIDTH),
+                                                              class_mode='binary')
+
+    loss_ev_a, acc_ev_a = model1.evaluate(test_data_gen,batch_size=4,verbose=1)
+    print(classes)
+    print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
+    print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes(classes)["train"],
                                                               shuffle=True,
                                                               target_size=(IMG_HEIGHT, IMG_WIDTH),
                                                               class_mode='binary')
 
-    loss_ev_a, acc_ev_a = model.evaluate(test_data_gen,batch_size=4,verbose=1)
+    loss_ev_a, acc_ev_a = model1.evaluate(test_data_gen,batch_size=4,verbose=1)
     print(classes)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
     print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
@@ -80,7 +90,7 @@ if __name__ == "__main__":
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
-        for classes in classes_of_modified[:]:
+        for classes in classes_of_modified[2:3]:
             mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified, True)
             p = multiprocessing.Process(target=tester, args=(lock,mp, classes));p.start();
             p.join()

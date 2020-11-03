@@ -7,7 +7,7 @@ def manage_image(mp, classes_of_modified):
     total_classes = 24#500
     train_classes = 400 # 400
     validation_classes =100 #100
-    i = 0
+    i = 255
     j = 0
     if mp.setting_type_folder:
         indix_of_classes = slice(len(classes_of_modified))
@@ -138,8 +138,8 @@ def modify_photo(classes, mp, list, j, tv):
 
 path = "/home/bernabei/carla0.8.4/PythonClient/_out_prima_run/" #"/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/" 
 classes_of_modified = ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale","condensation","dirty_lens","chromaticaberration","rain"]
-mp = manager_of_path.ManagerOfPath(path, classes_of_modified[:1], True)
-manage_image(mp, classes_of_modified)
+mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
+manage_image(mp, classes_of_modified[1:2])
 
 
 
