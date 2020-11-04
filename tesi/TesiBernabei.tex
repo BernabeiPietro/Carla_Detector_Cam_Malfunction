@@ -150,44 +150,49 @@ Un sistema è formato da un insieme di componenti che interagiscono tra
 loro, perciò lo stato del sistema è l'insieme degli stati dei suoi componenti. Un
 guasto causa inizialmente un errore nello stato di uno (o più) componenti, ma
 il fallimento del sistema non si verifica fino a quanto l'errore non raggiunge l'interfaccia del servizio. La propagazione di errori può permettere ad un errore
-di raggiungere l'interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti guasto-errore-fallimento (fault-error-failure)
+di raggiungere l'interfaccia di servizio. Questo insieme di meccanismi costituisce la catena di impedimenti \textbf{guasto-errore-fallimento} (fault-error-failure)
 La propagazione all'interno di un componente (propagazione interna) è
 causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori.
 %guarda se aggiungere anche il parallelismo con carla forse è utile
+ La propagazione da un componente A verso un componente B che riceve un servizio da A (propagazione esterna) (Figura 1.4) avviene
+quando un errore raggiunge l'interfaccia di servizio del componente A. A questo punto, il servizio che B riceve da A diventa non corretto e il fallimento di
+A appare a B come un guasto esterno, e si propaga come un errore all’interno
+di B (Figura 1.4). Per esempio, nel caso di un veicolo a guida autonoma, un guasto nella lente o nel sensore della fotocamera,  genera un errore. Quando raggiunge l'interfaccia di servizio genera un fallimento per la fotocamera, mentre per il sistema di visione artificiale, risulta come un guasto, non avendo più un comportamento corretto la fotocamera. Questo guasto del sensore, genera un errore esterno al sistema, che come viene dimostrato nella seguente tesi \cite{secci2020failures}, genera un fallimento al servizio. Se questo si presentasse, sarebbe catastrofico per i passeggeri interni, che i gli elementi circostanti.
 \subsubsection{Gli attributi della dependability}
 Il concetto di dependability è la sintesi di più attributi che forniscono misure
 quantitative o qualitative del sistema:
 \begin{itemize}
 \item \textbf{Affidabilità (reliability):} è la capacità del sistema di erogare un servizio corretto in modo continuo; misura la fornitura continua di un servizio
 corretto.
-\item \textbf{Manutenibilità (maintainability):} la capacità del sistema di subire modifiche e riparazioni; misura il tempo necessario per ristabilire un servizio
+\item \textbf{Manutenibilità (maintainability):} è la capacità del sistema di subire modifiche e riparazioni; misura il tempo necessario per ristabilire un servizio
 corretto.
 \item \textbf{Disponibilità (availability):} è la prontezza del sistema nell'erogare un
 servizio corretto; misura la fornitura di servizio corretto, rispetto all'alternanza fra servizio corretto e non corretto.
 \item \textbf{Confidenzialità (confidentiality):} è l'assenza di diffusione non autorizzata di informazioni; misura l'assenza di esposizione non autorizzata di
 informazione.
 \item \textbf{Integrità (integrity):} descrive l'assenza di alterazioni improprie del sistema; misura l’assenza di alterazioni improprie dello stato del sistema.
-
-\item \textbf{La sicurezza (safety)} è poi l'assenza di conseguenze catastrofiche sugli
+\item \textbf{La sicurezza (safety)} è l'assenza di conseguenze catastrofiche sugli
 utenti e sull'ambiente circostante. La safety può essere vista come l'affidabilità
-del sistema \begin{comment}, considerando come corretti anche gli stati in cui il sistema subisce
+del sistema. \begin{comment}
+, considerando come corretti anche gli stati in cui il sistema subisce
 un fallimento benigno (possiamo quindi fondere in un unico stato sia gli stati
 corretti che i fallimenti benigni del sistema, e valutare in questo nuovo schema
 l'affidabilità)\end{comment}.
-\item \textbf{sicurezza (security)} può quindi essere vista come la contemporanea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
+\item \textbf{sicurezza (security)} è vista come la contemporanea esistenza di availability solo per gli utenti autorizzati, confidentiality, e
 integrity, dove per “improprie” si intende “non autorizzate” \cite{nicol2004model}.
 \end{itemize}
-Ciascuno di questi attributi può essere più o meno importante in base all'applicazione: la disponibilità del servizio è sempre richiesta, anche se può
-variare sia l'importanza relativa che il livello quantitativo richiesto mentre, la affidabilità, la safety, la confidenzialità e gli altri attributi possono essere richiesti
-o meno. Nella loro definizione, la disponibilità e la affidabilità evidenziano la
+%Ciascuno di questi attributi può essere più o meno importante in base all'applicazione: la disponibilità del servizio è sempre richiesta, anche se può
+%variare sia l'importanza relativa che il livello quantitativo richiesto mentre, gli altri attributi possono essere richiesti
+%o meno.
+Nella loro definizione, la disponibilità e la affidabilità evidenziano la
 capacità di evitare i fallimenti, mentre la safety e la security evidenziano la
 capacità di evitare specifiche classi di fallimenti come ad esempio fallimenti
 catastrofici e accesso non autorizzato alle informazioni.
-
-I requisiti di dependability di un sistema sono forniti attraverso una descrizione degli obiettivi richiesti per uno o più degli attributi sopra descritti,
-rispetto alle modalità di fallimento previste per il sistema. Se i modi di fallimento previsti sono specificati e limitati, si parla di sistemi fail-controlled; un
+%I requisiti di dependability di un sistema sono forniti attraverso una descrizione degli obiettivi richiesti per uno o più degli attributi sopra descritti,
+%rispetto alle modalità di fallimento previste per il sistema.
+Se i modi di fallimento previsti sono specificati e limitati, si parla di sistemi \textbf{fail-controlled}; un
 sistema i cui fallimenti sono limitati soltanto all'interruzione del servizio sono
-chiamati fail-stop o fail-silent. I sistemi fail-safe, invece, sono quelli per cui i
+chiamati \textbf{fail-stop} o \textbf{fail-silent}. I sistemi \textbf{fail-safe}, invece, sono quelli per cui i
 fallimenti possibili sono solamente fallimenti non catastrofici.
 \begin{comment}
 Il grado con cui un sistema possiede questi attributi deve essere interpretato in senso probabilistico e non in senso assoluto, deterministico: a causa
@@ -213,7 +218,6 @@ ripristinato un servizio corretto dopo un fallimento.
 Lo sviluppo di sistemi dependable richiede l'utilizzo combinato di quattro
 tipologie di tecniche:
 \begin{itemize}
-
 \item \textbf{prevenzione dei guasti}, per prevenire l'occorrenza o introduzione di
 guasti nel sistema;
 \item \textbf{tolleranza ai guasti}, per erogare un servizio corretto anche in presenza
@@ -221,11 +225,11 @@ di guasti;
 \item \textbf{rimozione dei guasti}, per ridurre il numero o la gravità dei guasti;
 \item \textbf{previsione dei guasti}, per stimare il numero di guasti presenti nel
 sistema, la loro incidenza futura, o le loro probabili conseguenze.
-
 \end{itemize}
-\subparagraph{Prevenzione dei guasti}
-
-La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualita’ sia durante la progettazione del software che durante la produzione dei componenti hardware.\begin{comment} Queste tecniche comprendono ad esempio
+\subparagraph{Prevenzione dei guasti: }
+La “Fault Prevention” viene effettuata ricorrendo a tecniche e processi di controllo di qualità sia durante la progettazione del software che durante la produzione dei componenti hardware.
+\begin{comment} 
+Queste tecniche comprendono ad esempio
 la programmazione strutturata e modulare, l'uso di linguaggi fortemente tipati, di editori guidati dalla sintassi e compilatori certificati per quanto riguarda
 il software, mentre per quanto riguarda l’hardware l’uso di rigorosi processi
 produttivi e di strumenti per la progettazione come linguaggi di alto livello
@@ -233,23 +237,26 @@ produttivi e di strumenti per la progettazione come linguaggi di alto livello
 che originano da interazioni umane possono invece essere prevenuti tramite
 un'appropriata formazione del personale, o la creazione di procedure di manutenzione rigorose. Guasti originati da attacchi esterni possono essere prevenuti
 tramite firewall e dispositivi di sicurezza simili.\end{comment}
-\subparagraph{Tolleranza ai guasti}
+\subparagraph{Tolleranza ai guasti: }
 La “Fault Tolerance” mira a preservare l'erogazione di un servizio corretto in
 presenza di guasti attivi. Essa viene solitamente implementata tramite rilevazione di errori (error detection) e conseguente recupero dello stato del sistema
 (system recovery). In particolare, la rilevazione degli errori origina un segnale
 di errore all'interno del sistema; esistono due classi di tecniche di rilevazione
-di errori: concurrent error detection viene effettuata durante l'erogazione del
-servizio, preemptive error detection viene effettuata quando l'erogazione del
+di errori: \textbf{concurrent error detection} viene effettuata durante l'erogazione del
+servizio, \textbf{preemptive error detection} viene effettuata quando l'erogazione del
 servizio è sospesa e controlla la presenza di errori latenti e guasti dormienti.
 Il recupero dello stato del sistema trasforma uno stato che contiene uno o più
 errori attivi (ed eventualmente guasti), in uno stato che non contiene errori
 rilevati e guasti che possono essere nuovamente attivati. Il recovery consiste
-in error handling e fault handling. Error handling elimina gli errori dallo
-stato del sistema e può assumere tre forme: rollback, dove la trasformazione consiste nel ritornare ad uno stato in cui si trovava il sistema prima della
+in \textbf{error handling} e \textbf{fault handling}. \textbf{Error handling} elimina gli errori dallo
+stato del sistema \begin{comment} 
+e può assumere tre forme: rollback, dove la trasformazione consiste nel ritornare ad uno stato in cui si trovava il sistema prima della
 rilevazione dell'errore; rollforward, dove si porta il sistema in uno stato del
 tutto nuovo, e compensation, dove lo stato contiene abbastanza ridondanza
-per eliminare la parte erronea. Fault handling impedisce che i guasti che sono
-stati localizzati vengano nuovamente attivati, attraverso quattro fasi:
+per eliminare la parte erronea.\end{comment}
+ mentre \textbf{Fault handling} impedisce che i guasti che sono
+stati localizzati vengano nuovamente attivati. \begin{comment}
+, attraverso quattro fasi:
 \begin{itemize}
 \item \textbf{fault diagnosis} identifica l'origine della cause degli errori, in termini di
 locazione e tipo;
@@ -263,27 +270,31 @@ funzionanti;
 Solitamente l'attività di fault handling è seguita da azioni di manutenzione correttiva, che rimuovono i guasti isolati dal fault handling, ad esempio
 sostituendo un componente segnalato come guasto. Il fattore che distingue la
 fault tolerance dalla manutenzione (maintenance) è che quest'ultima richiede
-l'intervento di un agente esterno.
-\subparagraph{Rimozione dei guasti}
-La “Fault Removal” viene effettuata sia durante la fase di sviluppo, che durante la vita operazionale del sistema.
+l'intervento di un agente esterno.\end{comment}
+
+\subparagraph{Rimozione dei guasti: }
+La \textbf{Fault Removal} viene effettuata sia durante la fase di sviluppo, che durante la vita operazionale del sistema.
 La rimozione dei guasti è uno degli obiettivi del processo di verifica e validazione (V\&V).
 La verifica è un processo attraverso cui si determina se il sistema soddisfa alcune proprietà determinate dalle
 specifiche o imposte all'inizio della fase di sviluppo; se cosi non è si cerca di
 individuare il guasto che impedisce di soddisfare tali proprietà e lo si corregge.
 La validazione consiste invece nel controllare se il sistema soddisfa le proprie
 specifiche e se le specifiche descrivono adeguatamente la funzione intesa per il
-sistema. Le tecniche di verifica possono essere classificate in base alla necessità di esercitare il sistema. La verifica di un sistema senza la sua esecuzione
-è una verifica statica, altrimenti è una verifica dinamica. La rimozione dei
+sistema.
+% Le tecniche di verifica possono essere classificate in base alla necessità di esercitare il sistema. La verifica di un sistema senza la sua esecuzione
+%è una verifica statica, altrimenti è una verifica dinamica.
+La rimozione dei 
 guasti durante la sua vita operazionale è manutenzione correttiva o preventiva. La manutenzione correttiva ha l'obiettivo di rimuovere guasti che sono
 stati segnalati come la causa di uno o più errori, la manutenzione preventiva
 cerca di scovare e rimuovere i guasti prima che causino degli errori durante la
 normale operazione del sistema.
-\subparagraph{Previsione dei guasti}
-La “Fault Forecasting” è condotta effettuando una valutazione del comportamento del sistema rispetto all'occorrenza e attivazione dei guasti. La valutazione puo’ essere di due tipi: qualitativa, che mira ad identificare, classificare
+\subparagraph{Previsione dei guasti: }
+La \textbf{Fault Forecasting} è condotta effettuando una valutazione del comportamento del sistema rispetto all'occorrenza e attivazione dei guasti. La valutazione può essere di due tipi: qualitativa, che mira ad identificare, classificare
 e valutare i modi di fallimento o le combinazioni di eventi che porterebbero ad
 un fallimento del sistema; quantitativa (o probabilistica), che mira a valutare
 in termini probabilistici il grado con cui alcuni attributi vengono soddisfatti
-dal sistema; questi attributi sono in questo caso visti come misure. Alcuni
+dal sistema; questi attributi sono in questo caso visti come misure.\begin{comment} 
+Alcuni
 metodi di analisi sono specifici per una valutazione qualitativa o quantitativa, mentre altri possono essere utilizzati per entrambi i tipi di analisi. I due approcci principali per il fault forecasting di tipo probabilistico sono la modellizzazione e il testing. Questi approcci sono complementari: la costruzione di
 un modello del sistema richiede delle informazioni su alcuni processi di base
 del sistema, che possono essere acquisite tramite testing. Generalmente, un
@@ -298,7 +309,7 @@ un modello stato-transizione), e la osservazione e la valutazione (anche tramite
 test specifici) sperimentale. Le attività di fault injection sono un esempio di
 valutazione sperimentale del sistema ai fini della fault forecasting, in quanto
 permette di esaminare l'evoluzione e le conseguenze dei guasti in un sistema.
-
+\end{comment}
 
 \subsection{Artificial Intelligence}
 Nel pensiero comune quando si pensa all'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.

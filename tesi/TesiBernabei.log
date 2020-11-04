@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.10.20)  3 NOV 2020 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.9)  4 NOV 2020 18:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1033,145 +1033,140 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
  [5] [6] [7] [8]
-Overfull \hbox (25.33461pt too wide) in paragraph at lines 165--167
+Overfull \hbox (25.33461pt too wide) in paragraph at lines 169--171
 []\OT1/cmr/bx/n/14.4 Disponibilit^^Ra (avail-abil-ity): \OT1/cmr/m/n/14.4 ^^Re 
 la pron-tezza del sis-tema nell'erogare
  []
 
 
-Overfull \hbox (12.9433pt too wide) in paragraph at lines 165--167
+Overfull \hbox (12.9433pt too wide) in paragraph at lines 169--171
 \OT1/cmr/m/n/14.4 un servizio cor-retto; misura la for-ni-tura di servizio cor-
 retto, rispetto
  []
 
-[9] [10] [11] [12] [13] [14] [15]
-Overfull \hbox (10.24606pt too wide) in paragraph at lines 337--338
+[9] [10] [11] [12] [13] [14]
+Overfull \hbox (10.24606pt too wide) in paragraph at lines 347--348
  []\OT1/cmr/bx/n/14.4 supervised learn-ing:[] \OT1/cmr/m/n/14.4 all'agente sono
  for-niti cop-pie di val-ori input-
  []
 
-[16] [17] [18] [19] [20]
-Overfull \hbox (19.60046pt too wide) in paragraph at lines 463--471
+[15] [16] [17] [18]
+Overfull \hbox (19.60046pt too wide) in paragraph at lines 473--481
  []\OT1/cmr/bx/n/14.4 Videocamera[] \OT1/cmr/m/n/14.4 Le tele-camere sono nec-e
 s-sarie nel sis-tema di trasporto
  []
 
-[21] [22]
-Overfull \hbox (16.10266pt too wide) in paragraph at lines 527--542
+[19] [20] [21]
+Overfull \hbox (16.10266pt too wide) in paragraph at lines 537--552
 \OT1/cmr/m/n/14.4 prestazioni all'avanguardia, tal-volta com-pet-i-tive con la 
 percezione umana.
  []
 
-[23] [24]
-
-LaTeX Warning: Citation 'tesi niccolo galli' on page 25 undefined on input line
- 589.
-
-[25] [26] [27]
-Overfull \hbox (2.25397pt too wide) in paragraph at lines 665--667
+[22] [23] [24] [25]
+Overfull \hbox (2.25397pt too wide) in paragraph at lines 684--686
  []\OT1/cmr/bx/n/14.4 Rappresentazione dei vari guasti con breve de-scrizione[]
  \OT1/cmr/m/n/14.4 Per
  []
 
-<./foto_sporcature/original.png, id=391, 803.0pt x 602.25pt>
+<./foto_sporcature/original.png, id=382, 803.0pt x 602.25pt>
 File: ./foto_sporcature/original.png Graphic file (type png)
 <use ./foto_sporcature/original.png>
-Package pdftex.def Info: ./foto_sporcature/original.png  used on input line 673
+Package pdftex.def Info: ./foto_sporcature/original.png  used on input line 692
 .
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/50_death_pixels.png, id=392, 803.0pt x 602.25pt>
+<./foto_sporcature/50_death_pixels.png, id=383, 803.0pt x 602.25pt>
 File: ./foto_sporcature/50_death_pixels.png Graphic file (type png)
 <use ./foto_sporcature/50_death_pixels.png>
 Package pdftex.def Info: ./foto_sporcature/50_death_pixels.png  used on input l
-ine 680.
+ine 699.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/200_death_pixels.png, id=393, 803.0pt x 602.25pt>
+<./foto_sporcature/200_death_pixels.png, id=384, 803.0pt x 602.25pt>
 File: ./foto_sporcature/200_death_pixels.png Graphic file (type png)
 <use ./foto_sporcature/200_death_pixels.png>
 Package pdftex.def Info: ./foto_sporcature/200_death_pixels.png  used on input 
-line 687.
+line 706.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/banding.png, id=394, 803.0pt x 602.25pt>
+<./foto_sporcature/banding.png, id=385, 803.0pt x 602.25pt>
 File: ./foto_sporcature/banding.png Graphic file (type png)
 <use ./foto_sporcature/banding.png>
-Package pdftex.def Info: ./foto_sporcature/banding.png  used on input line 694.
+Package pdftex.def Info: ./foto_sporcature/banding.png  used on input line 713.
 
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/birghtness.png, id=395, 803.0pt x 602.25pt>
+<./foto_sporcature/birghtness.png, id=386, 803.0pt x 602.25pt>
 File: ./foto_sporcature/birghtness.png Graphic file (type png)
 <use ./foto_sporcature/birghtness.png>
 Package pdftex.def Info: ./foto_sporcature/birghtness.png  used on input line 7
-01.
+20.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/black.png, id=396, 803.0pt x 602.25pt>
+<./foto_sporcature/black.png, id=387, 803.0pt x 602.25pt>
 File: ./foto_sporcature/black.png Graphic file (type png)
 <use ./foto_sporcature/black.png>
-Package pdftex.def Info: ./foto_sporcature/black.png  used on input line 708.
+Package pdftex.def Info: ./foto_sporcature/black.png  used on input line 727.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/blur.png, id=397, 803.0pt x 602.25pt>
+<./foto_sporcature/blur.png, id=388, 803.0pt x 602.25pt>
 File: ./foto_sporcature/blur.png Graphic file (type png)
 <use ./foto_sporcature/blur.png>
-Package pdftex.def Info: ./foto_sporcature/blur.png  used on input line 715.
+Package pdftex.def Info: ./foto_sporcature/blur.png  used on input line 734.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/brokenlens.png, id=398, 803.0pt x 602.25pt>
+<./foto_sporcature/brokenlens.png, id=389, 803.0pt x 602.25pt>
 File: ./foto_sporcature/brokenlens.png Graphic file (type png)
 <use ./foto_sporcature/brokenlens.png>
 Package pdftex.def Info: ./foto_sporcature/brokenlens.png  used on input line 7
-22.
+41.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/chromaticaberrration.png, id=399, 803.0pt x 602.25pt>
+<./foto_sporcature/chromaticaberrration.png, id=390, 803.0pt x 602.25pt>
 File: ./foto_sporcature/chromaticaberrration.png Graphic file (type png)
 <use ./foto_sporcature/chromaticaberrration.png>
 Package pdftex.def Info: ./foto_sporcature/chromaticaberrration.png  used on in
-put line 729.
+put line 748.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/condensation.png, id=400, 803.0pt x 602.25pt>
+<./foto_sporcature/condensation.png, id=391, 803.0pt x 602.25pt>
 File: ./foto_sporcature/condensation.png Graphic file (type png)
 <use ./foto_sporcature/condensation.png>
 Package pdftex.def Info: ./foto_sporcature/condensation.png  used on input line
- 736.
+ 755.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/dirty_lens.png, id=401, 803.0pt x 602.25pt>
+<./foto_sporcature/dirty_lens.png, id=392, 803.0pt x 602.25pt>
 File: ./foto_sporcature/dirty_lens.png Graphic file (type png)
 <use ./foto_sporcature/dirty_lens.png>
 Package pdftex.def Info: ./foto_sporcature/dirty_lens.png  used on input line 7
-43.
+62.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/greyscale.png, id=402, 803.0pt x 602.25pt>
+<./foto_sporcature/greyscale.png, id=393, 803.0pt x 602.25pt>
 File: ./foto_sporcature/greyscale.png Graphic file (type png)
 <use ./foto_sporcature/greyscale.png>
-Package pdftex.def Info: ./foto_sporcature/greyscale.png  used on input line 75
-0.
+Package pdftex.def Info: ./foto_sporcature/greyscale.png  used on input line 76
+9.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/icelens.png, id=403, 803.0pt x 602.25pt>
+<./foto_sporcature/icelens.png, id=394, 803.0pt x 602.25pt>
 File: ./foto_sporcature/icelens.png Graphic file (type png)
 <use ./foto_sporcature/icelens.png>
-Package pdftex.def Info: ./foto_sporcature/icelens.png  used on input line 757.
+Package pdftex.def Info: ./foto_sporcature/icelens.png  used on input line 776.
 
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/nodemos.png, id=404, 1606.0pt x 1204.5pt>
+<./foto_sporcature/nodemos.png, id=395, 1606.0pt x 1204.5pt>
 File: ./foto_sporcature/nodemos.png Graphic file (type png)
 <use ./foto_sporcature/nodemos.png>
-Package pdftex.def Info: ./foto_sporcature/nodemos.png  used on input line 764.
+Package pdftex.def Info: ./foto_sporcature/nodemos.png  used on input line 783.
 
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/noise.png, id=405, 803.0pt x 602.25pt>
+<./foto_sporcature/noise.png, id=396, 803.0pt x 602.25pt>
 File: ./foto_sporcature/noise.png Graphic file (type png)
 <use ./foto_sporcature/noise.png>
-Package pdftex.def Info: ./foto_sporcature/noise.png  used on input line 771.
+Package pdftex.def Info: ./foto_sporcature/noise.png  used on input line 790.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/rain.png, id=406, 803.0pt x 602.25pt>
+<./foto_sporcature/rain.png, id=397, 803.0pt x 602.25pt>
 File: ./foto_sporcature/rain.png Graphic file (type png)
 <use ./foto_sporcature/rain.png>
-Package pdftex.def Info: ./foto_sporcature/rain.png  used on input line 778.
+Package pdftex.def Info: ./foto_sporcature/rain.png  used on input line 797.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-<./foto_sporcature/sharpness.png, id=407, 803.0pt x 602.25pt>
+<./foto_sporcature/sharpness.png, id=398, 803.0pt x 602.25pt>
 File: ./foto_sporcature/sharpness.png Graphic file (type png)
 <use ./foto_sporcature/sharpness.png>
-Package pdftex.def Info: ./foto_sporcature/sharpness.png  used on input line 78
-5.
+Package pdftex.def Info: ./foto_sporcature/sharpness.png  used on input line 80
+4.
 (pdftex.def)             Requested size: 80.3047pt x 60.22852pt.
-[28] [29 <./foto_sporcature/original.png (PNG copy)> <./foto_sporcature/50_deat
+[26] [27 <./foto_sporcature/original.png (PNG copy)> <./foto_sporcature/50_deat
 h_pixels.png (PNG copy)> <./foto_sporcature/200_death_pixels.png (PNG copy)> <.
 /foto_sporcature/banding.png (PNG copy)> <./foto_sporcature/birghtness.png (PNG
  copy)> <./foto_sporcature/black.png (PNG copy)> <./foto_sporcature/blur.png (P
@@ -1180,81 +1175,81 @@ maticaberrration.png (PNG copy)> <./foto_sporcature/condensation.png (PNG copy)
 > <./foto_sporcature/dirty_lens.png (PNG copy)> <./foto_sporcature/greyscale.pn
 g (PNG copy)> <./foto_sporcature/icelens.png (PNG copy)> <./foto_sporcature/nod
 emos.png (PNG copy)> <./foto_sporcature/noise.png (PNG copy)> <./foto_sporcatur
-e/rain.png (PNG copy)> <./foto_sporcature/sharpness.png (PNG copy)>]
-Overfull \hbox (11.93558pt too wide) in paragraph at lines 823--825
+e/rain.png (PNG copy)> <./foto_sporcature/sharpness.png (PNG copy)>] [28]
+Overfull \hbox (11.93558pt too wide) in paragraph at lines 842--844
 \OT1/cmr/m/n/14.4 net-work dove la strato con-voluzionale com-pare al-meno una 
 volta. L'input
  []
 
-[30] [31] [32] [33]
-Overfull \hbox (16.76598pt too wide) in paragraph at lines 924--938
+[29] [30] [31] [32]
+Overfull \hbox (16.76598pt too wide) in paragraph at lines 943--957
 \OT1/cmr/m/n/14.4 L'operazione di at-ti-vazione non-lineare segue l'operazione 
 di con-voluzione.
  []
 
-[34]
-<Struttura-della_rete1.png, id=450, 1002.74625pt x 595.22375pt>
+[33]
+<Struttura-della_rete1.png, id=445, 1002.74625pt x 595.22375pt>
 File: Struttura-della_rete1.png Graphic file (type png)
 <use Struttura-della_rete1.png>
-Package pdftex.def Info: Struttura-della_rete1.png  used on input line 966.
+Package pdftex.def Info: Struttura-della_rete1.png  used on input line 985.
 (pdftex.def)             Requested size: 501.3719pt x 297.61115pt.
 
-Overfull \hbox (71.3719pt too wide) in paragraph at lines 965--980
+Overfull \hbox (71.3719pt too wide) in paragraph at lines 984--999
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 965--980
+Underfull \hbox (badness 10000) in paragraph at lines 984--999
 
  []
 
-[35] [36 <./Struttura-della_rete1.png>]
+[34]
 
-LaTeX Warning: Citation 'guyon1997scaling' on page 37 undefined on input line 9
-97.
+LaTeX Warning: Citation 'guyon1997scaling' on page 35 undefined on input line 1
+016.
 
-
-Overfull \hbox (1.9563pt too wide) in paragraph at lines 1009--1012
+[35 <./Struttura-della_rete1.png>]
+Overfull \hbox (1.9563pt too wide) in paragraph at lines 1028--1031
 \OT1/cmr/m/n/14.4 Ultima com-po-nente fon-da-men-tale di un ad-de-stra-mento, s
 ono le Epochs.
  []
 
-[37] [38]
-Overfull \hbox (0.25531pt too wide) in paragraph at lines 1022--1022
+[36] [37]
+Overfull \hbox (0.25531pt too wide) in paragraph at lines 1041--1041
 []\OT1/cmr/m/n/14.4 Andrea Bon-davalli. \OT1/cmr/m/it/14.4 L'analisi quan-ti-ta
 -tiva dei sis-temi crit-ici: Fon-
  []
 
 
-Overfull \hbox (25.5115pt too wide) in paragraph at lines 1022--1022
+Overfull \hbox (25.5115pt too wide) in paragraph at lines 1041--1041
 \OT1/cmr/m/it/14.4 fer-ence on Com-puter Vi-sion and Pat-tern Recog-ni-tion\OT1
 /cmr/m/n/14.4 . 2018, pp. 1625{
  []
 
 
-Overfull \hbox (2.73346pt too wide) in paragraph at lines 1022--1022
+Overfull \hbox (2.73346pt too wide) in paragraph at lines 1041--1041
 []\OT1/cmr/m/n/14.4 David M Nicol, William H Sanders, and Kishor S Trivedi. ``M
 odel-
  []
 
 
-Overfull \hbox (7.54945pt too wide) in paragraph at lines 1022--1022
+Overfull \hbox (7.54945pt too wide) in paragraph at lines 1041--1041
 \OT1/cmr/m/n/14.4 based eval-u-a-tion: from de-pend-abil-ity to se-cu-rity''. I
 n: \OT1/cmr/m/it/14.4 IEEE Trans-
  []
 
-[39]
-Overfull \hbox (29.96753pt too wide) in paragraph at lines 1022--1022
+[38]
+Overfull \hbox (29.96753pt too wide) in paragraph at lines 1041--1041
 \OT1/cmr/m/n/14.4 men-tazione se-man-tica a sup-porto della nav-igazione di rov
 er marziani''.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1023.
-[40]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1023.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1042.
+[39]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1042.
  (./TesiBernabei.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1023.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1023.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1042.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1042.
 
 Package rerunfilecheck Info: File `TesiBernabei.out' has not changed.
 (rerunfilecheck)             Checksum: AC90249BD87A8EC2D408961E504B1152;3037.
@@ -1273,12 +1268,12 @@ Package biblatex Warning: Please (re)run BibTeX on the file(s):
 Package logreq Info: Writing requests to 'TesiBernabei.run.xml'.
 \openout1 = `TesiBernabei.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1023.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1042.
  ) 
 Here is how much of TeX's memory you used:
- 16874 strings out of 494880
- 278228 string characters out of 6179600
- 725210 words of memory out of 5000000
+ 16873 strings out of 494880
+ 278221 string characters out of 6179602
+ 726210 words of memory out of 5000000
  19877 multiletter control sequences out of 15000+600000
  9953 words of font info for 37 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -1294,10 +1289,10 @@ ts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type
 c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt12.pfb>
-Output written on TesiBernabei.pdf (40 pages, 11753313 bytes).
+Output written on TesiBernabei.pdf (39 pages, 11750561 bytes).
 PDF statistics:
- 550 PDF objects out of 1000 (max. 8388607)
- 472 compressed objects within 5 object streams
- 118 named destinations out of 1000 (max. 500000)
+ 546 PDF objects out of 1000 (max. 8388607)
+ 469 compressed objects within 5 object streams
+ 117 named destinations out of 1000 (max. 500000)
  432 words of extra memory for PDF output out of 10000 (max. 10000000)
 
