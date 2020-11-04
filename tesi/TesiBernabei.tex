@@ -9,7 +9,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{color}
-
+\usepackage{multicol}
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -305,14 +305,14 @@ Nel pensiero comune quando si pensa all'intelligenza artificiale, si immagina un
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
 
 Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.\cite{russell2005intelligenza}
-Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi, come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.(attuatori)
-Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,radar e tanti altri, mentre come attuatori: motori,freni, e tanti altri. 
+Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi (attuatori), come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.
+Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,e radar, mentre come attuatori: motore,freni, e tanti altri. 
 Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza}
 La totalità delle percezioni generate dall'agente in tutta la sua storia, è definita invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante può dipendere dall'intera sequenza percettiva osservata fino a quel momento.
 In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
 Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.  \cite{russell2005intelligenza}
 \subsubsection{Agenti che apprendono}
-Si definisce un agente sta imparando se migliora le proprie prestazioni nelle attività future dopo aver effettuato le osservazioni
+Si definisce un agente che apprende se migliora le proprie prestazioni nelle attività future dopo aver effettuato le osservazioni
 sul mondo. \cite{russell2005intelligenza}
 E perché deve imparare?
 Un agente deve imparare per tre motivi:
@@ -331,46 +331,47 @@ Una loro classificazione si basa su 4 fattori:
 \item \textbf{feedback}  disponibili da apprendere. 
 \end{itemize} 
 
-Esistono tre grosse tipologie di feedback che determinano i tre principali tipi di apprendimento:
-\subparagraph{unsupervised learning}, dove un agente apprende patterns dall'input senza feedback espliciti. 
+Esistono tre tipologie di feedback che determinano i tre principali tipi di apprendimento:
+\subparagraph{unsupervised learning:} l'agente apprende patterns dall'input senza feedback espliciti. 
+\subparagraph{reinforcement learning:} l'agente apprende da una serie di rinforzi, punizioni o premi.
+\subparagraph{supervised learning:} all'agente sono forniti coppie di valori input-output, da cui apprende una funzione che mappi il collegamento tra input e output. 
 
-\subparagraph{reinforcement learning}, dove un agente apprende da una serie di rinforzi, punizioni o premi.
-\subparagraph{supervised learning}, dove ha un agente sono forniti coppie di valori input-output e apprende una funzione che mappi dall'input all'output. 
-Nello specifico, il compito di un apprendimento supervisionato è quello che dato un training set di N esempi della forma input-output
-
-(x1.y1),(x2,y2),...(xn,yn),
-dove ogni valore y è generato da un funzione sconosciuta y=f(x), questa scopre una funzione h che approssima la funzione f.  
-Il learning problem si può definire in due maniere a seconda del l'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
+Nello specifico, il compito di un apprendimento supervisionato è quello che dato un training set di N esempi della forma input-output:
+\begin{center}
+$(x_{1}.y_{1}),(x_{2},y_{2}),...(x_{n},y_{n})$
+\end{center}
+dove ogni valore y è generato da un funzione sconosciuta $y=f(x)$, questa scopre una funzione $h$ che approssima la funzione $f$.  
+Il learning problem si può definire in due maniere a seconda dell'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
  è definito come \textbf{regressione}.
  
 \subsubsection{Neural Network}
 Una particolare forma di supervised learning, come ci suggerisce il titolo del seguite capitolo, sono le artificial neural network o più brevemente neural network. 
-La \textbf{rete neurale} è composta da un insieme di nodi o unità connesse da link orientati.\cite{russell2005intelligenza}
+La \textbf{rete neurale} è composta da un insieme di nodi o unità, connesse da link orientati.\cite{russell2005intelligenza}
  La topologia e le proprietà dei nodi determinano le proprietà della rete.
-\subparagraph{Neurone}
-Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua hard o soft, threshold. L'output dei neuroni finali sarà il risultato della task.
-\subparagraph{Funzione di attivazione-da rivedere}
+\paragraph{Neurone}
+Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua threshold. L'output dei neuroni finali sarà il risultato della task.
+\subparagraph{Funzione di attivazione}
 In generale un neurone, calcola una somma pesata dei suoi input:
 \[in_j=\sum_{i=0}^n  w_{i,j}a_{i}\]
 A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deriva l'output:
 \[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
-Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.
-\subparagraph{Collegamenti}
+\begin{comment}
+Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.\end{comment}
+\paragraph{Collegamenti}
 I neuroni sono interconnessi tra di  loro,  al fine di  propagare il risultato della funzione di attivazione di un nodo padre a un nodo figlio.
 %Un link tra una unita i e un unità j serve a propagare l'attivazione $a_{i}$ da i a j.
- Oltretutto ogni collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
- 
-\subparagraph{feed-forward network}
-Definito il modello matematico di ogni neurone, questi si connetteranno insieme, a formare una rete.
-Esistono due principali tipologie: 
-la \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
+Oltre a propagare il risultato tra neuroni, il collegamento ha anche un peso numerico $w_{i,j}$ associato, il quale determina la forza e il segno della connessione.
+
+\paragraph{feed-forward network}
+Definito il modello matematico di ogni neurone, questi si connettono insieme attraverso i collegamenti, a formare una rete.
+Esistono due principali tipologie di network: 
+La \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
 Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formano un sistema dinamico che raggiunge uno stato stabile o
 esibiscono oscillazioni o addirittura comportamenti caotici. Questa caratteristica, permette alla rete di supportare un memoria a breve termine.
 \begin{comment}
 \subparagraph{perceptron network}:
 Una forma semplice di feed-forward network, è il perceptron network o anche chiamato single-layer neural networl. Questo prevede che i suoi neuroni di input siano direttamente connessi a quelli di output. 
 \end{comment}
-
 
 \subsection{Autonomous Driving}
 Nell'ultimo decennio, il settore dell'Automotive è stato in continua evoluzione. In particolar modo, le grandi aziende automobilistiche e molti gruppi di ricerca si sono mossi verso l'automazione della guida ed
@@ -383,7 +384,7 @@ interesse del settore verso la guida autonoma sono vari:
 \item  riduzione di tutte le varie problematiche della sicurezza
 stradale.
 \end{itemize}
-
+\textbf{immagine 1}
 \subsubsection{Livelli di automazione della guida}
 La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
 In questo sistema di classificazione, all'aumentare del livello di automazione, la responsabilità del conducente passa dalla guida alle attività di
@@ -406,7 +407,6 @@ Veicoli definiti a guida autonoma, sono dotati di un set di tecnologie in grado 
 \item condizioni meteo avverse,
 \item da una velocità massima e così via.
 \end{itemize}
-
 \item Livello 5
 Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi condizione e luogo.
 \end{itemize}
@@ -429,6 +429,7 @@ Lo scopo della visione artificiale è proprio quella di riprodurre la vista uman
 \subparagraph{LIDAR - Light Detection And Ranging}
 Il Lidar è  solito essere installato sul tettuccio del veicolo, è un sensore che attraverso l'emissione e ricezione di segnali luminosi, laser, ottiene informazioni fisiche  dell'ambiente e  cinematiche sul  veicolo.
 \begin{comment}
+
 È una tecnologia di telerilevamento. I suoi usi sono molto vari soprattutto
 perché il suo obiettivo principale è quello di raccogliere informazioni
 3D e usare la luce sotto forma di un laser pulsato per misurare diverse
@@ -498,7 +499,7 @@ nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono l
 dependability di un sistema sono al primo posto in ordine di importanza.
 
 \subsubsection{Classificatori}
-Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prenderà delle decisioni.
+Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prendere delle decisioni.
 Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con
 questo termine si intende rappresentare tutte le possibili trasformazioni
 che un'immagine può subire, ad esempio ruotandola, tagliandola, scalandola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
@@ -572,26 +573,35 @@ sviluppato in un ambiente virtuale, tra questi NVIDIA DRIVE Constellation, AirSi
 in cui è possibile testare un auto a guida autonoma che raccoglie dati
 dall'ambiente. Per le considerazioni fatte in precedenza, un simulatore
 si presenta come un alleato fondamentale nel processo di sviluppo e di
-validazione. Infatti un simulatore in grado di riprodurre realisticamente
-il complicato ambiente cittadino può essere utilizzato per lo sviluppo
-con tecniche di machine learning avide di dati, per cui sono necessari
+validazione. Infatti l'alta avidità di dati da parte degli algoritmi di machine learning impiegate dal sistema di guida autonoma, viene soddisfatto dalla capacità del sistema simulatore, di generare centinaia di migliaia di riproduzioni, nello specifico quello fisicamente e eticamente più difficili da riprodurre nello sviluppo su strada.
+\begin{comment}
+ 
+Infatti un simulatore in grado di riprodurre realisticamente
+il complicato ambiente cittadino può essere utilizzato per lo sviluppo di sistemi a guida autonomi, che impiegano tecniche di machine learning avide di dati.
+Per far ciò sono necessari
 centinaia di migliaia di riproduzioni per ottenere risultati, e per testare il
 sistema in altrettanti scenari, anche eticamente o fisicamente difficili da
-riprodurre, prima o congiuntamente allo sviluppo e al testing su strada.
-
-In particolare CARLA è un simulatore grafico open source costituito da un'architettura client-server scalabile.
-dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'ambiente in tutti i suoi aspetti: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. 
-Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo. 
+riprodurre, prima o congiuntamente allo sviluppo e al testing su strada. (riguarda)
+\end{comment}
+Tra quelli citati in precedenza, il simulatore  impiegato per il progetto, è CARLA.
+Un simulatore grafico open source costituito da un'architettura client-server scalabile, dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'ambiente in tutti i suoi aspetti: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. 
+Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo.
+ 
 \subsubsection{Sensori}
-Come un veicolo reale di guida autonoma, Carla predispone una suite di sensori preimpostasti,come fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
+Come in un  veicolo reale, Carla predispone una suite di sensori preimpostasti, fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
 La loro posizione, numero e direzione possono essere specificate dal client.
-Per una presentazione completa dei sensori si rimanda a \cite{tesi niccolo galli}
-E proprio della fotocamera RGB di Carla si farà uso al fine di costruire il dataset di immagini.
+%Per una presentazione completa dei sensori si rimanda a \cite{tesi niccolo galli}
+E proprio della fotocamera RGB di Carla si farà uso al fine di acquisire le immagini per il dataset.
 
 \section{Costruzione del dataset}
-Il detector utilizza come tecnologia una Convulutional Neural Network, una forma di rete neurale. 
+Il dataset è una delle componenti principali nel istruzione di un agente supervisionato, essendo il suo materiale di studio. 
+Nel caso di un agente supervisionato, il dataset rappresenta la sua conoscenza di base, ovvero tutto ciò che lui sa sul mondo, e più questa conoscenza è vasta e variegata, più che l'agente è in grado di adattarsi alle situazioni che si presentano.
+CARLA grazie alle sue caratteristiche di piattaforma di simulazione, ha permesso di ottenere questa grossa base di dati differenziati per costruire le fondamenta del dataset che sarà impiegato.
+Prima comunque di acquisire il ddata
+\begin{comment}
+Il detector utilizza come tecnologia una Convolutional Neural Network, una forma di rete neurale. 
 Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
-Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
+Infatti per l'apprendimento è stato usato il paradigma del supervised learning.\end{comment}
 L'addestramento di una generica rete neurale prevede la creazione di un dataset sulla
 base della procedura:
 \begin{itemize}
@@ -621,6 +631,7 @@ Il problema della classificazione delle immagini è un problema che come dice il
 Quindi le classi, o etichette(label) sono gruppi di elementi che hanno determinate caratteristiche in comune. Più le differenze tra classi diverse, sono poco accentuate, più è difficile distinguerle.
 Nel caso del detector,  le classi rispecchiano i diversi guasti che la fotocamera può subire. Per una esposizione completa dei guasti che sono stati presi in considerazione si rimanda a \cite{secci2020failures}.
 Le classi prese in considerazione per la costruzione dei vari dataset su cui sarà allenato l'agente, sono 18, di cui una rappresenta le immagini pulite(Golden Run), 16 rappresentano ciascuna un determinato guasto, e l'ultima (All) contiene al suo interno tutte e 16 i guasti presi in considerazione
+\begin{multicols}{3}
 \begin{itemize}
 \item Golden Run
 \item Blur
@@ -641,6 +652,7 @@ Le classi prese in considerazione per la costruzione dei vari dataset su cui sar
 \item Rain
 \item All
 \end{itemize}
+\end{multicols}
 
 
 \subsection{Acquisizione}
@@ -787,15 +799,10 @@ Di seguito si riporta una breve rappresentazione della stessa immagini, acquisit
 	        \label{fig:Esempi dei filtri applicati}
 	\end{figure}
 
-
-
-
-
-
-
 \subsection{Suddivisione del dataset}
-La Convnet sviluppata, è un classificatore binario, e come tale distingue solamente tra due classi, immagini pulite e immagini sporche, ovvero: golden run e classe dei guasti.
-Detto ciò sono stati costruiti 17 dataset diversi, ciascuno per ogni classe.Ogni dataset è composto da 30000 elementi,suddiviso su due classi, 150000 immagini per classe. Queste immagini sono ulteriormente suddivise in training set e validation set, dove delle 150000 immagini di una classe, 120000 sono dedicate al training set e 30000 sono dedicate al validation set.
+La Convnet sviluppata, è un classificatore binario, e come tale distingue solamente tra due classi, immagini pulite e immagini sporche, ovvero: golden run e malfunzionamento.
+Detto ciò sono stati costruiti 17 dataset diversi, ciascuno per ogni classe.Ogni dataset è composto da 314400 elementi, di cui $\simeq 75\%$ come training set,       $\simeq20\%$ come validation set, e il restante  $\simeq5\%$ come test set. Ognuno di questi 3, è a sua volta equamente suddiviso nelle due classi che lo compongono.
+ 
 Questa suddivisione tra training set e validation set delle immagini, risulta molto importante nella fase di training dei modelli, come si vedrà in seguito.
 Uno schema di suddivisione (o immagine):
 \begin{itemize}
@@ -809,18 +816,21 @@ Uno schema di suddivisione (o immagine):
 \item Golden Run: 30000 elementi
 \item Dirty Run: 30000 elementi
 \end{itemize}
+\item Test set: 14400 elementi
+\begin{itemize}
+\item Golden Run: 7200 elementi
+\item Dirty Run: 7200 elementi
 \end{itemize}
-Un agente classificatore non prevede solo una fase di allenamento, ma anche una fase di test, nella quale attraverso un dataset di immagini dedicate, si va a valutare la capacità effettiva di distinzione della rete.
+\end{itemize}
 
-Da finire con i dati del test set
 \section{Costruzione del detector}
-Lo scopo del detector, è quello di individuare all'interno del flusso di immagini della fotocamera, la presenza di distorsioni, ovvero riuscire a prevenire che un guasto al sensore della fotocamera, arrivi al sistema decisionale, scaturendo un possibile fallimento. Per perseguire il suo scopo, il detector deve essere in grado di classificare ciascuna immagine del flusso, tra immagini pulite, ovvero immagini che non generano fallimenti nel sistema,e immagini sporche, generate da un guasto.Questa distinzione binaria, tra le due sole tipologie di immagini, scaturisce dal fatto che non è richiesta l'identificazione precisa di un singolo guasto,(multiclassificatore), ma si richiede solo la distinzione tra buone e cattive.
+Lo scopo del detector, è quello di individuare all'interno del flusso di immagini della fotocamera, la presenza di distorsioni, ovvero riuscire a prevenire che un guasto al sensore della fotocamera, arrivi al sistema decisionale, scaturendo un possibile fallimento. Per perseguire il suo scopo, il detector deve essere in grado di classificare ciascuna immagine del flusso, tra immagini pulite, ovvero immagini che non generano fallimenti nel sistema,e immagini sporche, generate da un guasto.Questa distinzione binaria, tra le due sole tipologie di immagini, scaturisce dal fatto che non è richiesta l'identificazione precisa di un singolo guasto,(multiclassificatore), ma si richiede solo la distinzione tra elemento buone e elemento cattive.
 L'elemento classificatore è svolto da una rete neurale convuluzionale o ConvNet.
 Come dice il nome, la  ConvNet è  una tecnologia basata sulle rete neurali più generiche, ed è già ampiamente impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a vocal recognition.
 
 \subsection{Convulutional Neural Network}
-Una rete neurale convuluzionale è una rete neurale di tipo feed-forward network dove la strato convuluzionale compare almeno una volta.
-L'input di una convulutional neurale network o ConvNet,\begin{comment} è ampiamente utilizzata nelle applicazioni di visione artificiale,\end{comment}, è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
+Una rete neurale convoluzionale è una rete neurale di tipo feed-forward network dove la strato convoluzionale compare almeno una volta.
+L'input di una convolutional neurale network o ConvNet,\begin{comment} è ampiamente utilizzata nelle applicazioni di visione artificiale,\end{comment}, è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
 \subsubsection{L'architettura} 
 Le reti neurali convoluzionali operano su strutture a griglia contraddistinte da relazioni spaziali tra pixel, ereditate da uno strato al successivo tramite valori che descrivono
 piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
@@ -832,7 +842,18 @@ Una CNN è composta da  un insieme di strati che si susseguono, illustrati in de
 \item dense layer;
 \end{itemize}
 \cite{torresin2019sviluppo}
-
+Di seguito la struttura sviluppata per il progetto:
+\begin{itemize}
+	\item conv2d
+	\item max pooling2d
+	\item conv2d
+	\item max pooling2d
+	\item conv2d
+	\item max pooling2d
+	\item flatten
+	\item dense
+	\item dense
+\end{itemize}
 \subsubsection{Convolutional layer}
 La convoluzione è l’operazione fondamentale delle ConvNet. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
 eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
@@ -884,7 +905,7 @@ pratica non dà buoni risultati per il seguente motivo: mentre con l’half-padd
 celle ai bordi contribuiscono all’informazione, nel caso di valid-padding, queste non
 vedono il passaggio del filtro e sono sotto-rappresentate.
 Un’altra forma di padding è il full-padding, con il quale si lascia che il filtro esuli
-completamente dal layer andando ad occupare celle di soli zeri. Così facendo si incrementa l’impronta spaziale dello strato, allo stesso modo in cui il valid-padding la
+completamente dal layer andando ad occupare celle di soli zeri. Così facendo si incrementa l'impronta spaziale dello strato, allo stesso modo in cui il valid-padding la
 riduce.\cite{aggarwal2018neural} 
 \begin{comment}
 
@@ -912,7 +933,7 @@ valore del bias è definito tramite retropropagazione in fase di addestramento. 
 L’operazione di attivazione non-lineare segue l’operazione di convoluzione. Per ogni
 strato Lq x Bq x d, la funzione di attivazione genera uno strato di eguale dimensione
 Lq x Bq x d di valori limitati da soglie: in quanto semplice mappatura uno-a-uno dei
-valori di attivazione, la funzione ReLU non altera l’importa spaziale dello strato.
+valori di attivazione, la funzione ReLU non altera l'impronta spaziale dello strato.
 L’attivazione avviene tramite funzioni matematiche. Mentre in passato la tangente iperbolica, la funzione sigmoide, softsign godevano di ampia diffusione, ora sono
 limitate a reti non-profonde e ormai rimpiazzate dalla funzione di attivazione ReLU
 (Rectified Linear Unit). Il motivo principale è che in reti neurali profonde, il gradiente
