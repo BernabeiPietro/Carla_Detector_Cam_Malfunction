@@ -606,20 +606,23 @@ La loro posizione, numero e direzione possono essere specificate dal client.
 E proprio della fotocamera RGB di Carla si farà uso al fine di acquisire le immagini per il dataset.
 
 \section{Costruzione del dataset}
+Un agente che impiega il paradigma del supervised learning, richiede un dataset, per formare la propria conoscenza di base del mondo che lo circonda. Nel caso di un classificatore di immagini, la componente principale di questa mole di dati, sono le immagini. A ciascuna sarà apposta in pre-elaborazione una etichetta che identifichi la classe del dato, per poi essere suddivise in tre dataset diversi, uno per ogni fase del procedimento di training.
+In maniera più schematica la creazione del dataset si basa sulla seguente procedura:
+\begin{comment}
 Il dataset è una delle componenti principali nel istruzione di un agente supervisionato, essendo il suo materiale di studio. 
 Nel caso di un agente supervisionato, il dataset rappresenta la sua conoscenza di base, ovvero tutto ciò che lui sa sul mondo, e più questa conoscenza è vasta e variegata, più che l'agente è in grado di adattarsi alle situazioni che si presentano.
 CARLA grazie alle sue caratteristiche di piattaforma di simulazione, ha permesso di ottenere questa grossa base di dati differenziati per costruire le fondamenta del dataset che sarà impiegato.
 Prima comunque di acquisire il ddata
-\begin{comment}
 Il detector utilizza come tecnologia una Convolutional Neural Network, una forma di rete neurale. 
 Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
-Infatti per l'apprendimento è stato usato il paradigma del supervised learning.\end{comment}
+Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
 L'addestramento di una generica rete neurale prevede la creazione di un dataset sulla
-base della procedura:
+base della procedura:\end{comment}
+
 \begin{itemize}
 \item Definizione delle classi
-\item Acquisizione immagini
-\item Sporcatura immagini
+\item Acquisizione delle immagini
+\item Sporcatura delle immagini
 \item Suddivisione del dataset
 \end{itemize}
 
