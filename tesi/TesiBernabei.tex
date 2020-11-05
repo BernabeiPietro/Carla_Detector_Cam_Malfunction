@@ -422,21 +422,34 @@ Veicoli definiti a guida autonoma, sono dotati di un set di tecnologie in grado 
 \item Livello 5
 Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi condizione e luogo.
 \end{itemize}
+\begin{figure}
+\centering
+\includegraphics[scale=0.65]{SAE_level_automation.png}
+\caption{classificazione SAE}
+\label{fig:classificazioneSAE}
+\end{figure}
 \begin{comment}
 Al momento la serie di veicoli con il livello più alto, è l'Autopilot di Tesla, che effettivamente si può ritenere di livello 4, ma per motivi legali è categorizzato come livello 3, e la navetta Olly, classificata come livello 4.
 \end{comment}
 \subsubsection{Visione artificiale}
 Come definito nella sezione precedente dedicata all'intelligenza artificiale, ogni agente prende in input una sensazione, la elabora, prende una decisione, e la attua con gli attuatori. Applicando questo concetto all'autonomus driving, anche questi hanno una serie di sensori, che gli permettono di prendere coscienza dell'ambiente circostante in cui è immersa la vettura.
-Le principali tecnologie, presenti al momento su questi sistemi sono\cite{das2018risk}:
+Le principali tecnologie che compongono la visione artificiale avanzata dei veicoli a guida autonoma sono\cite{das2018risk}:
 \begin{itemize}
 \item Fotocamere
 \item Radar
 \item Lidar
 \item GPS
 \end{itemize}
-che insieme compongono la visione artificiale avanzata dell'autonomus driving.
+ come si può vedere in \ref{fig:maga}
 Tutte insieme, forniscono un modello del ambiente circostante (3D),  attraverso immagini bidimensionali(2D).
 Lo scopo della visione artificiale è proprio quella di riprodurre la vista umana.\cite{wiki:visart}
+Le fotocamere fra tutte al momento risulta essere la tecnologia più sfruttata, e questo è il motivo per cui è stato sviluppato su di lui il detector.\textbf{///}
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{maga.jpeg}
+\caption{Schema di posizionamento dei sensori su veicolo a guida autonoma}
+\label{fig:maga}
+\end{figure}
 
 \subparagraph{LIDAR - Light Detection And Ranging}
 Il Lidar è  solito essere installato sul tettuccio del veicolo, è un sensore che attraverso l'emissione e ricezione di segnali luminosi, laser, ottiene informazioni fisiche  dell'ambiente e  cinematiche sul  veicolo.
@@ -461,6 +474,7 @@ terreni accidentati, che potrebbero causare guasti al sistema.
 E' un sistema che utilizza onde radio trasmesse nell'ambiente, al fine di raccogliere informazioni sugli  ostacoli intorno al veicolo e aumentare la consapevolezza del  posizionamento degli altri veicoli presenti. Questo sensore tiene
 d’occhio le altre auto e indica al veicolo autonomo di accelerare o rallentare
 a seconda del comportamento degli altri conducenti \cite{das2018risk}.
+
 \begin{comment}
 È un sistema che utilizza onde radio per il rilevamento e la determinazione della posizione ed eventualmente della velocità di oggetti fissi o
 mobili, come aerei, navi, veicoli, formazioni atmosferiche o il suolo. Le
@@ -487,14 +501,8 @@ GPS informazioni sulle sue coordinate geografiche e sul suo orario in
 quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
 che potrebbero impedirne l'invio e la ricezione dei segnali (edifici molto
 alti, gallerie, ecc.), generando errori dell'ordine di metri.
-\begin{comment}
-La localizzazione avviene tramite la trasmissione di un segnale radio da parte di ciascun satellite e l'elaborazione dei
-segnali ricevuti da parte del ricevitore \cite{das2018risk}
-Per far procedere autonomamente il veicolo, il GPS, con l'aiuto di altri
-sensori, crea mappe precise della carreggiata e guida nella direzione
-esatta. 
-\end{comment}
-La scelta di sviluppare un detector sulle fotocamera dei veicoli, è data dalla loro  attuale, alta presenza in tutti i veicoli.
+
+
 \subsubsection{Reti neurali applicate all'autonomus driving}
 Le Reti Neurali sono oggi ampiamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l'elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degli utenti esterni al veicolo. 
 Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo.%, come un caso di autopilot di Tesla.
@@ -504,24 +512,29 @@ individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
 ti i punteggi osservati quando si considerano i casi peggiori. Con casi
 peggiori si vuole intendere quei casi definiti Adversarial Examples \cite{engstrom2019exploring} o
 input perturbati, anche solo leggermente, che dal punto di vista umano
-risultano sempre comprensibili, mentre da quello della macchina, cambiano totalmente di significato. Naturalmente, se queste Reti vengono
+risultano sempre comprensibili, mentre da quello della macchina, cambiano totalmente di significato.Nella figura \ref{fig:AdvExp} si mostra una rete neurale allenata nel riconoscimento di animali, e come l'applicazione di un semplice filtro che ad occhio umano non cambia il significato dell'immagine, a una rete neurale si.
+Naturalmente, se queste Reti vengono
 utilizzate su veicoli che devono muoversi in un ambiente nel quale si
 trova un'eterogeneità di soggetti e comportamenti, si parla di contesti
 nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
 dependability di un sistema sono al primo posto in ordine di importanza.
-
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.8]{adversarial_img.png}
+	\caption{Adversial Examples}
+	\label{fig:AdvExp}
+	\end{figure}
 \subsubsection{Classificatori}
 Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prendere delle decisioni.
-Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con
-questo termine si intende rappresentare tutte le possibili trasformazioni
+Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con questo termine si intende rappresentare tutte le possibili trasformazioni
 che un'immagine può subire, ad esempio ruotandola, tagliandola, scalandola ecc. Queste sono trasformazioni naturali e sono utilizzate in vari
 contesti:
-\begin{itemize}
-\item verificare il livello di completezza di un classificatore,
-\item allenare una rete neurale,
-\item ricreare scenari o situazioni con cui il veicolo su cui è installata una
-determinata rete può avere a che fare.
-\end{itemize}
+	\begin{itemize}
+	\item verificare il livello di completezza di un classificatore,
+	\item allenare una rete neurale,
+	\item ricreare scenari o situazioni con cui il veicolo su cui è installata una
+	determinata rete può avere a che fare.
+	\end{itemize}
 
 Con il termine "trasformata spazialmente" non ci si deve immaginare
 una modifica profonda del fotogramma in questione, ma anzi, basta
@@ -538,22 +551,21 @@ umana \cite{engstrom2019exploring}.
 
 Tuttavia, oggi, le DNN (Deep Neural Network) hanno raggiunto prestazioni all'avanguardia, talvolta competitive con la percezione umana.
 Una della sfide principali nella guida autonoma è il cambiamento ambientale che un qualsiasi sistema autonomo può incontrare, ovvero: le
-differenti distanze e angolazioni con cui viene percepito l'ambiente circo-
-stante dai sistemi di visione artificiale variano ogni volta che il veicolo si
+differenti distanze e angolazioni con cui viene percepito l'ambiente circostante dai sistemi di visione artificiale variano ogni volta che il veicolo si
 muove nello spazio \cite{eykholt2018robust} .
 Purtroppo, nel contesto della guida autonoma, anche un piccolo errore
 di valutazione nella navigazione potrebbe causare incidenti altamente
 devastanti.
-\begin{comment}
-Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
-analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
-dei sottosistemi di veicoli autonomi e/o alcuni componenti dell'infrastruttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
-della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
-della superficie stradale non sono state incluse [31].
-\end{comment}
+	\begin{comment}
+	Diversi gruppi di ricerca hanno sviluppato un modello preliminare di
+	analisi del rischio per veicoli autonomi. In tali studi sono stati considerati
+	dei sottosistemi di veicoli autonomi e/o alcuni componenti dell'infrastruttura di trasporto; tuttavia, condizioni meteorologiche, altri utenti
+	della strada (guidatori non autonomi, ciclisti, pedoni, ecc.) e condizioni
+	della superficie stradale non sono state incluse [31].
+	\end{comment}
 
-\subsection{CARLA}
-\subparagraph{Autonomus driver simulator}
+
+\subsection{Autonomus driver simulator}
 Lo sviluppo della guida senza conducente è un argomento attuale e di
 grande interesse, su cui molte società automobilistiche stanno investendo
 dato che promette di essere un mercato da miliardi di dollari. %[15]
@@ -586,33 +598,38 @@ in cui è possibile testare un auto a guida autonoma che raccoglie dati
 dall'ambiente. Per le considerazioni fatte in precedenza, un simulatore
 si presenta come un alleato fondamentale nel processo di sviluppo e di
 validazione. Infatti l'alta avidità di dati da parte degli algoritmi di machine learning impiegate dal sistema di guida autonoma, viene soddisfatto dalla capacità del sistema simulatore, di generare centinaia di migliaia di riproduzioni, nello specifico quello fisicamente e eticamente più difficili da riprodurre nello sviluppo su strada.
-\begin{comment}
- 
-Infatti un simulatore in grado di riprodurre realisticamente
-il complicato ambiente cittadino può essere utilizzato per lo sviluppo di sistemi a guida autonomi, che impiegano tecniche di machine learning avide di dati.
-Per far ciò sono necessari
-centinaia di migliaia di riproduzioni per ottenere risultati, e per testare il
-sistema in altrettanti scenari, anche eticamente o fisicamente difficili da
-riprodurre, prima o congiuntamente allo sviluppo e al testing su strada. (riguarda)
-\end{comment}
+	\begin{comment}
+	 
+	Infatti un simulatore in grado di riprodurre realisticamente
+	il complicato ambiente cittadino può essere utilizzato per lo sviluppo di sistemi a guida autonomi, che impiegano tecniche di machine learning avide di dati.
+	Per far ciò sono necessari
+	centinaia di migliaia di riproduzioni per ottenere risultati, e per testare il
+	sistema in altrettanti scenari, anche eticamente o fisicamente difficili da
+	riprodurre, prima o congiuntamente allo sviluppo e al testing su strada. (riguarda)
+	\end{comment}
+\subsubsection{CARLA}
 Tra quelli citati in precedenza, il simulatore  impiegato per il progetto, è CARLA.
 Un simulatore grafico open source costituito da un'architettura client-server scalabile, dove il server è responsabile  di tutto ciò che riguarda la simulazione dell'ambiente in tutti i suoi aspetti: rendering del sensore, calcolo della fisica, aggiornamenti sullo stato del mondo e sui suoi attori e molto altro. 
 Mentre il lato client consiste in una somma di moduli client che controllano la logica degli attori sulla scena e impostano le condizioni del mondo.
- 
 \subsubsection{Sensori}
-Come in un  veicolo reale, Carla predispone una suite di sensori preimpostasti, fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
+Come in un  veicolo reale, CARLA predispone una suite di sensori preimpostasti, fotocamere RGB e pseudo sensori che forniscono ground-truth depth e ground-truth semantic segmentation .
 La loro posizione, numero e direzione possono essere specificate dal client.
 %Per una presentazione completa dei sensori si rimanda a \cite{tesi niccolo galli}
-E proprio della fotocamera RGB di Carla si farà uso al fine di acquisire le immagini per il dataset.
+E proprio della fotocamera RGB di CARLA si farà uso al fine di acquisire le immagini per il dataset.
 
 \section{Costruzione del dataset}
+<<<<<<< HEAD
 Un agente che impiega il paradigma del supervised learning, richiede un dataset, per formare la propria conoscenza di base del mondo che lo circonda. Nel caso di un classificatore di immagini, la componente principale di questa mole di dati, sono le immagini. A ciascuna sarà apposta in pre-elaborazione una etichetta che identifichi la classe del dato, per poi essere suddivise in tre dataset diversi, uno per ogni fase del procedimento di training.
 In maniera più schematica la creazione del dataset si basa sulla seguente procedura:
 \begin{comment}
+=======
+Il detector al suo interno presenta
+>>>>>>> a46aca1ea7e3f9e5b011cefd303503cbed294950
 Il dataset è una delle componenti principali nel istruzione di un agente supervisionato, essendo il suo materiale di studio. 
 Nel caso di un agente supervisionato, il dataset rappresenta la sua conoscenza di base, ovvero tutto ciò che lui sa sul mondo, e più questa conoscenza è vasta e variegata, più che l'agente è in grado di adattarsi alle situazioni che si presentano.
 CARLA grazie alle sue caratteristiche di piattaforma di simulazione, ha permesso di ottenere questa grossa base di dati differenziati per costruire le fondamenta del dataset che sarà impiegato.
 Prima comunque di acquisire il ddata
+<<<<<<< HEAD
 Il detector utilizza come tecnologia una Convolutional Neural Network, una forma di rete neurale. 
 Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
 Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
@@ -625,21 +642,35 @@ base della procedura:\end{comment}
 \item Sporcatura delle immagini
 \item Suddivisione del dataset
 \end{itemize}
+=======
+	\begin{comment}
+	Il detector utilizza come tecnologia una Convolutional Neural Network, una forma di rete neurale. 
+	Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
+	Infatti per l'apprendimento è stato usato il paradigma del supervised learning.\end{comment}
+L'addestramento di una generica rete neurale prevede la creazione di un dataset sulla
+base della procedura:
+	\begin{itemize}
+	\item Definizione delle classi
+	\item Acquisizione immagini
+	\item Sporcatura immagini
+	\item Suddivisione del dataset
+	\end{itemize}
+>>>>>>> a46aca1ea7e3f9e5b011cefd303503cbed294950
 
 Ciascuno step è illustrato in dettaglio nei paragrafi seguenti.
 
-\begin{comment}
-Questo prevede che siano forniti tre diverse dataset di immagini:
-\begin{itemize}
-	\item Training set
-	\item Validation set
-	\item Test set
-\end{itemize}
-
-Per il seguente elaborato avendo la possibilità di acquisire grandi quantità di dati come verrà esposto in seguito, il training set avrà dimensioni di 240000 immagini, suddivise equamente tra pulite e sporche
-Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
-Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
-\end{comment}
+	\begin{comment}
+		Questo prevede che siano forniti tre diverse dataset di immagini:
+		\begin{itemize}
+			\item Training set
+			\item Validation set
+			\item Test set
+		\end{itemize}
+	
+	Per il seguente elaborato avendo la possibilità di acquisire grandi quantità di dati come verrà esposto in seguito, il training set avrà dimensioni di 240000 immagini, suddivise equamente tra pulite e sporche
+	Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
+	Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
+	\end{comment}
 
 \subsection{Definizione delle classi}
 Il problema della classificazione delle immagini è un problema che come dice il verbo, deve assegnare a un elemento in input una classe.
