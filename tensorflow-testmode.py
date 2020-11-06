@@ -15,6 +15,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import manager_of_path
 
+def mcc_metric(y_true, y_pred):
+  predicted = tf.cast(tf.greater(y_pred, 0.5), tf.float32)
+  true_pos = tf.math.count_nonzero(predicted * y_true)
+  true_neg = tf.math.count_nonzero((predicted - 1) * (y_true - 1))
+  false_pos = tf.math.count_nonzero(predicted * (y_true - 1))
+  false_neg = tf.math.count_nonzero((predicted - 1) * y_true)
+  x = tf.cast((true_pos + false_pos) * (true_pos + false_neg)
+      * (true_neg + false_pos) * (true_neg + false_neg), tf.float32)
+  return tf.cast((true_pos * true_neg) - (false_pos * false_neg), tf.float32) / tf.sqrt(x)
 
 def tester(lock,mp,classes):
     lock.acquire()
@@ -53,7 +62,11 @@ def tester(lock,mp,classes):
     #model.summary()
     model1.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+<<<<<<< HEAD
                   metrics=tfa)
+=======
+                  metrics=[mcc_metric])
+>>>>>>> 1aae6703759e9418a6e35897b4be17f04513e897
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes("all")["train"],
                                                               shuffle=True,
@@ -86,7 +99,6 @@ def tester(lock,mp,classes):
     #print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
     lock.release();
  
-
 
 
 
