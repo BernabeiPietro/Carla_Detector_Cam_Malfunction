@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import multiprocessing
-
+import tensorflow_addons as tfa
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
@@ -51,7 +51,7 @@ def tester(lock,mp,classes):
     #model.summary()
     model1.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
-                  metrics=['accuracy'])
+                  metrics=tfa.metrics.MatthewsCorrelationCoefficient(num_clases=2))
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes("all")["train"],
                                                               shuffle=True,
@@ -62,6 +62,9 @@ def tester(lock,mp,classes):
     print(classes)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
     print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
+    prediction = model1.predict(test_data_gen, batch_size=4, verbose=1)
+    res=tf.math.confusion_matrix(test_data_gen.y,prediction,num_classes=2)
+    print('Confusion_matrix: ', res)
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes(classes)["train"],
                                                               shuffle=True,
@@ -72,6 +75,9 @@ def tester(lock,mp,classes):
     print(classes)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
     print("Restored model, loss: {:5.2f}%".format(100 * loss_ev_a))
+    prediction = model1.predict(test_data_gen, batch_size=4, verbose=1)
+    res = tf.math.confusion_matrix(test_data_gen.y, prediction, num_classes=2)
+    print('Confusion_matrix: ', res)
 # predict restistuisce numpy array
     #loss_predict_a, acc_predict_a = model.predict(test_data_gen,batch_size=4,verbose=1) 
     #print("Restored model, accuracy: {:5.2f}%".format(100 * acc_ev_a))
