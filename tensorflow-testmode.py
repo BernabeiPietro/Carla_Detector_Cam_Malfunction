@@ -1,8 +1,10 @@
 from __future__ import absolute_import
 
 import multiprocessing
-import tensorflow_addons as tfa
+
 import tensorflow as tf
+import tensorflow_addons as tfa
+import typeguard
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -51,7 +53,7 @@ def tester(lock,mp,classes):
     #model.summary()
     model1.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
-                  metrics=tfa.metrics.MatthewsCorrelationCoefficient(num_clases=2))
+                  metrics=tfa)
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes("all")["train"],
                                                               shuffle=True,
