@@ -74,6 +74,7 @@ def dead_pixel_50(images, progressiveName, pathModified):
 
 
 def dead_pixel_200(images, progressiveName, pathModified):
+
     for img in images:
         h, w, _ = img.shape
 
