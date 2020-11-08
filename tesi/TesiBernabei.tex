@@ -870,7 +870,7 @@ Uno schema di suddivisione (o immagine):
 \end{itemize}
 
 \section{Costruzione del detector}
-Lo scopo del detector, è quello di individuare all'interno del flusso di immagini della fotocamera, la presenza di distorsioni, ovvero riuscire a prevenire che un guasto al sensore della fotocamera, arrivi al sistema decisionale, scaturendo un possibile fallimento. Per perseguire il suo scopo, il detector deve essere in grado di classificare ciascuna immagine del flusso, tra immagini pulite, ovvero immagini che non generano fallimenti nel sistema,e immagini sporche, generate da un guasto.Questa distinzione binaria, tra le due sole tipologie di immagini, scaturisce dal fatto che non è richiesta l'identificazione precisa di un singolo guasto,(multiclassificatore), ma si richiede solo la distinzione tra elemento buone e elemento cattive.
+Lo scopo del detector, è quello di individuare all'interno del flusso di immagini della fotocamera, la presenza di distorsioni, ovvero riuscire a prevenire l'insorgere dei fallimenti nel sistema decisionale a causa di un guasto alla fotocamera. Per perseguire il suo scopo, il detector deve essere in grado di classificare ciascuna immagine del flusso, tra immagini pulite, ovvero immagini che non generano fallimenti nel sistema,e immagini sporche, generate da un guasto.Questa distinzione binaria, tra le due sole tipologie di immagini, scaturisce dal fatto che non è richiesta l'identificazione precisa di un singolo guasto,(multiclassificatore), ma si richiede solo la distinzione tra elemento buone e elemento cattive.
 L'elemento classificatore è svolto da una rete neurale convuluzionale o ConvNet.
 Come dice il nome, la  ConvNet è  una tecnologia basata sulle rete neurali più generiche, ed è già ampiamente impiegata nei sistemi di riconoscimento grafico, come classificatori, object detection oltre a vocal recognition.
 
@@ -1034,7 +1034,8 @@ Definito l'input del primo layer e quindi dell'intera rete, si può passare all'
  \end{comment}
 \subsection{Addestramento del rete convuluzionale}
 Dopo aver definito la struttura della rete, e avendo suddiviso il dataset in tre parti: training set, validation set e test set, la fase successiva prevede l'addestramento della rete.
-Per addestramento di una rete si intendo, elaborazione da parte della  rete del training set, ovvero la modifica dei pesi dei collegamenti, al fine di modellare il meglio possibile la rete sui dati.
+Per addestramento di una rete si intendo elaborazione da parte della  rete del training set, ovvero la modifica dei pesi dei collegamenti, al fine di modellare il meglio possibile la rete sui dati. 
+%il processo di determinazione dei parametri ideali che compongono un modello. google
 In generale il sistema di apprendimento prevede che sia utilizzato il training set per l'addestramento della regressione logica, ovvero una modifica dei pesi 
 
 Durante l'addestramento della CNN, il set di dati deve essere suddiviso in tre parti:
@@ -1051,8 +1052,6 @@ circa il 75-80\% dei dati totali, mentre la convalida e
 i set di test utilizzano entrambi metà dei dati rimanenti, circa 10-
 12,5\% ciascuno \cite{guyon1997scaling}.
 
-
-
 Avendo predisposto la rete, e i vari dataset, il passo successivo è il suo addestramento.
 
 \subsubsection{Batch}
@@ -1062,10 +1061,13 @@ Il numero di batch  necessari a processare l'interno dataset, definisce il numer
 
 \subsubsection{Epochs}
 Ultima componente fondamentale di un addestramento, sono le Epochs.
-Dato il dataset di 300000 elementi, e un batch size di 4, si avranno 75000 iterazioni per epoch, quindi un epoch è l'intero ciclo di elaborazione di un training set, e le epochs identificano quante epoch saranno eseguite. Questo elemento è importante, perchè ad ogni epoch mantenendo il dataset costante, modifica i pesi della rete, portando la curva da uno stato underfitting, a uno ottimale, a un overfitting. 
+Dato il dataset di 300000 elementi, e un batch size di 4, si avranno 75000 iterazioni per epoch, quindi un epoch è l'intero ciclo di elaborazione di un training set, e le epochs identificano quante epoch saranno eseguite. Questo elemento è importante, perchè ad ogni epoch mantenendo il dataset costante, modifica i pesi della rete, spostando la curva di apprendimento tra uno stato underfitting, a uno ottimale, a un overfitting. 
 Il numero di epoch necessario a ottenere una curva ottimale varia da dataset a dataset
-\subsection{Testing della rete}
 
+\subsection{Testing della rete}
+Ottenuto 17 reti istruite ciascuna sul proprio dataset di dati, la fase finale del progetto è verificare la loro effettiva efficacia su un set di immagini mai utilizzato. Questo per verificare che la rete non abbia fatto un overfitting sui dati, e quindi la sua  generalità nell'applicazione.
+Per ciascuna rete sono stati impiegati due differenti test set. Uno composto da golden run-singolo guasto e l'altro golden run-multiguasto. 
+Si è usato la confusion matrix
 \section{Esecuzione e risultati}
 
 \section{Conclusioni e lavori futuri}

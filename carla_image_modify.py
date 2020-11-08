@@ -30,7 +30,7 @@ def manage_image(mp, classes_of_modified):
             indix_of_classes = (indix_of_classes + 1) % len(classes_of_modified)
 
 
-def modify_photo(classes, mp, list, j, tv):
+def modify_photo(classes, mp, list_original, j, tv):
     # tv:
     # -true=train
     # -false=validation
@@ -49,87 +49,87 @@ def modify_photo(classes, mp, list, j, tv):
     overlap_ice=["ice.jpg","ice3.png"]
 
     overlap_banding=["banding1.jpg"]
-
+    list=list_original[:]
     if "50_death_pixels" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("50_death_pixels")[tv_original])
         j_modified_tot = modp.dead_pixel_50(list, j_modified_tot, mp.get_path_classes("50_death_pixels")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("50_death_pixels")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "200_death_pixels" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("200_death_pixels")[tv_original])
         j_modified_tot = modp.dead_pixel_200(list, j_modified_tot, mp.get_path_classes("200_death_pixels")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("200_death_pixels")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "blur" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("blur")[tv_original])
         j_modified_tot = modp.blur(list, j_modified_tot, mp.get_path_classes("blur")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("blur")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
 
     if "black" in classes:
         j_modified_tot = modp.black(list, j_modified_tot, mp.get_path_classes("black")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("black")[tv_original])
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("black")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
 
     if "brightness" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("brightness")[tv_original])
         j_modified_tot = modp.brightness(list, j_modified_tot, mp.get_path_classes("brightness")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("brightness")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "greyscale" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("greyscale")[tv_original])
         j_modified_tot = modp.greyscale(list, j_modified_tot, mp.get_path_classes("greyscale")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("greyscale")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "nodemos" in classes:
         j_modified_tot = modp.nodemos(list, j_modified_tot, mp.get_path_classes("nodemos")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("nodemos")[tv_original])
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("nodemos")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "noise" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("noise")[tv_original])
         j_modified_tot = modp.noise(list, j_modified_tot, mp.get_path_classes("noise")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("noise")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "sharpness" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("sharpness")[tv_original])
         j_modified_tot = modp.sharpness(list, j_modified_tot, mp.get_path_classes("sharpness")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("sharpness")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "brokenlens" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("brokenlens")[tv_original])
         j_modified_tot = modp.overlap(list, j_modified_tot, mp.get_path_classes("brokenlens")[tv_modified],mp.path_of_classes+overlap_broken[0],0.35)
-        j_original = modp.not_modified(list, j, mp.get_path_classes("brokenlens")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "icelens" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("icelens")[tv_original])
         j_modified_tot = modp.overlap(list, j_modified_tot, mp.get_path_classes("icelens")[tv_modified],mp.path_of_classes+overlap_ice[0],0.2)
-        j_original = modp.not_modified(list, j, mp.get_path_classes("icelens")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "banding" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("banding")[tv_original])
         j_modified_tot = modp.overlap(list, j_modified_tot, mp.get_path_classes("banding")[tv_modified],mp.path_of_classes+overlap_banding[0],0.05)
-        j_original = modp.not_modified(list, j, mp.get_path_classes("banding")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "condensation" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("condensation")[tv_original])
         j_modified_tot = modp.condensation(list, j_modified_tot, mp.get_path_classes("condensation")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("condensation")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "dirty_lens" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("dirty_lens")[tv_original])
         j_modified_tot = modp.dirty_lens(list, j_modified_tot, mp.get_path_classes("dirty_lens")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("dirty_lens")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "chromaticaberration" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("chromaticaberration")[tv_original])
         j_modified_tot = modp.chromaticaberration(list, j_modified_tot, mp.get_path_classes("chromaticaberration")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("chromaticaberration")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "rain" in classes:
+        j_original = modp.not_modified(list_original, j, mp.get_path_classes("rain")[tv_original])
         j_modified_tot = modp.rain(list, j_modified_tot, mp.get_path_classes("rain")[tv_modified])
-        j_original = modp.not_modified(list, j, mp.get_path_classes("rain")[tv_original])
         if mp.setting_type_folder:
             j_modified_tot = j
     return j_original
@@ -138,8 +138,8 @@ def modify_photo(classes, mp, list, j, tv):
 
 path = "/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/" #"/home/pietro/Documenti/Unifi/tirocinio/img"#"/home/bernabei/carla0.8.4/PythonClient/_out_prima_run/" #"/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/"
 classes_of_modified = ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale","condensation","dirty_lens","chromaticaberration","rain"]
-mp = manager_of_path.ManagerOfPath(path, classes_of_modified , True)
-manage_image(mp, classes_of_modified)
+mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
+manage_image(mp, classes_of_modified[3:4])
 
 
 
