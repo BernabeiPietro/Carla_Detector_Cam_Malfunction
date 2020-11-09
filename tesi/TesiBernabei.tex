@@ -68,8 +68,8 @@ Detto ciò lo sviluppo del detector si divide in:
 
 \section{Fondamenti teorici}
 
-\subsection{Sistemi Critici}
-Ogni giorno, una persona usa infrastrutture, mezzi, telecomunicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perché ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{Sistemi Critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
+\subsection{Sistemi critici}
+Ogni giorno, una persona usa infrastrutture, mezzi, telecomunicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perché ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{sistemi critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
 convincano della adeguatezza dei nostri manufatti per i compiti sempre più
 critici e delicati per i quali li utilizziamo.
@@ -82,7 +82,7 @@ La \textbf{dependability} è una delle proprietà fondamentali dei sistemi infor
 \item \textbf{Funzione di sistema:}La funzione di un sistema rappresenta che cosa ci attendiamo dal sistema; la descrizione della funzione di un sistema è fornita attraverso la sua specifica funzionale. Il servizio è detto corretto se realizza la funzione del sistema.
 \end{itemize}
 
-Detto ciò nella sua definizione originale \textbf{dependability} è
+Quindi \textbf{dependability} è
 la capacità di un sistema di fornire un servizio su cui è possibile fare affidamento in
 modo giustificato.\cite{bondavalli2011analisi}
 \begin{comment}
@@ -93,8 +93,8 @@ limite accettabile \cite{avizienis2004basic}.
 Ciò di cui la definizione precedente non tiene conto, è che il comportamento del nostro sistema, sia sempre definito nella sua totalità, senza ambiguità e precisa. 
 Per questo la dependability può essere vista come una misura di quanta fiducia possiamo riporre in modo giustificato sul servizio erogato dal sistema stesso.\cite{bondavalli2011analisi}
 \end{comment}
-Un'esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
-La dependability, a sua volta è  composta da tre diversi aspetti di cui è necessario tenere conto:
+%Un'esposizione sistematica dei concetti relativi alla dependability consiste di tre parti:
+La dependability presenta tre diversi concetti di cui è necessario tenere conto: \cite{bondavalli2011analisi}
 \begin{itemize}
 \item \textbf{Le minacce o impedimenti alla dependability.} Gli impedimenti sono le
 cause potenziali di comportamenti non previsti.
@@ -128,7 +128,7 @@ si manifesta alla sua interfaccia, e diventa quindi un guasto per il sistema. Il
 fallimento è quindi l'effetto, osservabile esternamente, di un errore nel sistema; gli errori sono in stato latente fino a che non vengono rilevati e/o non
 producono un fallimento.
 
-La deviazione dal servizio corretto può assumere diverse forme, che vengono chiamate modi di fallimento e possono venire classificati secondo la loro
+La deviazione dal servizio corretto può assumere diverse forme, che vengono chiamate modi di fallimento e sono classificati secondo la loro
 gravità (severity).
 
 \begin{comment} I modi di fallimento caratterizzano un servizio non corretto
@@ -145,7 +145,7 @@ attività sono generalmente classificate come obbligatorie negli stessi standard
 per la certificazione del rispetto di requisiti di dependability (ad esempio in
 \cite{cenelec199950126}).
 \end{comment}
-
+\subparagraph{Chain Fault-Error-Failure}
 Un sistema è formato da un insieme di componenti che interagiscono tra
 loro, perciò lo stato del sistema è l'insieme degli stati dei suoi componenti. Un
 guasto causa inizialmente un errore nello stato di uno (o più) componenti, ma
@@ -154,10 +154,17 @@ di raggiungere l'interfaccia di servizio. Questo insieme di meccanismi costituis
 La propagazione all'interno di un componente (propagazione interna) è
 causata dal processo di elaborazione: un errore viene successivamente trasformato in altri errori.
 %guarda se aggiungere anche il parallelismo con carla forse è utile
- La propagazione da un componente A verso un componente B che riceve un servizio da A (propagazione esterna) (Figura 1.4) avviene
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{catena_gef.png}
+\caption{Catena di guasto errore fallimento (figura ripresa da \cite{avizienis2004basic})}
+\label{fig:gef}
+\end{figure}
+ La propagazione da un componente A verso un componente B che riceve un servizio da A (propagazione esterna) (Fig:\ref{fig:gef}) avviene
 quando un errore raggiunge l'interfaccia di servizio del componente A. A questo punto, il servizio che B riceve da A diventa non corretto e il fallimento di
 A appare a B come un guasto esterno, e si propaga come un errore all’interno
-di B (Figura 1.4). Per esempio, nel caso di un veicolo a guida autonoma, un guasto nella lente o nel sensore della fotocamera,  genera un errore. Quando raggiunge l'interfaccia di servizio genera un fallimento per la fotocamera, mentre per il sistema di visione artificiale, risulta come un guasto, non avendo più un comportamento corretto la fotocamera. Questo guasto del sensore, genera un errore esterno al sistema, che come viene dimostrato nella seguente tesi \cite{secci2020failures}, genera un fallimento al servizio. Se questo si presentasse, sarebbe catastrofico per i passeggeri interni, che i gli elementi circostanti.
+di B (Fig:\ref{fig:gef}). 
+Per esempio, nel caso di un veicolo a guida autonoma, un guasto nella lente o nel sensore della fotocamera,  genera un errore. Quando raggiunge l'interfaccia di servizio  genera un fallimento per la fotocamera. Per il sistema di visione artificiale, il fallimento della fotocamera risulta come un guasto, siccome non eroga il servizio correttamente. Questo genera un errore interno al sistema, che come viene dimostrato nella seguente tesi \cite{secci2020failures}, porta a un fallimento sistema decisionale della macchina a guida autonoma. Il detector proposto si pone tra la fotocamera e il sistema decisionale per intercettare il fallimento della fotocamera impedendo cosi il fallimento del sistema decisionale che avrebbe conseguenze catastrofiche sui passeggeri e su tutto ciò che li circonda.
 \subsubsection{Gli attributi della dependability}
 Il concetto di dependability è la sintesi di più attributi che forniscono misure
 quantitative o qualitative del sistema:
@@ -172,8 +179,9 @@ servizio corretto; misura la fornitura di servizio corretto, rispetto all'altern
 informazione.
 \item \textbf{Integrità (integrity):} descrive l'assenza di alterazioni improprie del sistema; misura l’assenza di alterazioni improprie dello stato del sistema.
 \item \textbf{La sicurezza (safety)} è l'assenza di conseguenze catastrofiche sugli
-utenti e sull'ambiente circostante. La safety può essere vista come l'affidabilità
-del sistema. \begin{comment}
+utenti e sull'ambiente circostante. \begin{comment} 
+La safety può essere vista come l'affidabilità
+del sistema.
 , considerando come corretti anche gli stati in cui il sistema subisce
 un fallimento benigno (possiamo quindi fondere in un unico stato sia gli stati
 corretti che i fallimenti benigni del sistema, e valutare in questo nuovo schema
