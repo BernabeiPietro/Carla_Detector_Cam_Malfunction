@@ -876,10 +876,10 @@ Come dice il nome, la  ConvNet è  una tecnologia basata sulle rete neurali più
 
 \subsection{Convulutional Neural Network}
 Una rete neurale convoluzionale è una rete neurale di tipo feed-forward network dove la strato convoluzionale compare almeno una volta.
-L'input di una convolutional neurale network o ConvNet,\begin{comment} è ampiamente utilizzata nelle applicazioni di visione artificiale,\end{comment}, è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
+L'input di una convolutional neurale network o ConvNet è una immagine, ossia una matrice di valori di ogni singolo pixel occupante una precisa posizione all'interno dell'immagine.Nel caso di immagini RGB, questa sarà descritta da un terna di matrici dell'intensità dei colori primari (rosso,verde,blu), nel caso di immagini in bianco e nero, queste sono descritte da una singola matrice. Le matrici che compongono le immagini, identificano i \textbf{canali} per la rete. %Questa con le dimensioni dell'immagine,(heigth e width) compongono l'input della rete.
 \subsubsection{L'architettura} 
 Le reti neurali convoluzionali operano su strutture a griglia contraddistinte da relazioni spaziali tra pixel, ereditate da uno strato al successivo tramite valori che descrivono
-piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden), risultato della convoluzione o di altre operazioni, è definita feature map o activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
+piccole regioni locali dello strato precedente. L’insieme di matrici degli strati nascosti (hidden layer), risultato della convoluzione o di altre operazioni, è definita feature map o activation map, i parametri addestrabili sono tensori denominati filtri o kernel.
 Una CNN è composta da  un insieme di strati che si susseguono, illustrati in dettaglio nei paragrafi seguenti. Gli strati principali sono:
 \begin{itemize}
 \item convolutional layer;
@@ -889,6 +889,7 @@ Una CNN è composta da  un insieme di strati che si susseguono, illustrati in de
 \end{itemize}
 \cite{torresin2019sviluppo}
 Di seguito la struttura sviluppata per il progetto:
+\textbf{Inserisci immagine}
 \begin{itemize}
 	\item conv2d
 	\item max pooling2d
@@ -900,7 +901,35 @@ Di seguito la struttura sviluppata per il progetto:
 	\item dense
 	\item dense
 \end{itemize}
+
 \subsubsection{Convolutional layer}
+
+Per l'analisi delle immagini, ConvLayer ha dimostrato di avere molto successo
+nell'ottenere buoni risultati. Utilizzano il fatto che un'immagine è un insieme di tante piccole  caratteristiche che tutte insieme formano la stessa.
+ Per estrarre le caratteristiche più piccole, viene applicata  una piccola matrice o filtro, di dimensioni
+[n x n x profondità], su tutto il livello precedente
+utilizzando gli stessi pesi. Dopo ogni movimento il filtro esegue un'operazione di regressione logistica e restituisce una quantità definità di neuroni nella direzione della profondità della rete. Questi  neuroni sono collegati all'uscita del campo ricettivo, ma non a nessuno
+altra area dell'immagine. Nella Figura 4, un filtro 5x5x1,  dove nello strato rosso viene mostrato come un'area rossa più scura più piccola che ne restituisce cinque
+neuroni allo strato blu. Il campo ricettivo viene quindi applicato
+l'intera area rossa, emettendo neuroni in ogni punto che poi
+formano lo strato blu. Quanti pixel si muove il campo ricettivo
+tra ogni operazione si chiama 'stride'. Con un passo di uno, il
+lo strato blu avrà approssimativamente la stessa altezza e larghezza di
+lo strato rosso. Con un passo di due, sarà circa la metà.
+"Approssimativamente" viene utilizzato sopra per quanto riguarda la dimensione, come
+la dimensione effettiva dipende dal tipo di imbottitura utilizzata lungo il
+bordi. "Zero padding", che significa riempire l'area intorno al
+bordi con zeri, restituisce esattamente la stessa larghezza e altezza per
+il livello successivo, mentre "imbottitura valida" risulta in entrambe le larghezze
+e l'altezza è diminuita.
+
+
+
+
+
+
+
+
 La convoluzione è l’operazione fondamentale delle ConvNet. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
 eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
 Un filtro è caratterizzato dai
