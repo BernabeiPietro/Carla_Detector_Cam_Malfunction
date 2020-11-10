@@ -58,16 +58,16 @@ Come verrà esposto in seguito un veicolo a guida autonoma, presenta una suite d
 Un particolare componente di questa suite di sensori, sono le fotocamere RGB le quali risultano le più impiegate e importanti tra le tutte, e proprio la  loro importanza fa si che un loro guasto,  comporti un fallimento nel sistema decisionale.
 Per questo il detector è posto tra il  sistema di acquisizione della fotocamera RGB e il sistema decisionale, al fine di rilevare la presenza dei guasti nel sensore e comunicare questa al sistema di guida su cui prenderà  le sue decisioni.
 Il detector descritto nella seguente tesi impiega una particolare forma di intelligenza artificiale, rete neurale convoluzionale.
-Come verrà esposto meglio in seguito, una convolutional neural network è una particolare forma di supervisioned learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di intere immagini o identificazione di elementi al loro interno. I supervisioned learning, e quindi anche CNN richiedono una fase di training, nella quale viene definita  la propria conoscenza di base (Knowledge base), sulla quale si baserà per prendere le decisioni.
+Come verrà esposto meglio in seguito, una convolutional neural network è una particolare forma di supervised learning, particolarmente efficiente in ambienti grafici, sopratutto per la classificazione di  immagini o identificazione di elementi al loro interno. Gli agenti supervisionati, e quindi anche le CNN richiedono una fase di training, nella quale viene definita  la loro conoscenza di base (Knowledge base), su cui prenderanno le loro decisioni.
 Detto ciò lo sviluppo del detector si divide in:
 \begin{itemize}
-\item Definizione e generazione Dataset
+\item Definizione e generazione del dataset
 \item Creazione del modello della ConvNet
-\item Training del modello della ConvNet
+\item Training del modello 
+\item Testing del modello
 \end{itemize}
 
 \section{Fondamenti teorici}
-
 \subsection{Sistemi critici}
 Ogni giorno, una persona usa infrastrutture, mezzi, telecomunicazioni, e servizi di qualsiasi genere, affidandosi totalmente al loro funzionamento, alla loro continuità, dando per scontato che non possano subire guasti o malfunzionamenti, perché ove questi avvengano il risultato sarebbe devastante per tutto il nostro sistema di vita. Queste componenti si definiscono come \textbf{sistemi critici}, e  il loro corretto funzionamento, dipende dalla nostra capacità di analizzarne aspetti quantitativi relativi sia a caratteristiche prestazionali, quali velocità di elaborazione o altre misure di efficienza,
 sia caratteristiche di sicurezza, disponibilità o affidabilità che dimostrino e ci
@@ -325,13 +325,8 @@ Nel pensiero comune quando si pensa all'intelligenza artificiale, si immagina un
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
 Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.\cite{russell2005intelligenza}
 Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi (attuatori), come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.
-<<<<<<< HEAD
-Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,e radar, mentre come attuatori: motore,freni, e tanti altri. 
-Un altra elemento che accomuna tutti gli agenti sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in un dato istante.\cite{russell2005intelligenza}
-=======
 Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,e radar, attraverso cui vedere, mentre  per agire: motore,freni, e tanti altri. 
 Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza}
->>>>>>> a7c786409073b02527f32a54c70ed7ba4c0c23ec
 La totalità delle percezioni generate dall'agente in tutta la sua storia, è definita invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante può dipendere dall'intera sequenza percettiva osservata fino a quel momento.
 In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
 Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.  \cite{russell2005intelligenza}
@@ -346,7 +341,7 @@ Si definisce un agente che apprende se migliora le proprie prestazioni nelle att
 sul mondo. \cite{russell2005intelligenza}
 Questo processo è decisivo per un agente per tre motivi:
 \begin{itemize}
-\item  il programmatore non può anticipare tutte le possibili situazioni che l'agente si potrà trovare davanti.
+\item il programmatore non può anticipare tutte le possibili situazioni che l'agente si potrà trovare davanti.
 \item il programmatore non può anticipare tutti i cambiamenti nel tempo.
 \item il programmatori spesso non sanno come programmare loro la soluzione a un problema.
 \end{itemize}\cite{russell2005intelligenza}
@@ -371,11 +366,11 @@ Una particolare forma di supervised learning, come ci suggerisce il titolo del s
 La \textbf{rete neurale} è composta da un insieme di nodi o unità, connesse da link orientati.\cite{russell2005intelligenza}
  La topologia e le proprietà dei nodi determinano le proprietà della rete.
 \paragraph{Neurone}
-Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua threshold. L'output dei neuroni finali sarà il risultato della task.
+Ciascun neurone o nodo, ha un insieme di input e produce un singolo output che può essere inviato a un gruppo di altri neuroni. Questo si attiva quando una combinazione lineare dei suoi input superano la sua threshold. L'output dei neuroni finali sarà il risultato dello scopo della rete.
 \subparagraph{Funzione di attivazione}
 In generale un neurone, calcola una somma pesata dei suoi input:
 \[in_j=\sum_{i=0}^n  w_{i,j}a_{i}\]
-A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si deriva l'output:
+A questa è applicata la \textbf{funzione di attivazione} g, dalla quale si ottiene l'output:
 \[a_j=g(in_j)=g \Bigl (\sum_{i=0}^n  w_{i,j}a_{i} \Bigr )\]
 \begin{comment}
 Nel caso in cui la funzione di attivazione è una hard threshold, l'unità è chiamato \textbf{perceptron}, nel caso in cui questa sia una funzione logica, si usa il termine \textbf{sigmoid perceptron}.\end{comment}
@@ -387,9 +382,9 @@ Oltre a propagare il risultato tra neuroni, il collegamento ha anche un peso num
 \paragraph{feed-forward network}
 Definito il modello matematico di ogni neurone, questi si connettono insieme attraverso i collegamenti, a formare una rete.
 Esistono due principali tipologie di network: 
-La \textbf{feed-forward network}, prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
-Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formano un sistema dinamico che raggiunge uno stato stabile o
-esibiscono oscillazioni o addirittura comportamenti caotici. Questa caratteristica, permette alla rete di supportare un memoria a breve termine.
+La \textbf{feed-forward network}, che prevede connessioni solo in una direzione, formando un DAG, directed acyclic graph. Ogni nodo riceve gli input dai nodi superiori e invia gli output a nodi inferiori. Non sono previsti cicli. Questa tipologia di rete, rappresenta una funzione del corrente input, senza mantenere al suo interno, nessun tipo di stato se non i pesi dei collegamenti.
+Il \textbf{recurrent network}, prevede che i suoi neuroni usino il proprio output come feedback per il proprio input, cosi che i livelli di attivazione della rete formino un sistema dinamico che raggiunge uno stato stabile o
+esibiscono oscillazioni o addirittura comportamenti caotici. Questa caratteristica, permette alla rete di supportare una memoria a breve termine.
 \begin{comment}
 \subparagraph{perceptron network}:
 Una forma semplice di feed-forward network, è il perceptron network o anche chiamato single-layer neural networl. Questo prevede che i suoi neuroni di input siano direttamente connessi a quelli di output. 
@@ -406,12 +401,13 @@ interesse del settore verso la guida autonoma sono vari:
 \item  riduzione di tutte le varie problematiche della sicurezza
 stradale.
 \end{itemize}
-\textbf{immagine 1}
+
 \subsubsection{Livelli di automazione della guida}
 La SAE International, un ente di standardizzazione automobilistica,  nel 2014, pubblica un nuovo standard internazionale, il J3016 ("Levels of Driving Automation").
 In questo sistema di classificazione, all'aumentare del livello di automazione, la responsabilità del conducente passa dalla guida alle attività di
 supervisione.
 Lo standard suddivide l'automazione in 6 livelli, dal livello 0, in cui è assente qualsiasi tipologia di automazione, al livello 5, dove il sistema guida in maniera completamente autonoma.
+Per una esposizione più completa si rimanda alla figura \ref{fig:classificazioneSAE}
 
 \begin{itemize}
 \item Livelli 0:
@@ -434,7 +430,7 @@ Veicoli privi di qualsiasi limite e conducente, capaci di procedere in qualsiasi
 \end{itemize}
 \begin{figure}
 \centering
-\includegraphics[scale=0.65]{SAE_level_automation.png}
+\includegraphics[scale=0.5]{SAE_level_automation.png}
 \caption{classificazione SAE}
 \label{fig:classificazioneSAE}
 \end{figure}
@@ -453,7 +449,7 @@ Le principali tecnologie che compongono la visione artificiale avanzata dei veic
  come si può vedere in \ref{fig:maga}
 Tutte insieme, forniscono un modello del ambiente circostante (3D),  attraverso immagini bidimensionali(2D).
 Lo scopo della visione artificiale è proprio quella di riprodurre la vista umana.\cite{wiki:visart}
-Le fotocamere fra tutte al momento risulta essere la tecnologia più sfruttata, e questo è il motivo per cui è stato sviluppato su di lui il detector.\textbf{///}
+Le fotocamere fra tutte le tecnologie risultano essere la più presente e sfruttata al momento. Per questo motivo per il lavoro di tesi è stato sviluppato l'agente addestrato con questo scopo
 \begin{figure}
 \centering
 \includegraphics[scale=0.8]{maga.jpeg}
@@ -495,6 +491,7 @@ a seconda del comportamento degli altri conducenti \cite{das2018risk}.
 È utile anche per posteggiare il veicolo ed in questo caso si sente parlare
 di sensori anteriori e posteriori.
 \end{comment}
+
 \subparagraph{Videocamera}
 Le telecamere sono necessarie nel sistema di trasporto intelligente affinché si riconoscano gli ostacoli rispetto alla posizione e alla velocità del
 veicolo in considerazione. Le immagini bidimensionali derivanti da una
@@ -512,28 +509,29 @@ quasi tutte le condizioni atmosferiche ed ovunque non vi siano ostacoli
 che potrebbero impedirne l'invio e la ricezione dei segnali (edifici molto
 alti, gallerie, ecc.), generando errori dell'ordine di metri.
 
-
+	
 \subsubsection{Reti neurali applicate all'autonomus driving}
-Le Reti Neurali sono oggi ampiamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l'elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degli utenti esterni al veicolo. 
-Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo.%, come un caso di autopilot di Tesla.
-Per quanto riguarda le prestazioni misurate su questa tecnologia, sono stati
-registrati punteggi di accuratezza spesso corrispondenti a quelli di un
-individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
-ti i punteggi osservati quando si considerano i casi peggiori. Con casi
-peggiori si vuole intendere quei casi definiti Adversarial Examples \cite{engstrom2019exploring} o
-input perturbati, anche solo leggermente, che dal punto di vista umano
-risultano sempre comprensibili, mentre da quello della macchina, cambiano totalmente di significato.Nella figura \ref{fig:AdvExp} si mostra una rete neurale allenata nel riconoscimento di animali, e come l'applicazione di un semplice filtro che ad occhio umano non cambia il significato dell'immagine, a una rete neurale si.
-Naturalmente, se queste Reti vengono
-utilizzate su veicoli che devono muoversi in un ambiente nel quale si
-trova un'eterogeneità di soggetti e comportamenti, si parla di contesti
-nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
-dependability di un sistema sono al primo posto in ordine di importanza.
-	\begin{figure}
+\begin{figure}
 	\centering
 	\includegraphics[scale=0.8]{adversarial_img.png}
 	\caption{Adversial Examples}
 	\label{fig:AdvExp}
 	\end{figure}
+Le Reti Neurali sono oggi ampiamente accettate come soluzioni dominanti per la visione artificiale, per il riconoscimento vocale e per l'elaborazione del linguaggio naturale. Nel campo della visione artificiale,le neural network elaborano le informazioni ottenute dai sensori, e ne estraggono informazioni utili al fine di prendere decisioni sul come muoversi, garantendo la sicurezza dei viaggiatori, e degli utenti esterni al veicolo. 
+Questo sistema presenta comunque delle criticità, come una non corretta interpretazione dell'ambiente a causa di guasti, che minano la sicurezza dei passeggeri, ma anche tutto ciò che circonda il veicolo.%, come un caso di autopilot di Tesla.
+Per quanto riguarda le prestazioni misurate su questa tecnologia, sono stati
+registrati punteggi di accuratezza spesso corrispondenti a quelli di un
+individuo umano, su benchmark chiave. Ben diversi, invece, sono sta-
+ti i punteggi osservati quando si considerano  casi peggiori\cite{secci2020failures}. Con casi
+peggiori si vuole intendere quei casi definiti Adversarial Examples \cite{engstrom2019exploring} o
+input perturbati, anche solo leggermente, che dal punto di vista umano
+risultano sempre comprensibili, mentre da quello della macchina, cambiano totalmente di significato. Un esempio di questo, è rappresentato dalla figura \ref{fig:AdvExp}. Questa mostra una rete neurale allenata nel riconoscimento di animali, che all'applicazione di un semplice filtro cambia totalmente risposta alla classificazione,mentre per un occhio umano questa variazione non modifica il significato dell'immagine.
+Naturalmente, se queste reti vengono
+utilizzate su veicoli che devono muoversi in un ambiente nel quale si
+trova un'eterogeneità di soggetti e comportamenti, si parla di contesti
+nei quali affidabilità, sicurezza e tutti gli altri attributi che definiscono la
+dependability di un sistema sono al primo posto in ordine di importanza.
+
 \subsubsection{Classificatori}
 Una attività importante delle reti neurali nella guida autonoma, è il processo di classificazione; ovvero l'identificazione di particolari caratteristiche  intrinseche di un insieme di immagini o fotogrammi, sulle quali prendere delle decisioni.
 Come detto in precedenza, le reti neurali presentano delle criticità in presenza di immagini prese in input trasformate spazialmente \cite{engstrom2019exploring}: con questo termine si intende rappresentare tutte le possibili trasformazioni

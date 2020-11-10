@@ -41,7 +41,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.2.2}Agenti che apprendono}{14}{subsubsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{17}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.3}Neural Network}{16}{subsubsection.2.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Neurone}{17}{section*.11}
 \defcounter {refsection}{0}\relax 
@@ -49,13 +49,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Collegamenti}{17}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{feed-forward network}{18}{section*.14}
+\contentsline {paragraph}{feed-forward network}{17}{section*.14}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Autonomous Driving}{18}{subsection.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.1}Livelli di automazione della guida}{19}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.1}Livelli di automazione della guida}{18}{subsubsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.2}Visione artificiale}{21}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.2}Visione artificiale}{20}{subsubsection.2.3.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{LIDAR - Light Detection And Ranging}{21}{section*.17}
 \defcounter {refsection}{0}\relax 
@@ -65,15 +65,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subparagraph}{GPS - Global Positioning System}{22}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.3}Reti neurali applicate all'autonomus driving}{23}{subsubsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.3}Reti neurali applicate all'autonomus driving}{22}{subsubsection.2.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.3.4}Classificatori}{24}{subsubsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.5}Object Recognition}{25}{subsubsection.2.3.5}
+\contentsline {subsubsection}{\numberline {2.3.5}Object Recognition}{24}{subsubsection.2.3.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4}Autonomus driver simulator}{25}{subsection.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.1}CARLA}{27}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.1}CARLA}{26}{subsubsection.2.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.4.2}Sensori}{27}{subsubsection.2.4.2}
 \defcounter {refsection}{0}\relax 
@@ -85,15 +85,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Sporcatura}{29}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Rappresentazione dei vari guasti con breve descrizione}{30}{section*.22}
+\contentsline {subparagraph}{Rappresentazione dei vari guasti con breve descrizione}{29}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Suddivisione del dataset}{30}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Suddivisione del dataset}{31}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Costruzione del detector}{32}{section.4}
+\contentsline {section}{\numberline {4}Costruzione del detector}{31}{section.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Convulutional Neural Network}{32}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}L'architettura}{33}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.1}L'architettura}{32}{subsubsection.4.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {4.1.2}Convolutional layer}{34}{subsubsection.4.1.2}
 \defcounter {refsection}{0}\relax 
