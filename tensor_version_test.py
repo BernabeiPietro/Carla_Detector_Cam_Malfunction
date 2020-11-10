@@ -125,6 +125,7 @@ if __name__ == "__main__":
     classes_of_modified= ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","greyscale","50_death_pixels","condensation","dirty_lens","chromaticaberration","rain","all"]
     multiproc=True
     lock= multiprocessing.Lock()
+
     if multiproc==True:
         for classes in classes_of_modified[0:1]:
             mp_train = manager_of_path.ManagerOfPath(path_train, classes_of_modified, True)
