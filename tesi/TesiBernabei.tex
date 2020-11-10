@@ -320,48 +320,45 @@ permette di esaminare l'evoluzione e le conseguenze dei guasti in un sistema.
 \end{comment}
 
 \subsection{Artificial Intelligence}
-Nel pensiero comune quando si pensa all'intelligenza artificiale, si immagina un entità in grado di pensare, che prima o poi ci sostituirà. Nella realtà l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce degli agenti che trovano in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici.
+Nel pensiero comune quando si pensa all'intelligenza artificiale, si immagina un entità in grado di pensare, in grado di sostituirci. Nella realtà, l'intelligenza artificiale è quella branca dell'Informatica che dato un determinato problema, definisce  agenti in grado di trovare in modo efficace le migliori soluzioni. Quindi il campo di  applicazione dell'intelligenza artificiale non è unico ma è suddiviso in sottodiscipline, dove si va da aree più generali come l'apprendimento e la percezione, ad altre più specializzate come il gioco degli scacchi e la dimostrazioni di teoremi matematici, ad altre anche più complesse e complete come la guida autonoma.
 
 \subsubsection{Agente razionale,Misura di prestazione,Ambiente}
 Nello specifico l'intelligenza artificiale si occupa di progettare \textbf{agenti razionali}, che posti in un \textbf{ambiente}, riescano a massimizzare la propria \textbf{misura di prestazione}.\cite{russell2005intelligenza}
 Un \textbf{agente} è definito  come un sistema che percepisce il suo ambiente attraverso dei sensori e agisce su di esso mediante attuatori. Per farsi un idea, si può assumere che l'essere umano sia un agente, che fornito di sensori, come occhi,orecchie e altri organi, sente l'ambiente circostante, e attraverso altrettanti organi (attuatori), come mani,gambe e bocca, interagisce con l'ambiente o altri agenti.
-Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,e radar, mentre come attuatori: motore,freni, e tanti altri. 
+Un agente fisico, come una macchina a guida autonoma, ha sensori come: telecamere, sensori a infrarossi,e radar, attraverso cui vedere, mentre  per agire: motore,freni, e tanti altri. 
 Un altra cosa che accomuna tutti gli agenti, sono le  \textbf{percezioni}, termine usato per indicare gli input percettivi dell'agente in dato istante.\cite{russell2005intelligenza}
 La totalità delle percezioni generate dall'agente in tutta la sua storia, è definita invece come \textbf{sequenza percettiva}, dove in generale la scelta dell'azione di un agente in un qualsiasi istante può dipendere dall'intera sequenza percettiva osservata fino a quel momento.
 In termini matematici la rappresentazione del comportamento di un agente, è descritto dalla \textbf{funzione agente}, che descrive la corrispondenza tra una qualsiasi sequenza percettiva e una specifica azione.
 Se la funzione agente è la rappresentazione matematica dell'agente, con il termine \textbf{programma agente} si indica la sua implementazione concreta  in  esecuzione sull'architettura dell'agente.  \cite{russell2005intelligenza}
-
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{AI_Agente_2.png}
+\caption{Esempio di agente razionale}
+\label{fig:agra}
+\end{figure}
 \subsubsection{Agenti che apprendono}
 Si definisce un agente che apprende se migliora le proprie prestazioni nelle attività future dopo aver effettuato le osservazioni
 sul mondo. \cite{russell2005intelligenza}
-E perché deve imparare?
-Un agente deve imparare per tre motivi:
+Questo processo è decisivo per un agente per tre motivi:
 \begin{itemize}
 \item  il programmatore non può anticipare tutte le possibili situazioni che l'agente si potrà trovare davanti.
 \item il programmatore non può anticipare tutti i cambiamenti nel tempo.
 \item il programmatori spesso non sanno come programmare loro la soluzione a un problema.
 \end{itemize}\cite{russell2005intelligenza}
 
-Detto ciò, come esistono agenti diversi, per problemi diversi, esistono apprendimenti diversi per ogni agente, che possono essere applicati alle varie componenti dell'agente.
-Una loro classificazione si basa su 4 fattori:
+Detto ciò, come esistono agenti diversi per problemi diversi, esistono apprendimenti diversi per ogni agente, che possono essere applicati alle varie componenti che  lo compongono.
+Una loro classificazione si basa su quattro fattori: la componente che viene migliorata, la rappresentazione usata per i dati e i componenti, la conoscenza a priori, e per ultimo i feedback disponibili da apprendere. Su quest'ultimo sono stati sviluppati tre diversi paradigmi di apprendimento:
 \begin{itemize}
-\item \textbf{componente} dell'agente migliorata.
-\item \textbf{rappresentazione} usata per i dati e i componenti
-\item \textbf{prior knowledge} dell'agente presente.
-\item \textbf{feedback}  disponibili da apprendere. 
-\end{itemize} 
-
-Esistono tre tipologie di feedback che determinano i tre principali tipi di apprendimento:
-\subparagraph{unsupervised learning:} l'agente apprende patterns dall'input senza feedback espliciti. 
-\subparagraph{reinforcement learning:} l'agente apprende da una serie di rinforzi, punizioni o premi.
-\subparagraph{supervised learning:} all'agente sono forniti coppie di valori input-output, da cui apprende una funzione che mappi il collegamento tra input e output. 
-
+\item \textbf{unsupervised learning:} l'agente apprende patterns dall'input senza feedback espliciti. 
+\item \textbf{reinforcement learning:} l'agente apprende da una serie di rinforzi, punizioni o premi.
+\item \textbf{supervised learning:} all'agente sono forniti coppie di valori input-output, da cui apprende una funzione che mappi il collegamento tra input e output. 
+\end{itemize}
 Nello specifico, il compito di un apprendimento supervisionato è quello che dato un training set di N esempi della forma input-output:
 \begin{center}
 $(x_{1}.y_{1}),(x_{2},y_{2}),...(x_{n},y_{n})$
 \end{center}
 dove ogni valore y è generato da un funzione sconosciuta $y=f(x)$, questa scopre una funzione $h$ che approssima la funzione $f$.  
-Il learning problem si può definire in due maniere a seconda dell'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero
+Il learning problem si può definire in due maniere a seconda dell'output y: nel caso in cui  y è uno di  un insieme finito di valori il problema è definito  \textbf{classificazione} (binaria o booleana, nel caso di due sole scelte),mentre se y è un numero 
  è definito come \textbf{regressione}.
  
 \subsubsection{Neural Network}
