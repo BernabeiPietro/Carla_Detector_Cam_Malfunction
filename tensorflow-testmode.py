@@ -63,7 +63,7 @@ def tester(lock,mp,classes,f):
 
     ls,tp,tn,fp,fn=model1.evaluate(test_data_gen, verbose=0)
     f.write(classes+":all"+"\n")
-    write_cm_mcc(tp,tn,fp,fn,f,total_test)
+    write_cm_mcc(tp,tn,fp,fn,f)
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes(classes)["train"],
                                                               shuffle=True,
@@ -71,12 +71,12 @@ def tester(lock,mp,classes,f):
                                                               class_mode='binary')
     ls,tp,tn,fp,fn=model1.evaluate(test_data_gen, verbose=0)
     f.write(classes+":"+classes+"\n")
-    write_cm_mcc(tp,tn,fp,fn,f,total_test)
+    write_cm_mcc(tp,tn,fp,fn,f)
     f.close()
     lock.release();
  
-def write_cm_mcc(tp,tn,fp,fn,f,total_test):
-    f.write("TruePositive="+str(tp.item()/total_test*100)+" TrueNegative="+str(tn.item()/total_test*100)+"\n"+"FalsePositive="+str(fp.item()/total_test*100)+" FalseNegative="+str(fn.item()/total_test*100)+"\n")
+def write_cm_mcc(tp,tn,fp,fn,f):
+    f.write("TruePositive="+str(tp.item())+" TrueNegative="+str(tn.item())+"\n"+"FalsePositive="+str(fp.item())+" FalseNegative="+str(fn.item())+"\n")
     f.write("MCC="+str(mcc_metric(tp.item(),tn.item(),fp.item(),fn.item()))+"\n")
     f.flush()
 
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     multiproc=True
     lock= multiprocessing.Lock()
     if multiproc==True:
-        for classes in classes_of_modified[0:1]:
+        for classes in classes_of_modified[:]:
             save_result_file=open(path_check+"result.txt","a")
             mp = manager_of_path.ManagerOfPath(path_check, classes_of_modified, True)
             p = multiprocessing.Process(target=tester, args=(lock,mp, classes,save_result_file));p.start();
