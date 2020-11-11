@@ -909,7 +909,7 @@ Il risultato di questa operazione è una nuova matrice (feature map) di dimensio
 Lo stride indica il numero di pixel di cui la matrice si sposta dopo ogni operazione
 mentre il padding definisce il comportamento del kernel sui bordi della matrice a cui è applicata.\cite{mattsson2016classification}
 
-Questa sua capacità di estrarre le caratteristiche da matrice in input combinata con la sua multipla presenza nella rete, permette alla ConvNet di distinguere forme sempre più complesse. Questo grazie proprio alla capacità del filtro di modificarsi al fine di apprendere le caratteristiche dei pattern delle immagini. Infatti i  filtri dei primi strati individuano forme primitive, quelli successivi imparano a distinguere forme sempre più grandi e complesse,richiedendo cosi lunghe sequenze di blocchi di strati per studiare un immagine intera.\cite{torresin2019sviluppo}
+Questa sua capacità di estrarre le caratteristiche da una matrice in input combinata con la sua multipla presenza nella rete, permette alla ConvNet di distinguere forme sempre più complesse. Questo grazie proprio alla capacità del filtro di modificarsi al fine di apprendere le caratteristiche dei pattern delle immagini. Infatti i  filtri dei primi strati individuano forme primitive, quelli successivi imparano a distinguere forme sempre più grandi e complesse,richiedendo cosi lunghe sequenze di blocchi di strati per studiare un immagine intera.\cite{torresin2019sviluppo}
 
 \begin{comment}
 Un filtro è caratterizzato da un insieme di iperparametri (hyperparameters) come: altezza,larghezza,profondità e numero. 
@@ -1013,23 +1013,32 @@ introducono.\cite{aggarwal2018neural}
 Connette ogni feature in input con la corrispondente feature in output. Presenta la struttura di una rete feed-forward tradizionale e aumenta a dismisura il numero di parametri
 addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
 parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
-\subsection{Struttura della rete sviluppata}
+\subsubsection{Struttura della rete sviluppata}
 La struttura della ConvNet sviluppata per il progetto ha la seguente forma:
-\begin{tabular}{|l|rl|}
-
+\begin{table}
+\centering
+\begin{tabular}{cccc}
+\hline
+N. & Layer & Dimensioni filtro  & Output Shape\\
+\hline\hline
+0 & Input & - & 800X600X3\\
+1 & Conv2d & 3X3 & 800X600X16\\
+2 & ReLu & - & 800X600X16\\
+3 & Max pooling2d & - & 400X300X16\\
+4 & Conv2d & 3X3 & 400X300X32\\
+5 & ReLu & - & 400X300X32\\
+6 & Max pooling2d & - & 200X150X32\\
+7 & Conv2d & 3X3 & 200X150X64\\
+8 & ReLu & - & 200X150X64\\
+9 & Max pooling2d &- &100X75X64\\
+10 & Flatten &- &  48000\\
+11 & Dense & - & 512\\
+12 & Dense & - & 1\\
+\hline
 \end{tabular}
-\begin{itemize}
-	\item conv2d: 
-	\item max pooling2d
-	\item conv2d
-	\item max pooling2d
-	\item conv2d
-	\item max pooling2d
-	\item flatten
-	\item dense
-	\item dense
-\end{itemize}
-
+\caption{Struttura della rete sviluppata}
+\label{fig:struttRete}
+\end{table}
 \subsection{Addestramento del rete convuluzionale}
 Dopo aver definito la struttura della rete, e avendo suddiviso il dataset in tre parti: training set, validation set e test set, la fase successiva prevede l'addestramento della rete.
 Per addestramento di una rete si intendo elaborazione da parte della  rete del training set, ovvero la modifica dei pesi dei collegamenti, al fine di modellare il meglio possibile la rete sui dati. 
@@ -1065,9 +1074,11 @@ Il numero di epoch necessario a ottenere una curva ottimale varia da dataset a d
 \subsection{Testing della rete}
 Ottenuto 17 reti istruite ciascuna sul proprio dataset di dati, la fase finale del progetto è verificare la loro effettiva efficacia su un set di immagini mai utilizzato. Questo per verificare che la rete non abbia fatto un overfitting sui dati, e quindi la sua  generalità nell'applicazione.
 Per ciascuna rete sono stati impiegati due differenti test set. Uno composto da golden run-singolo guasto e l'altro golden run-multiguasto. 
-Si è usato la confusion matrix
-\section{Esecuzione e risultati}
+Si è usato la confusion matrix.
 
+\section{Esecuzione e risultati}
+Per ottenere il tutto sono state effettuate 3 diverse fasi che riprendono anche il filo logico usato nella tesi per esprime la costruzione del detector.
+La prima fase ha previsto la costruzione della forma di
 \section{Conclusioni e lavori futuri}
 
 \section{A Manuale utente}
