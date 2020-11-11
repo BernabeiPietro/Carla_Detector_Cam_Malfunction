@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageEnhance
 import chromaticaberration2
+import manager_of_path
 
 
 def open_cv2(pathImage, name):
@@ -56,7 +57,6 @@ def dead_pixel_50(images, progressiveName, pathModified):
         w2 = w3 = w2 - 5
         h2 = h3 = h2 - 5
         countpixel = 0
-
         # naturalmente bisogna sempre controllare con un paio di prove (o calcolandolo)
         # se si esce confini dell'immagine in elaborazione
         for y in range(0, 5):
@@ -83,7 +83,6 @@ def dead_pixel_200(images, progressiveName, pathModified):
         w2 = w3 = w2 - 5
         h2 = h3 = h2 - 5
         countpixel = 0
-
         # naturalmente bisogna sempre controllare con un paio di prove (o calcolandolo)
         # se si esce confini dell'immagine in elaborazione
 
@@ -131,12 +130,12 @@ def chromaticaberration(images, progressiveName, pathModified):
         progressiveName = progressiveName + 1
     return progressiveName
 
-
 def condensation(images, progressiveName, pathModified):
     img = images[0]
     imgM = []
-    for i in range(1, 3):
-        img2 = Image.open("condensation/condensation" + str(i) + ".png").convert("RGBA")
+
+    for i in manager_of_path.open_image("condensation"):
+        img2 = Image.open(i).convert("RGBA")
         imgM.append(img2.resize(img.shape[0:2]))
     i = 0
     for img in images:
@@ -152,8 +151,8 @@ def condensation(images, progressiveName, pathModified):
 def rain(images, progressiveName, pathModified):
     img = images[0]
     imgM = []
-    for i in range(1, 5):
-        img2 = Image.open("rain/rain" + str(i) + ".png").convert("RGBA")
+    for i in manager_of_path.open_image("rain"):
+        img2 = Image.open(i).convert("RGBA")
         imgM.append(img2.resize(img.shape[0:2]))
     i = 0
     for img in images:
@@ -170,8 +169,9 @@ def dirty_lens(images, progressiveName, pathModified):
     img = images[0]
     img = cv2toPIL(img)
     imgM = []
-    for i in range(1, 37):
-        img2 = Image.open("lensDirt/LensDirt-" + str(i) + ".png").convert(img.mode)
+
+    for i in manager_of_path.open_image("lensDirt"):
+        img2 = Image.open(i).convert(img.mode)
         imgM.append(img2.resize(img.size))
     i = 0
     for img in images:
@@ -201,9 +201,6 @@ def brightness(images, progressiveName, pathModified):
 
 def greyscale(images, progressiveName, pathModified):
     for img in images:
-        # img= cv2toPIL(img)
-        # img=img.convert('L')
-        # img=PIltocv2(img)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
         progressiveName = progressiveName + 1
@@ -265,7 +262,38 @@ def overlap(images, progressiveName, pathModified, overlap_img_path, overlap_val
         progressiveName = progressiveName + 1
     return progressiveName
 
-
+def banding(images, progressiveName, pathModified):
+    img = images[0]
+    img = cv2toPIL(img)
+    imgM = []
+    valueOfImage=[0.02,0.05]
+    for i in manager_of_path.open_image("banding"):
+        img2 = Image.open(i).convert(img.mode)
+        imgM.append(img2.resize(img.size))
+    i = 0
+    for img in images:
+        img = cv2toPIL(img)
+        img = Image.blend(img, imgM[i], valueOfImage[i])  # valori per immagine banding->0.02, banding1->0.05, ice->0.2
+        img = PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
+def icelens(images, progressiveName, pathModified):
+    img = images[0]
+    img = cv2toPIL(img)
+    imgM = []
+    valueOfImage = [0.02, 0.05]
+    for i in manager_of_path.open_image("banding"):
+        img2 = Image.open(i).convert(img.mode)
+        imgM.append(img2.resize(img.size))
+    i = 0
+    for img in images:
+        img = cv2toPIL(img)
+        img = Image.blend(img, imgM[i], valueOfImage[i])  # valori per immagine banding->0.02, banding1->0.05, ice->0.2
+        img = PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
 def not_modified(images, progressiveName, pathModified):
     for img in images:
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)

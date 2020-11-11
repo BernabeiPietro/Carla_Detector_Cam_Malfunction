@@ -109,7 +109,7 @@ def modify_photo(classes, mp, list_original, j, tv):
             j_modified_tot = j
     if "banding" in classes:
         j_original = modp.not_modified(list_original, j, mp.get_path_classes("banding")[tv_original])
-        j_modified_tot = modp.overlap(list, j_modified_tot, mp.get_path_classes("banding")[tv_modified],mp.path_of_classes+overlap_banding[0],0.05)
+        j_modified_tot = modp.banding(list, j_modified_tot, mp.get_path_classes("banding")[tv_modified])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "condensation" in classes:
