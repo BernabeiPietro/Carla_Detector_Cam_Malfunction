@@ -27,17 +27,16 @@
 \BOOKMARK [2][-]{subsection.3.3}{Sporcatura}{section.3}% 27
 \BOOKMARK [2][-]{subsection.3.4}{Suddivisione del dataset}{section.3}% 28
 \BOOKMARK [1][-]{section.4}{Costruzione del detector}{}% 29
-\BOOKMARK [2][-]{subsection.4.1}{Convulutional Neural Network}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.1}{Convolutional Neural Network}{section.4}% 30
 \BOOKMARK [3][-]{subsubsection.4.1.1}{L'architettura}{subsection.4.1}% 31
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Convolutional layer}{subsection.4.1}% 32
 \BOOKMARK [3][-]{subsubsection.4.1.3}{Funzione di attivazione Relu}{subsection.4.1}% 33
 \BOOKMARK [3][-]{subsubsection.4.1.4}{Pooling layer}{subsection.4.1}% 34
 \BOOKMARK [3][-]{subsubsection.4.1.5}{Dense layer}{subsection.4.1}% 35
-\BOOKMARK [2][-]{subsection.4.2}{La rete}{section.4}% 36
-\BOOKMARK [2][-]{subsection.4.3}{Addestramento del rete convuluzionale}{section.4}% 37
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Batch}{subsection.4.3}% 38
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Epochs}{subsection.4.3}% 39
-\BOOKMARK [2][-]{subsection.4.4}{Testing della rete}{section.4}% 40
-\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 41
-\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 42
-\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 43
+\BOOKMARK [2][-]{subsection.4.2}{Addestramento del rete convuluzionale}{section.4}% 36
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Batch}{subsection.4.2}% 37
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Epochs}{subsection.4.2}% 38
+\BOOKMARK [2][-]{subsection.4.3}{Testing della rete}{section.4}% 39
+\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 40
+\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 41
+\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 42
