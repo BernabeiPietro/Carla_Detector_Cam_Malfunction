@@ -912,12 +912,13 @@ Di seguito la struttura sviluppata per il progetto:
 
 \subsubsection{Convolutional layer}
 
-Per l'analisi delle immagini, ConvLayer ha dimostrato di avere molto successo
-nell'ottenere buoni risultati. Utilizzano il fatto che un'immagine è un insieme di tante piccole  caratteristiche che tutte insieme formano la stessa.
- Per estrarre le caratteristiche più piccole, viene applicata  una piccola matrice o filtro, di dimensioni
-[n x n x profondità], su tutto il livello precedente
-utilizzando gli stessi pesi. Dopo ogni movimento il filtro esegue un'operazione di regressione logistica e restituisce una quantità definità di neuroni nella direzione della profondità della rete. Questi  neuroni sono collegati all'uscita del campo ricettivo, ma non a nessuno
-altra area dell'immagine. Nella Figura 4, un filtro 5x5x1,  dove nello strato rosso viene mostrato come un'area rossa più scura più piccola che ne restituisce cinque
+Per l'analisi delle immagini,il ConvLayer ha dimostrato di avere molto successo
+nell'ottenere buoni risultati, grazie al fatto che sfrutti la caratteristica di un immagine di essere un insieme di tanti piccoli particolari. Per estrarli, viene applicata  una piccola matrice o filtro, di dimensioni
+[n x n x profondità], in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
+eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
+Un altro esempio
+
+ Nella Figura 4, un filtro 5x5x1,  dove nello strato rosso viene mostrato come un'area rossa più scura più piccola che ne restituisce cinque
 neuroni allo strato blu. Il campo ricettivo viene quindi applicato
 l'intera area rossa, emettendo neuroni in ogni punto che poi
 formano lo strato blu. Quanti pixel si muove il campo ricettivo
@@ -925,34 +926,25 @@ tra ogni operazione si chiama 'stride'. Con un passo di uno, il
 lo strato blu avrà approssimativamente la stessa altezza e larghezza di
 lo strato rosso. Con un passo di due, sarà circa la metà.
 "Approssimativamente" viene utilizzato sopra per quanto riguarda la dimensione, come
-la dimensione effettiva dipende dal tipo di imbottitura utilizzata lungo il
+la dimensione effettiva dipende dal tipo di padding a utilizzata lungo il
 bordi. "Zero padding", che significa riempire l'area intorno al
 bordi con zeri, restituisce esattamente la stessa larghezza e altezza per
-il livello successivo, mentre "imbottitura valida" risulta in entrambe le larghezze
+il livello successivo, mentre "valid-paggin risulta in entrambe le larghezze
 e l'altezza è diminuita.
 
 
 
-
-
-
-
-
-La convoluzione è l’operazione fondamentale delle ConvNet. Essa dispone un filtro in ogni possibile posizione dell’immagine, coprendola interamente, e computa il prodotto scalare tra il filtro stesso e la matrice corrispondente del volume di input, avente
-eguale dimensioni. È possibile visualizzare la convoluzione come una sovrapposizione del kernel sull’immagine in input (o strato nascosto). \cite{aggarwal2018neural} 
-Un filtro è caratterizzato dai
-seguenti iperparametri (hyperparameters):
-\begin{itemize}
-\item altezza Fq
-\item larghezza Fq
-\item profondità d
-\item numero q
-\end{itemize}
+Un filtro è caratterizzato da un insieme di iperparametri (hyperparameters) come: altezza,larghezza,profondità e numero. 
 Solitamente i filtri hanno forma quadrata e profondità uguale a quella dello strato al
-quale sono applicati, nel caso di immagini RGB, 3. \begin{comment}
+quale sono applicati, nel caso di immagini RGB, 3.
+ Il numero di filtri è un iperparametro definito sulla base della capacità di distinguere forme sempre più complesse che
+si vuole conferire alla rete. I filtri sono dunque i componenti a cui saranno associate le
+caratteristiche dei pattern delle immagini.
+I filtri dei primi strati individuano forme primitive, quelli successvi imparano a distinguere forme sempre più grandi e complesse. Una proprietà della convoluzione è
+l’\textbf{equivarianza alla traslazione}: immagini traslate sono interpretate allo stesso modo e
+i valori delle mappa di attivazione traslano con i valori di input \cite{torresin2019sviluppo}. Ciò significa che forme particolari generano feature maps simili, indipendentemente dalla loro collocazione
+nell’immagine.
 
-Per un’immagine RGB,  per esempio il primo filtro convoluzionale
-F*F*d potrà avere dimensione  5*5*3 o 7*7*3.\end{comment} 
 Il numero di possibili allineamenti tra filtro e immagine definisce altezza e larghezza della successiva feature
 map.
 Dal hidden layer q1, il filtro produce uno nuovo hidden layer q2
@@ -961,13 +953,7 @@ Bq+1 = Bq - Fq + 1
 Ad esempio, per immagini di dimensioni 32 * 32, un filtro 5 * 5 genera uno strato
 nascosto 28 x 28.
 È opportuno fare distinzione tra profondità del filtro e profondità di strato nascosto/mappa di attivazione: la prima, d è la stessa dello strato al quale è applicato, la
-seconda deriva invece dal numero di filtri applicati. Il numero di filtri è un iperparametro definito sulla base della capacità di distinguere forme sempre più complesse che
-si vuole conferire alla rete. I filtri sono dunque i componenti a cui saranno associate le
-caratteristiche dei pattern delle immagini.
-I filtri dei primi strati individuano forme primitive, quelli successvi imparano a distinguere forme sempre più grandi e complesse. Una proprietà della convoluzione è
-l’\textbf{equivarianza alla traslazione}: immagini traslate sono interpretate allo stesso modo e
-i valori delle mappa di attivazione traslano con i valori di input \cite{torresin2019sviluppo}. Ciò significa che forme particolari generano feature maps simili, indipendentemente dalla loro collocazione
-nell’immagine.
+seconda deriva invece dal numero di filtri applicati.
 Una delle proprietà della convoluzione è la seguente:
 Una convoluzione sullo strato q incrementa il campo recettivo di una feature dallo strato q allo strato q + 1. In altre parole, ogni valore della mappa di attivazione dello strato successivo cattura una regione
 spaziale più ampia del precedente. Feature maps degli strati catturano aspetti caratteristici di regioni via via maggiori e questo è il motivo per cui le CNN possono essere
