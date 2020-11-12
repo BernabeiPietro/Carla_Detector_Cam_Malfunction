@@ -283,7 +283,7 @@ def icelens(images, progressiveName, pathModified):
     img = cv2toPIL(img)
     imgM = []
     valueOfImage = [0.02, 0.05]
-    for i in manager_of_path.open_image("banding"):
+    for i in manager_of_path.open_image("ice"):
         img2 = Image.open(i).convert(img.mode)
         imgM.append(img2.resize(img.size))
     i = 0
