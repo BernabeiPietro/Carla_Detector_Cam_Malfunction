@@ -7,8 +7,8 @@ def manage_image(mp, classes_of_modified):
     total_classes = 24#500
     train_classes = 19 # 400
     validation_classes =0 #100
-    i = 0
-    j = 0
+    i = 9
+    j = 86686
     if mp.setting_type_folder:
         indix_of_classes = len(classes_of_modified)
     else:
