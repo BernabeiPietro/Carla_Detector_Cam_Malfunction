@@ -2,10 +2,6 @@ This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: TesiBernabei.aux
 The style file: biblatex.bst
-White space in argument---line 117 of file TesiBernabei.aux
- : \citation{tesi
- :                niccolo galli}
-I'm skipping whatever remains of this command
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
@@ -25,45 +21,44 @@ Database file #2: bibliografia.bib
 Biblatex version: 3.8
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 13 entries,
+You've used 14 entries,
             6268 wiz_defined-function locations,
-            1239 strings with 10777 characters,
-and the built_in function-call counts, 69219 in all, are:
-= -- 4669
-> -- 1365
-< -- 385
-+ -- 1754
-- -- 518
-* -- 5056
-:= -- 7111
+            1242 strings with 10829 characters,
+and the built_in function-call counts, 70023 in all, are:
+= -- 4634
+> -- 1385
+< -- 404
++ -- 1703
+- -- 504
+* -- 5000
+:= -- 7023
 add.period$ -- 0
-call.type$ -- 13
-change.case$ -- 182
+call.type$ -- 14
+change.case$ -- 195
 chr.to.int$ -- 30
-cite$ -- 24
-duplicate$ -- 7650
-empty$ -- 6375
-format.name$ -- 854
-if$ -- 14167
+cite$ -- 26
+duplicate$ -- 7814
+empty$ -- 6570
+format.name$ -- 861
+if$ -- 14419
 int.to.chr$ -- 0
-int.to.str$ -- 30
+int.to.str$ -- 32
 missing$ -- 0
-newline$ -- 414
-num.names$ -- 574
-pop$ -- 4216
+newline$ -- 420
+num.names$ -- 619
+pop$ -- 4519
 preamble$ -- 1
-purify$ -- 254
+purify$ -- 263
 quote$ -- 0
-skip$ -- 2157
+skip$ -- 2284
 stack$ -- 0
-substring$ -- 7498
-swap$ -- 1816
-text.length$ -- 357
-text.prefix$ -- 12
+substring$ -- 7267
+swap$ -- 1883
+text.length$ -- 370
+text.prefix$ -- 13
 top$ -- 1
-type$ -- 430
+type$ -- 464
 warning$ -- 0
-while$ -- 904
+while$ -- 898
 width$ -- 0
-write$ -- 402
-(There was 1 error message)
+write$ -- 407

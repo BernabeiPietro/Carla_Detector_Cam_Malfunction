@@ -109,7 +109,7 @@ def modify_photo(classes, mp, list_original, j, tv):
             j_modified_tot = j
     if "banding" in classes:
         j_original = modp.not_modified(list_original, j, mp.get_path_classes("banding")[tv_original])
-        j_modified_tot = modp.overlap(list, j_modified_tot, mp.get_path_classes("banding")[tv_modified],mp.path_of_classes+overlap_banding[0],0.05)
+        j_modified_tot = modp.banding(list, j_modified_tot, mp.get_path_classes("banding")[tv_modified])
         if mp.setting_type_folder:
             j_modified_tot = j
     if "condensation" in classes:
@@ -136,7 +136,7 @@ def modify_photo(classes, mp, list_original, j, tv):
 
 
 
-path = "/home/bernabei/carla0.8.4/PythonClient/_out/" #"/home/pietro/Documenti/Unifi/tirocinio/img"#"/home/bernabei/carla0.8.4/PythonClient/_out_prima_run/" #"/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/"
+path = "/home/pietro/Documenti/Unifi/tirocinio/img"#"/home/bernabei/carla0.8.4/PythonClient/_out/" #"/home/bernabei/carla0.8.4/PythonClient/_out_prima_run/" #"/media/pietro/Volume/Ubuntu/home/pietro/Documenti/Unifi/tirocinio/img/"
 classes_of_modified = ["blur", "black", "brightness",  "200_death_pixels","nodemos","noise","sharpness","brokenlens","icelens","banding","50_death_pixels","greyscale","condensation","dirty_lens","chromaticaberration","rain"]
 mp = manager_of_path.ManagerOfPath(path, classes_of_modified, True)
 manage_image(mp, classes_of_modified)

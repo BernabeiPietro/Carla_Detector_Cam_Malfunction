@@ -91,32 +91,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Costruzione del detector}{31}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Convulutional Neural Network}{32}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Convolutional Neural Network}{32}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}L'architettura}{32}{subsubsection.4.1.1}
+\contentsline {subparagraph}{Input}{32}{section*.24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Convolutional layer}{34}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.1}L'architettura}{33}{subsubsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Padding}{36}{section*.24}
+\contentsline {subsubsection}{\numberline {4.1.2}Convolutional layer}{33}{subsubsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3}Funzione di attivazione Relu}{37}{subsubsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.3}Funzione di attivazione Relu}{34}{subsubsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.4}Pooling layer}{37}{subsubsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.4}Pooling layer}{34}{subsubsection.4.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.5}Dense layer}{38}{subsubsection.4.1.5}
+\contentsline {subsubsection}{\numberline {4.1.5}Dense layer}{35}{subsubsection.4.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}La rete}{38}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.1.6}Struttura della rete sviluppata}{35}{subsubsection.4.1.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Addestramento del rete convuluzionale}{39}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.2}Addestramento del rete convuluzionale}{36}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.1}Batch}{40}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.2.1}Batch}{37}{subsubsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.2}Epochs}{40}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.2.2}Epochs}{37}{subsubsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Testing della rete}{41}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.3}Testing della rete}{38}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Esecuzione e risultati}{41}{section.5}
+\contentsline {section}{\numberline {5}Esecuzione e risultati}{38}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{41}{section.6}
+\contentsline {section}{\numberline {6}Conclusioni e lavori futuri}{38}{section.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}A Manuale utente}{41}{section.7}
+\contentsline {section}{\numberline {7}A Manuale utente}{38}{section.7}
