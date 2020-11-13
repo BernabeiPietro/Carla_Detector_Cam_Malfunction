@@ -957,7 +957,7 @@ E proprio quest'ultima variante sarà utilizzata nel progetto.
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{maxpooling.png}
-\caption{Esempio di pooling con uno stride e una dimensione del filtro pari a due.}
+\caption{Esempio di pooling con uno strinformatde e una dimensione del filtro pari a due.}
 \label{fig:pooling}
 \end{figure}
 
@@ -977,7 +977,6 @@ Connette ogni feature in input con la corrispondente feature in output. Presenta
 addestrabili per effetto del numero di connessioni. Ad esempio, se due strati completamente connessi hanno 4096 unità ciascuno, il numero di connessioni (quindi di
 parametri) sarà superiore a 16 milioni. \cite{aggarwal2018neural}
 \subsubsection{Struttura della rete sviluppata}
-La struttura della ConvNet sviluppata per il progetto ha la seguente forma:
 \begin{table}
 \centering
 \begin{tabular}{cccc}
@@ -1000,30 +999,59 @@ N. & Layer & Dimensioni filtro  & Output Shape\\
 \hline
 \end{tabular}
 \caption{Struttura della rete sviluppata}
-\label{fig:struttRete}
+\label{tab:struttRete}
 \end{table}
-\subsection{Addestramento del rete convuluzionale}
-Dopo aver definito la struttura della rete, e avendo suddiviso il dataset in tre parti: training set, validation set e test set, la fase successiva prevede l'addestramento della rete.
-Per addestramento di una rete si intendo elaborazione da parte della  rete del training set, ovvero la modifica dei pesi dei collegamenti, al fine di modellare il meglio possibile la rete sui dati. 
-%il processo di determinazione dei parametri ideali che compongono un modello. google
-In generale il sistema di apprendimento prevede che sia utilizzato il training set per l'addestramento della regressione logica, ovvero una modifica dei pesi 
 
-Durante l'addestramento della CNN, il set di dati deve essere suddiviso in tre parti:
-il training set, il validation set e il test set. Il training set
+La rete impiegata per il progetto è stata sviluppata in python, impiegando la libreria Tensorflow nella versione 1.14.
+La sua struttura ha la forma definita nella tabella \ref{tab:struttRete}
+
+\section{Esecuzione e risultati}
+
+\subsection{Addestramento del rete convuluzionale}
+\begin{table}
+\centering
+\begin{tabular}{c|cc|cc}
+& \multicolumn{2}{|c|}{Train} & \multicolumn{2}{|c}{Validation} \\ \hline\hline
+Classi & train loss & train acc & val loss & val acc\\
+Blur 3.5 & 2,26E-12 & 1 & 1,97E-12 & 1\\
+black&0&1&3,92E-36&1\\
+brightness&2,26E-16&1&1,97E-16&1\\
+50 death pixels&0,6932&0,5&0,6932&0,5\\
+200 death pixels&0,6932&0,5&0,6932&0,5\\
+nodemos&9,84E-20&1&2,06E-26&1\\
+noise&2,42E-13&1&4,18E-17&1\\
+sharpness&0,0015&1&2,93E-27&1\\
+brokenlens&5,93E-16&1&4,30E-16&1\\
+icelens&0,0089&0,9995&0,0017&0,9996\\
+banding&0,0132&0,9995&0,0026&0,9992\\
+greyscale&2,26E-22&1&2,22E-22&1\\
+condensation&1,03E-19&1&1,73E-17&1\\
+dirty lens&0,0157&0,9985&0,028&0,9977\\
+chromaticaberrration&2,96E-17&1,0,1\\
+rain&1,58E-16&1&5,03E-28&1\\
+all&0,0996&0,9358&0,0965&0,9337\\
+\hline
+\end{tabular}
+\caption{Tabella dei risultati della fase di training e validation}
+\label{tab:Risultati training}
+\end{table}
+Dopo aver definito la struttura della rete, e avendo suddiviso il dataset in tre parti: training set, validation set e test set, la fase successiva prevede l'addestramento della rete.
+Il training set
 set viene utilizzato per addestrare la CNN utilizzando la regressione logistica, che addestrerà la rete neurale convoluzionale, che sarà spiegato di seguito. Dopo ogni round di training, la rete è
 testata su una parte casuale del validation set. Il risultato viene utilizzato per valutare l'accuratezza della rete nel rilevare gli oggetti corretti,
 al fine di determinare se i pesi vengono regolati nel modo migliore.
 Il test set viene utilizzato per valutare le prestazioni della CNN dopo che
 il processo di formazione è terminato. Tuttavia, può essere pericoloso modificare
 la rete in base ai risultati utilizzando il set di test, a causa del rischio
-di overfitting. La dimensione esatta dei diversi set varia a seconda
-sul set di dati fornito, ma di solito il set di addestramento è composto da
-circa il 75-80\% dei dati totali, mentre la convalida e
-i set di test utilizzano entrambi metà dei dati rimanenti, circa 10-
-12,5\% ciascuno \cite{guyon1997scaling}.
+di overfitting.\cite{guyon1997scaling}.
 
-Avendo predisposto la rete, e i vari dataset, il passo successivo è il suo addestramento.
+Per la fase di training, sono state eseguite 5 epoch con batch di dimensione 4.
+E'  stata impiegata come metrica, Accuracy mentre come funzione di loss, BinaryCrossentropy
+I risultati sia della fase del training sia della validation sono mostrati nella tabella \ref{tab:Risultati training}
+Da questi primi risultati si può notare come in generale la rete dia ottimi risultati su tutte le classi in questa fase.
+Le uniche classi dove questi risultati non sono ottimali sono: 200 death pixel e 50 death pixel. Su queste due si può assumere che l'agente non riesca ad identificare le differenze tra golden run e guasto.
 
+\begin{comment}
 \subsubsection{Batch}
 Siccome le reti richiedono grosse quantità di dati per essere allenate, si definiscono due modi per fare ciò: la prima prevede l'uso di una infrastruttura hardware in grado di processare l'intera mole tutta insieme nello stesso momento, e questo può risultare effettivamente difficile, mentre il secondo modo prevede di dividere il dataset in porzioni, e fornirle una per una alla rete.
 Le dimensioni di queste porzioni, è definità come \textbf{Batch Size}.
@@ -1033,15 +1061,47 @@ Il numero di batch  necessari a processare l'interno dataset, definisce il numer
 Ultima componente fondamentale di un addestramento, sono le Epochs.
 Dato il dataset di 300000 elementi, e un batch size di 4, si avranno 75000 iterazioni per epoch, quindi un epoch è l'intero ciclo di elaborazione di un training set, e le epochs identificano quante epoch saranno eseguite. Questo elemento è importante, perchè ad ogni epoch mantenendo il dataset costante, modifica i pesi della rete, spostando la curva di apprendimento tra uno stato underfitting, a uno ottimale, a un overfitting. 
 Il numero di epoch necessario a ottenere una curva ottimale varia da dataset a dataset
-
+\end{comment}
 \subsection{Testing della rete}
-Ottenuto 17 reti istruite ciascuna sul proprio dataset di dati, la fase finale del progetto è verificare la loro effettiva efficacia su un set di immagini mai utilizzato. Questo per verificare che la rete non abbia fatto un overfitting sui dati, e quindi la sua  generalità nell'applicazione.
-Per ciascuna rete sono stati impiegati due differenti test set. Uno composto da golden run-singolo guasto e l'altro golden run-multiguasto. 
-Si è usato la confusion matrix.
 
-\section{Esecuzione e risultati}
-Per ottenere il tutto sono state effettuate 3 diverse fasi che riprendono anche il filo logico usato nella tesi per esprime la costruzione del detector.
-La prima fase ha previsto la costruzione della forma di
+Ottenuto 17 reti istruite ciascuna sul proprio dataset di dati, la fase finale del progetto è verificare la loro effettiva efficacia su due set di immagini e  verificare l'assenza di overfitting negli  agenti.
+Per ciascuna rete sono stati impiegati due differenti test set:
+\begin{itemize}
+\item golden run-singolo guasto
+\item golden run e i restanti guasti-singolo guasto
+\end{itemize}
+Quest'ultimo avendo sempre 14400 elementi, risulta essere  sbilanciato, avendo nella prima classe un numero superiore della seconda.
+Per una prima fase di testing le metriche usate sono sempre le stesse della fase di training ovvero Accuracy e BinaryCrossentropy.
+I risultati ottenuti sono mostrati alla seguente Tabella \ref{tab:testing1}
+\begin{table}[]
+\centering
+\caption{Tabella riassuntiva della prima fase di testing}
+\label{tab:testing1}
+\begin{tabular}{l|cc|cc}
+\hline
+                     & \multicolumn{2}{|c|}{singola classe} & \multicolumn{2}{|c}{all} \\ \hline\hline
+classi               & loss              & acc            & loss         & acc      \\
+Blur 3.5             & 1,79E-20          & 1              & 1,92E+03     & 0,5708   \\
+black                & 1,97E-16          & 1              & 7,76E+02     & 0,5417   \\
+brightness           & 8,41E+02          & 0.5            & 5,65E+02     & 0,442    \\
+50 death pixels      & 0,6932            & 0,5            & 0,6932       & 0,5      \\
+200 death pixels     & 0,6932            & 0,5            & 0,6932       & 0,5      \\
+nodemos              & 3,98E-35          & 1              & 7,30E+01     & 0,5833   \\
+noise                & 4,13E-12          & 1              & 4,02E+01     & 0,5833   \\
+sharpness            & 3,4551            & 0,9763         & 2,63E+02     & 0,6072   \\
+brokenlens           & 2,10E-07          & 1              & 3,05E+01     & 0,5417   \\
+icelens              & 2,6259            & 0,8182         & 5817,3185    & 0,5595   \\
+banding              & 6,7391            & 0,5469         & 7197,409     & 0,3942   \\
+greyscale            & 1,02E+00          & 0,8938         & 3,76E+01     & 0,5      \\
+condensation         & 1,36E-01          & 0,998          & 2,36E+02     & 0,5247   \\
+dirty lens           & 18,5961           & 0,58           & 31,0586      & 0,5076   \\
+chromaticaberrration & 0,00E+00          & 1              & 4719,5721    & 0,5625   \\
+rain                 & 5,15E+00          & 0,8819         & 6,97E+01     & 0,5188   \\
+all                  &                   &                & 668,9222     & 0,5      \\ \hline
+\end{tabular}
+\end{table}
+Si può notare da quest'ultima che per 200 e 50 death pixels, le affermazioni espresse in precedenza sono confermate siccome effettivamente l'agente "tira ad indovinare" l'appartenenza di un dato ad una determinata classe.
+
 \section{Conclusioni e lavori futuri}
 
 \section{A Manuale utente}\label{sect:manuale utente}

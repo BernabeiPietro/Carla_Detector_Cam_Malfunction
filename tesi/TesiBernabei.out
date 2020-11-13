@@ -34,10 +34,8 @@
 \BOOKMARK [3][-]{subsubsection.4.1.4}{Pooling layer}{subsection.4.1}% 34
 \BOOKMARK [3][-]{subsubsection.4.1.5}{Dense layer}{subsection.4.1}% 35
 \BOOKMARK [3][-]{subsubsection.4.1.6}{Struttura della rete sviluppata}{subsection.4.1}% 36
-\BOOKMARK [2][-]{subsection.4.2}{Addestramento del rete convuluzionale}{section.4}% 37
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Batch}{subsection.4.2}% 38
-\BOOKMARK [3][-]{subsubsection.4.2.2}{Epochs}{subsection.4.2}% 39
-\BOOKMARK [2][-]{subsection.4.3}{Testing della rete}{section.4}% 40
-\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 41
-\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 42
-\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 43
+\BOOKMARK [1][-]{section.5}{Esecuzione e risultati}{}% 37
+\BOOKMARK [2][-]{subsection.5.1}{Addestramento del rete convuluzionale}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.2}{Testing della rete}{section.5}% 39
+\BOOKMARK [1][-]{section.6}{Conclusioni e lavori futuri}{}% 40
+\BOOKMARK [1][-]{section.7}{A Manuale utente}{}% 41
