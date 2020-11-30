@@ -67,8 +67,7 @@ def classificator(lock,mp_train,classes,path_checkpoint):
                   metrics=['accuracy'])
     model.summary()
  
-    model.fit(
-        train_data_gen,
+    model.fit(        train_data_gen,
         steps_per_epoch=total_train // batch_size,
         epochs=epochs,
         validation_data=val_data_gen,

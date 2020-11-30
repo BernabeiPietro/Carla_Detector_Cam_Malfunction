@@ -1,6 +1,9 @@
+import copy
+
 import cv2
 import numpy as np
 from PIL import Image, ImageEnhance
+
 import chromaticaberration2
 import manager_of_path
 
@@ -22,6 +25,11 @@ def PIltocv2(img):
     numpy_image = np.uint8(img)
 
     return cv2.cvtColor(numpy_image, cv2.COLOR_RGB2BGR)
+
+
+def run_methods(function, file, name, path):
+    function = dispatcher[function]
+    return function(file, name, path)
 
 
 def blur(images, progressiveName, pathModified):  # sistemato
@@ -48,7 +56,9 @@ def black(images, progressiveName, pathModified):  # sistemato
     return progressiveName
 
 
-def dead_pixel_50(images, progressiveName, pathModified):
+def death_pixel_50(imag, progressiveName, pathModified):
+    images = copy.deepcopy(imag)
+
     for img in images:
         h, w, _ = img.shape
 
@@ -73,8 +83,8 @@ def dead_pixel_50(images, progressiveName, pathModified):
     return progressiveName
 
 
-def dead_pixel_200(images, progressiveName, pathModified):
-
+def death_pixel_200(imag, progressiveName, pathModified):
+    images = copy.deepcopy(imag)
     for img in images:
         h, w, _ = img.shape
 
@@ -130,60 +140,28 @@ def chromaticaberration(images, progressiveName, pathModified):
         progressiveName = progressiveName + 1
     return progressiveName
 
+
 def condensation(images, progressiveName, pathModified):
     img = images[0]
-    imgM = []
-
-    for i in manager_of_path.open_image("condensation"):
-        img2 = Image.open(i).convert("RGBA")
-        imgM.append(img2.resize(img.shape[0:2]))
-    i = 0
-    for img in images:
-        img = cv2toPIL(img)
-        img.paste(imgM[i], (0, 0), imgM[i])
-        i = (i + 1) % len(imgM)
-        img = PIltocv2(img)
-        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
-        progressiveName = progressiveName + 1
+    img = cv2toPIL(img)
+    imgM = get_image_blend(img, "condensation", "RGBA")
+    progressiveName = paste_image(images, imgM, pathModified, progressiveName)
     return progressiveName
 
 
 def rain(images, progressiveName, pathModified):
     img = images[0]
-    imgM = []
-    for i in manager_of_path.open_image("rain"):
-        img2 = Image.open(i).convert("RGBA")
-        imgM.append(img2.resize(img.shape[0:2]))
-    i = 0
-    for img in images:
-        img = cv2toPIL(img)
-        img.paste(imgM[i], (0, 0), imgM[i])
-        i = (i + 1) % len(imgM)
-        img = PIltocv2(img)
-        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
-        progressiveName = progressiveName + 1
+    img = cv2toPIL(img)
+    imgM = get_image_blend(img, "rain", "RGBA")
+    progressiveName = paste_image(images, imgM, pathModified, progressiveName)
     return progressiveName
 
 
 def dirty_lens(images, progressiveName, pathModified):
     img = images[0]
     img = cv2toPIL(img)
-    imgM = []
-
-    for i in manager_of_path.open_image("lensDirt"):
-        img2 = Image.open(i).convert(img.mode)
-        imgM.append(img2.resize(img.size))
-    i = 0
-    for img in images:
-        img = cv2toPIL(img)
-        img = Image.blend(img, imgM[i], 0.5)  # valori per immagine banding->0.02, banding1->0.05, ice->0.2
-        i = (i + 1) % len(imgM)
-        enhancer = ImageEnhance.Brightness(img)
-        factor = 1.6  # aggiungo luminosità
-        img = enhancer.enhance(factor)
-        img = PIltocv2(img)
-        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
-        progressiveName = progressiveName + 1
+    imgM = get_image_blend(img, "lensDirt")
+    progressiveName = overlap(images, progressiveName, pathModified, imgM, [0.5], 1.6)
     return progressiveName
 
 
@@ -249,53 +227,80 @@ def sharpness(images, progressiveName, pathModified):
     return progressiveName
 
 
-def overlap(images, progressiveName, pathModified, overlap_img_path, overlap_value):
-    image_overlap = Image.open(overlap_img_path)
-
-    for img in images:
-        img = cv2toPIL(img)
-        img_over = image_overlap.convert(img.mode)
-        img_over = img_over.resize(img.size)
-        img = Image.blend(img, img_over, overlap_value)
-        img = PIltocv2(img)
-        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
-        progressiveName = progressiveName + 1
-    return progressiveName
-
 def banding(images, progressiveName, pathModified):
     img = images[0]
     img = cv2toPIL(img)
-    imgM = []
-    valueOfImage=[0.02,0.05]
-    for i in manager_of_path.open_image("banding"):
-        img2 = Image.open(i).convert(img.mode)
-        imgM.append(img2.resize(img.size))
-    i = 0
-    for img in images:
-        img = cv2toPIL(img)
-        img = Image.blend(img, imgM[i], valueOfImage[i])  # valori per immagine banding->0.02, banding1->0.05, ice->0.2
-        img = PIltocv2(img)
-        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
-        progressiveName = progressiveName + 1
+    valueOfImage = [0.02, 0.05]
+    imgM = get_image_blend(img, "banding")
+    progressiveName = overlap(images, progressiveName, pathModified, imgM, valueOfImage)
     return progressiveName
+
+
 def icelens(images, progressiveName, pathModified):
     img = images[0]
     img = cv2toPIL(img)
-    imgM = []
-    valueOfImage = [0.02, 0.05]
-    for i in manager_of_path.open_image("ice"):
-        img2 = Image.open(i).convert(img.mode)
-        imgM.append(img2.resize(img.size))
-    i = 0
-    for img in images:
-        img = cv2toPIL(img)
-        img = Image.blend(img, imgM[i], valueOfImage[i])  # valori per immagine banding->0.02, banding1->0.05, ice->0.2
-        img = PIltocv2(img)
-        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
-        progressiveName = progressiveName + 1
+    imgM = get_image_blend(img, "ice", "RGBA")
+    progressiveName = paste_image(images, imgM, pathModified, progressiveName)
     return progressiveName
+
+
+def brokenlens(images, progressiveName, pathModified):
+    img = images[0]
+    img = cv2toPIL(img)
+    valueOfImage = [0.5]
+    imgM = get_image_blend(img, "lensBroken")
+    i = 0
+    progressiveName = overlap(images, progressiveName, pathModified, imgM, valueOfImage, 1.6)
+    return progressiveName
+
+
 def not_modified(images, progressiveName, pathModified):
     for img in images:
         cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
         progressiveName = progressiveName + 1
     return progressiveName
+
+
+def get_image_blend(img, name, i_mode="img.mode"):
+    imgM = []
+    if (i_mode == "img.mode"):
+        i_mode = img.mode
+    for i in manager_of_path.open_image(name):
+        img2 = Image.open(i).convert(i_mode)
+        imgM.append(img2.resize(img.size))
+    return imgM
+
+
+def overlap(images, progressiveName, pathModified, image_overlap, overlap_value, factor="null"):
+    i = 0
+    for img in images:
+        img = cv2toPIL(img)
+        img = Image.blend(img, image_overlap[i], overlap_value[i])
+        if (factor != "null"):
+            enhancer = ImageEnhance.Brightness(img)
+            img = enhancer.enhance(factor)  # aggiungo luminosità
+        img = PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+        i = (i + 1) % len(overlap_value)
+
+    return progressiveName
+
+
+def paste_image(images, imgM, pathModified, progressiveName):
+    i = 0
+    for img in images:
+        img = cv2toPIL(img)
+        img.paste(imgM[i], (0, 0), imgM[i])
+        i = (i + 1) % len(imgM)
+        img = PIltocv2(img)
+        cv2.imwrite(pathModified + str(progressiveName) + ".png", img)
+        progressiveName = progressiveName + 1
+    return progressiveName
+
+
+dispatcher = {"blur": blur, "black": black, "brightness": brightness, "200_death_pixels": death_pixel_200,
+              "nodemos": nodemos, "noise": noise, "sharpness": sharpness, "brokenlens": brokenlens, "icelens": icelens,
+              "banding": banding, "50_death_pixels": death_pixel_50, "greyscale": greyscale,
+              "condensation": condensation, "dirty_lens": dirty_lens, "chromaticaberration": chromaticaberration,
+              "rain": rain}
