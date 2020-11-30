@@ -1,0 +1,150 @@
+blur:all
+TruePositive=373.0 TrueNegative=6789.0
+FalsePositive=411.0 FalseNegative=6827.0
+MCC=-0.01163056449431264
+blur:blur
+TruePositive=7200.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=0.0
+MCC=1.0
+
+black:all
+TruePositive=7200.0 TrueNegative=600.0
+FalsePositive=6600.0 FalseNegative=0.0
+MCC=0.20851441405707477
+black:black
+TruePositive=7200.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=0.0
+MCC=1.0
+
+brightness:all
+TruePositive=16.0 TrueNegative=6349.0
+FalsePositive=851.0 FalseNegative=7184.0
+MCC=-0.2437697914817867
+brightness:brightness
+TruePositive=0.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=7200.0
+MCC=0.0
+
+200_death_pixels:all
+TruePositive=0.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=7200.0
+MCC=0.0
+200_death_pixels:200_death_pixels
+TruePositive=0.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=7200.0
+MCC=0.0
+
+nodemos:all
+TruePositive=7200.0 TrueNegative=1200.0
+FalsePositive=6000.0 FalseNegative=0.0
+MCC=0.30151134457776363
+nodemos:nodemos
+TruePositive=7200.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=0.0
+MCC=1.0
+
+noise:all
+TruePositive=7200.0 TrueNegative=1200.0
+FalsePositive=6000.0 FalseNegative=0.0
+MCC=0.30151134457776363
+noise:noise
+TruePositive=7200.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=0.0
+MCC=1.0
+
+sharpness:all
+TruePositive=6855.0 TrueNegative=1889.0
+FalsePositive=5311.0 FalseNegative=345.0
+MCC=0.29616368528597153
+sharpness:sharpness
+TruePositive=6859.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=341.0
+MCC=0.9537091098294046
+
+brokenlens:all
+TruePositive=7200.0 TrueNegative=600.0
+FalsePositive=6600.0 FalseNegative=0.0
+MCC=0.20851441405707477
+brokenlens:brokenlens
+TruePositive=7200.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=0.0
+MCC=1.0
+icelens:all
+TruePositive=6040.0 TrueNegative=2017.0
+FalsePositive=5183.0 FalseNegative=1160.0
+MCC=0.14352175391503866
+icelens:icelens
+TruePositive=6041.0 TrueNegative=5741.0
+FalsePositive=1459.0 FalseNegative=1159.0
+MCC=0.6369420301396778
+
+banding:all
+TruePositive=696.0 TrueNegative=4980.0
+FalsePositive=2220.0 FalseNegative=6504.0
+MCC=-0.26335684774590185
+banding:banding
+TruePositive=695.0 TrueNegative=7181.0
+FalsePositive=19.0 FalseNegative=6505.0
+MCC=0.21625159642547773
+
+greyscale:all
+TruePositive=300.0 TrueNegative=6900.0
+FalsePositive=300.0 FalseNegative=6900.0
+MCC=0.0
+greyscale:greyscale
+TruePositive=5670.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=1530.0
+MCC=0.805906034276003
+
+50_death_pixels:all
+TruePositive=0.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=7200.0
+MCC=0.0
+50_death_pixels:50_death_pixels
+TruePositive=0.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=7200.0
+MCC=0.0
+
+condensation:all
+TruePositive=7200.0 TrueNegative=356.0
+FalsePositive=6844.0 FalseNegative=0.0
+MCC=0.1592133896577533
+condensation:condensation
+TruePositive=7200.0 TrueNegative=7171.0
+FalsePositive=29.0 FalseNegative=0.0
+MCC=0.9959803011461271
+
+dirty_lens:all
+TruePositive=4790.0 TrueNegative=2519.0
+FalsePositive=4681.0 FalseNegative=2410.0
+MCC=0.01595324998429895
+dirty_lens:dirty_lens
+TruePositive=4833.0 TrueNegative=3552.0
+FalsePositive=3648.0 FalseNegative=2367.0
+MCC=0.1672517415861304
+
+chromaticaberration:all
+TruePositive=7200.0 TrueNegative=900.0
+FalsePositive=6300.0 FalseNegative=0.0
+MCC=0.2581988897471611
+chromaticaberration:chromaticaberration
+TruePositive=7200.0 TrueNegative=7200.0
+FalsePositive=0.0 FalseNegative=0.0
+MCC=1.0
+
+rain:all
+TruePositive=7162.0 TrueNegative=308.0
+FalsePositive=6892.0 FalseNegative=38.0
+MCC=0.12244068205371966
+rain:rain
+TruePositive=7166.0 TrueNegative=5534.0
+FalsePositive=1666.0 FalseNegative=34.0
+MCC=0.7843024036624127
+all:all
+TruePositive=4.0 TrueNegative=7198.0
+FalsePositive=2.0 FalseNegative=7196.0
+MCC=0.0068055561463156635
+all:all
+TruePositive=4.0 TrueNegative=7198.0
+FalsePositive=2.0 FalseNegative=7196.0
+MCC=0.0068055561463156635
