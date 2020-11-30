@@ -4,9 +4,12 @@
 All'interno del progetto è  presente l'ambiente CONDA utilizzato per avviare CARLA. Si consiglia la sua installazione: sdcar.yml
 1) copia il file client_example.py del seguente progetto nella cartella PythonClient all'interno della directory Carla 0.8.4
 2) avviare il lato server con la seguente dicitura:
-DISPLAY=:21 ./CarlaUE4.sh -opengl -world-port=10500 -quality=low
+
+    DISPLAY=:21 ./CarlaUE4.sh -opengl -world-port=10500 -quality=low
+
 3) avviare lato client con la seguene dicitura:
-python3 client_example.py --images-to-disk --location=_out -p=10500
+
+    python3 client_example.py --images-to-disk --location=_out -p=10500
 ### importante il file client_example.py è impostato per acquisire 500 episodi. Per cambiare le impostazioni si consiglia di modificare direttamente il codice.
 
 ## Istruzioni per la creazione dei dataset:
@@ -31,7 +34,8 @@ All'interno del progetto è  presente l'ambiente CONDA utilizzato per la seguent
       * classes_of_modified indica i fallimenti  di cui si vuole generare i dataset. Nel caso in cui  si voglia lavorare con un numero limitato di fallimenti, si consiglia passare uno slide.
       * l'ultimo parametro è un valore booleano che indica se si vuole popolare il test set asimmetrico (True) oppure no (False). Valido solo per i dataset monoguasti.
  3) avviare semplicemte il programma con: 
- python3 carla_image_modify.py
+ 
+     python3 carla_image_modify.py
  
  ## Istruzioni per il training e testing della rete.
 tensor.py è il programma dedicato alla training e testing della rete  sviluppato con tensorflow-gpu 1.14
@@ -45,6 +49,7 @@ Del modello viene salvato sia i pesi che il modello stesso nella cartella del fa
 
 Per l'avvio, in fondo al file è disposto il percorso in cui sono localizzati i dataset, oltre ai loro nomi. Se fosse aggiunto un nuovo fallimento si consiglia di inserire la sua stringa identificativa nella lista classes_of_modified.
 Per avviare si usi il codice:
-python3 tensor.py
+
+    python3 tensor.py
 
 Se si volesse testare una rete già  allenata si consiglia l'uso del programma tensorflow_testmode.py. Il suo comportamento è simile ai precedenti.
