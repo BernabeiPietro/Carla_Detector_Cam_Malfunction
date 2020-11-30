@@ -31,4 +31,5 @@ def blur (images,progressiveName,pathModified
  python3 carla_image_modify.py
  
  # Istruzioni per il training e testing della rete.
- 
+tensor.py è il programma dedicato alla training e testing della rete.
+
