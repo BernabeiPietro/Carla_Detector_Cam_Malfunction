@@ -36,5 +36,17 @@ All'interno del progetto è  presente l'ambiente CONDA utilizzato per la seguent
  python3 carla_image_modify.py
  
  ## Istruzioni per il training e testing della rete.
-tensor.py è il programma dedicato alla training e testing della rete.
-Per tensorflow 
+tensor.py è il programma dedicato alla training e testing della rete, sviluppato per tensorflow-gpu 1.14
+All'interno del progetto è  presente l'ambiente CONDA utilizzato per la seguente fase. Si consiglia la sua installazione: classificatore.yml
+
+### Settaggio
+All'interno della funzione classificator, le prime linee sono dedicate al settaggio della rete.
+
+#####Importante  total_train e total_val devono indicare il numero preciso di elementi dedicati alle fasi. Se questo numero supera quelli presenti effettivamente il sistema non prosegue il training.
+Del modello viene salvato sia i pesi che il modello stesso nella cartella del fallimento nella cartella checkpoint.
+
+Per l'avvio in fondo al file è disposto il percorso in cui sono localizzati i dataset, oltre ai loro nomi. (Se fosse aggiunto un nuovo fallimento si consiglia di inserire la sua stringa identificativa nella lista classes_of_modified.
+Per avviare si usi il codice:
+python3 tensor.py
+
+Se si volesse testare una rete già  allenata si consiglia l'uso del programma tensorflow_testmode.py. Il suo comportamento è simile ai precedenti
