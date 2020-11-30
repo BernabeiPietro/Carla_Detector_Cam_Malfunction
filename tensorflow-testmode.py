@@ -55,15 +55,15 @@ def tester(lock,mp,classes,f):
     model1.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
                   metrics=[tf.keras.metrics.TruePositives(),tf.keras.metrics.TrueNegatives(),tf.keras.metrics.FalsePositives(),tf.keras.metrics.FalseNegatives()])
-    test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
-                                                              directory=mp.get_path_classes("all")["train"],
-                                                              shuffle=True,
-                                                              target_size=(IMG_HEIGHT, IMG_WIDTH),
-                                                              class_mode='binary')
+     #test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
+     #                                                         directory=mp.get_path_classes("all")["train"],
+     #                                                         shuffle=True,
+     #                                                         target_size=(IMG_HEIGHT, IMG_WIDTH),
+     #                                                         class_mode='binary')
 
-    ls,tp,tn,fp,fn=model1.evaluate(test_data_gen, verbose=0)
-    f.write(classes+":all"+"\n")
-    write_cm_mcc(tp,tn,fp,fn,f)
+    #ls,tp,tn,fp,fn=model1.evaluate(test_data_gen, verbose=0)
+    #f.write(classes+":all"+"\n")
+    #write_cm_mcc(tp,tn,fp,fn,f)
     test_data_gen = test_image_generator.flow_from_directory(batch_size=batch_size,
                                                               directory=mp.get_path_classes(classes)["train"],
                                                               shuffle=True,

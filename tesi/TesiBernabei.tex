@@ -10,7 +10,7 @@
 \usepackage{xcolor}
 \usepackage{color}
 \usepackage{multicol}
-\usepackage{caption}
+\usepackage[font=small,labelfont=bf]{caption}
 \usepackage{subcaption}
 
 
@@ -625,65 +625,35 @@ La loro posizione, numero e direzione possono essere specificate dal client.
 E proprio della fotocamera RGB di CARLA si farà uso al fine di acquisire le immagini per il dataset.
 
 \section{Costruzione del dataset}
-<<<<<<< HEAD
-Un agente che impiega il paradigma del supervised learning, richiede un dataset, per formare la propria conoscenza di base del mondo che lo circonda. Nel caso di un classificatore di immagini, la componente principale di questa mole di dati, sono le immagini. A ciascuna sarà apposta in pre-elaborazione una etichetta che identifichi la classe del dato, per poi essere suddivise in tre dataset diversi, uno per ogni fase del procedimento di training.
+Un agente che impiega il paradigma del supervised learning, richiede un dataset, per formare la propria conoscenza di base del mondo che lo circonda. Nel caso di un classificatore di immagini, la componente principale di questa mole di dati, sono appunto le immagini.A ciascuna sarà applicata un filtro che simuli un particolare guasto per poi essere suddivise in tre dataset diversi, uno per ogni fase del procedimento di training e testing della rete.
 In maniera più schematica la creazione del dataset si basa sulla seguente procedura:
+
 \begin{comment}
-=======
-Il detector al suo interno presenta
->>>>>>> a46aca1ea7e3f9e5b011cefd303503cbed294950
 Il dataset è una delle componenti principali nel istruzione di un agente supervisionato, essendo il suo materiale di studio. 
 Nel caso di un agente supervisionato, il dataset rappresenta la sua conoscenza di base, ovvero tutto ciò che lui sa sul mondo, e più questa conoscenza è vasta e variegata, più che l'agente è in grado di adattarsi alle situazioni che si presentano.
 CARLA grazie alle sue caratteristiche di piattaforma di simulazione, ha permesso di ottenere questa grossa base di dati differenziati per costruire le fondamenta del dataset che sarà impiegato.
 Prima comunque di acquisire il ddata
-<<<<<<< HEAD
+
 Il detector utilizza come tecnologia una Convolutional Neural Network, una forma di rete neurale. 
 Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
 Infatti per l'apprendimento è stato usato il paradigma del supervised learning.
 L'addestramento di una generica rete neurale prevede la creazione di un dataset sulla
 base della procedura:\end{comment}
 
-\begin{itemize}
-\item Definizione delle classi
-\item Acquisizione delle immagini
-\item Sporcatura delle immagini
-\item Suddivisione del dataset
-\end{itemize}
-=======
-	\begin{comment}
-	Il detector utilizza come tecnologia una Convolutional Neural Network, una forma di rete neurale. 
-	Un vantaggio dell'utilizzo di software di simulazione come CARLA, oltre a permettere un abbattimento dei costi di ricerca, permette di avere a disposizione grandi quantità di dati, utili al training dell'agente.
-	Infatti per l'apprendimento è stato usato il paradigma del supervised learning.\end{comment}
-L'addestramento di una generica rete neurale prevede la creazione di un dataset sulla
-base della procedura:
 	\begin{itemize}
 	\item Definizione delle classi
 	\item Acquisizione immagini
 	\item Sporcatura immagini
 	\item Suddivisione del dataset
 	\end{itemize}
->>>>>>> a46aca1ea7e3f9e5b011cefd303503cbed294950
-
 Ciascuno step è illustrato in dettaglio nei paragrafi seguenti.
 
-	\begin{comment}
-		Questo prevede che siano forniti tre diverse dataset di immagini:
-		\begin{itemize}
-			\item Training set
-			\item Validation set
-			\item Test set
-		\end{itemize}
-	
-	Per il seguente elaborato avendo la possibilità di acquisire grandi quantità di dati come verrà esposto in seguito, il training set avrà dimensioni di 240000 immagini, suddivise equamente tra pulite e sporche
-	Per costruire questo, si necessità l'acquisizione  di immagini simili a  quelle ottenibili da una telecamera posto su una vettura.
-	Nel caso della seguente tesi, il classificatore è  di tipo binario, quindi classifica le immagini tra pulite o sporche, quindi a sua volta il dataset sarà  suddiviso in due classi o label.  
-	\end{comment}
 
 \subsection{Definizione delle classi}
 Il problema della classificazione delle immagini è un problema che come dice il verbo, deve assegnare a un elemento in input una classe.
-Quindi le classi, o etichette(label) sono gruppi di elementi che hanno determinate caratteristiche in comune. Più le differenze tra classi diverse, sono poco accentuate, più è difficile distinguerle.
+Quindi le classi, o etichette(label) sono gruppi di elementi che hanno determinate caratteristiche in comune.% Più le differenze tra classi diverse, sono poco accentuate, più è difficile distinguerle.
 Nel caso del detector,  le classi rispecchiano i diversi guasti che la fotocamera può subire. Per una esposizione completa dei guasti che sono stati presi in considerazione si rimanda a \cite{secci2020failures}.
-Le classi prese in considerazione per la costruzione dei vari dataset su cui sarà allenato l'agente, sono 18, di cui una rappresenta le immagini pulite(Golden Run), 16 rappresentano ciascuna un determinato guasto, e l'ultima (All) contiene al suo interno tutte e 16 i guasti presi in considerazione
+Le classi prese in considerazione per la costruzione dei vari dataset su cui sarà allenato l'agente, sono diciotto, di cui una rappresenta le immagini pulite(Golden Run), una per ogni guasto, e l'ultima (All) contiene al suo interno tutte e 16 i guasti presi in considerazione
 \begin{multicols}{3}
 \begin{itemize}
 \item Golden Run
@@ -710,22 +680,15 @@ Le classi prese in considerazione per la costruzione dei vari dataset su cui sar
 
 \subsection{Acquisizione}
 Definite le classi, la fase successiva nella costruzione dei dataset, è l'acquisizione delle immagini.
-Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client è stato impostato per generare 517 simulazioni diverse, ovvero 517 ambienti generati casualmente, con condizioni atmosferiche diverse, e in localizzate in luoghi diversi sulla stessa mappa. In ciascuna delle simulazioni il veicolo si muove nelle vie della città, seguendo percorsi randomici. Durante il tragitto il Client è stato impostato per acquisire 300 immagini dal sensore della fotocamera frontale della vettura, nel formato .png e ciascuna dalle  dimensioni di 800*600 pixels.
-Si rimanda alla sezione "Manuale Utente" per le note sugli script utilizzati
-\begin{comment}
-Per l'acquisizione delle immagini 
-Per acquisire questa mole di dati non potendo usare un sistema fisico per l'acquisizione, dati le  problematiche già  citate, è stato impiegato CARLA.
-Sono state avviate 500 simulazioni, con caratteristiche diverse, come città,meteo e  elementi ambientali, generate in maniera casuale dal sistema. Da ogni run, attraverso il progetto github \textbf{cita}, è stato possibile acquisire 300 frame della fotocamera RGB posto sul veicolo, mentre questo sis spostava nell'ambiente. 
-Le immagini cosi ottenute, sono del formato (800*600) nel formato  .png.
-Queste rappresentano la base di partenza per la creazione del dataset, essendo tutte immagini pulite, ovvero immagini che non presentano malfunzionamenti o modifiche di qualsiasi genere.
-\end{comment}
+Per questa fase entra in gioco CARLA. Avviato il suo lato server, il lato client è stato impostato per generare 517 simulazioni diverse, ovvero 517 ambienti generati casualmente, con condizioni atmosferiche  e punti di generazione del veicolo diverse. In ciascuna delle simulazioni il veicolo si muove nelle vie della città, seguendo percorsi casuali. Durante il tragitto il Client è stato impostato per acquisire 300 immagini dal sensore della fotocamera frontale della vettura, nel formato .png e ciascuna dalle  dimensioni di 800*600 pixels.
+Per fare ciò è stato impiegato lo script del progetto github "Carla Script". Si rimanda alla sezione Manuale Utente.
+
 \subsection{Sporcatura}
 Ottenute queste grande mole di immagini pulite, prive di qualsiasi "errore", questa fase del processo, prevede l'applicazione dei guasti alle immagini.
-Si intende l'applicazione di filtri, che simulino il guasto alla fotocamera, della corrispettiva classe.
-I filtri sono ripresi dal progetto github di Francesco Secci, Python Image Failures, i quali sono stati riadatti per l'uso nella seguente tesi.
-\subparagraph{Rappresentazione dei vari guasti con breve descrizione}
-Per una illustrazione completa dei guasti si rimanda  a \cite{secci2020failures}, da cui è stato ripreso lo studio su l'effetto di determinati guasti alla fotocamera, portino a un rate di fallimenti più elevato. 
-Di seguito si riporta una breve rappresentazione della stessa immagini, acquisita dalla fotocamera di un veicolo nel simulatore CARLA, a cui è applicata i diversi filtri che simulano i guasti impiegati nel progetto.
+Guasti che sono simulati da filtri ripresi dal progetto github di Francesco Secci, "Python Image Failures", i quali sono stati riadatti per l'uso nella seguente tesi.
+
+Per una illustrazione completa dei guasti si rimanda  a \cite{secci2020failures}, da cui è stato ripreso lo studio su l'effetto di alcuni guasti alla fotocamera sul sistema decisionale del veicolo a guida autonoma portino a un rate di fallimenti più elevato. 
+Di seguito si riporta una breve rappresentazione della stessa immagine, acquisita dalla fotocamera di un veicolo nel simulatore CARLA, a cui è stata applicata i diversi filtri impiegati nel progetto.
 
 
 	\begin{figure}
@@ -1081,7 +1044,7 @@ Per ottenere il tutto sono state effettuate 3 diverse fasi che riprendono anche 
 La prima fase ha previsto la costruzione della forma di
 \section{Conclusioni e lavori futuri}
 
-\section{A Manuale utente}
+\section{A Manuale utente}\label{sect:manuale utente}
 
 \newpage
 \printbibliography
