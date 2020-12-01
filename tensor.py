@@ -125,7 +125,7 @@ if __name__ == "__main__":
     classes_of_modified = ["blur", "black", "brightness", "200_death_pixels", "nodemos", "noise", "sharpness",
                            "brokenlens", "icelens", "banding", "greyscale", "50_death_pixels", "condensation",
                            "dirty_lens", "chromaticaberration", "rain", "all"]
-    multiproc = True
+
     save_result_file = open(path + "result.txt", "a")
     lock = multiprocessing.Lock()
 

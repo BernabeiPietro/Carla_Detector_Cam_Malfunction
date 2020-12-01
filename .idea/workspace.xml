@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9973eac8-9598-4cb8-b8be-5abf600af287" name="Default Changelist" comment="fix modify_photo.py e carla_image_modify.py">
+      <change beforePath="$PROJECT_DIR$/carla_image_modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/carla_image_modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carla_image_modify_for_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/carla_image_modify_for_testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_directory.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_directory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager_of_path.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager_of_path.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modify_photo.py" beforeDir="false" afterPath="$PROJECT_DIR$/modify_photo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tensor_version_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensor_version_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/AI_Agente.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/AI_Agente_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Bibliografia.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Capitolo1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Example-of-a-Filter-Applied-to-a-Two-Dimensional-input-to-create-a-Feature-Map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/GalliNiccolò.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Posta di Università degli Studi di Firenze - Input per tesi e indice.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Prefazione.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Risultati training e testing - Foglio1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Risultati training e testing.ods" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/SAE_level_automation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/SecciFrancesco.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Struttura-della_rete1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei-blx.bib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.aux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.bbl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.blg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.ilg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.ind" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.synctex.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/TesiBernabei.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/Torresin_Luca-cnn-rover lunare.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/adversarial_img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/bibliografia.bib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/catena_gef.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/chromaticaberration_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/cnnmodel.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/condensation_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/definizione_learning_modern_approach.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/dirty_lens_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/download (1).jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/download.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/esempio_di_classificiazione.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/200_death_pixels_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/all_test_with_trained.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/banding_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/black__test_final.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/black_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/blur_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/brightness_test_final.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/brightness_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/brokenlens_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/greyscale_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_test/icelens_test_ultimate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/200pixels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/50death.pixels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/Schermata da 2020-08-14 09-30-11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/Schermata del 2020-08-14 09-30-31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/all-ultimo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/all.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/banding.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/brightness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/brokenlens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/chromatic-aberration.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/condensation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/dirty-lens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/icelens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/nodemos result.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/noise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/rain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_risultati/risultati_train/sharpness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/200_death_pixels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/50_death_pixels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/banding.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/birghtness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/blur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/brokenlens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/chromaticaberrration.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/condensation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/dirty_lens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/greyscale.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/icelens.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/nodemos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/noise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/original.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/rain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/foto_sporcature/sharpness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/inputpertesieindice.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/issre2020-SUBMITTED-12.0.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/maga.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/maxpooling.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/schemaAgenteVeicolo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/sensori.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/strutturarete.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/tabella_risultati.ods" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/tesiNN.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/texput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/tf.keras.Model  _  TensorFlow Core v2.3.0.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesi/titolo tesi.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1fr6m9ejbwbcpiv0Vf2n7g3lEKe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tensor_version_test.py" />
+  </component>
+  <component name="RunManager" selected="Python.carla_image_modify">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="carla_image_modify" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/carla_image_modify.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="carla_image_modify_for_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/carla_image_modify_for_testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="carladetector" type="PythonConfigurationType" factoryName="Python">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prove" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prove.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tensor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tensorflow-testmode" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="carla-detector-cam-malfunction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/classificator/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow-testmode.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.carladetector" />
+      <item itemvalue="Python.carla_image_modify" />
+      <item itemvalue="Python.carla_image_modify_for_testing" />
+      <item itemvalue="Python.prove" />
+      <item itemvalue="Python.tensor" />
+      <item itemvalue="Python.tensorflow-testmode" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.carla_image_modify" />
+        <item itemvalue="Python.carla_image_modify_for_testing" />
+        <item itemvalue="Python.prove" />
+        <item itemvalue="Python.tensorflow-testmode" />
+        <item itemvalue="Python.tensor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9973eac8-9598-4cb8-b8be-5abf600af287" name="Default Changelist" comment="" />
+      <created>1596964020790</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596964020790</updated>
+    </task>
+    <task id="LOCAL-00001" summary="fix modify_photo.py e carla_image_modify.py">
+      <created>1596964535316</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596964535316</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix modify_photo.py e carla_image_modify.py">
+      <created>1596984062989</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596984062989</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix modify_photo.py e carla_image_modify.py">
+      <created>1596984432015</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596984432015</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix modify_photo.py e carla_image_modify.py">
+      <created>1597141955437</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597141955437</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix modify_photo.py e carla_image_modify.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix modify_photo.py e carla_image_modify.py" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603880326015">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="418" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1603880326015" />
+    <state x="2539" y="242" width="374" height="414" key="FileChooserDialogImpl" timestamp="1606733629089">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state x="743" y="310" width="424" height="484" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1598710072095" />
+    <state x="2539" y="242" width="374" height="414" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733629089" />
+    <state width="1577" height="296" key="GridCell.Tab.0.bottom" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="408" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730905776" />
+    <state width="1577" height="296" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.0.center" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="408" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730905776" />
+    <state width="1577" height="296" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.0.left" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="408" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730905776" />
+    <state width="1577" height="296" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.0.right" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="408" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730905776" />
+    <state width="1577" height="296" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.1.bottom" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="360" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730842754" />
+    <state width="1577" height="296" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.1.center" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="360" key="GridCell.Tab.1.center/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730842753" />
+    <state width="1577" height="296" key="GridCell.Tab.1.center/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.1.left" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="360" key="GridCell.Tab.1.left/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730842753" />
+    <state width="1577" height="296" key="GridCell.Tab.1.left/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="1577" height="296" key="GridCell.Tab.1.right" timestamp="1606733945548">
+      <screen x="1920" y="0" width="1600" height="900" />
+    </state>
+    <state width="1897" height="360" key="GridCell.Tab.1.right/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1606730842753" />
+    <state width="1577" height="296" key="GridCell.Tab.1.right/0.27.1920.1053/1920.0.1600.900@1920.0.1600.900" timestamp="1606733945548" />
+    <state width="960" height="527" key="XDebugger.FullValuePopup" timestamp="1605605078822">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="960" height="527" key="XDebugger.FullValuePopup/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1605605078822" />
+    <state x="792" y="325" width="325" height="455" key="refactoring.ChangeSignatureDialog" timestamp="1605874460161">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="792" y="325" width="325" height="455" key="refactoring.ChangeSignatureDialog/0.27.1920.1053/1920.0.1600.900@0.27.1920.1053" timestamp="1605874460161" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tensorflow-testmode.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tensorflow-testmode.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/prove.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/carla_image_modify.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/carla_image_modify.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/carla_image_modify.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/carla_image_modify.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
