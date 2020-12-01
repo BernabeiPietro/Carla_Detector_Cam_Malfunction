@@ -66,7 +66,7 @@ def modify_photo_test_asimmetrico(classe_of_con, mp, j, list_original, phase, cl
     return j
 
 
-path =  "/home/bernabei/carla0.8.4/PythonClient/_out_prima_run/"# "/home/bernabei/carla0.8.4/PythonClient/_out/" # "/home/pietro/Documenti/Unifi/tirocinio/img"
+path =   "/home/bernabei/carla0.8.4/PythonClient/_out/"
 classes_of_modified = ["blur", "black", "brightness", "200_death_pixels", "nodemos", "noise", "sharpness", "brokenlens",
                        "icelens", "banding", "50_death_pixels", "greyscale", "condensation", "dirty_lens",
                        "chromaticaberration", "rain"]
